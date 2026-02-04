@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "Home",
+    "flights": "Flights",
+    "cars": "Car Rental"
+  },
+  "common": {
+    "compare": "Compare"
+  },
+  "cars": {
+    "title": "Search Car Rental",
+    "description": "Find the best car rental offers in Kosovo.",
+    "searchNow": "Search Now",
+    "comparePrices": "and find the best offer.",
+    "avgPrice": "Average Price",
+    "avgPriceLabel": "From {price}€",
+    "results": { "description": "Available offers according to your criteria" },
+    "conditions": {
+      "title": "Terms and Documents",
+      "description": "Everything you need to know to rent a car in Kosovo",
+      "documents": { "title": "Required Documents", "description": "Personal details and upload of ID or passport and valid driving licence required." },
+      "deposit": { "title": "Payment on Booking", "description": "Payment is made online when booking, after selecting the vehicle and completing your details." },
+      "insurance": { "title": "Pick-up and Return Choice", "description": "You choose the location, date and time for pick-up and return according to your needs." },
+      "cancellation": { "title": "Cancellation Policies", "description": "Cancellation and changes depend on the rental company's terms and when you cancel." }
+    },
+    "filters": {
+      "title": "Search Filters",
+      "description": "Use filters to find the perfect car for your needs",
+      "price": { "title": "Filter by Price", "description": "Choose the price range that suits you best" },
+      "transmission": { "title": "Transmission", "description": "Choose between manual and automatic to your preference" },
+      "fuel": { "title": "Fuel", "description": "Filter by fuel type: petrol, diesel or electric" },
+      "seats": { "title": "Number of Seats", "description": "Choose the number of seats you need for your trip" }
+    },
+    "faq": {
+      "question1": "How does car rental search work?",
+      "answer1": "You search by choosing location, dates and car category. We compare offers and show you the results.",
+      "question2": "What documents do I need?",
+      "answer2": "Personal details and upload of ID or passport and valid driving licence are required.",
+      "question3": "Are the prices final?",
+      "answer3": "Yes. We aim to show transparent prices with main details included, so you avoid surprises at the end.",
+      "question4": "Can I return the car at a different location?",
+      "answer4": "Yes, if the rental company allows it, you can choose another return location from the available options.",
+      "question5": "How far in advance should I book?",
+      "answer5": "We recommend booking 1–2 weeks ahead for better prices and availability. You can still find offers at shorter notice.",
+      "question6": "Need more information?",
+      "answer6": "For more information, you can contact us via the contact details on the Contact page."
+    },
+    "cta": {
+      "title": "Ready to Book?",
+      "description": "After booking your car, book a flight to complete your trip",
+      "searchFlights": "Search Flights"
+    }
+  },
+  "locations": {
+    "airport": { "description": "Direct pickup at the airport. Book your car and collect it at the airport entrance." },
+    "city": { "description": "Book your car to your preference and collect it at your chosen location. Maximum flexibility with multiple locations and competitive prices." },
+    "pickup": "Pickup",
+    "type": "City",
+    "available": "Available",
+    "notAvailable": "Not available",
+    "popular": { "title": "Popular Locations", "description": "Choose from the most popular locations for car pickup" },
+    "verified": "Partnership",
+    "partners": "Verified partners",
+    "related": "Related Locations",
+    "relatedDescription": "Explore other popular locations",
+    "compare": "Compare prices"
+  },
+  "carSearch": {
+    "sameLocation": "Same location",
+    "differentLocation": "Different location",
+    "pickupDropoffLocation": "Pick-up and return location",
+    "pickupLocation": "Pick-up location",
+    "dropoffLocation": "Return location",
+    "whereNeedCar": "Where do you need the car?",
+    "whereReturnCar": "Where will you return it?",
+    "dateRange": "Pick-up and return date",
+    "pickupTime": "Pick-up time",
+    "returnTime": "Return time",
+    "selectDate": "Select date",
+    "selectTime": "Select time",
+    "searchCars": "Search cars",
+    "searching": "Searching..."
+  },
+  "trustBadges": {
+    "carNoFee": "No booking fee",
+    "carTransparent": "Transparent prices",
+    "carComfort": "Safety and comfort"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "description": "Everything you need to know before you start"
+  },
+  "seo": {
+    "location": {
+      "title": "Car Rental in {location} | Compare Prices",
+      "intro": "Find car rental in {location} at great prices. Compare offers from our verified partners and book quickly.",
+      "feature1": "Pickup in {location} or at the airport to your preference",
+      "feature2": "Transparent prices with no hidden fees",
+      "feature3": "Verified and trusted partners",
+      "feature4": "Quick and secure booking process",
+      "cta": "Ready to Book?",
+      "ctaDescription": "Compare offers and book your car with a quick and secure process.",
+      "searchFlights": "Search Flights"
+    },
+    "content": {
+      "trust": {
+        "title": "Trust and Transparency",
+        "description": "At Krahaso.co we believe in full transparency and verified partners. The prices we show are what you pay, with no surprises or hidden fees.",
+        "verified": { "title": "Verified Partners", "description": "We work only with trusted and verified companies that provide quality services." },
+        "transparent": { "title": "Transparent Prices", "description": "All prices are clear and include main fees, so you avoid surprises at the last step." }
+      }
+    }
+  },
+  "shared": {
+    "nav": {
+      "home": "Home",
+      "flights": "Flights",
+      "cars": "Cars"
+    },
+    "footer": {
+      "copyright": "© {year} Krahaso.co. All rights reserved."
+    },
+    "common": {
+      "loading": "Loading...",
+      "error": "Error",
+      "noResults": "No results found"
+    },
+    "errors": {
+      "notFound": "Page not found.",
+      "generic": "Something went wrong.",
+      "backHome": "Back to Home"
+    }
+  },
+  "core": {
+    "nav": {
+      "kontakt": "Contact",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    },
+    "intro": {
+      "kontakt": "Contact us – core page.",
+      "privacy": "Privacy policy – core page.",
+      "terms": "Terms of use – core page."
+    }
+  }
+}

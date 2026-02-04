@@ -1,0 +1,6 @@
+/**
+ * Tailwind + Nuxt UI (required by Nuxt UI docs).
+ * Loaded from shared layer so ~ resolves to layer root.
+ */
+@import "tailwindcss";
+@import "@nuxt/ui";

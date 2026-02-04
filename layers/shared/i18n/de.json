@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "flights": "Flüge",
+    "cars": "Autovermietung"
+  },
+  "common": {
+    "compare": "Vergleichen"
+  },
+  "cars": {
+    "title": "Autovermietung suchen",
+    "description": "Finden Sie die besten Angebote für Autovermietung im Kosovo.",
+    "searchNow": "Jetzt suchen",
+    "comparePrices": "und das beste Angebot finden.",
+    "avgPrice": "Durchschnittspreis",
+    "avgPriceLabel": "Ab {price}€",
+    "results": { "description": "Verfügbare Angebote nach Ihren Kriterien" },
+    "conditions": {
+      "title": "Bedingungen und Dokumente",
+      "description": "Alles, was Sie für eine Autovermietung im Kosovo wissen müssen",
+      "documents": { "title": "Erforderliche Dokumente", "description": "Persönliche Angaben und Upload von Ausweis oder Reisepass sowie gültiger Führerschein erforderlich." },
+      "deposit": { "title": "Zahlung bei Buchung", "description": "Die Zahlung erfolgt online bei der Buchung nach Auswahl des Fahrzeugs und Angabe Ihrer Daten." },
+      "insurance": { "title": "Wahl von Abholung und Rückgabe", "description": "Sie wählen Ort, Datum und Uhrzeit für Abholung und Rückgabe nach Ihren Bedürfnissen." },
+      "cancellation": { "title": "Stornierungsbedingungen", "description": "Stornierung und Änderungen hängen von den Bedingungen des Vermieters und dem Zeitpunkt der Stornierung ab." }
+    },
+    "filters": {
+      "title": "Suchfilter",
+      "description": "Nutzen Sie Filter, um das passende Auto zu finden",
+      "price": { "title": "Nach Preis filtern", "description": "Wählen Sie die passende Preisspanne" },
+      "transmission": { "title": "Getriebe", "description": "Wählen Sie zwischen Schaltgetriebe und Automatik" },
+      "fuel": { "title": "Kraftstoff", "description": "Nach Kraftstoffart filtern: Benzin, Diesel oder Elektro" },
+      "seats": { "title": "Anzahl der Sitze", "description": "Wählen Sie die Anzahl der Sitze für Ihre Fahrt" }
+    },
+    "faq": {
+      "question1": "Wie funktioniert die Suche nach Autovermietung?",
+      "answer1": "Sie suchen nach Ort, Datum und Fahrzeugkategorie. Wir vergleichen Angebote und zeigen Ihnen die Ergebnisse.",
+      "question2": "Welche Dokumente brauche ich?",
+      "answer2": "Persönliche Angaben sowie Ausweis oder Reisepass und gültiger Führerschein sind erforderlich.",
+      "question3": "Sind die Preise endgültig?",
+      "answer3": "Ja. Wir zeigen transparente Preise mit den wichtigsten Details, ohne Überraschungen am Ende.",
+      "question4": "Kann ich das Auto an einem anderen Ort zurückgeben?",
+      "answer4": "Ja, wenn der Vermieter es erlaubt, können Sie einen anderen Rückgabeort aus den verfügbaren Optionen wählen.",
+      "question5": "Wie früh sollte ich buchen?",
+      "answer5": "Wir empfehlen die Buchung 1–2 Wochen im Voraus für bessere Preise und Verfügbarkeit. Es gibt auch kurzfristig Angebote.",
+      "question6": "Brauchen Sie mehr Informationen?",
+      "answer6": "Für weitere Informationen können Sie uns über die Kontaktdaten auf der Kontaktseite erreichen."
+    },
+    "cta": {
+      "title": "Bereit zu buchen?",
+      "description": "Nach der Autobuchung buchen Sie einen Flug für Ihre Reise",
+      "searchFlights": "Flüge suchen"
+    }
+  },
+  "locations": {
+    "airport": { "description": "Abholung direkt am Flughafen. Buchen Sie Ihr Auto und holen Sie es am Flughafeneingang ab." },
+    "city": { "description": "Buchen Sie Ihr Auto nach Wunsch und holen Sie es am gewählten Ort ab. Maximale Flexibilität mit vielen Standorten und guten Preisen." },
+    "pickup": "Abholung",
+    "type": "Stadt",
+    "available": "Verfügbar",
+    "notAvailable": "Nicht verfügbar",
+    "popular": { "title": "Beliebte Standorte", "description": "Wählen Sie aus den beliebtesten Standorten für die Abholung" },
+    "verified": "Partnerschaft",
+    "partners": "Verifizierte Partner",
+    "related": "Ähnliche Standorte",
+    "relatedDescription": "Weitere beliebte Standorte entdecken",
+    "compare": "Preise vergleichen"
+  },
+  "carSearch": {
+    "sameLocation": "Gleicher Standort",
+    "differentLocation": "Anderer Standort",
+    "pickupDropoffLocation": "Abhol- und Rückgabeort",
+    "pickupLocation": "Abholort",
+    "dropoffLocation": "Rückgabeort",
+    "whereNeedCar": "Wo brauchen Sie das Auto?",
+    "whereReturnCar": "Wo geben Sie es zurück?",
+    "dateRange": "Abhol- und Rückgabedatum",
+    "pickupTime": "Abholzeit",
+    "returnTime": "Rückgabezeit",
+    "selectDate": "Datum wählen",
+    "selectTime": "Uhrzeit wählen",
+    "searchCars": "Autos suchen",
+    "searching": "Suche..."
+  },
+  "trustBadges": {
+    "carNoFee": "Keine Buchungsgebühr",
+    "carTransparent": "Transparente Preise",
+    "carComfort": "Sicherheit und Komfort"
+  },
+  "faq": {
+    "title": "Häufige Fragen",
+    "description": "Alles, was Sie vor dem Start wissen sollten"
+  },
+  "seo": {
+    "location": {
+      "title": "Autovermietung in {location} | Preise vergleichen",
+      "intro": "Finden Sie Autovermietung in {location} zu guten Preisen. Vergleichen Sie Angebote unserer verifizierten Partner und buchen Sie schnell.",
+      "feature1": "Abholung in {location} oder am Flughafen nach Wunsch",
+      "feature2": "Transparente Preise ohne versteckte Gebühren",
+      "feature3": "Verifizierte und vertrauenswürdige Partner",
+      "feature4": "Schneller und sicherer Buchungsprozess",
+      "cta": "Bereit zu buchen?",
+      "ctaDescription": "Vergleichen Sie Angebote und buchen Sie Ihr Auto schnell und sicher.",
+      "searchFlights": "Flüge suchen"
+    },
+    "content": {
+      "trust": {
+        "title": "Vertrauen und Transparenz",
+        "description": "Bei Krahaso.co setzen wir auf volle Transparenz und verifizierte Partner. Die angezeigten Preise sind die, die Sie zahlen – ohne Überraschungen oder versteckte Gebühren.",
+        "verified": { "title": "Verifizierte Partner", "description": "Wir arbeiten nur mit vertrauenswürdigen und verifizierten Unternehmen, die Qualitätsdienstleistungen anbieten." },
+        "transparent": { "title": "Transparente Preise", "description": "Alle Preise sind klar und enthalten die wichtigsten Gebühren, ohne Überraschungen im letzten Schritt." }
+      }
+    }
+  },
+  "shared": {
+    "nav": {
+      "home": "Startseite",
+      "flights": "Flüge",
+      "cars": "Autos"
+    },
+    "footer": {
+      "copyright": "© {year} Krahaso.co. Alle Rechte vorbehalten."
+    },
+    "common": {
+      "loading": "Lädt...",
+      "error": "Fehler",
+      "noResults": "Keine Ergebnisse gefunden"
+    },
+    "errors": {
+      "notFound": "Seite nicht gefunden.",
+      "generic": "Etwas ist schiefgelaufen.",
+      "backHome": "Zur Startseite"
+    }
+  },
+  "core": {
+    "nav": {
+      "kontakt": "Kontakt",
+      "privacy": "Datenschutz",
+      "terms": "Nutzungsbedingungen"
+    },
+    "intro": {
+      "kontakt": "Kontaktieren Sie uns – Kernseite.",
+      "privacy": "Datenschutzerklärung – Kernseite.",
+      "terms": "Nutzungsbedingungen – Kernseite."
+    }
+  }
+}
