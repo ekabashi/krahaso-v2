@@ -58,7 +58,14 @@
     "type": "Stadt",
     "available": "Verfügbar",
     "notAvailable": "Nicht verfügbar",
-    "popular": { "title": "Beliebte Standorte", "description": "Wählen Sie aus den beliebtesten Standorten für die Abholung" },
+    "popular": { 
+      "title": "Beliebte Standorte", 
+      "description": "Wählen Sie aus den beliebtesten Standorten für die Abholung",
+      "airport": "Flughafen Pristina",
+      "prishtine": "Pristina",
+      "prizren": "Prizren",
+      "peje": "Peja"
+    },
     "verified": "Partnerschaft",
     "partners": "Verifizierte Partner",
     "related": "Ähnliche Standorte",
@@ -82,9 +89,124 @@
     "searching": "Suche..."
   },
   "trustBadges": {
+    "noFees": "Keine Buchungsgebühren",
+    "directBooking": "Direkt zum Anbieter",
+    "secureData": "Sichere Datenübertragung",
     "carNoFee": "Keine Buchungsgebühr",
     "carTransparent": "Transparente Preise",
     "carComfort": "Sicherheit und Komfort"
+  },
+  "search": {
+    "title": "Suchen",
+    "roundtrip": "Hin- und Rückflug",
+    "oneway": "Nur Hinflug",
+    "from": "Von",
+    "to": "Nach",
+    "departureDate": "Abflugdatum",
+    "returnDate": "Rückflugdatum",
+    "passengers": "Passagiere",
+    "selectDate": "Datum wählen",
+    "swapAirports": "Flughäfen tauschen",
+    "adults": "Erwachsene",
+    "adultsAge": "12+ Jahre",
+    "children": "Kinder",
+    "childrenAge": "2-11 Jahre",
+    "infants": "Säuglinge",
+    "infantsAge": "< 2 Jahre",
+    "maxPassengers": "Maximal 9 Passagiere",
+    "searchFlights": "Flüge suchen",
+    "flexibleLabel": "±3 Tage flexibel",
+    "flexibleHint": "Preise für umliegende Daten anzeigen"
+  },
+  "routes": {
+    "title": "Beliebte Routen",
+    "description": "Beliebteste Ziele von und nach Kosovo",
+    "compare": "Preise vergleichen",
+    "related": "Ähnliche Routen",
+    "relatedDescription": "Weitere beliebte Ziele entdecken"
+  },
+  "errors": {
+    "title": "Fehler",
+    "invalidDate": "Ungültiges Datum"
+  },
+  "flights": {
+    "title": "Flüge suchen",
+    "description": "Finden Sie die besten Flugangebote von und nach Kosovo.",
+    "searching": "Flüge suchen...",
+    "error": "Fehler beim Suchen von Flügen",
+    "noResults": "Keine Flüge gefunden",
+    "noResultsDesc": "Versuchen Sie, Daten oder Ziele zu ändern.",
+    "noSearch": "Wählen Sie Abflugort, Zielort und Datum, um Angebote zu sehen.",
+    "stops": "Stopps",
+    "routeDescription": "Preise für Flüge vergleichen",
+    "comparePrices": "und das beste Angebot finden.",
+    "searchNow": "Jetzt suchen",
+    "duration": "Dauer",
+    "flightType": "Flugtyp",
+    "direct": "Direkt",
+    "withStop": "Mit Zwischenstopp",
+    "airports": "Flughäfen",
+    "avgPrice": "Durchschnittspreis",
+    "avgPriceLabel": "Ab {price}€",
+    "highlights": {
+      "title": "Warum Krahaso.co wählen?",
+      "description": "Die vertrauenswürdigste Plattform zum Vergleich von Flügen",
+      "direct": {
+        "title": "Direktflüge",
+        "description": "Viele Routen bieten Direktflüge ohne Zwischenstopps"
+      },
+      "prices": {
+        "title": "Transparente Preise",
+        "description": "Alle Preise sind klar und ohne versteckte Gebühren"
+      },
+      "verified": {
+        "title": "Verifizierte Partner",
+        "description": "Wir arbeiten nur mit vertrauenswürdigen und verifizierten Unternehmen"
+      },
+      "fast": {
+        "title": "Schneller Prozess",
+        "description": "Vergleichen und buchen Sie in wenigen Minuten mit einem einfachen Prozess"
+      }
+    },
+    "tips": {
+      "title": "Tipps für günstigere Flüge",
+      "description": "Erfahren Sie, wie Sie Geld bei Flügen sparen können",
+      "flexible": {
+        "title": "Flexible Daten verwenden",
+        "description": "Suchen Sie mit flexiblen Daten, um die besten Preise zu finden. Flüge unter der Woche sind normalerweise günstiger als am Wochenende."
+      },
+      "weekdays": {
+        "title": "Unter der Woche buchen",
+        "description": "Flüge am Dienstag und Mittwoch sind normalerweise günstiger als am Wochenende oder an Feiertagen."
+      },
+      "advance": {
+        "title": "Frühzeitig buchen",
+        "description": "Frühzeitige Buchung (2-3 Monate im Voraus) kann Ihnen viel Geld sparen. Die Preise steigen, je näher das Flugdatum rückt."
+      },
+      "alerts": {
+        "title": "Preisalarme aktivieren",
+        "description": "Aktivieren Sie Alarme, um benachrichtigt zu werden, wenn die Preise für Ihre bevorzugte Route fallen."
+      }
+    },
+    "faq": {
+      "question1": "Wie funktioniert die Flugsuche?",
+      "answer1": "Sie suchen auf Krahaso.co, indem Sie Abflugort, Zielort und Datum auswählen. Wir vergleichen Angebote von unseren Partnern und zeigen Ihnen die Ergebnisse.",
+      "question2": "Wie früh sollte ich meinen Flug buchen?",
+      "answer2": "Es wird empfohlen, 2-3 Monate im Voraus zu buchen, um bessere Preise zu erhalten. Sie können jedoch auch Angebote mit kürzerer Vorlaufzeit finden.",
+      "question3": "Wird die Buchung direkt auf Ihrer Plattform durchgeführt?",
+      "answer3": "Nein, unsere Plattform hilft Ihnen, Angebote zu vergleichen. Die endgültige Buchung erfolgt auf der offiziellen Website des ausgewählten Partners.",
+      "question4": "Sind die Preise endgültig?",
+      "answer4": "Ja, die angezeigten Preise sind transparent und enthalten alle Grundgebühren ohne unerwartete zusätzliche Kosten.",
+      "question5": "Kann ich für große Gruppen buchen?",
+      "answer5": "Ja. Sie können zunächst die Preise für gewünschte Flüge überprüfen, während für Rabatte oder Gruppenangebote der direkte Kontakt mit dem Partner empfohlen wird.",
+      "question6": "Benötigen Sie weitere Informationen?",
+      "answer6": "Wenn Sie weitere Informationen benötigen, können Sie uns über die Kontaktnummern oder E-Mail-Adressen auf der Kontaktseite erreichen."
+    },
+    "cta": {
+      "title": "Bereit zu buchen?",
+      "description": "Nach Ihrem Flug buchen Sie ein Mietauto, um Ihre Reise zu vervollständigen",
+      "rentCar": "Auto am Flughafen buchen"
+    }
   },
   "faq": {
     "title": "Häufige Fragen",
@@ -103,6 +225,20 @@
       "searchFlights": "Flüge suchen"
     },
     "content": {
+      "route": {
+        "title": "Flüge {origin} → {destination} | Preise vergleichen",
+        "intro": "Finden Sie die besten Flüge für die Route {origin} → {destination}. Wir vergleichen Angebote von großen Partnern, um den besten Preis für Sie zu finden.",
+        "highlights": "Hauptpunkte",
+        "highlight1": "Flugdauer: {duration}",
+        "highlight2": "Flugtyp: {direct}",
+        "highlight3": "Flughäfen: {origin} (PRN) → {destination}",
+        "highlight4": "Transparente Preise ohne versteckte Gebühren",
+        "cta": "Bereit zu buchen?",
+        "ctaDescription": "Nach Ihrem Flug buchen Sie ein Mietauto, um Ihre Reise zu vervollständigen",
+        "rentCar": "Auto am Flughafen buchen",
+        "tips": "Tipps für günstigere Flüge",
+        "tipsContent": "Um die günstigsten Flüge für die Route {origin} → {destination} zu finden, empfehlen wir, mit flexiblen Daten zu suchen. Flüge unter der Woche sind normalerweise günstiger als am Wochenende. Auch eine frühzeitige Buchung (2-3 Monate im Voraus) kann Ihnen viel Geld sparen. Überprüfen Sie Angebote von unseren verifizierten Partnern für gute Preise und frische Verfügbarkeit."
+      },
       "trust": {
         "title": "Vertrauen und Transparenz",
         "description": "Bei Krahaso.co setzen wir auf volle Transparenz und verifizierte Partner. Die angezeigten Preise sind die, die Sie zahlen – ohne Überraschungen oder versteckte Gebühren.",
@@ -111,14 +247,22 @@
       }
     }
   },
+  "footer": {
+    "description": "Krahaso.co - Die beste Plattform zum Vergleichen und Buchen von Flügen und Autovermietungen im Kosovo.",
+    "quickLinks": "Schnelllinks",
+    "aboutUs": "Über uns",
+    "contact": "Kontakt",
+    "howItWorks": "Wie es funktioniert",
+    "popularLocations": "Beliebte Standorte",
+    "copyright": "© {year} Krahaso.co. Alle Rechte vorbehalten.",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen"
+  },
   "shared": {
     "nav": {
       "home": "Startseite",
       "flights": "Flüge",
       "cars": "Autos"
-    },
-    "footer": {
-      "copyright": "© {year} Krahaso.co. Alle Rechte vorbehalten."
     },
     "common": {
       "loading": "Lädt...",
@@ -141,6 +285,110 @@
       "kontakt": "Kontaktieren Sie uns – Kernseite.",
       "privacy": "Datenschutzerklärung – Kernseite.",
       "terms": "Nutzungsbedingungen – Kernseite."
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Wir freuen uns von Ihnen zu hören",
+    "description": "Kontaktieren Sie uns bei Fragen oder Hilfe",
+    "info": {
+      "title": "Kontaktinformationen",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "hours": "Öffnungszeiten",
+      "hoursDesc": "Montag - Freitag ( 08:00 - 17:00 )"
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Ihr Name",
+      "email": "E-Mail",
+      "subject": "Betreff",
+      "subjectPlaceholder": "Nachrichtenbetreff",
+      "message": "Nachricht",
+      "messagePlaceholder": "Schreiben Sie hier Ihre Nachricht...",
+      "submit": "Nachricht senden",
+      "errorRequired": "Bitte füllen Sie alle Pflichtfelder aus",
+      "success": "Nachricht erfolgreich gesendet",
+      "error": "Fehler beim Senden der Nachricht"
+    }
+  },
+  "about": {
+    "title": "Über uns",
+    "description": "Erfahren Sie mehr über die Krahaso.co-Plattform und unsere Mission",
+    "mission": {
+      "title": "Unsere Mission",
+      "description": "Krahaso.co wurde mit dem Ziel gegründet, den Buchungsprozess für Flüge und Autovermietungen für Reisende aus dem Kosovo und der Diaspora zu vereinfachen. Wir glauben, dass jeder einfachen und transparenten Zugang zu den besten Marktangeboten haben sollte."
+    },
+    "whatWeOffer": {
+      "title": "Was wir anbieten",
+      "item1": "Preisvergleich von verifizierten Partnern",
+      "item2": "Vollständige Transparenz bei Preisen und Bedingungen",
+      "item3": "Einfacher und sicherer Buchungsprozess",
+      "item4": "24/7 Support für unsere Kunden"
+    },
+    "whyChooseUs": {
+      "title": "Warum uns wählen?",
+      "description": "Wir arbeiten nur mit vertrauenswürdigen und verifizierten Unternehmen. Die angezeigten Preise sind die, die Sie zahlen, ohne Überraschungen oder versteckte Gebühren. Unsere Plattform ist mit moderner Technologie für eine schnelle und reibungslose Erfahrung gebaut."
+    },
+    "cta": {
+      "title": "Bereit loszulegen?",
+      "description": "Beginnen Sie, Flüge und Autovermietungen zu vergleichen, um die besten Angebote zu finden. Unsere Plattform hilft Ihnen, die wettbewerbsfähigsten Preise von verifizierten Partnern zu finden."
+    },
+    "stats": {
+      "partners": {
+        "value": "20+",
+        "label": "Verifizierte Partner"
+      },
+      "searches": {
+        "value": "1.000+",
+        "label": "Tägliche Suchen"
+      },
+      "support": {
+        "value": "24/7",
+        "label": "Kundensupport"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "subtitle": "Datenschutzerklärung",
+    "description": "Wie wir Ihre Daten schützen und verwenden",
+    "section1": {
+      "title": "1. Informationen, die wir sammeln",
+      "content": "Wir sammeln Informationen, die Sie uns geben, wenn Sie sich registrieren, Anfragen stellen oder mit uns kommunizieren. Dazu gehören Name, E-Mail, Telefonnummer und Dokumente, die Sie hochladen."
+    },
+    "section2": {
+      "title": "2. Wie wir Informationen verwenden",
+      "content": "Ihre Daten werden verwendet, um Anfragen zu bearbeiten, unseren Service zu verbessern und mit Ihnen zu kommunizieren."
+    },
+    "section3": {
+      "title": "3. Datenschutz",
+      "content": "Alle Ihre Daten werden sicher gespeichert und wir teilen sie nicht mit Dritten ohne Ihre Zustimmung, außer wenn dies gesetzlich vorgeschrieben ist."
+    },
+    "section4": {
+      "title": "4. Ihre Rechte",
+      "content": "Sie haben das Recht, Ihre Daten jederzeit einzusehen, zu ändern oder zu löschen. Kontaktieren Sie uns für weitere Informationen."
+    }
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "subtitle": "Nutzungsbedingungen",
+    "description": "Regeln und Bedingungen für die Nutzung der Plattform",
+    "section1": {
+      "title": "1. Nutzung der Plattform",
+      "content": "Die Krahaso.co-Plattform bietet die Möglichkeit, Flüge und Autovermietungen zu vergleichen. Sie sind für die ordnungsgemäße Nutzung des Dienstes verantwortlich."
+    },
+    "section2": {
+      "title": "2. Buchungen",
+      "content": "Buchungen erfolgen über unsere Partner. Wir sind nicht verantwortlich für von Partnern angebotene Dienstleistungen."
+    },
+    "section3": {
+      "title": "3. Stornierungen",
+      "content": "Die Stornierungsregeln hängen vom Partner ab. Bitte überprüfen Sie die Bedingungen vor der Buchung."
+    },
+    "section4": {
+      "title": "4. Haftung",
+      "content": "Krahaso.co fungiert als Vermittler und übernimmt keine Verantwortung für Partnerdienstleistungen."
     }
   }
 }

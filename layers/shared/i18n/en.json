@@ -58,7 +58,14 @@
     "type": "City",
     "available": "Available",
     "notAvailable": "Not available",
-    "popular": { "title": "Popular Locations", "description": "Choose from the most popular locations for car pickup" },
+    "popular": { 
+      "title": "Popular Locations", 
+      "description": "Choose from the most popular locations for car pickup",
+      "airport": "Pristina Airport",
+      "prishtine": "Pristina",
+      "prizren": "Prizren",
+      "peje": "Peja"
+    },
     "verified": "Partnership",
     "partners": "Verified partners",
     "related": "Related Locations",
@@ -82,9 +89,124 @@
     "searching": "Searching..."
   },
   "trustBadges": {
+    "noFees": "No booking fees",
+    "directBooking": "Direct to provider",
+    "secureData": "Secure data transfer",
     "carNoFee": "No booking fee",
     "carTransparent": "Transparent prices",
     "carComfort": "Safety and comfort"
+  },
+  "search": {
+    "title": "Search",
+    "roundtrip": "Round Trip",
+    "oneway": "One Way",
+    "from": "From",
+    "to": "To",
+    "departureDate": "Departure Date",
+    "returnDate": "Return Date",
+    "passengers": "Passengers",
+    "selectDate": "Select date",
+    "swapAirports": "Swap airports",
+    "adults": "Adults",
+    "adultsAge": "12+ years",
+    "children": "Children",
+    "childrenAge": "2-11 years",
+    "infants": "Infants",
+    "infantsAge": "< 2 years",
+    "maxPassengers": "Maximum 9 passengers",
+    "searchFlights": "Search flights",
+    "flexibleLabel": "±3 days flexible",
+    "flexibleHint": "Show prices for surrounding dates"
+  },
+  "routes": {
+    "title": "Popular Routes",
+    "description": "Most popular destinations from and to Kosovo",
+    "compare": "Compare prices",
+    "related": "Related Routes",
+    "relatedDescription": "Explore other popular destinations"
+  },
+  "errors": {
+    "title": "Error",
+    "invalidDate": "Invalid date"
+  },
+  "flights": {
+    "title": "Search Flights",
+    "description": "Find the best flight offers from and to Kosovo.",
+    "searching": "Searching flights...",
+    "error": "Error searching flights",
+    "noResults": "No flights found",
+    "noResultsDesc": "Try changing dates or destinations.",
+    "noSearch": "Select origin, destination and date to see offers.",
+    "stops": "stops",
+    "routeDescription": "Compare prices for flights",
+    "comparePrices": "and find the best offer.",
+    "searchNow": "Search Now",
+    "duration": "Duration",
+    "flightType": "Flight Type",
+    "direct": "Direct",
+    "withStop": "With stop",
+    "airports": "Airports",
+    "avgPrice": "Average Price",
+    "avgPriceLabel": "From {price}€",
+    "highlights": {
+      "title": "Why choose Krahaso.co?",
+      "description": "The most trusted platform for comparing flights",
+      "direct": {
+        "title": "Direct Flights",
+        "description": "Many routes offer direct flights with no stops"
+      },
+      "prices": {
+        "title": "Transparent Prices",
+        "description": "All prices are clear and with no hidden fees"
+      },
+      "verified": {
+        "title": "Verified Partners",
+        "description": "We work only with trusted and verified companies"
+      },
+      "fast": {
+        "title": "Fast Process",
+        "description": "Compare and book in minutes with a simple process"
+      }
+    },
+    "tips": {
+      "title": "Tips for Cheaper Flights",
+      "description": "Learn how to save money on flights",
+      "flexible": {
+        "title": "Use Flexible Dates",
+        "description": "Search with flexible dates to find the best prices. Weekday flights are usually cheaper than weekends."
+      },
+      "weekdays": {
+        "title": "Book on Weekdays",
+        "description": "Tuesday and Wednesday flights are usually cheaper than weekends or holidays."
+      },
+      "advance": {
+        "title": "Book in Advance",
+        "description": "Booking in advance (2-3 months ahead) can save you a lot. Prices increase as the flight date approaches."
+      },
+      "alerts": {
+        "title": "Enable Price Alerts",
+        "description": "Enable alerts to get notified when prices drop for your preferred route."
+      }
+    },
+    "faq": {
+      "question1": "How does flight search work?",
+      "answer1": "You search on Krahaso.co by selecting origin, destination and date. We compare offers from our partners and show you the results.",
+      "question2": "How far in advance should I book my flight?",
+      "answer2": "It is recommended to book 2-3 months in advance for better prices. However, you can find offers even at shorter notice.",
+      "question3": "Is booking done directly on your platform?",
+      "answer3": "No, our platform helps you compare offers. Final booking is done on the official website of the selected partner.",
+      "question4": "Are the prices final?",
+      "answer4": "Yes, the displayed prices are transparent and include all base fees, with no unexpected additional costs.",
+      "question5": "Can I book for large groups?",
+      "answer5": "Yes. You can initially check prices for desired flights, while for discounts or group offers it is recommended to contact the partner directly.",
+      "question6": "Need more information?",
+      "answer6": "If you need more information, you can contact us via the contact numbers or email found on the Contact page."
+    },
+    "cta": {
+      "title": "Ready to Book?",
+      "description": "After your flight, book a rental car to complete your trip",
+      "rentCar": "Book car at Airport"
+    }
   },
   "faq": {
     "title": "Frequently asked questions",
@@ -103,6 +225,20 @@
       "searchFlights": "Search Flights"
     },
     "content": {
+      "route": {
+        "title": "Flights {origin} → {destination} | Compare Prices",
+        "intro": "Find the best flights for the route {origin} → {destination}. We compare offers from major partners to find the best price for you.",
+        "highlights": "Key Points",
+        "highlight1": "Flight duration: {duration}",
+        "highlight2": "Flight type: {direct}",
+        "highlight3": "Airports: {origin} (PRN) → {destination}",
+        "highlight4": "Transparent prices with no hidden fees",
+        "cta": "Ready to Book?",
+        "ctaDescription": "After your flight, book a rental car to complete your trip",
+        "rentCar": "Book car at Airport",
+        "tips": "Tips for Cheaper Flights",
+        "tipsContent": "To find the cheapest flights for the route {origin} → {destination}, we recommend searching with flexible dates. Weekday flights are usually cheaper than weekends. Also, booking in advance (2-3 months ahead) can save you a lot. Check offers from our verified partners for good prices and fresh availability."
+      },
       "trust": {
         "title": "Trust and Transparency",
         "description": "At Krahaso.co we believe in full transparency and verified partners. The prices we show are what you pay, with no surprises or hidden fees.",
@@ -111,14 +247,22 @@
       }
     }
   },
+  "footer": {
+    "description": "Krahaso.co - The best platform to compare and book flights and car rentals in Kosovo.",
+    "quickLinks": "Quick Links",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "howItWorks": "How It Works",
+    "popularLocations": "Popular Locations",
+    "copyright": "© {year} Krahaso.co. All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
   "shared": {
     "nav": {
       "home": "Home",
       "flights": "Flights",
       "cars": "Cars"
-    },
-    "footer": {
-      "copyright": "© {year} Krahaso.co. All rights reserved."
     },
     "common": {
       "loading": "Loading...",
@@ -141,6 +285,110 @@
       "kontakt": "Contact us – core page.",
       "privacy": "Privacy policy – core page.",
       "terms": "Terms of use – core page."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "We'd love to hear from you",
+    "description": "Contact us for any questions or help",
+    "info": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Hours",
+      "hoursDesc": "Monday - Friday ( 08:00 - 17:00 )"
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "subject": "Subject",
+      "subjectPlaceholder": "Message subject",
+      "message": "Message",
+      "messagePlaceholder": "Write your message here...",
+      "submit": "Send message",
+      "errorRequired": "Please fill in all required fields",
+      "success": "Message sent successfully",
+      "error": "Error sending message"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Learn more about the Krahaso.co platform and our mission",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Krahaso.co was born with the aim of simplifying the booking process for flights and car rentals for travelers from Kosovo and the diaspora. We believe that everyone should have easy and transparent access to the best market offers."
+    },
+    "whatWeOffer": {
+      "title": "What We Offer",
+      "item1": "Price comparison from verified partners",
+      "item2": "Total transparency in prices and conditions",
+      "item3": "Simple and secure booking process",
+      "item4": "24/7 support for our clients"
+    },
+    "whyChooseUs": {
+      "title": "Why Choose Us?",
+      "description": "We work only with trusted and verified companies. The prices we show are what you will pay, with no surprises or hidden fees. Our platform is built with modern technology for a fast and smooth experience."
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Start comparing flights and car rentals to find the best offers. Our platform helps you find the most competitive prices from verified partners."
+    },
+    "stats": {
+      "partners": {
+        "value": "20+",
+        "label": "Verified partners"
+      },
+      "searches": {
+        "value": "1,000+",
+        "label": "Daily searches"
+      },
+      "support": {
+        "value": "24/7",
+        "label": "Client support"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "Privacy Policy",
+    "description": "How we protect and use your data",
+    "section1": {
+      "title": "1. Information We Collect",
+      "content": "We collect information you provide when you register, make requests, or communicate with us. This includes name, email, phone number and documents you upload."
+    },
+    "section2": {
+      "title": "2. How We Use Information",
+      "content": "Your data is used to process requests, improve our service, and communicate with you."
+    },
+    "section3": {
+      "title": "3. Data Protection",
+      "content": "All your data is stored securely and we do not share it with third parties without your consent, except when required by law."
+    },
+    "section4": {
+      "title": "4. Your Rights",
+      "content": "You have the right to view, modify, or delete your data at any time. Contact us for more information."
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "subtitle": "Terms of Service",
+    "description": "Rules and conditions for using the platform",
+    "section1": {
+      "title": "1. Platform Usage",
+      "content": "Krahaso.co platform offers the ability to compare flights and car rentals. You are responsible for the correct use of the service."
+    },
+    "section2": {
+      "title": "2. Bookings",
+      "content": "Bookings are made through our partners. We are not responsible for services provided by partners."
+    },
+    "section3": {
+      "title": "3. Cancellations",
+      "content": "Cancellation rules depend on the partner. Please check the conditions before booking."
+    },
+    "section4": {
+      "title": "4. Liability",
+      "content": "Krahaso.co acts as an intermediary and does not take responsibility for partner services."
     }
   }
 }

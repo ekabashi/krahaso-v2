@@ -58,7 +58,14 @@
     "type": "Qyteti",
     "available": "I disponueshëm",
     "notAvailable": "Nuk është i disponueshëm",
-    "popular": { "title": "Lokacione Popullore", "description": "Zgjidhni nga lokacionet më popullore për marrjen e makinës" },
+    "popular": { 
+      "title": "Lokacione Popullore", 
+      "description": "Zgjidhni nga lokacionet më popullore për marrjen e makinës",
+      "airport": "Aeroporti i Prishtinës",
+      "prishtine": "Prishtinë",
+      "prizren": "Prizren",
+      "peje": "Pejë"
+    },
     "verified": "Partneriteti",
     "partners": "Partnerë i verifikuar",
     "related": "Lokacione të Ngjashme",
@@ -82,9 +89,124 @@
     "searching": "Duke kërkuar..."
   },
   "trustBadges": {
+    "noFees": "Pa tarifa rezervimi",
+    "directBooking": "Direkt tek ofruesi",
+    "secureData": "Transferim i sigurt i të dhënave",
     "carNoFee": "Pa tarifë rezervimi",
     "carTransparent": "Çmime transparente",
     "carComfort": "Siguri dhe komoditet"
+  },
+  "search": {
+    "title": "Kërko",
+    "roundtrip": "Vajtje-Ardhje",
+    "oneway": "Vetëm vajtje",
+    "from": "Nga",
+    "to": "Në",
+    "departureDate": "Data e nisjes",
+    "returnDate": "Data e kthimit",
+    "passengers": "Pasagjerë",
+    "selectDate": "Zgjidhni datën",
+    "swapAirports": "Ndërro aeroportet",
+    "adults": "Të rritur",
+    "adultsAge": "12+ vjeç",
+    "children": "Fëmijë",
+    "childrenAge": "2-11 vjeç",
+    "infants": "Foshnjë",
+    "infantsAge": "< 2 vjeç",
+    "maxPassengers": "Maksimumi 9 udhëtarë",
+    "searchFlights": "Kërko fluturime",
+    "flexibleLabel": "±3 ditë fleksibël",
+    "flexibleHint": "Shfaq çmimet për datat rrethuese"
+  },
+  "routes": {
+    "title": "Rrugët më të kërkuara",
+    "description": "Destinacionet më popullore nga dhe për Kosovë",
+    "compare": "Krahaso çmimet",
+    "related": "Rrugë të Ngjashme",
+    "relatedDescription": "Eksploro destinacione të tjera popullore"
+  },
+  "errors": {
+    "title": "Gabim",
+    "invalidDate": "Data e pavlefshme"
+  },
+  "flights": {
+    "title": "Kërko Fluturime",
+    "description": "Gjej ofertat më të mira për Fluturime nga dhe për Kosovë.",
+    "searching": "Duke kërkuar fluturime...",
+    "error": "Gabim gjatë kërkimit të fluturimeve",
+    "noResults": "Nuk u gjetën fluturime",
+    "noResultsDesc": "Provoni të ndryshoni datat ose destinacionet.",
+    "noSearch": "Zgjidhni nisjen, destinacionin dhe datën për të parë ofertat.",
+    "stops": "ndalesa",
+    "routeDescription": "Krahaso çmimet për fluturime",
+    "comparePrices": "dhe gjej ofertën më të mirë.",
+    "searchNow": "Kërko Tani",
+    "duration": "Kohëzgjatja",
+    "flightType": "Lloji i Fluturimit",
+    "direct": "Direkt",
+    "withStop": "Me ndalesë",
+    "airports": "Aeroportet",
+    "avgPrice": "Çmimi Mesatar",
+    "avgPriceLabel": "Nga {price}€",
+    "highlights": {
+      "title": "Pse të zgjedhësh Krahaso.co?",
+      "description": "Platforma më e besueshme për krahasimin e fluturimeve",
+      "direct": {
+        "title": "Fluturime Direkte",
+        "description": "Shumë rrugë ofrojnë fluturime direkte pa ndalesa"
+      },
+      "prices": {
+        "title": "Çmime Transparente",
+        "description": "Të gjitha çmimet janë të qarta dhe pa tarifa të fshehura"
+      },
+      "verified": {
+        "title": "Partnerë të Verifikuar",
+        "description": "Bashkëpunojmë vetëm me kompani të besueshme dhe të verifikuara"
+      },
+      "fast": {
+        "title": "Proces i Shpejtë",
+        "description": "Krahaso dhe rezervo në pak minuta me proces të thjeshtë"
+      }
+    },
+    "tips": {
+      "title": "Këshilla për Fluturime më të Lira",
+      "description": "Mësoni si të kurseni para në fluturime",
+      "flexible": {
+        "title": "Përdor Datë Fleksibile",
+        "description": "Kërkoni me datë fleksibile për të gjetur çmimet më të mira. Fluturimet në ditët e javës zakonisht janë më të lira se në fundjavë."
+      },
+      "weekdays": {
+        "title": "Rezervo në Ditët e Javës",
+        "description": "Fluturimet në të martën dhe të mërkurën zakonisht janë më të lira se në fundjavë ose ditët e pushimit."
+      },
+      "advance": {
+        "title": "Rezervo me Kohë",
+        "description": "Rezervimi me kohë (2-3 muaj para) mund të ju kursejë shumë. Çmimet rriten ndërsa afrohet data e fluturimit."
+      },
+      "alerts": {
+        "title": "Aktivizo Alarmet e Çmimeve",
+        "description": "Aktivizo alarmet për të marrë njoftime kur çmimet bien për rrugën tuaj të preferuar."
+      }
+    },
+    "faq": {
+      "question1": "Si funksionon kërkimi i fluturimeve?",
+      "answer1": "Ju bëni kërkimin në Krahaso.co duke zgjedhur nisjen, destinacionin dhe datën. Ne krahasojmë ofertat nga partnerët tanë dhe ju shfaqim rezultatet.",
+      "question2": "Sa kohë më herët duhet të rezervoj fluturimin?",
+      "answer2": "Rekomandohet rezervimi 2-3 muaj më herët për çmime më të mira. Megjithatë, mund të gjeni oferta edhe në afate më të shkurtra.",
+      "question3": "A bëhet rezervimi direkt në platformën tuaj?",
+      "answer3": "Jo, platforma jonë ju ndihmon të krahasoni ofertat. Rezervimi përfundimtar bëhet në faqen zyrtare të partnerit të zgjedhur.",
+      "question4": "A janë çmimet finale?",
+      "answer4": "Po, çmimet e shfaqura janë transparente dhe përfshijnë të gjitha tarifat bazë, pa kosto shtesë të papritura.",
+      "question5": "A mund të rezervoj për grupe të mëdha?",
+      "answer5": "Po. Fillimisht mund të kontrolloni çmimet për fluturimet e dëshiruara, ndërsa për zbritje ose oferta grupore rekomandohet kontakti direkt me partnerin.",
+      "question6": "Keni nevojë për më shumë informacion?",
+      "answer6": "Nëse keni nevojë për më shumë informacion, mund të na kontaktoni përmes numrave të kontaktit ose emailit që gjenden në faqen Kontakti."
+    },
+    "cta": {
+      "title": "Gati për të Rezervuar?",
+      "description": "Pas fluturimit, rezervo makinën me qera për të kompletuar udhëtimin tuaj",
+      "rentCar": "Rezervo makinë në Aeroport"
+    }
   },
   "faq": {
     "title": "Pyetjet më të shpeshta",
@@ -103,6 +225,20 @@
       "searchFlights": "Kërko Fluturime"
     },
     "content": {
+      "route": {
+        "title": "Fluturime {origin} → {destination} | Krahaso Çmimet",
+        "intro": "Gjej fluturimet më të mira për rrugën {origin} → {destination}. Ne krahasojmë ofertat nga partnerët kryesorë për të gjetur çmimin më të mirë për ju.",
+        "highlights": "Pikat Kryesore",
+        "highlight1": "Kohëzgjatja e fluturimit: {duration}",
+        "highlight2": "Lloji i fluturimit: {direct}",
+        "highlight3": "Aeroportet: {origin} (PRN) → {destination}",
+        "highlight4": "Çmime transparente pa tarifa të fshehura",
+        "cta": "Gati për të Rezervuar?",
+        "ctaDescription": "Pas fluturimit, rezervo makinën me qera për të kompletuar udhëtimin tuaj",
+        "rentCar": "Rezervo makinë në Aeroport",
+        "tips": "Këshilla për Fluturime më të Lira",
+        "tipsContent": "Për të gjetur fluturimet më të lira për rrugën {origin} → {destination}, rekomandojmë të kërkoni me datë fleksibile. Fluturimet në ditët e javës zakonisht janë më të lira se në fundjavë. Gjithashtu, rezervimi me kohë (2-3 muaj para) mund të ju kursejë shumë. Kontrolloni ofertat e partnerëve tanë të verifikuar për çmime të mira dhe disponibilitet të freskët."
+      },
       "trust": {
         "title": "Besueshmëri dhe Transparencë",
         "description": "Në Krahaso.co, ne besojmë në transparencë totale dhe partnerë të verifikuar. Çmimet që shfaqim janë ato që do të paguani, pa surpriza ose tarifa të fshehura.",
@@ -111,14 +247,22 @@
       }
     }
   },
+  "footer": {
+    "description": "Krahaso.co - Platforma më e mirë për të krahasuar dhe rezervuar fluturime dhe makina me qera në Kosovë.",
+    "quickLinks": "Lidhje të Shpejta",
+    "aboutUs": "Rreth Nesh",
+    "contact": "Kontakt",
+    "howItWorks": "Si Funksionon",
+    "popularLocations": "Lokacione Popullore",
+    "copyright": "© {year} Krahaso.co. Të gjitha të drejtat e rezervuara.",
+    "privacy": "Privatësia",
+    "terms": "Kushtet"
+  },
   "shared": {
     "nav": {
-      "home": "Kryefaja",
+      "home": "Ballina",
       "flights": "Fluturime",
       "cars": "Makina"
-    },
-    "footer": {
-      "copyright": "© {year} Krahaso.co. Të gjitha të drejtat e rezervuara."
     },
     "common": {
       "loading": "Duke ngarkuar...",
@@ -141,6 +285,110 @@
       "kontakt": "Na kontaktoni – faqe core.",
       "privacy": "Politika e privatësisë – faqe core.",
       "terms": "Kushtet e përdorimit – faqe core."
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Kemi dëshirë të dëgjojmë nga ju",
+    "description": "Na kontaktoni për çdo pyetje ose ndihmë",
+    "info": {
+      "title": "Informacioni i kontaktit",
+      "email": "Email",
+      "phone": "Telefoni",
+      "hours": "Orari",
+      "hoursDesc": "E Hëne - E Premte ( 08:00 - 17:00 )"
+    },
+    "form": {
+      "name": "Emri",
+      "namePlaceholder": "Emri juaj",
+      "email": "Email",
+      "subject": "Subjekti",
+      "subjectPlaceholder": "Subjekti i mesazhit",
+      "message": "Mesazhi",
+      "messagePlaceholder": "Shkruani mesazhin tuaj këtu...",
+      "submit": "Dërgo mesazh",
+      "errorRequired": "Ju lutem plotësoni të gjitha fushat e detyrueshme",
+      "success": "Mesazhi u dërgua me sukses",
+      "error": "Gabim në dërgim të mesazhit"
+    }
+  },
+  "about": {
+    "title": "Rreth nesh",
+    "description": "Mëso më shumë rreth platformës Krahaso.co dhe misionit tonë",
+    "mission": {
+      "title": "Misioni ynë",
+      "description": "Krahaso.co u lindi me qëllimin e thjeshtimit të procesit të rezervimit të fluturimeve dhe Makinave me qera për udhëtarët nga Kosova dhe diaspora. Ne besojmë që çdo person duhet të ketë qasje të lehtë dhe transparente në ofertat më të mira të tregut."
+    },
+    "whatWeOffer": {
+      "title": "Çfarë ofrojmë",
+      "item1": "Krahasim të çmimeve nga partnerë të verifikuar",
+      "item2": "Transparencë totale në çmime dhe kushte",
+      "item3": "Proces të thjeshtë dhe të sigurt rezervimi",
+      "item4": "Mbështetje 24/7 për klientët tanë"
+    },
+    "whyChooseUs": {
+      "title": "Pse të na zgjidhni?",
+      "description": "Ne bashkëpunojmë vetëm me kompani të besueshme dhe të verifikuara. Çmimet që shfaqim janë ato që do të paguani, pa surpriza ose tarifa të fshehura. Platforma jonë është e ndërtuar me teknologji moderne për një përvojë të shpejtë dhe të qetë."
+    },
+    "cta": {
+      "title": "Gati për të filluar?",
+      "description": "Filloni të krahasoni fluturime dhe makina me qera për të gjetur ofertat më të mira. Platforma jonë ju ndihmon të gjeni çmimet më konkurruese nga partnerë të verifikuar."
+    },
+    "stats": {
+      "partners": {
+        "value": "20+",
+        "label": "Partnerë të verifikuar"
+      },
+      "searches": {
+        "value": "1,000+",
+        "label": "Kërkime ditore"
+      },
+      "support": {
+        "value": "24/7",
+        "label": "Mbështetje për klientët"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Politika e Privatësisë",
+    "subtitle": "Politika e Privatësisë",
+    "description": "Si mbrojmë dhe përdorim të dhënat tuaja",
+    "section1": {
+      "title": "1. Informacioni që mbledhim",
+      "content": "Ne mbledhim informacione që ju na jepni kur regjistroheni, bëni kërkesa, ose komunikoni me ne. Kjo përfshin emrin, emailin, numrin e telefonit dhe dokumentet që ngarkoni."
+    },
+    "section2": {
+      "title": "2. Si përdorim informacionin",
+      "content": "Të dhënat tuaja përdoren për të procesuar kërkesat, përmirësuar shërbimin tonë, dhe për të komunikuar me ju."
+    },
+    "section3": {
+      "title": "3. Mbrojtja e të dhënave",
+      "content": "Të gjitha të dhënat tuaja ruhen në mënyrë të sigurt dhe nuk i ndajmë me palë të treta pa pëlqimin tuaj, përveç kur kërkohet nga ligji."
+    },
+    "section4": {
+      "title": "4. Të drejtat tuaja",
+      "content": "Ju keni të drejtë të shikoni, ndryshoni, ose fshini të dhënat tuaja në çdo kohë. Kontaktoni me ne për më shumë informacion."
+    }
+  },
+  "terms": {
+    "title": "Kushtet e Shërbimit",
+    "subtitle": "Kushtet e Shërbimit",
+    "description": "Rregullat dhe kushtet për përdorimin e platformës",
+    "section1": {
+      "title": "1. Përdorimi i platformës",
+      "content": "Platforma Krahaso.co ofron mundësinë për krahasimin e fluturimeve dhe veturave me qera. Ju jeni përgjegjës për përdorimin e saktë të shërbimit."
+    },
+    "section2": {
+      "title": "2. Rezervimet",
+      "content": "Rezervimet bëhen përmes partnerëve tanë. Ne nuk jemi përgjegjës për shërbimet e ofruara nga partnerët."
+    },
+    "section3": {
+      "title": "3. Anulimet",
+      "content": "Rregullat e anulimit varen nga partneri. Ju lutemi kontrolloni kushtet para rezervimit."
+    },
+    "section4": {
+      "title": "4. Përgjegjësia",
+      "content": "Krahaso.co vepron si ndërmjetës dhe nuk merr përgjegjësi për shërbimet e partnerëve."
     }
   }
 }
