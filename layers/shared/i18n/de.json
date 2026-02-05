@@ -1103,9 +1103,94 @@
     "settledRequests": {
       "title": "Abrechnungsanfragen",
       "subtitle": "Abrechnungsanfragen nach Partner",
+      "searchPlaceholder": "Search by company name, subdomain..",
+      "errors": {
+        "title": "Fehler",
+        "fetchFailed": "Fehler beim Laden der Abrechnungsanfragen",
+        "unnamedTenant": "Unbenannter Partner"
+      },
+      "table": {
+        "company": "Unternehmen",
+        "subdomain": "Subdomain",
+        "requestCount": "Anzahl der Anfragen",
+        "request": "Anfrage"
+      },
+      "pagination": {
+        "showing": "Zeige",
+        "to": "bis",
+        "of": "von",
+        "tenants": "Partnern"
+      },
       "emptyState": {
         "title": "Keine Abrechnungsanfragen gefunden",
         "description": "Keine Abrechnungsanfragen vorhanden."
+      },
+      "details": {
+        "title": "Abrechnungsanfragen - Partnerdetails",
+        "back": "Zurück",
+        "loading": "Anfragen werden geladen...",
+        "settleButton": "Abrechnen",
+        "errors": {
+          "title": "Fehler",
+          "fetchFailed": "Fehler beim Laden der Anfragen",
+          "tenantIdRequired": "Partner-ID ist erforderlich"
+        },
+        "status": {
+          "completed": "Abgeschlossen",
+          "approved": "Genehmigt",
+          "pending": "Ausstehend",
+          "rejected": "Abgelehnt"
+        },
+        "table": {
+          "status": "Status",
+          "bookingNumbers": "Buchungsnummern",
+          "vehicle": "Fahrzeug",
+          "totalPrice": "Gesamtpreis",
+          "fee": "Krahaso-Gebühr",
+          "notes": "Notizen",
+          "createdAt": "Gesendet am"
+        },
+        "pagination": {
+          "showing": "Zeige",
+          "to": "bis",
+          "of": "von",
+          "requests": "Anfragen"
+        },
+        "emptyState": {
+          "title": "Keine Anfragen gefunden",
+          "description": "Keine Abrechnungsanfragen für Partner {tenantId} gefunden.",
+          "descriptionGeneric": "Keine Anfragen vorhanden."
+        },
+        "settleModal": {
+          "title": "Anfragen abrechnen",
+          "description": "Sind Sie sicher, dass Sie {count} Anfrage(n) abrechnen möchten?",
+          "noSelection": "Bitte wählen Sie mindestens eine Anfrage zum Abrechnen aus.",
+          "cancel": "Abbrechen",
+          "confirm": "Abrechnung bestätigen",
+          "success": {
+            "title": "Erfolg",
+            "description": "{count} Anfrage(n) erfolgreich abgerechnet."
+          },
+          "error": {
+            "description": "Fehler beim Abrechnen der Anfragen."
+          },
+          "table": {
+            "bookingNumber": "Buchungsnummer",
+            "vehicle": "Fahrzeug",
+            "customer": "Kunde",
+            "totalPrice": "Gesamtpreis",
+            "fee": "Gebühr",
+            "transferAmount": "Überweisungsbetrag",
+            "total": "Gesamt",
+            "request": "Anfrage",
+            "selected": "ausgewählt"
+          },
+          "summary": {
+            "title": "Abrechnungsübersicht",
+            "description": "Dies ist der Gesamtbetrag, der an den Partner überwiesen wird.",
+            "transferAmount": "Überweisungsbetrag"
+          }
+        }
       }
     }
   }

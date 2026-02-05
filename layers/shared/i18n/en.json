@@ -1017,7 +1017,7 @@
       "validationError": "Validation error",
       "enterCredentials": "Please enter your email and password",
       "footer": "Only superadmin can access this panel",
-      "backToHome": "Back to home"
+      "backToHome": "Return to the main page"
     },
     "navigation": {
       "dashboard": "Dashboard",
@@ -1103,9 +1103,94 @@
     "settledRequests": {
       "title": "Settlement Requests",
       "subtitle": "View settlement requests grouped by partner",
+      "searchPlaceholder": "Search by company name, subdomain..",
+      "errors": {
+        "title": "Error",
+        "fetchFailed": "Failed to fetch settlement requests",
+        "unnamedTenant": "Unnamed tenant"
+      },
+      "table": {
+        "company": "Company",
+        "subdomain": "Subdomain",
+        "requestCount": "Request Count",
+        "request": "request"
+      },
+      "pagination": {
+        "showing": "Showing",
+        "to": "to",
+        "of": "of",
+        "tenants": "tenants"
+      },
       "emptyState": {
         "title": "No settlement requests found",
         "description": "No settlement requests to display."
+      },
+      "details": {
+        "title": "Settlement Requests - Partner Details",
+        "back": "Back",
+        "loading": "Loading requests...",
+        "settleButton": "Settle",
+        "errors": {
+          "title": "Error",
+          "fetchFailed": "Failed to fetch requests",
+          "tenantIdRequired": "Tenant ID is required"
+        },
+        "status": {
+          "completed": "Completed",
+          "approved": "Approved",
+          "pending": "Pending",
+          "rejected": "Rejected"
+        },
+        "table": {
+          "status": "Status",
+          "bookingNumbers": "Booking Numbers",
+          "vehicle": "Vehicle",
+          "totalPrice": "Total Price",
+          "fee": "Fee Krahaso",
+          "notes": "Notes",
+          "createdAt": "Sent On"
+        },
+        "pagination": {
+          "showing": "Showing",
+          "to": "to",
+          "of": "of",
+          "requests": "requests"
+        },
+        "emptyState": {
+          "title": "No requests found",
+          "description": "No settlement requests found for tenant {tenantId}.",
+          "descriptionGeneric": "No requests to display."
+        },
+        "settleModal": {
+          "title": "Settle Requests",
+          "description": "Are you sure you want to settle {count} request(s)?",
+          "noSelection": "Please select at least one request to settle.",
+          "cancel": "Cancel",
+          "confirm": "Confirm Settlement",
+          "success": {
+            "title": "Success",
+            "description": "{count} request(s) settled successfully."
+          },
+          "error": {
+            "description": "Failed to settle requests."
+          },
+          "table": {
+            "bookingNumber": "Booking Number",
+            "vehicle": "Vehicle",
+            "customer": "Customer",
+            "totalPrice": "Total Price",
+            "fee": "Fee",
+            "transferAmount": "Transfer Amount",
+            "total": "Total",
+            "request": "request",
+            "selected": "selected"
+          },
+          "summary": {
+            "title": "Settlement Summary",
+            "description": "This is the total amount that will be transferred to the partner.",
+            "transferAmount": "Transfer Amount"
+          }
+        }
       }
     }
   }

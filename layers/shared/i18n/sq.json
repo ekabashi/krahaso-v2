@@ -681,6 +681,11 @@
       "error": "Gabim",
       "noResults": "Nuk u gjetën rezultate"
     },
+    "errors": {
+      "notFound": "Faqja nuk u gjet.",
+      "generic": "Diçka shkoi keq.",
+      "backHome": "Kthehu në Ballinë"
+    },
     "cta": {
       "title": "Gati për të Kursyer Para?",
       "description": "Eksploro ofertat tona dhe rezervo tani për të përfituar nga zbritjet ekskluzive",
@@ -1014,37 +1019,37 @@
       "validationError": "Gabim validimi",
       "enterCredentials": "Ju lutem vendosni email dhe fjalëkalimin",
       "footer": "Vetëm superadmin mund të hyjë në këtë panel",
-      "backToHome": "Kthehu në ballina"
+      "backToHome": "Kthehu në faqen kryesore"
     },
     "navigation": {
       "dashboard": "Paneli",
       "bookings": "Rezervimet",
       "partnershipRequests": "Kërkesat e Partneritetit",
       "tenants": "Partnerët",
-      "settledRequest": "Kërkesat e Shlyerjes"
+      "settledRequest": "Kërkesat për Barazim"
     },
     "dashboard": {
       "stats": {
-        "totalPartners": "Partnerë",
-        "totalBookings": "Rezervime gjithsej",
-        "activeCars": "Makina aktive",
-        "partnersAndCars": "Partnerë dhe Makina",
+        "totalPartners": "Partnerët",
+        "totalBookings": "Rezervimet Totale",
+        "activeCars": "Makinat Aktive",
+        "partnersAndCars": "Partnerët & Makinat",
         "totalFee": "Tarifa Krahaso",
-        "revenue": "Të ardhura gjithsej",
-        "revenueHistory": "Të ardhurat 12 muajt e fundit",
-        "bookingsHistory": "Rezervimet 12 muajt e fundit"
+        "revenue": "Të ardhura Totale",
+        "revenueHistory": "Historia e të ardhurave për 12 muajt e fundit",
+        "bookingsHistory": "Historia e rezervimeve për 12 muajt e fundit"
       },
       "quickActions": "Veprime të shpejta",
       "actions": {
         "viewReports": "Shiko Raportet",
         "partnershipRequests": "Kërkesat e Partneritetit",
-        "settlementRequests": "Kërkesat e Shlyerjes"
+        "settlementRequests": "Kërkesat për Barazim"
       }
     },
     "tenants": {
       "title": "Partnerët",
       "subtitle": "Menaxho të gjithë partnerët në sistem",
-      "searchPlaceholder": "Kërko partnerë...",
+      "searchPlaceholder": "Kërko sipas emrit të kompanisë, subdomain..",
       "noTenantsFound": "Nuk u gjetën partnerë",
       "details": {
         "title": "Detajet e partnerit"
@@ -1098,11 +1103,96 @@
       }
     },
     "settledRequests": {
-      "title": "Kërkesat e Shlyerjes",
-      "subtitle": "Shiko kërkesat e shlyerjes sipas partnerit",
+      "title": "Kërkesat për Barazim",
+      "subtitle": "Shikoni kërkesat për barazim të grupuara sipas partnerit",
+      "searchPlaceholder": "Kërko sipas emrit të kompanisë, subdomain..",
+      "errors": {
+        "title": "Gabim",
+        "fetchFailed": "Dështoi ngarkimi i kërkesave për barazim",
+        "unnamedTenant": "Partner i panjohur"
+      },
+      "table": {
+        "company": "Kompania",
+        "subdomain": "Subdomain",
+        "requestCount": "Numri i Kërkesave",
+        "request": "kërkesë"
+      },
+      "pagination": {
+        "showing": "Duke shfaqur",
+        "to": "deri në",
+        "of": "nga",
+        "tenants": "partnerë"
+      },
       "emptyState": {
-        "title": "Nuk u gjetën kërkesa shlyerjeje",
-        "description": "Nuk ka kërkesa shlyerjeje për të shfaqur."
+        "title": "Nuk u gjetën kërkesa për barazim",
+        "description": "Nuk ka kërkesa për barazim për të shfaqur."
+      },
+      "details": {
+        "title": "Kërkesat për Barazim - Faqja e Detajuar e Partnerit",
+        "back": "Kthehu",
+        "loading": "Duke ngarkuar kërkesat...",
+        "settleButton": "Barazo",
+        "errors": {
+          "title": "Gabim",
+          "fetchFailed": "Dështoi ngarkimi i kërkesave",
+          "tenantIdRequired": "ID e partnerit është e nevojshme"
+        },
+        "status": {
+          "completed": "Përfunduar",
+          "approved": "Aprovuar",
+          "pending": "Në Pritje",
+          "rejected": "Refuzuar"
+        },
+        "table": {
+          "status": "Statusi",
+          "bookingNumbers": "Numrat e Rezervimit",
+          "vehicle": "Automjeti",
+          "totalPrice": "Çmimi Total",
+          "fee": "Tarifa Krahaso",
+          "notes": "Shënime",
+          "createdAt": "Derguar më"
+        },
+        "pagination": {
+          "showing": "Duke shfaqur",
+          "to": "deri",
+          "of": "nga",
+          "requests": "kërkesa"
+        },
+        "emptyState": {
+          "title": "Nuk u gjetën kërkesa",
+          "description": "Nuk ka kërkesa për barazim për partnerin {tenantId}.",
+          "descriptionGeneric": "Nuk ka kërkesa për të shfaqur."
+        },
+        "settleModal": {
+          "title": "Barazo Kërkesat",
+          "description": "A jeni të sigurt që dëshironi të barazoni {count} kërkesa?",
+          "noSelection": "Ju lutem zgjidhni të paktën një kërkesë për të barazuar.",
+          "cancel": "Anulo",
+          "confirm": "Konfirmo Barazimin",
+          "success": {
+            "title": "Sukses",
+            "description": "{count} kërkesa u barazuan me sukses."
+          },
+          "error": {
+            "description": "Dështoi barazimi i kërkesave."
+          },
+          "table": {
+            "bookingNumber": "Numri i Rezervimit",
+            "vehicle": "Automjeti",
+            "customer": "Klienti",
+            "totalPrice": "Çmimi Total",
+            "fee": "Tarifa",
+            "transferAmount": "Shuma e Transferimit",
+            "total": "Totali",
+            "request": "kërkesë",
+            "selected": "të zgjedhura"
+          },
+          "summary": {
+            "title": "Përmbledhje e Barazimit",
+            "description": "Kjo është shuma totale që do të transferohet te partneri.",
+            "transferAmount": "Shuma e Transferimit"
+          }
+        }
       }
     }
   }
