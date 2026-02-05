@@ -488,7 +488,7 @@ async function onSearch() {
             {{ t('flights.cta.description') }}
           </p>
           <UButton
-            :to="localePath('/makina-me-qera/aeroporti-prishtines')"
+            :to="localePath('/makina/aeroporti-prishtines')"
             size="lg"
             color="neutral"
             variant="solid"

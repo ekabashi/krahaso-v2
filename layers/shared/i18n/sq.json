@@ -2,145 +2,46 @@
   "nav": {
     "home": "Ballina",
     "flights": "Fluturime",
-    "cars": "Makina me Qera"
+    "cars": "Makina me Qera",
+    "about": "Rreth nesh",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "help": "Ndihmë",
+    "offers": "Oferta"
   },
   "common": {
-    "compare": "Krahaso"
-  },
-  "cars": {
-    "title": "Kërko Makina me Qera",
-    "description": "Gjej ofertat më të mira për Makina me qera në Kosovë.",
-    "searchNow": "Kërko Tani",
-    "comparePrices": "dhe gjej ofertën më të mirë.",
-    "avgPrice": "Çmimi Mesatar",
-    "avgPriceLabel": "Nga {price}€",
-    "results": { "description": "Ofertat e disponueshme sipas kritereve tua" },
-    "filterLabel": "Filtra",
-    "filtersShort": "Filtra",
-    "conditions": {
-      "title": "Kushtet dhe Dokumentet",
-      "description": "Gjithçka që duhet të dini për të marrë me qira një makinë në Kosovë",
-      "documents": { "title": "Dokumentet e Nevojshme", "description": "Kërkohet plotësimi i të dhënave personale dhe ngarkimi i letërnjoftimit ose pasaportës, si dhe patentës së shoferit valide." },
-      "deposit": { "title": "Pagesa gjatë Rezervimit", "description": "Pagesa kryhet online gjatë rezervimit, pas përzgjedhjes së automjetit dhe plotësimit të të dhënave." },
-      "insurance": { "title": "Zgjedhja e Marrjes dhe Kthimit", "description": "Përdoruesi zgjedh vetë lokacionin, datën dhe orën e marrjes dhe kthimit të automjetit sipas nevojave të tij." },
-      "cancellation": { "title": "Politikat e Anulimit", "description": "Anulimi dhe ndryshimet në rezervim varen nga kushtet e kompanisë përkatëse dhe koha kur bëhet anulimi." }
-    },
-    "filters": {
-      "title": "Filtra për Kërkim",
-      "description": "Përdorni filtra për të gjetur makinën e përsosur për nevojat tuaja",
-      "price": { "title": "Filtro sipas Çmimit", "description": "Zgjidhni rangun e çmimit që ju përshtatet më shumë" },
-      "transmission": { "title": "Transmisioni", "description": "Zgjidhni midis manual dhe automatik sipas preferencave tuaja" },
-      "fuel": { "title": "Karburanti", "description": "Filtro sipas llojit të karburantit: benzinë, naftë ose elektrik" },
-      "seats": { "title": "Numri i Ulëseve", "description": "Zgjidhni numrin e ulëseve që ju nevojiten për udhëtimin tuaj" }
-    },
-    "faq": {
-      "question1": "Si funksionon kërkimi i Makinave me qira?",
-      "answer1": "Ju bëni kërkimin duke zgjedhur lokacionin, datat dhe kategorinë e makinës. Ne krahasojmë ofertat dhe ju shfaqim rezultatet.",
-      "question2": "Cilat dokumente më duhen?",
-      "answer2": "Kërkohet plotësimi i të dhënave personale dhe ngarkimi i letërnjoftimit ose pasaportës, si dhe patentës së shoferit valide.",
-      "question3": "A janë çmimet finale?",
-      "answer3": "Po. Ne synojmë të shfaqim çmime transparente me detajet kryesore të përfshira, që të shmangni surprizat në hapin e fundit.",
-      "question4": "A mund të kthej makinën në një lokacion tjetër?",
-      "answer4": "Po, nëse kompania e qirasë e lejon, do të mund të zgjidhni një lokacion tjetër për kthim nga opsionet e disponueshme.",
-      "question5": "Sa kohë më herët duhet të rezervoj?",
-      "answer5": "Rekomandohet të rezervoni 1-2 javë më herët për çmime dhe disponueshmëri më të mirë. Megjithatë, mund të gjeni oferta edhe në afate më të shkurtra.",
-      "question6": "Keni nevojë për më shumë informacion?",
-      "answer6": "Nëse keni nevojë për më shumë informacion, mund të na kontaktoni përmes numrave të kontaktit ose emailit që gjenden në faqen Kontakti."
-    },
-    "cta": {
-      "title": "Gati për të Rezervuar?",
-      "description": "Pas rezervimit të makinës, rezervo fluturimin për të kompletuar udhëtimin tuaj",
-      "searchFlights": "Kërko Fluturime"
-    },
-    "pickup": "Marrja",
-    "dropoff": "Kthimi",
-    "dates": "Datat",
-    "time": "Koha",
-    "editSearch": "Ndrysho kërkimin",
-    "pickupLocation": "Lokacioni i marrjes",
-    "dropoffLocation": "Lokacioni i kthimit",
-    "selectDates": "Zgjidhni datat",
-    "pickupTime": "Ora e marrjes",
-    "returnTime": "Ora e kthimit",
-    "cancel": "Anulo",
     "search": "Kërko",
-    "available": "të disponueshme",
-    "car": "makinë",
-    "cars": "makinat",
-    "sortBy": "Rendit sipas",
-    "viewResults": "Shiko rezultatet",
-    "clearAll": "Pastro të gjitha",
-    "priceRange": "Çmimi",
-    "transmission": "Transmisioni",
-    "fuelType": "Karburanti",
-    "numberOfSeats": "Numri i ulëseve",
-    "seats": "ulëse",
-    "category": "Kategoria",
-    "color": "Ngjyra",
-    "sortOptions": {
-      "priceLowToHigh": "Çmimi: nga më i ulëti",
-      "priceHighToLow": "Çmimi: nga më i larti",
-      "yearNewestFirst": "Viti: më të rejat së pari",
-      "nameAToZ": "Emri: A–Z"
+    "compare": "Krahaso",
+    "compareNow": "Krahaso tani",
+    "loading": "Duke ngarkuar...",
+    "error": "Gabim",
+    "noResults": "Nuk u gjetën rezultate",
+    "from": "nga",
+    "to": "në",
+    "refresh": "Rifresko",
+    "found": "të gjetura"
+  },
+  "searchType": {
+    "label": "Çfarë po kërkon?",
+    "cars": "Makina",
+    "carsHint": "Merr me qira",
+    "flights": "Fluturime",
+    "flightsHint": "Rezervo fluturim",
+    "hotels": "Hotele",
+    "insurance": "Sigurime",
+    "comingSoon": "Së shpejti"
+  },
+  "hero": {
+    "title": "Krahasoni dhe Kurseni në",
+    "titleHighlight": "Marrje me Qira Makinash.",
+    "description": "Ne kërkojmë në kompanitë kryesore të marrjes me qira për të gjetur çmimet më të mira për ju. Çmime transparente, zero tarifa të fshehura.",
+    "flights": {
+      "headline": "Krahaso Fluturime",
+      "title": "Krahaso dhe Kurse në",
+      "titleHighlight": "Rezervime të Fluturimeve.",
+      "description": "Krahaso çmimet nga partnerët kryesorë për të gjetur ofertën më të mirë. Çmime transparente, pa tarifa të fshehura.",
+      "imageAlt": "Krahasim fluturimesh"
     }
-  },
-  "emptyState": {
-    "noCarsFound": "Nuk u gjetën makinat",
-    "tryAdjustingFilters": "Provoni të ndryshoni datat ose filtra.",
-    "pleaseSearch": "Bëni një kërkim për të parë makinat."
-  },
-  "carCard": {
-    "transmission": "Transmisioni",
-    "fuelType": "Karburanti",
-    "seats": "ulëse",
-    "doors": "dyer",
-    "kmPerDay": "km/ditë",
-    "noKmLimit": "Pa kufi km",
-    "dailyKmLimit": "Kufiri ditor (km)",
-    "perDay": "/ditë",
-    "day": "ditë",
-    "days": "ditë",
-    "providedBy": "Ofruar nga",
-    "verified": "I verifikuar",
-    "bookNow": "Rezervo tani",
-    "standard": "Standarde"
-  },
-  "locations": {
-    "airport": { "description": "Pickup direkt në aeroport. Rezervo makinën tuaj dhe merre në hyrjen e aeroportit." },
-    "city": { "description": "Rezervo makinën tuaj sipas preferencës dhe merre në lokacionin e zgjedhur. Fleksibilitet maksimal me lokacione të shumta dhe çmime konkurruese." },
-    "pickup": "Pickup",
-    "type": "Qyteti",
-    "available": "I disponueshëm",
-    "notAvailable": "Nuk është i disponueshëm",
-    "popular": { 
-      "title": "Lokacione Popullore", 
-      "description": "Zgjidhni nga lokacionet më popullore për marrjen e makinës",
-      "airport": "Aeroporti i Prishtinës",
-      "prishtine": "Prishtinë",
-      "prizren": "Prizren",
-      "peje": "Pejë"
-    },
-    "verified": "Partneriteti",
-    "partners": "Partnerë i verifikuar",
-    "related": "Lokacione të Ngjashme",
-    "relatedDescription": "Eksploro lokacione të tjera popullore",
-    "compare": "Krahaso çmimet"
-  },
-  "carSearch": {
-    "sameLocation": "E njëjta lokacion",
-    "differentLocation": "Lokacion tjetër",
-    "pickupDropoffLocation": "Lokacioni i marrjes dhe kthimit",
-    "pickupLocation": "Lokacioni i marrjes",
-    "dropoffLocation": "Lokacioni i kthimit",
-    "whereNeedCar": "Ku ju nevojitet makina?",
-    "whereReturnCar": "Ku do ta ktheni?",
-    "dateRange": "Data e marrjes dhe kthimit",
-    "pickupTime": "Ora e marrjes",
-    "returnTime": "Ora e kthimit",
-    "selectDate": "Zgjidhni datën",
-    "selectTime": "Zgjidhni orën",
-    "searchCars": "Kërko makinat",
-    "searching": "Duke kërkuar..."
   },
   "trustBadges": {
     "noFees": "Pa tarifa rezervimi",
@@ -150,38 +51,98 @@
     "carTransparent": "Çmime transparente",
     "carComfort": "Siguri dhe komoditet"
   },
-  "search": {
-    "title": "Kërko",
-    "roundtrip": "Vajtje-Ardhje",
-    "oneway": "Vetëm vajtje",
-    "from": "Nga",
-    "to": "Në",
-    "departureDate": "Data e nisjes",
-    "returnDate": "Data e kthimit",
-    "passengers": "Pasagjerë",
-    "selectDate": "Zgjidhni datën",
-    "swapAirports": "Ndërro aeroportet",
-    "adults": "Të rritur",
-    "adultsAge": "12+ vjeç",
-    "children": "Fëmijë",
-    "childrenAge": "2-11 vjeç",
-    "infants": "Foshnjë",
-    "infantsAge": "< 2 vjeç",
-    "maxPassengers": "Maksimumi 9 udhëtarë",
-    "searchFlights": "Kërko fluturime",
-    "flexibleLabel": "±3 ditë fleksibël",
-    "flexibleHint": "Shfaq çmimet për datat rrethuese"
-  },
-  "routes": {
-    "title": "Rrugët më të kërkuara",
-    "description": "Destinacionet më popullore nga dhe për Kosovë",
-    "compare": "Krahaso çmimet",
-    "related": "Rrugë të Ngjashme",
-    "relatedDescription": "Eksploro destinacione të tjera popullore"
-  },
-  "errors": {
-    "title": "Gabim",
-    "invalidDate": "Data e pavlefshme"
+  "seo": {
+    "title": "Krahaso.co - Fluturime & Makina me Qera në Kosovë",
+    "description": "Krahaso çmimet për fluturime dhe Makina me qera. Platformë moderne me partnerë të verifikuar.",
+    "location": {
+      "title": "Makina me Qera në {location} | Krahaso Çmimet",
+      "intro": "Gjej Makina me qera në {location} me çmime të mira. Krahaso ofertat nga partnerët tanë të verifikuar dhe rezervo shpejt.",
+      "features": "Karakteristikat",
+      "feature1": "Pickup në {location} ose në aeroport sipas preferencës",
+      "feature2": "Çmime transparente pa tarifa të fshehura",
+      "feature3": "Partnerë të verifikuar dhe të besueshëm",
+      "feature4": "Proces i shpejtë dhe i sigurt rezervimi",
+      "documents": "Kushtet dhe Dokumentet",
+      "documentsContent": "Për të marrë me qira një makinë në {location}, ju nevojiten letërnjoftimi ose pasaporta, patenta e vlefshme dhe karta e kreditit për depozitë. Disa kompani mund të kërkojnë dokumente shtesë.",
+      "cta": "Gati për të Rezervuar?",
+      "ctaDescription": "Krahaso ofertat dhe rezervo makinën tënde me proces të shpejtë dhe të sigurt.",
+      "searchFlights": "Kërko Fluturime"
+    },
+    "content": {
+      "title": "Krahaso Fluturime dhe Makina me Qera në Kosovë",
+      "intro": "Krahaso.co është platforma kryesore për krahasimin e fluturimeve dhe makinave me qera në Kosovë. Ne ofrojmë çmime transparente, partnerë të verifikuar dhe proces të shpejtë për rezervime.",
+      "flights": {
+        "title": "Krahaso Çmimet e Fluturimeve",
+        "description": "Gjej ofertat më të mira për fluturime nga dhe për Kosovë. Krahaso çmimet nga partnerët kryesorë si Air Prishtina, KosovaFly dhe shumë të tjerë. Rezervo fluturime me çmime transparente dhe pa tarifa të fshehura.",
+        "why": {
+          "title": "Përfitimet",
+          "point1": "Krahasim i shpejtë i çmimeve nga partnerët kryesorë",
+          "point2": "Pa tarifa të fshehura",
+          "point3": "Rezervim në më pak se 2 minuta",
+          "point4": "Partnerë të besueshëm në të gjithë Kosovën"
+        },
+        "popular": {
+          "title": "Rrugët Më Popullore",
+          "description": "Fluturimet më të kërkuara nga dhe për Kosovë përfshijnë destinacione në Gjermani, Zvicër, Austri dhe vende të tjera evropiane."
+        }
+      },
+      "cars": {
+        "title": "Krahaso Makina me Qera në Kosovë",
+        "description": "Gjeni ofertat më të mira për marrjen e makinave me qira në Kosovë. Krahasoni çmimet nga partnerët tanë të besueshëm në të gjithë Kosovën dhe rezervoni automjetin tuaj përmes një procesi të shpejtë dhe të sigurt.",
+        "why": {
+          "title": "Përfitimet",
+          "point1": "Qasje e shpejtë në oferta nga kompani të besueshme",
+          "point2": "Ndihmon mijëra përdorues të gjejnë ofertën ideale çdo ditë",
+          "point3": "Rezervim i shpejtë në më pak se 2 minuta",
+          "point4": "Partnerë të besueshëm në të gjithë Kosovën"
+        },
+        "locations": {
+          "title": "Lokacione Popullore",
+          "description": "Ne ofrojmë pickup në lokacione të ndryshme në Kosovë, duke përfshirë aeroportin e Prishtinës dhe qytetet kryesore."
+        }
+      },
+      "trust": {
+        "title": "Besueshmëri dhe Transparencë",
+        "description": "Në Krahaso.co, ne besojmë në transparencë totale dhe partnerë të verifikuar. Çmimet që shfaqim janë ato që do të paguani, pa surpriza ose tarifa të fshehura.",
+        "verified": {
+          "title": "Partnerë të Verifikuar",
+          "description": "Ne bashkëpunojmë vetëm me kompani të besueshme dhe të verifikuara që ofrojnë shërbime cilësore."
+        },
+        "transparent": {
+          "title": "Çmime Transparente",
+          "description": "Të gjitha çmimet janë të qarta dhe përfshijnë tarifat kryesore, që të shmangni surprizat në hapin e fundit."
+        }
+      },
+      "route": {
+        "title": "Fluturime {origin} → {destination} | Krahaso Çmimet",
+        "intro": "Gjej fluturimet më të mira për rrugën {origin} → {destination}. Ne krahasojmë ofertat nga partnerët kryesorë për të gjetur çmimin më të mirë për ju.",
+        "highlights": "Pikat Kryesore",
+        "highlight1": "Kohëzgjatja e fluturimit: {duration}",
+        "highlight2": "Lloji i fluturimit: {direct}",
+        "highlight3": "Aeroportet: {origin} (PRN) → {destination}",
+        "highlight4": "Çmime transparente pa tarifa të fshehura",
+        "cta": "Gati për të Rezervuar?",
+        "ctaDescription": "Pas fluturimit, rezervo makinën me qera për të kompletuar udhëtimin tuaj",
+        "rentCar": "Rezervo makinë në Aeroport",
+        "tips": "Këshilla për Fluturime më të Lira",
+        "tipsContent": "Për të gjetur fluturimet më të lira për rrugën {origin} → {destination}, rekomandojmë të kërkoni me datë fleksibile. Fluturimet në ditët e javës zakonisht janë më të lira se në fundjavë. Gjithashtu, rezervimi me kohë (2-3 muaj para) mund të ju kursejë shumë. Kontrolloni ofertat e partnerëve tanë të verifikuar për çmime të mira dhe disponibilitet të freskët."
+      },
+      "location": {
+        "title": "Makina me Qera {location} | Krahaso Çmimet",
+        "intro": "Gjej Makina me qera në {location} me çmime të mira. Ne krahasojmë ofertat nga kompanitë kryesore të marrjes me qira për të gjetur çmimin më të mirë për ju.",
+        "features": "Karakteristikat",
+        "feature1": "Pickup në {location} ose aeroport",
+        "feature2": "Çmime transparente me të gjitha tarifat e përfshira",
+        "feature3": "Partnerë të verifikuar dhe të besueshëm",
+        "feature4": "Proces i shpejtë dhe i sigurt për rezervim",
+        "documents": "Dokumentet e Nevojshme",
+        "documentsContent": "Për të marrë me qira një makinë në {location}, ju nevojiten: letërnjoftim ose pasaportë e vlefshme, patentë shoferi e vlefshme (për shoferët me moshë mbi 21 vjeç), dhe karta krediti për depozitë. Disa kompani mund të kërkojnë dokumente shtesë, por ne do t'ju informojmë për këto para rezervimit.",
+        "cta": "Gati për të Rezervuar?",
+        "ctaDescription": "Krahaso ofertat dhe rezervo makinën tuaj me proces të shpejtë dhe të sigurt.",
+        "rentCar": "Rezervo makinë",
+        "searchFlights": "Kërko Fluturime"
+      }
+    }
   },
   "flights": {
     "title": "Kërko Fluturime",
@@ -202,6 +163,13 @@
     "airports": "Aeroportet",
     "avgPrice": "Çmimi Mesatar",
     "avgPriceLabel": "Nga {price}€",
+    "heroTitle": "Krahasoni dhe Kurseni në",
+    "heroHighlight": "Fluturime.",
+    "heroDescription": "Ne kërkojmë te partnerët kryesorë për fluturime për të gjetur çmimet më të mira. Çmime transparente, pa tarifa të fshehura.",
+    "popularRoutes": {
+      "title": "Rrugët Më Popullore",
+      "description": "Eksploro destinacionet më të kërkuara për fluturime nga dhe për Kosovë"
+    },
     "highlights": {
       "title": "Pse të zgjedhësh Krahaso.co?",
       "description": "Platforma më e besueshme për krahasimin e fluturimeve",
@@ -225,6 +193,7 @@
     "tips": {
       "title": "Këshilla për Fluturime më të Lira",
       "description": "Mësoni si të kurseni para në fluturime",
+      "intro": "Për të gjetur fluturimet më të lira, ndiqni këto këshilla praktike:",
       "flexible": {
         "title": "Përdor Datë Fleksibile",
         "description": "Kërkoni me datë fleksibile për të gjetur çmimet më të mira. Fluturimet në ditët e javës zakonisht janë më të lira se në fundjavë."
@@ -241,6 +210,10 @@
         "title": "Aktivizo Alarmet e Çmimeve",
         "description": "Aktivizo alarmet për të marrë njoftime kur çmimet bien për rrugën tuaj të preferuar."
       }
+    },
+    "results": {
+      "title": "Rezultatet e Kërkimit",
+      "found": "fluturime të gjetura"
     },
     "faq": {
       "question1": "Si funksionon kërkimi i fluturimeve?",
@@ -262,108 +235,238 @@
       "rentCar": "Rezervo makinë në Aeroport"
     }
   },
-  "faq": {
-    "title": "Pyetjet më të shpeshta",
-    "description": "Gjithçka që duhet të dini para se të filloni"
-  },
-  "seo": {
-    "location": {
-      "title": "Makina me Qera në {location} | Krahaso Çmimet",
-      "intro": "Gjej Makina me qera në {location} me çmime të mira. Krahaso ofertat nga partnerët tanë të verifikuar dhe rezervo shpejt.",
-      "feature1": "Pickup në {location} ose në aeroport sipas preferencës",
-      "feature2": "Çmime transparente pa tarifa të fshehura",
-      "feature3": "Partnerë të verifikuar dhe të besueshëm",
-      "feature4": "Proces i shpejtë dhe i sigurt rezervimi",
-      "cta": "Gati për të Rezervuar?",
-      "ctaDescription": "Krahaso ofertat dhe rezervo makinën tënde me proces të shpejtë dhe të sigurt.",
-      "searchFlights": "Kërko Fluturime"
+  "cars": {
+    "title": "Kërko Makina me Qera",
+    "description": "Gjej ofertat më të mira për Makina me qera në Kosovë.",
+    "searching": "Duke kërkuar Makina...",
+    "error": "Gabim gjatë kërkimit të Makinave",
+    "noResults": "Nuk u gjetën Makina",
+    "noResultsDesc": "Provoni të ndryshoni datat ose lokacionet.",
+    "noLocations": "Nuk ka lokacione të disponueshme",
+    "comparePrices": "dhe gjej ofertën më të mirë.",
+    "searchNow": "Kërko Tani",
+    "pickup": "Marrja",
+    "dropoff": "Kthimi",
+    "dates": "Datat",
+    "time": "Ora",
+    "editSearch": "Ndrysho kërkimin",
+    "pickupLocation": "Lokacioni i marrjes",
+    "dropoffLocation": "Lokacioni i kthimit",
+    "selectDates": "Zgjidh datat",
+    "pickupTime": "Ora e marrjes",
+    "returnTime": "Ora e kthimit",
+    "filterLabel": "Filtro",
+    "priceRange": "Rangu i çmimit",
+    "transmission": "Transmisioni",
+    "fuelType": "Lloji i karburantit",
+    "numberOfSeats": "Numri i ulëseve",
+    "seats": "Ulëse",
+    "category": "Kategoria",
+    "color": "Ngjyra",
+    "cars": "Makina",
+    "available": "të disponueshme",
+    "pricePerDay": "për ditë",
+    "avgPrice": "Çmimi Mesatar",
+    "avgPriceLabel": "Nga {price}€",
+    "sortOptions": {
+      "priceLowToHigh": "Çmimi: nga më i liri te më i shtrenjti",
+      "priceHighToLow": "Çmimi: nga më i shtrenjti te më i liri",
+      "yearNewestFirst": "Viti: më i riu fillimisht",
+      "nameAToZ": "Emri: A në Z"
     },
-    "content": {
-      "route": {
-        "title": "Fluturime {origin} → {destination} | Krahaso Çmimet",
-        "intro": "Gjej fluturimet më të mira për rrugën {origin} → {destination}. Ne krahasojmë ofertat nga partnerët kryesorë për të gjetur çmimin më të mirë për ju.",
-        "highlights": "Pikat Kryesore",
-        "highlight1": "Kohëzgjatja e fluturimit: {duration}",
-        "highlight2": "Lloji i fluturimit: {direct}",
-        "highlight3": "Aeroportet: {origin} (PRN) → {destination}",
-        "highlight4": "Çmime transparente pa tarifa të fshehura",
-        "cta": "Gati për të Rezervuar?",
-        "ctaDescription": "Pas fluturimit, rezervo makinën me qera për të kompletuar udhëtimin tuaj",
-        "rentCar": "Rezervo makinë në Aeroport",
-        "tips": "Këshilla për Fluturime më të Lira",
-        "tipsContent": "Për të gjetur fluturimet më të lira për rrugën {origin} → {destination}, rekomandojmë të kërkoni me datë fleksibile. Fluturimet në ditët e javës zakonisht janë më të lira se në fundjavë. Gjithashtu, rezervimi me kohë (2-3 muaj para) mund të ju kursejë shumë. Kontrolloni ofertat e partnerëve tanë të verifikuar për çmime të mira dhe disponibilitet të freskët."
+    "sortBy": "Rendit sipas",
+    "results": { "description": "Ofertat e disponueshme sipas kritereve tua" },
+    "conditions": {
+      "title": "Kushtet dhe Dokumentet",
+      "description": "Gjithçka që duhet të dini për të marrë me qira një makinë në Kosovë",
+      "intro": "Për të marrë me qira një makinë në Kosovë, ju nevojiten dokumente të caktuara dhe të plotësoni disa kushte:",
+      "documents": {
+        "title": "Dokumentet e Nevojshme",
+        "description": "Kërkohet plotësimi i të dhënave personale dhe ngarkimi i letërnjoftimit ose pasaportës, si dhe patentës së shoferit valide."
       },
-      "trust": {
-        "title": "Besueshmëri dhe Transparencë",
-        "description": "Në Krahaso.co, ne besojmë në transparencë totale dhe partnerë të verifikuar. Çmimet që shfaqim janë ato që do të paguani, pa surpriza ose tarifa të fshehura.",
-        "verified": { "title": "Partnerë të Verifikuar", "description": "Ne bashkëpunojmë vetëm me kompani të besueshme dhe të verifikuara që ofrojnë shërbime cilësore." },
-        "transparent": { "title": "Çmime Transparente", "description": "Të gjitha çmimet janë të qarta dhe përfshijnë tarifat kryesore, që të shmangni surprizat në hapin e fundit." }
+      "deposit": {
+        "title": "Pagesa gjatë Rezervimit",
+        "description": "Pagesa kryhet online gjatë rezervimit, pas përzgjedhjes së automjetit dhe plotësimit të të dhënave."
+      },
+      "insurance": {
+        "title": "Zgjedhja e Marrjes dhe Kthimit",
+        "description": "Përdoruesi zgjedh vetë lokacionin, datën dhe orën e marrjes dhe kthimit të automjetit sipas nevojave të tij."
+      },
+      "cancellation": {
+        "title": "Politikat e Anulimit",
+        "description": "Anulimi dhe ndryshimet në rezervim varen nga kushtet e kompanisë përkatëse dhe koha kur bëhet anulimi."
       }
+    },
+    "filters": {
+      "title": "Filtra për Kërkim",
+      "description": "Përdorni filtra për të gjetur makinën e përsosur për nevojat tuaja",
+      "price": {
+        "title": "Filtro sipas Çmimit",
+        "description": "Zgjidhni rangun e çmimit që ju përshtatet më shumë"
+      },
+      "transmission": {
+        "title": "Transmisioni",
+        "description": "Zgjidhni midis manual dhe automatik sipas preferencave tuaja"
+      },
+      "fuel": {
+        "title": "Karburanti",
+        "description": "Filtro sipas llojit të karburantit: benzinë, naftë ose elektrik"
+      },
+      "seats": {
+        "title": "Numri i Ulëseve",
+        "description": "Zgjidhni numrin e ulëseve që ju nevojiten për udhëtimin tuaj"
+      }
+    },
+    "faq": {
+      "question1": "Si funksionon kërkimi i Makinave me qira?",
+      "answer1": "Ju bëni kërkimin duke zgjedhur lokacionin, datat dhe kategorinë e makinës. Ne krahasojmë ofertat dhe ju shfaqim rezultatet.",
+      "question2": "Cilat dokumente më duhen?",
+      "answer2": "Kërkohet plotësimi i të dhënave personale dhe ngarkimi i letërnjoftimit ose pasaportës, si dhe patentës së shoferit valide.",
+      "question3": "A janë çmimet finale?",
+      "answer3": "Po. Ne synojmë të shfaqim çmime transparente me detajet kryesore të përfshira, që të shmangni surprizat në hapin e fundit.",
+      "question4": "A mund të kthej makinën në një lokacion tjetër?",
+      "answer4": "Po, nëse kompania e qirasë e lejon, do të mund të zgjidhni një lokacion tjetër për kthim nga opsionet e disponueshme.",
+      "question5": "Sa kohë më herët duhet të rezervoj?",
+      "answer5": "Rekomandohet të rezervoni 1-2 javë më herët për çmime dhe disponueshmëri më të mirë. Megjithatë, mund të gjeni oferta edhe në afate më të shkurtra.",
+      "question6": "Keni nevojë për më shumë informacion?",
+      "answer6": "Nëse keni nevojë për më shumë informacion, mund të na kontaktoni përmes numrave të kontaktit ose emailit që gjenden në faqen 'Kontakti', e cila ndodhet në fund të faqes."
+    },
+    "cta": {
+      "title": "Gati për të Rezervuar?",
+      "description": "Pas rezervimit të makinës, rezervo fluturimin për të kompletuar udhëtimin tuaj",
+      "searchFlights": "Kërko Fluturime"
     }
   },
-  "footer": {
-    "description": "Krahaso.co - Platforma më e mirë për të krahasuar dhe rezervuar fluturime dhe makina me qera në Kosovë.",
-    "quickLinks": "Lidhje të Shpejta",
-    "aboutUs": "Rreth Nesh",
-    "contact": "Kontakt",
-    "howItWorks": "Si Funksionon",
-    "popularLocations": "Lokacione Popullore",
-    "copyright": "© {year} Krahaso.co. Të gjitha të drejtat e rezervuara.",
-    "privacy": "Privatësia",
-    "terms": "Kushtet"
+  "locations": {
+    "popular": {
+      "title": "Lokacione Popullore",
+      "description": "Zgjidhni nga lokacionet më të kërkuara për marrjen e makinës",
+      "airport": "Aeroporti i Prishtinës",
+      "prishtine": "Prishtinë",
+      "prizren": "Prizren",
+      "peje": "Pejë"
+    },
+    "airport": { "description": "Pickup direkt në aeroport. Rezervo makinën tuaj dhe merre në hyrjen e aeroportit." },
+    "city": { "description": "Rezervo makinën tuaj sipas preferencës dhe merre në lokacionin e zgjedhur. Fleksibilitet maksimal me lokacione të shumta dhe çmime konkurruese." },
+    "pickup": "Pickup",
+    "type": "Qyteti",
+    "available": "I disponueshëm",
+    "notAvailable": "Nuk është i disponueshëm",
+    "verified": "Partneriteti",
+    "partners": "Partnerë i verifikuar",
+    "related": "Lokacione të Ngjashme",
+    "relatedDescription": "Eksploro lokacione të tjera popullore",
+    "compare": "Krahaso çmimet"
+  },
+  "carSearch": {
+    "sameLocation": "E njëjta lokacion",
+    "differentLocation": "Lokacion tjetër",
+    "sameLocationCheckbox": "I njëjti vend kthimi",
+    "pickupDropoffLocation": "Lokacioni i marrjes dhe kthimit",
+    "pickupLocation": "Lokacioni i marrjes",
+    "dropoffLocation": "Lokacioni i kthimit",
+    "whereNeedCar": "Ku ju nevojitet makina?",
+    "whereReturnCar": "Ku do ta ktheni?",
+    "pickupDate": "Data e marrjes",
+    "returnDate": "Data e kthimit",
+    "dateRange": "Data e marrjes dhe kthimit",
+    "pickupTime": "Ora e marrjes",
+    "returnTime": "Ora e kthimit",
+    "selectDate": "Zgjidhni datën",
+    "selectTime": "Zgjidhni orën",
+    "searchCars": "Kërko makinat",
+    "searching": "Duke kërkuar..."
   },
   "shared": {
     "nav": {
-      "home": "Ballina",
+      "home": "Kryefaja",
       "flights": "Fluturime",
-      "cars": "Makina"
+      "flightsDesc": "Pyetje dhe përgjigje për fluturime",
+      "cars": "Makina me Qera",
+      "carsDesc": "Pyetje dhe përgjigje për Makina me qera",
+      "booking": "Rezervimi",
+      "bookingDesc": "Pyetje për procesin e rezervimit",
+      "documents": "Dokumentet",
+      "documentsDesc": "Pyetje për dokumentet e nevojshme",
+      "payment": "Pagesa",
+      "paymentDesc": "Pyetje për metodat e pagesës"
+    },
+    "footer": {
+      "copyright": "© {year} Krahaso.co. Të gjitha të drejtat e rezervuara."
     },
     "common": {
       "loading": "Duke ngarkuar...",
       "error": "Gabim",
       "noResults": "Nuk u gjetën rezultate"
     },
-    "errors": {
-      "notFound": "Faqja nuk u gjet.",
-      "generic": "Diçka shkoi gabim.",
-      "backHome": "Kthehu në Ballinë"
+    "cta": {
+      "title": "Gati për të Kursyer Para?",
+      "description": "Eksploro ofertat tona dhe rezervo tani për të përfituar nga zbritjet ekskluzive",
+      "flights": "Shiko Ofertat për Fluturime",
+      "cars": "Shiko Ofertat për Makina"
+    },
+    "items": {
+      "flight1": {
+        "title": "Zbritje 20% për Fluturime",
+        "description": "Kurseni 20% për fluturime të zgjedhura nga dhe për Kosovë."
+      },
+      "car1": {
+        "title": "Zbritje 15% për Makina me Qera",
+        "description": "Kurseni 15% për rezervime të Makinave me qera në Kosovë."
+      },
+      "combo1": {
+        "title": "Paketë Kombinuese: Fluturim + makinë",
+        "description": "Kurseni 25% kur rezervoni fluturim dhe makinë me qera së bashku."
+      },
+      "earlyBird": {
+        "title": "Early Bird: Zbritje 30%",
+        "description": "Rezervo 3+ muaj para dhe kurseni deri në 30% në fluturime."
+      },
+      "weekend": {
+        "title": "Oferta Fundjavore",
+        "description": "Zbritje 20% për rezervime të Makinave në fundjavë."
+      },
+      "lastMinute": {
+        "title": "Last Minute Deals",
+        "description": "Zbritje 15% për rezervime të fundit për fluturime."
+      }
     }
   },
-  "core": {
-    "nav": {
-      "kontakt": "Kontakt",
-      "privacy": "Privatësia",
-      "terms": "Kushtet"
-    },
-    "intro": {
-      "kontakt": "Na kontaktoni – faqe core.",
-      "privacy": "Politika e privatësisë – faqe core.",
-      "terms": "Kushtet e përdorimit – faqe core."
+  "howItWorks": {
+    "title": "Si Funksionon",
+    "description": "Tre hapa të thjeshtë për të gjetur fluturimet më të mira",
+    "steps": {
+      "search": {
+        "title": "Përcaktoni Detajet e Fluturimit",
+        "description": "Zgjidhni nisjen, destinacionin dhe datën e udhëtimit."
+      },
+      "compare": {
+        "title": "Krahasoni Ofertat",
+        "description": "Zbuloni ofertat më të mira nga partnerët tanë të besueshëm."
+      },
+      "book": {
+        "title": "Vazhdoni te Partneri",
+        "description": "Zgjidhni ofertën dhe përmes një klikimi vazhdoni në faqen zyrtare të partnerit për rezervim."
+      }
     }
   },
-  "contact": {
-    "title": "Kontakt",
-    "subtitle": "Kemi dëshirë të dëgjojmë nga ju",
-    "description": "Na kontaktoni për çdo pyetje ose ndihmë",
-    "info": {
-      "title": "Informacioni i kontaktit",
-      "email": "Email",
-      "phone": "Telefoni",
-      "hours": "Orari",
-      "hoursDesc": "E Hëne - E Premte ( 08:00 - 17:00 )"
+  "whatsapp": {
+    "title": "Kërko Fluturime përmes WhatsApp",
+    "description": "Na shkruaj thjesht datat e udhëtimit dhe merr çmimet më të mira të fluturimeve menjëherë - direkt në WhatsApp.",
+    "features": {
+      "fast": "Përgjigje në sekonda",
+      "easy": "Nuk nevojitet aplikacion",
+      "free": "Komplet falas"
     },
-    "form": {
-      "name": "Emri",
-      "namePlaceholder": "Emri juaj",
-      "email": "Email",
-      "subject": "Subjekti",
-      "subjectPlaceholder": "Subjekti i mesazhit",
-      "message": "Mesazhi",
-      "messagePlaceholder": "Shkruani mesazhin tuaj këtu...",
-      "submit": "Dërgo mesazh",
-      "errorRequired": "Ju lutem plotësoni të gjitha fushat e detyrueshme",
-      "success": "Mesazhi u dërgua me sukses",
-      "error": "Gabim në dërgim të mesazhit"
+    "cta": "Fillo bisedën",
+    "chat": {
+      "userMessage1": "Përshëndetje! Dëshiroj të kërkoj fluturime.",
+      "botGreeting": "Përshëndetje! 👋\n Unë jam Asistenti i Aviopika's dhe të ndihmoj të gjesh fluturime të lira.\n Zgjidh gjuhën\n1️⃣ 🇦🇱 Shqip\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
+      "userLanguage": "Shqip",
+      "botWelcome": "*Mirë se vini në Aviopika!* ✈️\nGjej fluturimet më të lira për ty.\n*Si funksionon:*\n\n• \"Düsseldorf Pristina nesër\"\n• \"DUS PRN 15.03-22.03\" (Vajtje-ardhje)\n\nKu dëshiron të shkosh?",
+      "userFlightSearch": "PRISHTINE - MUNCHEN 10.01",
+      "botFlightResults": "*Pristina → München*\n10 janar 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Çmimi më i mirë\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Më e shpejta\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 fluturime të tjera\n---\nShiko të gjitha rezultatet në https://www.aviopika.al \n\nAviopika është një krahasim i pavarur çmimesh. Nuk shesim bileta fluturimi. Të gjitha çmimet pa garanci. Ridrejtim në faqen e ofruesit.",
+      "inputPlaceholder": "Shkruani mesazhin tuaj..."
     }
   },
   "about": {
@@ -403,6 +506,42 @@
       }
     }
   },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Kemi dëshirë të dëgjojmë nga ju",
+    "description": "Na kontaktoni për çdo pyetje ose ndihmë",
+    "info": {
+      "title": "Informacioni i kontaktit",
+      "email": "Email",
+      "phone": "Telefoni",
+      "hours": "Orari",
+      "hoursDesc": "E Hëne - E Premte ( 08:00 - 17:00 )"
+    },
+    "form": {
+      "name": "Emri",
+      "namePlaceholder": "Emri juaj",
+      "email": "Email",
+      "subject": "Subjekti",
+      "subjectPlaceholder": "Subjekti i mesazhit",
+      "message": "Mesazhi",
+      "messagePlaceholder": "Shkruani mesazhin tuaj këtu...",
+      "submit": "Dërgo mesazh",
+      "errorRequired": "Ju lutem plotësoni të gjitha fushat e detyrueshme",
+      "success": "Mesazhi u dërgua me sukses",
+      "error": "Gabim në dërgim të mesazhit"
+    }
+  },
+  "footer": {
+    "description": "Krahaso.co ju ndihmon të krahasoni çmimet për fluturime dhe makina me qera në Kosovë me çmime transparente dhe partnerë të verifikuar.",
+    "quickLinks": "Linqe të shpejta",
+    "aboutUs": "Rreth nesh",
+    "contact": "Kontakt",
+    "howItWorks": "Si funksionon",
+    "popularLocations": "Lokacione të popullarizuara",
+    "privacy": "Privatësia",
+    "terms": "Kushtet e përdorimit",
+    "copyright": "© {year} Krahaso.co. Të gjitha të drejtat e rezervuara."
+  },
   "privacy": {
     "title": "Politika e Privatësisë",
     "subtitle": "Politika e Privatësisë",
@@ -415,34 +554,201 @@
       "title": "2. Si përdorim informacionin",
       "content": "Të dhënat tuaja përdoren për të procesuar kërkesat, përmirësuar shërbimin tonë, dhe për të komunikuar me ju."
     },
-    "section3": {
-      "title": "3. Mbrojtja e të dhënave",
-      "content": "Të gjitha të dhënat tuaja ruhen në mënyrë të sigurt dhe nuk i ndajmë me palë të treta pa pëlqimin tuaj, përveç kur kërkohet nga ligji."
-    },
-    "section4": {
-      "title": "4. Të drejtat tuaja",
-      "content": "Ju keni të drejtë të shikoni, ndryshoni, ose fshini të dhënat tuaja në çdo kohë. Kontaktoni me ne për më shumë informacion."
+    "intro": {
+      "kontakt": "Na kontaktoni – faqe core.",
+      "privacy": "Politika e privatësisë – faqe core.",
+      "terms": "Kushtet e përdorimit – faqe core."
     }
   },
-  "terms": {
-    "title": "Kushtet e Shërbimit",
-    "subtitle": "Kushtet e Shërbimit",
-    "description": "Rregullat dhe kushtet për përdorimin e platformës",
-    "section1": {
-      "title": "1. Përdorimi i platformës",
-      "content": "Platforma Krahaso.co ofron mundësinë për krahasimin e fluturimeve dhe veturave me qera. Ju jeni përgjegjës për përdorimin e saktë të shërbimit."
+  "landing": {
+    "seo": {
+      "title": "Krahaso.co - Fluturime & Makina me Qera në Kosovë",
+      "description": "Krahaso çmimet për fluturime dhe Makina me qera. Platformë moderne me partnerë të verifikuar.",
+      "content": {
+        "flights": {
+          "title": "Krahaso Çmimet e Fluturimeve",
+          "description": "Gjej ofertat më të mira për fluturime nga dhe për Kosovë. Krahaso çmimet nga partnerët kryesorë si Air Prishtina, KosovaFly dhe shumë të tjerë. Rezervo fluturime me çmime transparente dhe pa tarifa të fshehura.",
+          "why": {
+            "title": "Përfitimet",
+            "point1": "Krahasim i shpejtë i çmimeve nga partnerët kryesorë",
+            "point2": "Pa tarifa të fshehura",
+            "point3": "Rezervim në më pak se 2 minuta",
+            "point4": "Partnerë të besueshëm në të gjithë Kosovën"
+          }
+        },
+        "cars": {
+          "title": "Krahaso Makina me Qera në Kosovë",
+          "description": "Gjeni ofertat më të mira për marrjen e makinave me qira në Kosovë. Krahasoni çmimet nga partnerët tanë të besueshëm në të gjithë Kosovën dhe rezervoni automjetin tuaj përmes një procesi të shpejtë dhe të sigurt.",
+          "why": {
+            "title": "Përfitimet",
+            "point1": "Qasje e shpejtë në oferta nga kompani të besueshme",
+            "point2": "Ndihmon mijëra përdorues të gjejnë ofertën ideale çdo ditë",
+            "point3": "Rezervim i shpejtë në më pak se 2 minuta",
+            "point4": "Partnerë të besueshëm në të gjithë Kosovën"
+          }
+        }
+      }
     },
-    "section2": {
-      "title": "2. Rezervimet",
-      "content": "Rezervimet bëhen përmes partnerëve tanë. Ne nuk jemi përgjegjës për shërbimet e ofruara nga partnerët."
+    "hero": {
+      "title": "Krahasoni dhe Kurseni në",
+      "titleHighlight": "Marrje me Qira Makinash.",
+      "description": "Ne kërkojmë në kompanitë kryesore të marrjes me qira për të gjetur çmimet më të mira për ju. Çmime transparente, zero tarifa të fshehura.",
+      "flights": {
+        "title": "Krahaso dhe Kurse në",
+        "titleHighlight": "Rezervime të Fluturimeve.",
+        "description": "Krahaso çmimet nga partnerët kryesorë për të gjetur ofertën më të mirë. Çmime transparente, pa tarifa të fshehura."
+      }
     },
-    "section3": {
-      "title": "3. Anulimet",
-      "content": "Rregullat e anulimit varen nga partneri. Ju lutemi kontrolloni kushtet para rezervimit."
+    "searchType": {
+      "cars": "Makina",
+      "flights": "Fluturime",
+      "hotels": "Hotele",
+      "insurance": "Sigurime",
+      "comingSoon": "Së shpejti"
     },
-    "section4": {
-      "title": "4. Përgjegjësia",
-      "content": "Krahaso.co vepron si ndërmjetës dhe nuk merr përgjegjësi për shërbimet e partnerëve."
+    "stats": {
+      "providers": "Ofrues",
+      "routes": "Rrugë",
+      "verified": "Partnerë të verifikuar",
+      "carsSupport": "Mbështetje për rezervime",
+      "carsFleet": "Makina në dispozicion"
+    },
+    "routes": {
+      "title": "Rrugët më të kërkuara",
+      "description": "Destinacionet më popullore nga dhe për Kosovë",
+      "compare": "Krahaso çmimet",
+      "popular": {
+        "prishtine": "Prishtinë",
+        "dusseldorf": "Düsseldorf",
+        "zurich": "Zürich",
+        "vienna": "Vienna",
+        "frankfurt": "Frankfurt",
+        "munich": "Munich",
+        "amsterdam": "Amsterdam"
+      }
+    },
+    "locations": {
+      "popular": {
+        "title": "Lokacione Popullore",
+        "description": "Zgjidhni nga lokacionet më popullore për marrjen e makinës"
+      }
+    },
+    "features": {
+      "title": "Pse të na zgjidhni?",
+      "description": "Platforma më e besueshme për krahasimin e Fluturimeve dhe Makinave me qera",
+      "verified": {
+        "title": "Partnerë të verifikuar",
+        "description": "Bashkëpunojmë vetëm me kompani të besueshme dhe të verifikuara"
+      },
+      "transparent": {
+        "title": "Çmime transparente",
+        "description": "Çmimet totale pa surpriza - të gjitha kushtet janë të qarta nga fillimi"
+      },
+      "fast": {
+        "title": "Proces i shpejtë",
+        "description": "Krahaso dhe rezervo në pak minuta me proces të thjeshtë dhe të sigurt"
+      },
+      "support": {
+        "title": "Mbështetje 24/7",
+        "description": "Ndihmë dhe mbështetje për udhëtarët para, gjatë dhe pas udhëtimit"
+      }
+    },
+    "howItWorks": {
+      "title": "Si Funksionon",
+      "description": "Tre hapa të thjeshtë për të gjetur fluturimet më të mira",
+      "steps": {
+        "search": {
+          "title": "Përcaktoni Detajet e Fluturimit",
+          "description": "Zgjidhni nisjen, destinacionin dhe datën e udhëtimit."
+        },
+        "compare": {
+          "title": "Krahasoni Ofertat",
+          "description": "Zbuloni ofertat më të mira nga partnerët tanë të besueshëm."
+        },
+        "book": {
+          "title": "Vazhdoni te Partneri",
+          "description": "Zgjidhni ofertën dhe përmes një klikimi vazhdoni në faqen zyrtare të partnerit për rezervim."
+        }
+      }
+    },
+    "whatsapp": {
+      "title": "Kërko Fluturime përmes WhatsApp",
+      "description": "Na shkruaj thjesht datat e udhëtimit dhe merr çmimet më të mira të fluturimeve menjëherë - direkt në WhatsApp.",
+      "features": {
+        "fast": "Përgjigje në sekonda",
+        "easy": "Nuk nevojitet aplikacion",
+        "free": "Komplet falas"
+      },
+      "cta": "Fillo bisedën",
+      "chat": {
+        "userMessage1": "Përshëndetje! Dëshiroj të kërkoj fluturime.",
+        "botGreeting": "Përshëndetje! 👋\n Unë jam Asistenti i Aviopika's dhe të ndihmoj të gjesh fluturime të lira.\n Zgjidh gjuhën\n1️⃣ 🇦🇱 Shqip\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
+        "userLanguage": "Shqip",
+        "botWelcome": "*Mirë se vini në Aviopika!* ✈️\nGjej fluturimet më të lira për ty.\n*Si funksionon:*\n\n• \"Düsseldorf Pristina nesër\"\n• \"DUS PRN 15.03-22.03\" (Vajtje-ardhje)\n\nKu dëshiron të shkosh?",
+        "userFlightSearch": "PRISHTINE - MUNCHEN 10.01",
+        "botFlightResults": "*Pristina → München*\n10 janar 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Çmimi më i mirë\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Më e shpejta\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 fluturime të tjera\n---\nShiko të gjitha rezultatet në https://www.aviopika.al \n\nAviopika është një krahasim i pavarur çmimesh. Nuk shesim bileta fluturimi. Të gjitha çmimet pa garanci. Ridrejtim në faqen e ofruesit.",
+        "inputPlaceholder": "Shkruani mesazhin tuaj..."
+      }
+    },
+    "flights": {
+      "faq": {
+        "question1": "Si funksionon kërkimi i fluturimeve?",
+        "answer1": "Ju bëni kërkimin në Krahaso.co duke zgjedhur nisjen, destinacionin dhe datën. Ne krahasojmë ofertat nga partnerët tanë dhe ju shfaqim rezultatet.",
+        "question2": "Sa kohë më herët duhet të rezervoj fluturimin?",
+        "answer2": "Rekomandohet rezervimi 2-3 muaj më herët për çmime më të mira. Megjithatë, mund të gjeni oferta edhe në afate më të shkurtra.",
+        "question3": "A bëhet rezervimi direkt në platformën tuaj?",
+        "answer3": "Jo, platforma jonë ju ndihmon të krahasoni ofertat. Rezervimi përfundimtar bëhet në faqen zyrtare të partnerit të zgjedhur.",
+        "question4": "A janë çmimet finale?",
+        "answer4": "Po, çmimet e shfaqura janë transparente dhe përfshijnë të gjitha tarifat bazë, pa kosto shtesë të papritura.",
+        "question5": "A mund të rezervoj për grupe të mëdha?",
+        "answer5": "Po. Fillimisht mund të kontrolloni çmimet për fluturimet e dëshiruara, ndërsa për zbritje ose oferta grupore rekomandohet kontakti direkt me partnerin.",
+        "question6": "Keni nevojë për më shumë informacion?",
+        "answer6": "Nëse keni nevojë për më shumë informacion, mund të na kontaktoni përmes numrave të kontaktit ose emailit që gjenden në faqen Kontakti."
+      }
+    },
+    "cars": {
+      "howItWorks": {
+        "title": "Si Funksionon",
+        "description": "Tre hapa të thjeshtë për të gjetur makinën me qira më të mirë",
+        "steps": {
+          "search": {
+            "title": "Përcaktoni Detajet e Udhëtimit",
+            "description": "Zgjidhni lokacionin, datat dhe orën e marrjes dhe kthimit"
+          },
+          "compare": {
+            "title": "Zgjidhni Ofertën Ideale",
+            "description": "Krahasoni ofertat nga kompanitë e besueshme dhe zgjidhni opsionin që ju përshtatet më së miri"
+          },
+          "book": {
+            "title": "Rezervoni",
+            "description": "Kryeni rezervimin tuaj drejtpërdrejt, shpejt dhe në mënyrë të sigurt"
+          }
+        }
+      },
+      "faq": {
+        "question1": "Si funksionon kërkimi i Makinave me qira?",
+        "answer1": "Ju bëni kërkimin duke zgjedhur lokacionin, datat dhe kategorinë e makinës. Ne krahasojmë ofertat dhe ju shfaqim rezultatet.",
+        "question2": "Cilat dokumente më duhen?",
+        "answer2": "Kërkohet plotësimi i të dhënave personale dhe ngarkimi i letërnjoftimit ose pasaportës, si dhe patentës së shoferit valide.",
+        "question3": "A janë çmimet finale?",
+        "answer3": "Po. Ne synojmë të shfaqim çmime transparente me detajet kryesore të përfshira, që të shmangni surprizat në hapin e fundit.",
+        "question4": "A mund të kthej makinën në një lokacion tjetër?",
+        "answer4": "Po, nëse kompania e qirasë e lejon, do të mund të zgjidhni një lokacion tjetër për kthim nga opsionet e disponueshme.",
+        "question5": "Sa kohë më herët duhet të rezervoj?",
+        "answer5": "Rekomandohet të rezervoni 1-2 javë më herët për çmime dhe disponueshmëri më të mirë. Megjithatë, mund të gjeni oferta edhe në afate më të shkurtra.",
+        "question6": "Keni nevojë për më shumë informacion?",
+        "answer6": "Nëse keni nevojë për më shumë informacion, mund të na kontaktoni përmes numrave të kontaktit ose emailit që gjenden në faqen Kontakti."
+      }
+    },
+  "faq": {
+    "title": "Pyetjet më të shpeshta",
+    "description": "Gjithçka që duhet të dini para se të filloni"
+  },
+    "cta": {
+      "title": "Gati për të filluar udhëtimin tuaj?",
+      "description": "Krahaso ofertat dhe gjej çmimin më të mirë për Fluturime dhe Makina me qera",
+      "flights": "Krahaso Fluturime",
+      "cars": "Krahaso Makina"
     }
   }
 }

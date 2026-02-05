@@ -199,7 +199,7 @@ useHead({
               {{ t('nav.flights') }}
             </UButton>
             <UButton
-              :to="localePath('/makina-me-qera')"
+              :to="localePath('/makina')"
               size="lg"
               color="neutral"
               variant="solid"

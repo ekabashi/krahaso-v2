@@ -10,10 +10,10 @@ const quickLinks = computed(() => [
 ])
 
 const popularLocations = computed(() => [
-  { label: t('locations.popular.airport'), to: '/makina-me-qera/aeroporti-prishtines' },
-  { label: t('locations.popular.prishtine'), to: '/makina-me-qera/prishtine' },
-  { label: t('locations.popular.prizren'), to: '/makina-me-qera/prizren' },
-  { label: t('locations.popular.peje'), to: '/makina-me-qera/peje' }
+  { label: t('locations.popular.airport'), to: '/makina/aeroporti-prishtines' },
+  { label: t('locations.popular.prishtine'), to: '/makina/prishtine' },
+  { label: t('locations.popular.prizren'), to: '/makina/prizren' },
+  { label: t('locations.popular.peje'), to: '/makina/peje' }
 ])
 
 const contactInfo = computed(() => [

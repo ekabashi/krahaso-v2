@@ -336,7 +336,7 @@ useHead(() => {
             {{ t('flights.searchNow') }}
           </UButton>
           <UButton
-            :to="localePath('/makina-me-qera/aeroporti-prishtines')"
+            :to="localePath('/makina/aeroporti-prishtines')"
             color="neutral"
             variant="outline"
             size="lg"
@@ -674,7 +674,7 @@ useHead(() => {
           </p>
           <div class="flex flex-wrap justify-center gap-4">
             <UButton
-              :to="localePath('/makina-me-qera/aeroporti-prishtines')"
+              :to="localePath('/makina/aeroporti-prishtines')"
               size="lg"
               color="neutral"
               variant="solid"
