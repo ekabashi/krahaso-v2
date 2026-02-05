@@ -992,5 +992,118 @@
     "description": "Krahaso ofertat dhe gjej çmimin më të mirë për Fluturime dhe Makina me qera",
     "flights": "Krahaso Fluturime",
     "cars": "Krahaso Makina"
+  },
+  "superadmin": {
+    "HeaderTitle": "Mirë se vini në Panel",
+    "profile": "Profili",
+    "settings": "Cilësimet",
+    "logout": "Dil",
+    "login": {
+      "title": "Hyrje",
+      "subtitle": "Hyni për të qasur panelin e administrimit",
+      "email": "Email",
+      "password": "Fjalëkalimi",
+      "emailPlaceholder": "shembull{'@'}email.com",
+      "passwordPlaceholder": "Vendosni fjalëkalimin",
+      "loginButton": "Hyr",
+      "loggingIn": "Duke hyrë...",
+      "error": "Gabim",
+      "success": "Sukses",
+      "welcomeBack": "Mirë se u ktheve!",
+      "invalidCredentials": "Email ose fjalëkalim i pavlefshëm",
+      "validationError": "Gabim validimi",
+      "enterCredentials": "Ju lutem vendosni email dhe fjalëkalimin",
+      "footer": "Vetëm superadmin mund të hyjë në këtë panel",
+      "backToHome": "Kthehu në ballina"
+    },
+    "navigation": {
+      "dashboard": "Paneli",
+      "bookings": "Rezervimet",
+      "partnershipRequests": "Kërkesat e Partneritetit",
+      "tenants": "Partnerët",
+      "settledRequest": "Kërkesat e Shlyerjes"
+    },
+    "dashboard": {
+      "stats": {
+        "totalPartners": "Partnerë",
+        "totalBookings": "Rezervime gjithsej",
+        "activeCars": "Makina aktive",
+        "partnersAndCars": "Partnerë dhe Makina",
+        "totalFee": "Tarifa Krahaso",
+        "revenue": "Të ardhura gjithsej",
+        "revenueHistory": "Të ardhurat 12 muajt e fundit",
+        "bookingsHistory": "Rezervimet 12 muajt e fundit"
+      },
+      "quickActions": "Veprime të shpejta",
+      "actions": {
+        "viewReports": "Shiko Raportet",
+        "partnershipRequests": "Kërkesat e Partneritetit",
+        "settlementRequests": "Kërkesat e Shlyerjes"
+      }
+    },
+    "tenants": {
+      "title": "Partnerët",
+      "subtitle": "Menaxho të gjithë partnerët në sistem",
+      "searchPlaceholder": "Kërko partnerë...",
+      "noTenantsFound": "Nuk u gjetën partnerë",
+      "details": {
+        "title": "Detajet e partnerit"
+      },
+      "status": {
+        "active": "Aktiv",
+        "pending": "Në pritje",
+        "suspended": "I pezulluar",
+        "unknown": "E panjohur"
+      },
+      "error": {
+        "fetchFailed": "Dështoi ngarkimi i partnerëve",
+        "unknown": "Gabim i panjohur"
+      }
+    },
+    "bookings": {
+      "title": "Rezervimet",
+      "subtitle": "Të gjitha rezervimet nga partnerët",
+      "loading": "Duke ngarkuar rezervimet...",
+      "error": {
+        "fetchFailed": "Dështoi ngarkimi i rezervimeve"
+      },
+      "empty": {
+        "title": "Nuk ka rezervime",
+        "description": "Nuk ka rezervime për të shfaqur."
+      },
+      "table": {
+        "bookingNumber": "Numri i rezervimit",
+        "tenant": "Partneri",
+        "status": "Statusi",
+        "totalPrice": "Çmimi total",
+        "fee": "Tarifa",
+        "rentalPeriod": "Periudha e qirasë"
+      },
+      "status": {
+        "unknown": "E panjohur",
+        "upcoming": "Ardhës",
+        "pending": "Në pritje",
+        "completed": "Përfunduar",
+        "settled": "Shlyer",
+        "cancelled": "Anuluar",
+        "active": "Aktiv"
+      }
+    },
+    "partnershipRequests": {
+      "title": "Kërkesat e Partneritetit",
+      "subtitle": "Menaxho kërkesat e partneritetit",
+      "emptyState": {
+        "title": "Nuk ka kërkesa për të shfaqur.",
+        "description": "Nuk ka kërkesa partneriteti."
+      }
+    },
+    "settledRequests": {
+      "title": "Kërkesat e Shlyerjes",
+      "subtitle": "Shiko kërkesat e shlyerjes sipas partnerit",
+      "emptyState": {
+        "title": "Nuk u gjetën kërkesa shlyerjeje",
+        "description": "Nuk ka kërkesa shlyerjeje për të shfaqur."
+      }
+    }
   }
 }
