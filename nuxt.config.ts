@@ -14,7 +14,13 @@ export default defineNuxtConfig({
     './layers/flights',
   ],
   // CSS loaded from app.vue with relative imports to avoid ~ resolution in virtual:nuxt/css.mjs
-  modules: ['@nuxt/ui', '@nuxtjs/i18n', '@pinia/nuxt', '@nuxt/image'],
+  modules: ['@nuxt/ui', '@nuxtjs/i18n', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase'],
+
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
+    redirect: false,
+  },
   ui: {
     fonts: false, // avoid Fontshare/API 503 during dev; use system/fallback fonts
   },
@@ -33,8 +39,7 @@ export default defineNuxtConfig({
   // optional: vercel: { preferredRegion: 'fra1' },
 
   i18n: {
-    strategy: 'prefix',
-    lazy: true,
+    strategy: 'prefix_except_default', // default locale (sq) has no /sq in URL
     langDir: '../layers/shared/i18n', // module resolves as i18n/<langDir>; this yields layers/shared/i18n
     locales: [
       { code: 'sq', iso: 'sq-AL', file: 'sq.json' },

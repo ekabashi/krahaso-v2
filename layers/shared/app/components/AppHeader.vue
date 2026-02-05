@@ -8,12 +8,7 @@ const localePath = useLocalePath()
     :ui="{ toggle: 'hidden' }"
   >
     <template #left>
-      <NuxtLink
-        :to="localePath('/')"
-        class="flex items-center"
-      >
-        <AppLogo />
-      </NuxtLink>
+      <AppLogo />
     </template>
 
     <template #default>
@@ -33,7 +28,7 @@ const localePath = useLocalePath()
           {{ $t('shared.nav.flights') }}
         </ULink>
         <ULink
-          :to="localePath('/makina-me-qera')"
+          :to="localePath('/makina')"
           variant="ghost"
           size="sm"
         >
