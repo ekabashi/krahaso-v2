@@ -2,11 +2,14 @@ import type { H3Event } from 'h3'
 
 export function getLogger(_event: H3Event) {
   return {
-    info(_msg: string, _meta?: Record<string, unknown>) {
-      // console.info(msg, meta)
+    info(msg: string, meta?: Record<string, unknown>) {
+      console.info(msg, meta ?? '')
     },
-    error(_msg: string, _err?: Error, _meta?: Record<string, unknown>) {
-      // console.error(msg, err, meta)
+    warn(msg: string, meta?: Record<string, unknown>) {
+      console.warn(msg, meta ?? '')
+    },
+    error(msg: string, err?: Error, meta?: Record<string, unknown>) {
+      console.error(msg, err, meta ?? '')
     },
   }
 }

@@ -21,23 +21,15 @@ function handleBookClick(_car: Vehicle) {
   const q = effectiveQuery.value
   if (!q.startDate || !q.endDate || !q.startTime || !q.endTime) return
   const query: Record<string, string> = {
-    pickup: q.pickup || q.location || '',
-    return: q.return || q.dropoffLocation || '',
+    vehicle_id: props.car.id.toString(),
     startDate: q.startDate,
     endDate: q.endDate,
     startTime: q.startTime,
     endTime: q.endTime,
-    vehicle_id: props.car.id.toString(),
+    pickup: q.pickup || q.location || '',
+    return: q.return || q.dropoffLocation || '',
   }
-  if (q.minPrice) query.minPrice = q.minPrice
-  if (q.maxPrice) query.maxPrice = q.maxPrice
-  if (q.transmission) query.transmission = q.transmission
-  if (q.fuel) query.fuel = q.fuel
-  if (q.seats) query.seats = q.seats
-  if (q.category) query.category = q.category
-  if (q.color) query.color = q.color
-  if (q.sortBy) query.sortBy = q.sortBy
-  void router.push({ path: localePath('/makina/search'), query })
+  void router.push({ path: localePath('makina-checkout'), query })
 }
 
 const features = computed(() => [

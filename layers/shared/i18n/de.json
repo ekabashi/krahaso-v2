@@ -9,6 +9,35 @@
     "help": "Hilfe",
     "offers": "Angebote"
   },
+  "booking": {
+    "bookingNumberRequired": "Buchungsnummer ist erforderlich.",
+    "failedToLoad": "Buchungsdetails konnten nicht geladen werden.",
+    "error": "Fehler",
+    "loadingDetails": "Details werden geladen...",
+    "notFound": "Buchung nicht gefunden",
+    "goBackHome": "Zur Startseite",
+    "back": "Zurück",
+    "bookingNumber": "Buchungsnummer",
+    "pricing": "Preis",
+    "details": "Ihre Buchungsdetails.",
+    "vehicleInformation": "Fahrzeuginformationen",
+    "vehicleNotAvailable": "Fahrzeug nicht verfügbar",
+    "pickupReturnDetails": "Abholung & Rückgabe",
+    "pickup": "Abholung",
+    "return": "Rückgabe",
+    "additionalOptions": "Zusätzliche Optionen",
+    "description": "Anmerkungen",
+    "customerInformation": "Kundeninformationen",
+    "name": "Name",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "address": "Adresse",
+    "customerNotAvailable": "Kundendaten nicht verfügbar",
+    "dailyRate": "Tagespreis",
+    "totalPrice": "Gesamt",
+    "printBooking": "Buchung drucken",
+    "backToHome": "Zur Startseite"
+  },
   "common": {
     "search": "Suchen",
     "compare": "Vergleichen",
@@ -463,6 +492,8 @@
     "noLocations": "Keine Standorte verfügbar",
     "comparePrices": "und finde den besten Preis.",
     "searchNow": "Jetzt suchen",
+    "search": "Suchen",
+    "cancel": "Abbrechen",
     "pickup": "Abholung",
     "dropoff": "Rückgabe",
     "dates": "Daten",
@@ -557,6 +588,28 @@
       "searchFlights": "Flüge suchen"
     }
   },
+  "carCard": {
+    "missingInformation": "Fehlende Informationen",
+    "pleaseSelectDates": "Bitte wählen Sie Datum und Uhrzeit vor der Buchung aus",
+    "transmission": "Getriebe",
+    "fuelType": "Kraftstoffart",
+    "seatingCapacity": "Sitzplatzkapazität",
+    "doors": "Türen",
+    "seats": "Sitze",
+    "standard": "Standard",
+    "perDay": "pro Tag",
+    "day": "Tag",
+    "days": "Tage",
+    "for": "für",
+    "providedBy": "Bereitgestellt von",
+    "verified": "Verifiziert",
+    "bookNow": "Jetzt buchen",
+    "dailyKmLimit": "Tägliches Kilometerlimit",
+    "kmPerDay": "km/Tag",
+    "noKmLimit": "Kein km-Limit",
+    "excessKmPrice": "Preis für überschüssige Kilometer",
+    "perKm": "pro km"
+  },
   "locations": {
     "popular": {
       "title": "Beliebte Standorte",
@@ -607,6 +660,19 @@
       "documentsDesc": "Fragen zu erforderlichen Dokumenten",
       "payment": "Zahlung",
       "paymentDesc": "Fragen zu Zahlungsmethoden"
+    },
+    "footer": {
+      "copyright": "© {year} Krahaso.co. Alle Rechte vorbehalten."
+    },
+    "layout": {
+      "findBooking": "Buchung finden",
+      "bookingNumber": "Buchungsnummer",
+      "enterBookingNumber": "Buchungsnummer eingeben",
+      "cancel": "Abbrechen",
+      "search": "Suchen",
+      "error": "Fehler",
+      "pleaseEnterBookingNumber": "Bitte geben Sie Ihre Buchungsnummer ein.",
+      "failedToFindBooking": "Buchung konnte nicht gefunden werden."
     },
     "common": {
       "loading": "Lädt...",
@@ -777,6 +843,270 @@
       "kontakt": "Kontaktieren Sie uns – Kernseite.",
       "privacy": "Datenschutzerklärung – Kernseite.",
       "terms": "Nutzungsbedingungen – Kernseite."
+    }
+  },
+  "checkout": {
+      "title": "Kasse",
+      "completeBooking": "Vervollständigen Sie Ihre Buchung in {count} einfachen Schritten",
+      "loadingVehicle": "Fahrzeug wird geladen...",
+      "bookingSummary": "Buchungsübersicht",
+      "pickup": "Abholung",
+      "return": "Rückgabe",
+      "errors": {
+        "error": "Fehler",
+        "noVehicleSelected": "Kein Fahrzeug ausgewählt",
+        "missingInformation": "Fehlende Informationen",
+        "pleaseSelectDates": "Bitte wählen Sie Datum und Uhrzeit vor der Buchung aus",
+        "vehicleNotFound": "Fahrzeug nicht gefunden",
+        "failedToLoadVehicle": "Fahrzeug konnte nicht geladen werden"
+      },
+      "steps": {
+        "shortTitles": {
+          "vehicleReview": "Fahrzeug",
+          "driverInfo": "Fahrer",
+          "extras": "Extras",
+          "summary": "Zusammenfassung",
+          "confirmation": "Bestätigung"
+        },
+        "vehicleReview": {
+          "title": "Fahrzeug überprüfen",
+          "enterEmail": "E-Mail eingeben",
+          "emailDescription": "Wir prüfen, ob Sie bereits in unserem System sind, um den Buchungsprozess zu beschleunigen.",
+          "emailAddress": "E-Mail-Adresse",
+          "customerFound": "Kunde gefunden",
+          "customerFoundDescription": "Ihre Informationen wurden geladen. Sie können zu den Extras fortfahren.",
+          "continue": "Weiter",
+          "seats": "Sitze",
+          "doors": "Türen",
+          "perDay": "pro Tag"
+        },
+        "driverInfo": {
+          "title": "Fahrerinformationen",
+          "email": "E-Mail",
+          "phone": "Telefon",
+          "firstName": "Vorname",
+          "lastName": "Nachname",
+          "streetAddress": "Straßenadresse",
+          "city": "Stadt",
+          "placeholders": {
+            "email": "max.mustermann{'@'}beispiel.de",
+            "phone": "+49 30 12345678",
+            "firstName": "Max",
+            "lastName": "Mustermann",
+            "streetAddress": "Straßenname, Hausnummer",
+            "city": "Stadtname"
+          },
+          "customerFound": "Kunde gefunden",
+          "customerFoundDescription": "Ihre Informationen wurden aus unseren Aufzeichnungen geladen.",
+          "requiredDocuments": "Erforderliche Dokumente",
+          "documentType": "Dokumenttyp",
+          "idCard": "Personalausweis",
+          "passport": "Reisepass",
+          "idFront": "Personalausweis Vorderseite",
+          "idBack": "Personalausweis Rückseite",
+          "passportFile": "Reisepass",
+          "drivingLicense": "Führerschein",
+          "uploadIdFront": "Personalausweis Vorderseite hochladen",
+          "uploadIdBack": "Personalausweis Rückseite hochladen",
+          "uploadPassport": "Reisepass hochladen",
+          "uploadDrivingLicense": "Führerschein hochladen",
+          "documentsAlreadyUploaded": "Dokumente bereits hochgeladen",
+          "documentsAlreadyUploadedDescription": "Ihre Dokumente wurden bereits zuvor hochgeladen und sind in der Akte.",
+          "back": "Zurück",
+          "continue": "Weiter"
+        },
+        "extras": {
+          "title": "Zusätzliche Optionen",
+          "description": "Wählen Sie zusätzliche Dienstleistungen aus, die Sie mit Ihrer Miete einschließen möchten.",
+          "secondDriver": "Zweiter Fahrer",
+          "gpsNavigation": "GPS-Navigation",
+          "maksikos": "Maksikos",
+          "greenCard": "Grüne Karte",
+          "europeanCard": "Europäische Karte",
+          "roadAssistance": "Straßenassistenz",
+          "outOfKosovo": "Außerhalb des Kosovo",
+          "noOptionsAvailable": "Keine zusätzlichen Optionen verfügbar",
+          "additionalNotes": "Zusätzliche Notizen",
+          "additionalNotesPlaceholder": "Zusätzliche Informationen...",
+          "back": "Zurück",
+          "continue": "Weiter"
+        },
+        "summary": {
+          "title": "Buchung überprüfen",
+          "vehicleDetails": "Fahrzeugdetails",
+          "pickupReturn": "Abholung & Rückgabe",
+          "driverInformation": "Fahrerinformationen",
+          "additionalOptions": "Zusätzliche Optionen",
+          "name": "Name",
+          "email": "E-Mail",
+          "phone": "Telefon",
+          "address": "Adresse",
+          "pickup": "Abholung",
+          "return": "Rückgabe",
+          "back": "Zurück",
+          "confirmBooking": "Buchung bestätigen",
+          "success": "Erfolg!",
+          "successDescription": "Buchung erfolgreich erstellt. Buchungsnummer: {bookingNumber}",
+          "error": "Fehler",
+          "errorDescription": "Buchung konnte nicht erstellt werden"
+        },
+        "confirmation": {
+          "title": "Buchung bestätigt!",
+          "description": "Ihre Buchung wurde erfolgreich erstellt.",
+          "bookingNumber": "Buchungsnummer",
+          "vehicle": "Fahrzeug",
+          "pickupReturn": "Abholung & Rückgabe",
+          "driver": "Fahrer",
+          "printConfirmation": "Bestätigung drucken",
+          "backToCars": "Zurück zur Startseite"
+        }
+      },
+      "priceSummary": {
+        "day": "Tag",
+        "days": "Tage",
+        "total": "Gesamt",
+        "perDay": "pro Tag",
+        "extraHours": "zusätzliche Stunden"
+      },
+      "validation": {
+        "emailRequired": "E-Mail ist erforderlich",
+        "invalidEmail": "Ungültiges E-Mail-Format",
+        "nameRequired": "Name ist erforderlich",
+        "surnameRequired": "Nachname ist erforderlich",
+        "phoneRequired": "Telefon ist erforderlich",
+        "streetRequired": "Straße ist erforderlich",
+        "cityRequired": "Stadt ist erforderlich",
+        "frontIdRequired": "Personalausweis Vorderseite ist erforderlich",
+        "backIdRequired": "Personalausweis Rückseite ist erforderlich",
+        "passportRequired": "Reisepass ist erforderlich",
+        "drivingLicenseRequired": "Führerschein ist erforderlich",
+        "validationError": "Validierungsfehler",
+        "pleaseEnterValidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+        "pleaseUploadRequiredDocuments": "Bitte laden Sie die erforderlichen Dokumente hoch: {documents}",
+        "pleaseFillAllFields": "Bitte füllen Sie alle erforderlichen Felder aus"
+      }
+  },
+  "faq": {
+    "title": "Häufige Fragen",
+    "description": "Alles, was Sie vor dem Start wissen sollten"
+  },
+  "cta": {
+    "title": "Bereit, Ihre Reise zu beginnen?",
+    "description": "Vergleichen Sie Angebote und finden Sie den besten Preis für Flüge und Autovermietungen",
+    "flights": "Flüge vergleichen",
+    "cars": "Autos vergleichen"
+  },
+  "superadmin": {
+    "HeaderTitle": "Willkommen im Dashboard",
+    "profile": "Profil",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "login": {
+      "title": "Anmeldung",
+      "subtitle": "Melden Sie sich an, um auf das Admin-Panel zuzugreifen",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "emailPlaceholder": "beispiel{'@'}email.com",
+      "passwordPlaceholder": "Geben Sie Ihr Passwort ein",
+      "loginButton": "Anmelden",
+      "loggingIn": "Anmeldung...",
+      "error": "Fehler",
+      "success": "Erfolg",
+      "welcomeBack": "Willkommen zurück!",
+      "invalidCredentials": "Ungültige E-Mail oder Passwort",
+      "validationError": "Validierungsfehler",
+      "enterCredentials": "Bitte E-Mail und Passwort eingeben",
+      "footer": "Nur Superadmin hat Zugriff auf dieses Panel",
+      "backToHome": "Zurück zur Startseite"
+    },
+    "navigation": {
+      "dashboard": "Dashboard",
+      "bookings": "Buchungen",
+      "partnershipRequests": "Partnerschaftsanfragen",
+      "tenants": "Partner",
+      "settledRequest": "Abrechnungsanfragen"
+    },
+    "dashboard": {
+      "stats": {
+        "totalPartners": "Partner",
+        "totalBookings": "Buchungen gesamt",
+        "activeCars": "Aktive Autos",
+        "partnersAndCars": "Partner & Autos",
+        "totalFee": "Krahaso-Gebühr",
+        "revenue": "Umsatz gesamt",
+        "revenueHistory": "Umsatz der letzten 12 Monate",
+        "bookingsHistory": "Buchungen der letzten 12 Monate"
+      },
+      "quickActions": "Schnellaktionen",
+      "actions": {
+        "viewReports": "Berichte anzeigen",
+        "partnershipRequests": "Partnerschaftsanfragen",
+        "settlementRequests": "Abrechnungsanfragen"
+      }
+    },
+    "tenants": {
+      "title": "Partner",
+      "subtitle": "Alle Partner im System verwalten",
+      "searchPlaceholder": "Partner suchen...",
+      "noTenantsFound": "Keine Partner gefunden",
+      "details": {
+        "title": "Partnerdetails"
+      },
+      "status": {
+        "active": "Aktiv",
+        "pending": "Ausstehend",
+        "suspended": "Gesperrt",
+        "unknown": "Unbekannt"
+      },
+      "error": {
+        "fetchFailed": "Partner konnten nicht geladen werden",
+        "unknown": "Unbekannter Fehler"
+      }
+    },
+    "bookings": {
+      "title": "Buchungen",
+      "subtitle": "Alle Buchungen der Partner",
+      "loading": "Buchungen werden geladen...",
+      "error": {
+        "fetchFailed": "Buchungen konnten nicht geladen werden"
+      },
+      "empty": {
+        "title": "Keine Buchungen",
+        "description": "Keine Buchungen vorhanden."
+      },
+      "table": {
+        "bookingNumber": "Buchungsnummer",
+        "tenant": "Partner",
+        "status": "Status",
+        "totalPrice": "Gesamtpreis",
+        "fee": "Gebühr",
+        "rentalPeriod": "Mietzeitraum"
+      },
+      "status": {
+        "unknown": "Unbekannt",
+        "upcoming": "Bevorstehend",
+        "pending": "Ausstehend",
+        "completed": "Abgeschlossen",
+        "settled": "Abgerechnet",
+        "cancelled": "Storniert",
+        "active": "Aktiv"
+      }
+    },
+    "partnershipRequests": {
+      "title": "Partnerschaftsanfragen",
+      "subtitle": "Partnerschaftsanfragen verwalten",
+      "emptyState": {
+        "title": "Keine Anfragen vorhanden.",
+        "description": "Keine Partnerschaftsanfragen."
+      }
+    },
+    "settledRequests": {
+      "title": "Abrechnungsanfragen",
+      "subtitle": "Abrechnungsanfragen nach Partner",
+      "emptyState": {
+        "title": "Keine Abrechnungsanfragen gefunden",
+        "description": "Keine Abrechnungsanfragen vorhanden."
+      }
     }
   }
 }

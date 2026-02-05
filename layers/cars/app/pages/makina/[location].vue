@@ -57,10 +57,10 @@ const pageDescription = computed(() =>
 
 const canonical = computed(() => {
   if (!locationDef.value) {
-    return `${config.public.siteUrl}${localePath('/makina')}`
+    return `${config.public.siteUrl}${localePath('makina')}`
   }
   const slug = locationDef.value.slugs[currentLocale.value]
-  return `${config.public.siteUrl}${localePath(`/makina/${slug}`)}`
+  return `${config.public.siteUrl}${localePath({ name: 'makina-location', params: { location: slug } })}`
 })
 
 useSeoPage({
@@ -171,8 +171,8 @@ useHead(() =>
               '@type': 'BreadcrumbList',
               itemListElement: [
                 { '@type': 'ListItem', position: 1, name: t('nav.home'), item: `${config.public.siteUrl}${localePath('/')}` },
-                { '@type': 'ListItem', position: 2, name: t('nav.cars'), item: `${config.public.siteUrl}${localePath('/makina')}` },
-                { '@type': 'ListItem', position: 3, name: locationData.value.name, item: `${config.public.siteUrl}${localePath(`/makina/${locationSlug.value}`)}` },
+                { '@type': 'ListItem', position: 2, name: t('nav.cars'), item: `${config.public.siteUrl}${localePath('makina')}` },
+                { '@type': 'ListItem', position: 3, name: locationData.value.name, item: `${config.public.siteUrl}${localePath({ name: 'makina-location', params: { location: locationSlug.value } })}` },
               ],
             }),
           },
@@ -188,7 +188,7 @@ useHead(() =>
       <UBreadcrumb
         :items="[
           { label: t('nav.home'), to: localePath('/') },
-          { label: t('nav.cars'), to: localePath('/makina') },
+          { label: t('nav.cars'), to: localePath('makina') },
           { label: locationData?.name ?? '' },
         ]"
         class="mb-4 sm:mb-6 max-w-6xl mx-auto"
@@ -430,7 +430,7 @@ useHead(() =>
           <NuxtLink
             v-for="related in relatedLocations"
             :key="related.key"
-            :to="localePath(`/makina/${related.slug}`)"
+            :to="localePath({ name: 'makina-location', params: { location: related.slug } })"
             class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 block"
           >
             <img

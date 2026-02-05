@@ -12,7 +12,7 @@ const currentLocale = computed(() => locale.value as 'sq' | 'en' | 'de')
 useSeoPage({
   title: () => `${t('cars.title')} | Krahaso.co`,
   description: () => t('cars.description'),
-  canonical: () => localePath('/makina'),
+  canonical: () => localePath('makina'),
 })
 
 if (import.meta.client) {
@@ -153,7 +153,7 @@ useHead(() => ({
             '@type': 'ListItem',
             position: 2,
             name: t('nav.cars'),
-            item: 'https://krahaso.co/makina',
+            item: `${useRuntimeConfig().public.siteUrl}${localePath('makina')}`,
           },
         ],
       }),
@@ -168,7 +168,7 @@ useHead(() => ({
       <UBreadcrumb
         :items="[
           { label: t('nav.home'), to: localePath('/') },
-          { label: t('nav.cars') },
+          { label: t('nav.cars'), to: localePath('makina') },
         ]"
         class="mb-6"
       />
@@ -200,7 +200,7 @@ useHead(() => ({
           <NuxtLink
             v-for="location in popularLocations"
             :key="location.slug"
-            :to="localePath(`/makina/${location.slug}`)"
+            :to="localePath({ name: 'makina-location', params: { location: location.slug } })"
             class="group relative block h-96 cursor-pointer overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl"
           >
             <img

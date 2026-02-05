@@ -55,3 +55,104 @@ export interface AddressLocationsResponse {
   pickupCities: CityOption[]
   dropOffByPickupCity: Record<string, CityOption[]>
 }
+
+export interface BookingOptions {
+  id?: number
+  tenant_id: number
+  second_driver: boolean
+  second_driver_price: number
+  gps_navigation: boolean
+  gps_navigation_price: number
+  maksikos: boolean
+  maksikos_price: number
+  green_card: boolean
+  green_card_price: number
+  european_card: boolean
+  european_card_price: number
+  road_assistance: boolean
+  road_assistance_price: number
+  out_of_kosovo: boolean
+  out_of_kosovo_price: number
+}
+
+export interface BookingFormData {
+  vehicle_id: number
+  tenant_id: number
+  pickupPoint: string
+  returnPoint: string
+  startDateTime: string
+  endDateTime: string
+  options: {
+    secondDriver: boolean
+    gps: boolean
+    maksikos: boolean
+    greenCard: boolean
+    europeanCard: boolean
+    roadAssistance: boolean
+    outOfKosovo: boolean
+  }
+  customer: {
+    name: string
+    surname: string
+    email: string
+    phone: string
+    address: { street: string; city: string }
+    PersonalNr?: string
+    licenseClasses?: string[]
+    frontIdFile?: string | null
+    backIdFile?: string | null
+    passportFile?: string | null
+    patentShoferFile?: string | null
+  }
+  description?: string
+}
+
+export interface BookingResponse {
+  id: number
+  booking_number: string
+  status: string
+  total_price: number
+  message?: string
+}
+
+export interface Season {
+  id: number
+  tenant_id: number
+  name?: string
+  start_date: string
+  end_date: string
+  price_multiplier: number
+}
+
+export interface AddOnBreakdown {
+  name: string
+  dailyCost: number
+  totalCost: number
+}
+
+export interface PricingResult {
+  totalPrice: number
+  dailyRate: number
+  baseRate: number
+  rentalDays: number
+  seasonalMultiplier?: number
+  season?: Season
+  addOns: AddOnBreakdown[]
+}
+
+export interface CustomerAddress {
+  street: string
+  city: string
+}
+
+export interface Customer {
+  id: number
+  tenant_id?: number
+  name: string
+  surname: string
+  email: string
+  phone: string
+  address: CustomerAddress
+  PersonalNr?: string
+  licenseClasses?: string[]
+}

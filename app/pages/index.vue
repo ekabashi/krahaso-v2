@@ -178,11 +178,11 @@ async function onFlightSearch() {
 
 function onCarSearch(params: Record<string, string>) {
   if (import.meta.client) {
-    const url = router.resolve({ path: '/makina/search', query: params }).href
+    const url = router.resolve({ path: localePath('makina-search'), query: params }).href
     void navigateTo(url, { external: true })
     return
   }
-  router.push({ path: '/makina/search', query: params })
+  router.push({ path: localePath('makina-search'), query: params })
 }
 
 // SEO structured data
@@ -1033,7 +1033,7 @@ useHead(() => ({
         <NuxtLink
           v-for="location in popularLocations"
           :key="location.slug"
-          :to="localePath(`/makina/${location.slug}`)"
+          :to="localePath({ name: 'makina-location', params: { location: location.slug } })"
           class="group relative h-96 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 block"
         >
           <!-- Background Image -->
@@ -1106,7 +1106,7 @@ useHead(() => ({
             {{ t('landing.cta.flights') }}
           </UButton>
           <UButton
-            :to="localePath('/makina')"
+            :to="localePath('makina')"
             size="lg"
             :variant="isCars ? 'solid' : 'outline'"
             trailing-icon="i-lucide-arrow-right"

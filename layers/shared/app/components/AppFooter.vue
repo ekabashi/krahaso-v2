@@ -10,10 +10,10 @@ const quickLinks = computed(() => [
 ])
 
 const popularLocations = computed(() => [
-  { label: t('locations.popular.airport'), to: '/makina/aeroporti-prishtines' },
-  { label: t('locations.popular.prishtine'), to: '/makina/prishtine' },
-  { label: t('locations.popular.prizren'), to: '/makina/prizren' },
-  { label: t('locations.popular.peje'), to: '/makina/peje' }
+  { label: t('locations.popular.airport'), location: 'aeroporti-prishtines' },
+  { label: t('locations.popular.prishtine'), location: 'prishtine' },
+  { label: t('locations.popular.prizren'), location: 'prizren' },
+  { label: t('locations.popular.peje'), location: 'peje' }
 ])
 
 const contactInfo = computed(() => [
@@ -112,14 +112,14 @@ const socialLinks = computed(() => [
           </h3>
           <ul class="space-y-2">
             <li
-              v-for="location in popularLocations"
-              :key="location.to"
+              v-for="loc in popularLocations"
+              :key="loc.location"
             >
               <ULink
-                :to="localePath(location.to)"
+                :to="localePath({ name: 'makina-location', params: { location: loc.location } })"
                 class="text-sm text-neutral-600 hover:text-primary-600 transition-colors duration-200"
               >
-                {{ location.label }}
+                {{ loc.label }}
               </ULink>
             </li>
           </ul>

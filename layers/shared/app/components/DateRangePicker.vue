@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import type { DateValue } from '@internationalized/date'
 import { CalendarDate, getLocalTimeZone } from '@internationalized/date'
-import type { DateRange } from '@internationalized/date'
+
+/** Range for calendar value; matches UCalendar emit (start/end can be undefined) */
+type CalendarDateRange = { start?: DateValue; end?: DateValue }
 
 const props = withDefaults(
   defineProps<{
@@ -42,19 +45,19 @@ function calendarDateToDate(c: CalendarDate): Date {
 }
 
 const calendarValue = computed({
-  get(): DateRange {
+  get(): { start: CalendarDate; end: CalendarDate } {
     const start = dateToCalendarDate(props.modelValue.start)
     const end = dateToCalendarDate(props.modelValue.end)
     const startCal = start ?? defaultCalendarDate
     const endCal = end ?? defaultCalendarDate
     return { start: startCal, end: endCal }
   },
-  set(value: DateRange | undefined) {
+  set(value: CalendarDateRange | undefined) {
     if (!value?.start) return
-    const startDate = calendarDateToDate(value.start)
+    const startDate = calendarDateToDate(value.start as CalendarDate)
     let endDate: Date | null = null
     if (value.end) {
-      endDate = calendarDateToDate(value.end)
+      endDate = calendarDateToDate(value.end as CalendarDate)
     }
     emit('update:modelValue', { start: startDate, end: endDate })
     if (endDate && startDate.getTime() !== endDate.getTime()) {
@@ -63,8 +66,8 @@ const calendarValue = computed({
   },
 })
 
-function handleUpdate(value: DateRange) {
-  calendarValue.value = value
+function handleUpdate(value: CalendarDateRange | null) {
+  if (value?.start) calendarValue.value = value as { start: CalendarDate; end: CalendarDate }
 }
 </script>
 

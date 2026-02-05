@@ -206,7 +206,7 @@ async function handleSearch() {
 
   try {
     emit('search', { ...query, location: selectedLocation.value, dropoffLocation: dropoff })
-    void router.push({ path: localePath('/makina/search'), query })
+    void router.push({ path: localePath('makina-search'), query })
   } finally {
     isSearching.value = false
   }
@@ -429,6 +429,7 @@ async function handleSearch() {
               :disabled="!isFormValid"
               icon="i-lucide-search"
               class="h-11 rounded-md text-base font-bold shadow-lg transition-all duration-200 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-50"
+              @click.prevent="handleSearch"
             >
               <span v-if="!isSearching">{{ t('carSearch.searchCars') }}</span>
               <span v-else>{{ t('carSearch.searching') }}</span>

@@ -9,6 +9,35 @@
     "help": "Help",
     "offers": "Offers"
   },
+  "booking": {
+    "bookingNumberRequired": "Booking number is required.",
+    "failedToLoad": "Failed to load booking details.",
+    "error": "Error",
+    "loadingDetails": "Loading details...",
+    "notFound": "Booking not found",
+    "goBackHome": "Go back home",
+    "back": "Back",
+    "bookingNumber": "Booking number",
+    "pricing": "Pricing",
+    "details": "Your booking details.",
+    "vehicleInformation": "Vehicle information",
+    "vehicleNotAvailable": "Vehicle not available",
+    "pickupReturnDetails": "Pick-up & return",
+    "pickup": "Pick-up",
+    "return": "Return",
+    "additionalOptions": "Additional options",
+    "description": "Notes",
+    "customerInformation": "Customer information",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "customerNotAvailable": "Customer details not available",
+    "dailyRate": "Daily rate",
+    "totalPrice": "Total",
+    "printBooking": "Print booking",
+    "backToHome": "Back to home"
+  },
   "common": {
     "search": "Search",
     "compare": "Compare",
@@ -463,6 +492,8 @@
     "noLocations": "No locations available",
     "comparePrices": "and find the best deal.",
     "searchNow": "Search Now",
+    "search": "Search",
+    "cancel": "Cancel",
     "pickup": "Pickup",
     "dropoff": "Drop-off",
     "dates": "Dates",
@@ -557,6 +588,28 @@
       "searchFlights": "Search Flights"
     }
   },
+  "carCard": {
+    "missingInformation": "Missing Information",
+    "pleaseSelectDates": "Please select dates and times before booking",
+    "transmission": "Transmission",
+    "fuelType": "Fuel Type",
+    "seatingCapacity": "Seating Capacity",
+    "doors": "Doors",
+    "seats": "Seats",
+    "standard": "Standard",
+    "perDay": "per day",
+    "day": "day",
+    "days": "days",
+    "for": "for",
+    "providedBy": "Provided by",
+    "verified": "Verified",
+    "bookNow": "Book Now",
+    "dailyKmLimit": "Daily kilometer limit",
+    "kmPerDay": "km/day",
+    "noKmLimit": "No km limit",
+    "excessKmPrice": "Price for excess kilometers",
+    "perKm": "per km"
+  },
   "locations": {
     "popular": {
       "title": "Popular Locations",
@@ -607,6 +660,19 @@
       "documentsDesc": "Questions about required documents",
       "payment": "Payment",
       "paymentDesc": "Questions about payment methods"
+    },
+    "footer": {
+      "copyright": "© {year} Krahaso.co. All rights reserved."
+    },
+    "layout": {
+      "findBooking": "Find booking",
+      "bookingNumber": "Booking number",
+      "enterBookingNumber": "Enter your booking number",
+      "cancel": "Cancel",
+      "search": "Search",
+      "error": "Error",
+      "pleaseEnterBookingNumber": "Please enter your booking number.",
+      "failedToFindBooking": "Could not find booking."
     },
     "common": {
       "loading": "Loading...",
@@ -777,6 +843,270 @@
       "kontakt": "Contact us – core page.",
       "privacy": "Privacy policy – core page.",
       "terms": "Terms of use – core page."
+    }
+  },
+  "checkout": {
+      "title": "Checkout",
+      "completeBooking": "Complete your booking in {count} simple steps",
+      "loadingVehicle": "Loading vehicle...",
+      "bookingSummary": "Booking Summary",
+      "pickup": "Pickup",
+      "return": "Return",
+      "errors": {
+        "error": "Error",
+        "noVehicleSelected": "No vehicle selected",
+        "missingInformation": "Missing Information",
+        "pleaseSelectDates": "Please select dates and times before booking",
+        "vehicleNotFound": "Vehicle not found",
+        "failedToLoadVehicle": "Failed to load vehicle"
+      },
+      "steps": {
+        "shortTitles": {
+          "vehicleReview": "Vehicle",
+          "driverInfo": "Driver",
+          "extras": "Extras",
+          "summary": "Summary",
+          "confirmation": "Confirm"
+        },
+        "vehicleReview": {
+          "title": "Review Your Vehicle",
+          "enterEmail": "Enter Your Email",
+          "emailDescription": "We'll check if you're already in our system to speed up the booking process.",
+          "emailAddress": "Email Address",
+          "customerFound": "Customer Found",
+          "customerFoundDescription": "Your information has been loaded. You can proceed to extras.",
+          "continue": "Continue",
+          "seats": "Seats",
+          "doors": "Doors",
+          "perDay": "per day"
+        },
+        "driverInfo": {
+          "title": "Driver Information",
+          "email": "Email",
+          "phone": "Phone",
+          "firstName": "First Name",
+          "lastName": "Last Name",
+          "streetAddress": "Street Address",
+          "city": "City",
+          "placeholders": {
+            "email": "john.doe{'@'}example.com",
+            "phone": "+383 44 123 456",
+            "firstName": "John",
+            "lastName": "Doe",
+            "streetAddress": "Street name, number",
+            "city": "City name"
+          },
+          "customerFound": "Customer Found",
+          "customerFoundDescription": "Your information has been loaded from our records.",
+          "requiredDocuments": "Required Documents",
+          "documentType": "Document Type",
+          "idCard": "ID Card",
+          "passport": "Passport",
+          "idFront": "ID Front",
+          "idBack": "ID Back",
+          "passportFile": "Passport",
+          "drivingLicense": "Driving License",
+          "uploadIdFront": "Upload ID Front",
+          "uploadIdBack": "Upload ID Back",
+          "uploadPassport": "Upload Passport",
+          "uploadDrivingLicense": "Upload Driving License",
+          "documentsAlreadyUploaded": "Documents Already Uploaded",
+          "documentsAlreadyUploadedDescription": "Your documents have been uploaded previously and are on file.",
+          "back": "Back",
+          "continue": "Continue"
+        },
+        "extras": {
+          "title": "Additional Options",
+          "description": "Select any additional services you'd like to include with your rental.",
+          "secondDriver": "Second Driver",
+          "gpsNavigation": "GPS Navigation",
+          "maksikos": "Maksikos",
+          "greenCard": "Green Card",
+          "europeanCard": "European Card",
+          "roadAssistance": "Road Assistance",
+          "outOfKosovo": "Out of Kosovo",
+          "noOptionsAvailable": "No additional options available",
+          "additionalNotes": "Additional Notes",
+          "additionalNotesPlaceholder": "Any additional information...",
+          "back": "Back",
+          "continue": "Continue"
+        },
+        "summary": {
+          "title": "Review Your Booking",
+          "vehicleDetails": "Vehicle Details",
+          "pickupReturn": "Pickup & Return",
+          "driverInformation": "Driver Information",
+          "additionalOptions": "Additional Options",
+          "name": "Name",
+          "email": "Email",
+          "phone": "Phone",
+          "address": "Address",
+          "pickup": "Pickup",
+          "return": "Return",
+          "back": "Back",
+          "confirmBooking": "Confirm Booking",
+          "success": "Success!",
+          "successDescription": "Booking created successfully. Booking number: {bookingNumber}",
+          "error": "Error",
+          "errorDescription": "Failed to create booking"
+        },
+        "confirmation": {
+          "title": "Booking Confirmed!",
+          "description": "Your booking has been successfully created.",
+          "bookingNumber": "Booking Number",
+          "vehicle": "Vehicle",
+          "pickupReturn": "Pickup & Return",
+          "driver": "Driver",
+          "printConfirmation": "Print Confirmation",
+          "backToCars": "Back to Home"
+        }
+      },
+      "priceSummary": {
+        "day": "day",
+        "days": "days",
+        "total": "Total",
+        "perDay": "per day",
+        "extraHours": "extra hours"
+      },
+      "validation": {
+        "emailRequired": "Email is required",
+        "invalidEmail": "Invalid email format",
+        "nameRequired": "Name is required",
+        "surnameRequired": "Surname is required",
+        "phoneRequired": "Phone is required",
+        "streetRequired": "Street is required",
+        "cityRequired": "City is required",
+        "frontIdRequired": "Front ID is required",
+        "backIdRequired": "Back ID is required",
+        "passportRequired": "Passport is required",
+        "drivingLicenseRequired": "Driving license is required",
+        "validationError": "Validation Error",
+        "pleaseEnterValidEmail": "Please enter a valid email address",
+        "pleaseUploadRequiredDocuments": "Please upload required documents: {documents}",
+        "pleaseFillAllFields": "Please fill in all required fields"
+      }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "description": "Everything you need to know before you start"
+  },
+  "cta": {
+    "title": "Ready to start your journey?",
+    "description": "Compare offers and find the best price for Flights and Car Rentals",
+    "flights": "Compare Flights",
+    "cars": "Compare Cars"
+  },
+  "superadmin": {
+    "HeaderTitle": "Welcome to Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Log out",
+    "login": {
+      "title": "Login",
+      "subtitle": "Sign in to access the admin panel",
+      "email": "Email",
+      "password": "Password",
+      "emailPlaceholder": "example{'@'}email.com",
+      "passwordPlaceholder": "Enter your password",
+      "loginButton": "Sign in",
+      "loggingIn": "Signing in...",
+      "error": "Error",
+      "success": "Success",
+      "welcomeBack": "Welcome back!",
+      "invalidCredentials": "Invalid email or password",
+      "validationError": "Validation error",
+      "enterCredentials": "Please enter your email and password",
+      "footer": "Only superadmin can access this panel",
+      "backToHome": "Back to home"
+    },
+    "navigation": {
+      "dashboard": "Dashboard",
+      "bookings": "Bookings",
+      "partnershipRequests": "Partnership Requests",
+      "tenants": "Partners",
+      "settledRequest": "Settlement Requests"
+    },
+    "dashboard": {
+      "stats": {
+        "totalPartners": "Partners",
+        "totalBookings": "Total Bookings",
+        "activeCars": "Active Cars",
+        "partnersAndCars": "Partners & Cars",
+        "totalFee": "Krahaso Fee",
+        "revenue": "Total Revenue",
+        "revenueHistory": "Revenue history for the last 12 months",
+        "bookingsHistory": "Bookings history for the last 12 months"
+      },
+      "quickActions": "Quick Actions",
+      "actions": {
+        "viewReports": "View Reports",
+        "partnershipRequests": "Partnership Requests",
+        "settlementRequests": "Settlement Requests"
+      }
+    },
+    "tenants": {
+      "title": "Partners",
+      "subtitle": "Manage all partners in the system",
+      "searchPlaceholder": "Search partners...",
+      "noTenantsFound": "No partners found",
+      "details": {
+        "title": "Partner Details"
+      },
+      "status": {
+        "active": "Active",
+        "pending": "Pending",
+        "suspended": "Suspended",
+        "unknown": "Unknown"
+      },
+      "error": {
+        "fetchFailed": "Failed to fetch partners",
+        "unknown": "Unknown error"
+      }
+    },
+    "bookings": {
+      "title": "Bookings",
+      "subtitle": "All bookings from partners",
+      "loading": "Loading bookings...",
+      "error": {
+        "fetchFailed": "Failed to fetch bookings"
+      },
+      "empty": {
+        "title": "No bookings",
+        "description": "No bookings to display."
+      },
+      "table": {
+        "bookingNumber": "Booking number",
+        "tenant": "Partner",
+        "status": "Status",
+        "totalPrice": "Total price",
+        "fee": "Fee",
+        "rentalPeriod": "Rental period"
+      },
+      "status": {
+        "unknown": "Unknown",
+        "upcoming": "Upcoming",
+        "pending": "Pending",
+        "completed": "Completed",
+        "settled": "Settled",
+        "cancelled": "Cancelled",
+        "active": "Active"
+      }
+    },
+    "partnershipRequests": {
+      "title": "Partnership Requests",
+      "subtitle": "Manage partnership requests",
+      "emptyState": {
+        "title": "No requests to display.",
+        "description": "No partnership requests."
+      }
+    },
+    "settledRequests": {
+      "title": "Settlement Requests",
+      "subtitle": "View settlement requests grouped by partner",
+      "emptyState": {
+        "title": "No settlement requests found",
+        "description": "No settlement requests to display."
+      }
     }
   }
 }

@@ -9,6 +9,35 @@
     "help": "Ndihmë",
     "offers": "Oferta"
   },
+  "booking": {
+    "bookingNumberRequired": "Numri i rezervimit kërkohet.",
+    "failedToLoad": "Nuk u ngarkuan detajet e rezervimit.",
+    "error": "Gabim",
+    "loadingDetails": "Duke ngarkuar detajet...",
+    "notFound": "Rezervimi nuk u gjet",
+    "goBackHome": "Kthehu në ballina",
+    "back": "Mbrapa",
+    "bookingNumber": "Numri i rezervimit",
+    "pricing": "Çmimi",
+    "details": "Detajet e rezervimit tuaj.",
+    "vehicleInformation": "Informacioni i makinës",
+    "vehicleNotAvailable": "Makinë e padisponueshme",
+    "pickupReturnDetails": "Marrje dhe kthim",
+    "pickup": "Marrje",
+    "return": "Kthim",
+    "additionalOptions": "Opsione shtesë",
+    "description": "Shënime",
+    "customerInformation": "Të dhënat e klientit",
+    "name": "Emri",
+    "email": "Email",
+    "phone": "Telefoni",
+    "address": "Adresa",
+    "customerNotAvailable": "Të dhënat e klientit nuk janë të disponueshme",
+    "dailyRate": "Çmimi ditor",
+    "totalPrice": "Totali",
+    "printBooking": "Printo rezervimin",
+    "backToHome": "Kthehu në ballina"
+  },
   "common": {
     "search": "Kërko",
     "compare": "Krahaso",
@@ -465,6 +494,8 @@
     "noLocations": "Nuk ka lokacione të disponueshme",
     "comparePrices": "dhe gjej ofertën më të mirë.",
     "searchNow": "Kërko Tani",
+    "search": "Kërko",
+    "cancel": "Anulo",
     "pickup": "Marrja",
     "dropoff": "Kthimi",
     "dates": "Datat",
@@ -559,6 +590,28 @@
       "searchFlights": "Kërko Fluturime"
     }
   },
+  "carCard": {
+    "missingInformation": "Informacion i Munguar",
+    "pleaseSelectDates": "Ju lutem zgjidhni datat dhe orët para rezervimit",
+    "transmission": "Transmetimi",
+    "fuelType": "Lloji i Karburantit",
+    "seatingCapacity": "Kapaciteti i Vendeve",
+    "doors": "Dyert",
+    "seats": "Vende",
+    "standard": "Standard",
+    "perDay": "në ditë",
+    "day": "ditë",
+    "days": "ditë",
+    "for": "për",
+    "providedBy": "Ofruar nga",
+    "verified": "I Verifikuar",
+    "bookNow": "Rezervo Tani",
+    "dailyKmLimit": "Limiti ditor i kilometrave",
+    "kmPerDay": "km/ditë",
+    "noKmLimit": "Pa limit km",
+    "excessKmPrice": "Çmimi për km të tepërt",
+    "perKm": "për km"
+  },
   "locations": {
     "popular": {
       "title": "Lokacione Popullore",
@@ -609,6 +662,19 @@
       "documentsDesc": "Pyetje për dokumentet e nevojshme",
       "payment": "Pagesa",
       "paymentDesc": "Pyetje për metodat e pagesës"
+    },
+    "footer": {
+      "copyright": "© {year} Krahaso.co. Të gjitha të drejtat e rezervuara."
+    },
+    "layout": {
+      "findBooking": "Gjej rezervimin",
+      "bookingNumber": "Numri i rezervimit",
+      "enterBookingNumber": "Vendosni numrin e rezervimit",
+      "cancel": "Anulo",
+      "search": "Kërko",
+      "error": "Gabim",
+      "pleaseEnterBookingNumber": "Ju lutemi vendosni numrin e rezervimit.",
+      "failedToFindBooking": "Nuk u gjet rezervimi."
     },
     "common": {
       "loading": "Duke ngarkuar...",
@@ -775,5 +841,156 @@
       "privacy": "Politika e privatësisë – faqe core.",
       "terms": "Kushtet e përdorimit – faqe core."
     }
+  },
+  "checkout": {
+    "title": "Rezervimi",
+    "completeBooking": "Plotësoni rezervimin tuaj në {count} hapa të thjeshtë",
+    "loadingVehicle": "Duke ngarkuar makinën...",
+    "bookingSummary": "Përmbledhje e Rezervimit",
+    "pickup": "Marrja",
+    "return": "Kthimi",
+    "errors": {
+      "error": "Gabim",
+      "noVehicleSelected": "Nuk është zgjedhur makinë",
+      "missingInformation": "Informacion i Munguar",
+      "pleaseSelectDates": "Ju lutem zgjidhni datat dhe orët para rezervimit",
+      "vehicleNotFound": "Makina nuk u gjet",
+      "failedToLoadVehicle": "Dështoi ngarkimi i makinës"
+    },
+    "steps": {
+      "shortTitles": {
+        "vehicleReview": "Makinë",
+        "driverInfo": "Shoferi",
+        "extras": "Shtesat",
+        "summary": "Përmbledhje",
+        "confirmation": "Konfirmim"
+      },
+      "vehicleReview": {
+        "title": "Rishikoni Makinën Tuaj",
+        "enterEmail": "Shkruani Email-in Tuaj",
+        "emailDescription": "Ne do të kontrollojmë nëse jeni tashmë në sistemin tonë për të shpejtuar procesin e rezervimit.",
+        "emailAddress": "Adresa e Email-it",
+        "customerFound": "Klienti u Gjet",
+        "customerFoundDescription": "Informacionet tuaja janë ngarkuar. Mund të vazhdoni te shtesat.",
+        "continue": "Vazhdo",
+        "seats": "Vende",
+        "doors": "Dyert",
+        "perDay": "në ditë"
+      },
+      "driverInfo": {
+        "title": "Informacioni i Shoferit",
+        "email": "Email",
+        "phone": "Telefon",
+        "firstName": "Emri",
+        "lastName": "Mbiemri",
+        "streetAddress": "Adresa e Rrugës",
+        "city": "Qyteti",
+        "placeholders": {
+          "email": "john.doe{'@'}example.com",
+          "phone": "+383 44 123 456",
+          "firstName": "John",
+          "lastName": "Doe",
+          "streetAddress": "Emri i rrugës, numri",
+          "city": "Emri i qytetit"
+        },
+        "customerFound": "Klienti u Gjet",
+        "customerFoundDescription": "Informacionet tuaja janë ngarkuar nga të dhënat tona.",
+        "requiredDocuments": "Dokumentet e Kërkuara",
+        "documentType": "Lloji i Dokumentit",
+        "idCard": "Karta e Identitetit",
+        "passport": "Pasaporta",
+        "idFront": "Karta e Identitetit - Faqja e Përparme",
+        "idBack": "Karta e Identitetit - Faqja e Pasme",
+        "passportFile": "Pasaporta",
+        "drivingLicense": "Leja e Shoferit",
+        "uploadIdFront": "Ngarko Karta e Identitetit - Faqja e Përparme",
+        "uploadIdBack": "Ngarko Karta e Identitetit - Faqja e Pasme",
+        "uploadPassport": "Ngarko Pasaportën",
+        "uploadDrivingLicense": "Ngarko Lejën e Shoferit",
+        "documentsAlreadyUploaded": "Dokumentet tashmë janë ngarkuar",
+        "documentsAlreadyUploadedDescription": "Dokumentet tuaja janë ngarkuar më parë dhe janë në dosje.",
+        "back": "Mbrapa",
+        "continue": "Vazhdo"
+      },
+      "extras": {
+        "title": "Opsione Shtesë",
+        "description": "Zgjidhni çdo shërbim shtesë që dëshironi të përfshini me qiranë tuaj.",
+        "secondDriver": "Shofer i Dytë",
+        "gpsNavigation": "Navigim GPS",
+        "maksikos": "Maksikos",
+        "greenCard": "Karta e Gjelbër",
+        "europeanCard": "Karta Evropiane",
+        "roadAssistance": "Asistencë Rrugore",
+        "outOfKosovo": "Jashtë Kosovës",
+        "noOptionsAvailable": "Nuk ka opsione shtesë të disponueshme",
+        "additionalNotes": "Shënime Shtesë",
+        "additionalNotesPlaceholder": "Çdo informacion shtesë...",
+        "back": "Mbrapa",
+        "continue": "Vazhdo"
+      },
+      "summary": {
+        "title": "Rishikoni Rezervimin Tuaj",
+        "vehicleDetails": "Detajet e Makinës",
+        "pickupReturn": "Marrja dhe Kthimi",
+        "driverInformation": "Informacioni i Shoferit",
+        "additionalOptions": "Opsione Shtesë",
+        "name": "Emri",
+        "email": "Email",
+        "phone": "Telefon",
+        "address": "Adresa",
+        "pickup": "Marrja",
+        "return": "Kthimi",
+        "back": "Mbrapa",
+        "confirmBooking": "Konfirmo Rezervimin",
+        "success": "Sukses!",
+        "successDescription": "Rezervimi u krijua me sukses. Numri i rezervimit: {bookingNumber}",
+        "error": "Gabim",
+        "errorDescription": "Dështoi krijimi i rezervimit"
+      },
+      "confirmation": {
+        "title": "Rezervimi u Konfirmua!",
+        "description": "Rezervimi juaj u krijua me sukses.",
+        "bookingNumber": "Numri i Rezervimit",
+        "vehicle": "Makina",
+        "pickupReturn": "Marrja dhe Kthimi",
+        "driver": "Shoferi",
+        "printConfirmation": "Printo Konfirmimin",
+        "backToCars": "Kthehu ne faqen kryesore"
+      }
+    },
+    "priceSummary": {
+      "day": "ditë",
+      "days": "ditë",
+      "total": "Totali",
+      "perDay": "në ditë",
+      "extraHours": "orë shtesë"
+    },
+    "validation": {
+      "emailRequired": "Email është i detyrueshëm",
+      "invalidEmail": "Format i pavlefshëm email",
+      "nameRequired": "Emri është i detyrueshëm",
+      "surnameRequired": "Mbiemri është i detyrueshëm",
+      "phoneRequired": "Telefoni është i detyrueshëm",
+      "streetRequired": "Rruga është e detyrueshme",
+      "cityRequired": "Qyteti është i detyrueshëm",
+      "frontIdRequired": "Karta e Identitetit - Faqja e Përparme është e detyrueshme",
+      "backIdRequired": "Karta e Identitetit - Faqja e Pasme është e detyrueshme",
+      "passportRequired": "Pasaporta është e detyrueshme",
+      "drivingLicenseRequired": "Leja e Shoferit është e detyrueshme",
+      "validationError": "Gabim Validimi",
+      "pleaseEnterValidEmail": "Ju lutem shkruani një adresë email të vlefshme",
+      "pleaseUploadRequiredDocuments": "Ju lutem ngarkoni dokumentet e kërkuara: {documents}",
+      "pleaseFillAllFields": "Ju lutem plotësoni të gjitha fushat e detyrueshme"
+    }
+  },
+  "faq": {
+    "title": "Pyetjet më të shpeshta",
+    "description": "Gjithçka që duhet të dini para se të filloni"
+  },
+  "cta": {
+    "title": "Gati për të filluar udhëtimin tuaj?",
+    "description": "Krahaso ofertat dhe gjej çmimin më të mirë për Fluturime dhe Makina me qera",
+    "flights": "Krahaso Fluturime",
+    "cars": "Krahaso Makina"
   }
 }

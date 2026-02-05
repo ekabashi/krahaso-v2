@@ -488,7 +488,7 @@ async function onSearch() {
             {{ t('flights.cta.description') }}
           </p>
           <UButton
-            :to="localePath('/makina/aeroporti-prishtines')"
+            :to="localePath({ name: 'makina-location', params: { location: 'aeroporti-prishtines' } })"
             size="lg"
             color="neutral"
             variant="solid"

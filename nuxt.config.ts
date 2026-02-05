@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   runtimeConfig: {
+    brevoApiKey: process.env.BREVO_API_KEY || '',
+    supabaseStorageBucket: process.env.SUPABASE_STORAGE_BUCKET || 'customerid',
+    superadminCreatedBy: process.env.SUPERADMIN_CREATED_BY || 'krahaso',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://krahaso.co',
     },
@@ -47,5 +50,38 @@ export default defineNuxtConfig({
       { code: 'en', iso: 'en-GB', file: 'en.json' },
     ],
     defaultLocale: 'sq',
+    customRoutes: 'config',
+    pages: {
+      makina: {
+        sq: '/makina',
+        en: '/cars',
+        de: '/autos',
+      },
+      'makina-search': {
+        sq: '/makina/search',
+        en: '/cars/search',
+        de: '/autos/search',
+      },
+      'makina-checkout': {
+        sq: '/makina/checkout',
+        en: '/cars/checkout',
+        de: '/autos/checkout',
+      },
+      'makina-location': {
+        sq: '/makina/[location]',
+        en: '/cars/[location]',
+        de: '/autos/[location]',
+      },
+      superadmin: {
+        sq: '/superadmin',
+        en: '/superadmin',
+        de: '/superadmin',
+      },
+      'superadmin-login': {
+        sq: '/superadmin/login',
+        en: '/superadmin/login',
+        de: '/superadmin/login',
+      },
+    },
   },
 })

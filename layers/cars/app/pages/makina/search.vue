@@ -348,7 +348,7 @@ useSeoPage({
       ? `${t('cars.title')} ${searchParams.value.location} | Krahaso.co`
       : `${t('cars.title')} | Krahaso.co`,
   description: () => t('cars.description'),
-  canonical: () => localePath('/makina/search'),
+  canonical: () => localePath('makina-search'),
 })
 
 </script>
@@ -359,7 +359,7 @@ useSeoPage({
       <UBreadcrumb
         :items="[
           { label: t('nav.home'), to: localePath('/') },
-          { label: t('nav.cars'), to: localePath('/makina') },
+          { label: t('nav.cars'), to: localePath('makina') },
           { label: t('cars.results.description') },
         ]"
         class="mb-6"
