@@ -379,7 +379,7 @@ async function handleSearch() {
           </ClientOnly>
         </div>
 
-        <div class="space-y-2">
+        <div>
           <label class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300">
             {{ t('carSearch.pickupTime') }}
           </label>
@@ -399,7 +399,7 @@ async function handleSearch() {
           </ClientOnly>
         </div>
 
-        <div class="space-y-2">
+        <div>
           <label class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300">
             {{ t('carSearch.returnTime') }}
           </label>
