@@ -31,18 +31,6 @@
     "insurance": "Versicherung",
     "comingSoon": "Demnächst"
   },
-  "hero": {
-    "title": "Vergleichen und sparen bei",
-    "titleHighlight": "Mietwagen.",
-    "description": "Wir durchsuchen führende Autovermieter, um die besten Preise zu finden. Transparente Preise, keine versteckten Gebühren.",
-    "flights": {
-      "headline": "Flüge vergleichen",
-      "title": "Vergleichen und sparen bei",
-      "titleHighlight": "Flugbuchungen",
-      "description": "Vergleiche Preise von Top-Partnern und finde das beste Angebot. Transparente Preise ohne versteckte Gebühren.",
-      "imageAlt": "Flugvergleich"
-    }
-  },
   "trustBadges": {
     "noFees": "Keine Reservierungsgebühren",
     "directBooking": "Direkt vom Anbieter",
@@ -142,464 +130,6 @@
         "rentCar": "Auto buchen",
         "searchFlights": "Flüge suchen"
       }
-    }
-  },
-  "flights": {
-    "title": "Flüge suchen",
-    "description": "Finde die besten Angebote für Flüge von und nach Kosovo.",
-    "searching": "Flüge werden gesucht...",
-    "error": "Fehler bei der Flugsuche",
-    "noResults": "Keine Flüge gefunden",
-    "noResultsDesc": "Bitte ändere die Daten oder Ziele.",
-    "noSearch": "Wähle Abflug, Ziel und Datum, um Angebote zu sehen.",
-    "stops": "Stopps",
-    "routeDescription": "Preise für Flüge vergleichen",
-    "comparePrices": "und das beste Angebot finden.",
-    "searchNow": "Jetzt suchen",
-    "duration": "Dauer",
-    "flightType": "Flugtyp",
-    "direct": "Direkt",
-    "withStop": "Mit Stopp",
-    "airports": "Flughäfen",
-    "avgPrice": "Durchschnittspreis",
-    "avgPriceLabel": "Ab {price}€",
-    "heroTitle": "Vergleiche und spare bei",
-    "heroHighlight": "Flügen.",
-    "heroDescription": "Wir durchsuchen Top-Flugpartner, um die besten Tarife zu finden. Transparente Preise ohne versteckte Gebühren.",
-    "popularRoutes": {
-      "title": "Beliebteste Routen",
-      "description": "Entdecke gefragte Ziele von und nach Kosovo"
-    },
-    "highlights": {
-      "title": "Warum Krahaso.co?",
-      "description": "Die vertrauenswürdigste Plattform für Flugvergleiche",
-      "direct": {
-        "title": "Direktflüge",
-        "description": "Viele Routen bieten Direktflüge ohne Zwischenstopp"
-      },
-      "prices": {
-        "title": "Transparente Preise",
-        "description": "Alle Preise sind klar und ohne versteckte Gebühren"
-      },
-      "verified": {
-        "title": "Verifizierte Partner",
-        "description": "Wir arbeiten nur mit vertrauenswürdigen, geprüften Firmen"
-      },
-      "fast": {
-        "title": "Schneller Prozess",
-        "description": "Vergleiche und buche in wenigen Minuten mit einfachem Ablauf"
-      }
-    },
-    "tips": {
-      "title": "Tipps für günstigere Flüge",
-      "description": "Lerne, wie du bei Flügen sparen kannst",
-      "intro": "Um die günstigsten Flüge zu finden, befolge diese praktischen Tipps:",
-      "flexible": {
-        "title": "Flexible Daten nutzen",
-        "description": "Suche mit flexiblen Daten, um die besten Preise zu sehen. Wochentagsflüge sind meist günstiger als am Wochenende."
-      },
-      "weekdays": {
-        "title": "Unter der Woche buchen",
-        "description": "Flüge am Dienstag und Mittwoch sind oft günstiger als am Wochenende oder an Feiertagen."
-      },
-      "advance": {
-        "title": "Früh buchen",
-        "description": "Eine Buchung 2–3 Monate im Voraus spart oft viel Geld. Preise steigen, je näher das Abflugdatum rückt."
-      },
-      "alerts": {
-        "title": "Preisalarm aktivieren",
-        "description": "Aktiviere Alarme, um informiert zu werden, wenn die Preise für deine Route fallen."
-      }
-    },
-    "results": {
-      "title": "Suchergebnisse",
-      "found": "Flüge gefunden"
-    },
-    "faq": {
-      "question1": "Wie funktioniert die Flugsuche?",
-      "answer1": "Sie suchen auf Krahaso.co, indem Sie Abflug, Ziel und Datum auswählen. Wir vergleichen Angebote unserer Partner und zeigen Ihnen die Ergebnisse.",
-      "question2": "Wie weit im Voraus sollte ich einen Flug buchen?",
-      "answer2": "Wir empfehlen eine Buchung 2-3 Monate im Voraus für bessere Preise. Sie können jedoch auch kurzfristig Angebote finden.",
-      "question3": "Kann ich direkt auf Ihrer Plattform buchen?",
-      "answer3": "Nein, unsere Plattform hilft Ihnen beim Vergleichen von Angeboten. Die endgültige Buchung erfolgt auf der offiziellen Website des ausgewählten Partners.",
-      "question4": "Sind die Preise endgültig?",
-      "answer4": "Ja, die angezeigten Preise sind transparent und beinhalten alle Grundgebühren, ohne unerwartete Zusatzkosten.",
-      "question5": "Kann ich für große Gruppen buchen?",
-      "answer5": "Ja. Sie können zunächst die Preise für gewünschte Flüge prüfen, während für Rabatte oder Gruppenangebote ein direkter Kontakt mit dem Partner empfohlen wird.",
-      "question6": "Benötigen Sie weitere Informationen?",
-      "answer6": "Wenn Sie weitere Informationen benötigen, können Sie uns über die Kontaktnummern oder E-Mail erreichen, die auf der Kontaktseite zu finden sind."
-    },
-    "cta": {
-      "title": "Bereit zu buchen?",
-      "description": "Buche danach den Mietwagen und komplettiere deine Reise",
-      "rentCar": "Mietwagen am Flughafen buchen"
-    },
-    "search": {
-      "roundtrip": "Hin- und Rückflug",
-      "oneway": "Nur Hinflug",
-      "from": "Von",
-      "to": "Nach",
-      "departureDate": "Abflugdatum",
-      "returnDate": "Rückflugdatum",
-      "passengers": "Passagiere",
-      "adults": "Erwachsene",
-      "children": "Kinder",
-      "infants": "Säuglinge",
-      "adultsAge": "12+ Jahre",
-      "childrenAge": "2-11 Jahre",
-      "infantsAge": "0-2 Jahre",
-      "maxPassengers": "Maximal 9 Passagiere",
-      "selectDate": "Datum wählen",
-      "swapAirports": "Flughäfen tauschen",
-      "flexibleLabel": "Flexible Daten",
-      "flexibleHint": "Suche Flüge mit flexiblen Daten, um bessere Preise zu finden",
-      "searchFlights": "Flüge suchen"
-    }
-  },
-  "cars": {
-    "title": "Autovermietung suchen",
-    "description": "Finde die besten Angebote für Autovermietung im Kosovo.",
-    "searching": "Autos werden gesucht...",
-    "error": "Fehler bei der Autosuche",
-    "noResults": "Keine Autos gefunden",
-    "noResultsDesc": "Bitte ändere die Daten oder Standorte.",
-    "noLocations": "Keine Standorte verfügbar",
-    "comparePrices": "und finde den besten Preis.",
-    "searchNow": "Jetzt suchen",
-    "pickup": "Abholung",
-    "dropoff": "Rückgabe",
-    "dates": "Daten",
-    "time": "Uhrzeit",
-    "editSearch": "Suche bearbeiten",
-    "pickupLocation": "Abholort",
-    "dropoffLocation": "Rückgabeort",
-    "selectDates": "Daten wählen",
-    "pickupTime": "Abholzeit",
-    "returnTime": "Rückgabezeit",
-    "filterLabel": "Filtern",
-    "priceRange": "Preisspanne",
-    "transmission": "Getriebe",
-    "fuelType": "Kraftstoffart",
-    "numberOfSeats": "Anzahl der Sitze",
-    "seats": "Sitze",
-    "category": "Kategorie",
-    "color": "Farbe",
-    "cars": "Autos",
-    "available": "verfügbar",
-    "pricePerDay": "pro Tag",
-    "avgPrice": "Durchschnittspreis",
-    "avgPriceLabel": "Ab {price}€",
-    "sortOptions": {
-      "priceLowToHigh": "Preis: aufsteigend",
-      "priceHighToLow": "Preis: absteigend",
-      "yearNewestFirst": "Baujahr: neueste zuerst",
-      "nameAToZ": "Name: A bis Z"
-    },
-    "sortBy": "Sortieren nach",
-    "results": { "description": "Verfügbare Angebote nach Ihren Kriterien" },
-    "conditions": {
-      "title": "Bedingungen & Dokumente",
-      "description": "Alles, was Sie über die Anmietung eines Autos im Kosovo wissen müssen",
-      "intro": "Für eine Autovermietung in Kosovo brauchst du bestimmte Dokumente und musst einige Bedingungen erfüllen:",
-      "documents": {
-        "title": "Benötigte Dokumente",
-        "description": "Erforderlich ist die Eingabe persönlicher Daten und das Hochladen des Personalausweises oder Reisepasses sowie eines gültigen Führerscheins."
-      },
-      "deposit": {
-        "title": "Zahlung bei der Buchung",
-        "description": "Die Zahlung erfolgt online während der Buchung, nach Auswahl des Fahrzeugs und Eingabe der Daten."
-      },
-      "insurance": {
-        "title": "Abhol- und Rückgabeauswahl",
-        "description": "Der Nutzer wählt selbst Abholort und Rückgabeort, Datum und Uhrzeit entsprechend seinen Bedürfnissen."
-      },
-      "cancellation": {
-        "title": "Stornierungsbedingungen",
-        "description": "Stornierungen und Buchungsänderungen hängen von den Bedingungen des jeweiligen Unternehmens und dem Zeitpunkt der Stornierung ab."
-      }
-    },
-    "filters": {
-      "title": "Suchfilter",
-      "description": "Nutze Filter, um das perfekte Auto zu finden",
-      "price": {
-        "title": "Nach Preis filtern",
-        "description": "Wähle die Preisspanne, die am besten passt"
-      },
-      "transmission": {
-        "title": "Getriebe",
-        "description": "Wähle zwischen Schalt- und Automatikgetriebe"
-      },
-      "fuel": {
-        "title": "Kraftstoff",
-        "description": "Filtere nach Benzin, Diesel oder Elektro"
-      },
-      "seats": {
-        "title": "Sitzanzahl",
-        "description": "Wähle die benötigte Sitzanzahl für deine Reise"
-      }
-    },
-    "faq": {
-      "question1": "Wie funktioniert die Mietwagensuche?",
-      "answer1": "Sie suchen, indem Sie Standort, Daten und Fahrzeugkategorie auswählen. Wir vergleichen Angebote und zeigen Ihnen die Ergebnisse.",
-      "question2": "Welche Dokumente benötige ich?",
-      "answer2": "Erforderlich ist die Eingabe persönlicher Daten und das Hochladen des Personalausweises oder Reisepasses sowie eines gültigen Führerscheins.",
-      "question3": "Sind die Preise endgültig?",
-      "answer3": "Ja. Wir bemühen uns, transparente Preise mit den wichtigsten Details anzuzeigen, damit Sie Überraschungen im letzten Schritt vermeiden.",
-      "question4": "Kann ich das Auto an einem anderen Standort zurückgeben?",
-      "answer4": "Ja, wenn die Mietwagenfirma dies erlaubt, können Sie aus den verfügbaren Optionen einen anderen Rückgabeort wählen.",
-      "question5": "Wie weit im Voraus sollte ich buchen?",
-      "answer5": "Wir empfehlen eine Buchung 1-2 Wochen im Voraus für bessere Preise und Verfügbarkeit. Sie können jedoch auch kurzfristig Angebote finden.",
-      "question6": "Benötigen Sie weitere Informationen?",
-      "answer6": "Wenn Sie weitere Informationen benötigen, können Sie uns über die Kontaktnummern oder E-Mail erreichen, die auf der 'Kontakt'-Seite am Ende der Website zu finden sind."
-    },
-    "cta": {
-      "title": "Bereit zu buchen?",
-      "description": "Buche danach den Flug, um deine Reise zu kompletieren",
-      "searchFlights": "Flüge suchen"
-    }
-  },
-  "locations": {
-    "popular": {
-      "title": "Beliebte Standorte",
-      "description": "Wählen Sie aus den beliebtesten Standorten für die Abholung",
-      "airport": "Flughafen Prishtina",
-      "prishtine": "Prishtina",
-      "prizren": "Prizren",
-      "peje": "Peja"
-    },
-    "airport": { "description": "Abholung direkt am Flughafen. Buchen Sie Ihr Auto und holen Sie es am Flughafeneingang ab." },
-    "city": { "description": "Buchen Sie Ihr Auto nach Wunsch und holen Sie es am gewählten Ort ab. Maximale Flexibilität mit vielen Standorten und guten Preisen." },
-    "pickup": "Abholung",
-    "type": "Stadt",
-    "available": "Verfügbar",
-    "notAvailable": "Nicht verfügbar",
-    "verified": "Partnerschaft",
-    "partners": "Verifizierte Partner",
-    "related": "Ähnliche Standorte",
-    "relatedDescription": "Weitere beliebte Standorte entdecken",
-    "compare": "Preise vergleichen"
-  },
-  "carSearch": {
-    "sameLocation": "Gleicher Standort",
-    "differentLocation": "Anderer Standort",
-    "sameLocationCheckbox": "Gleicher Rückgabeort",
-    "pickupDropoffLocation": "Abhol- und Rückgabeort",
-    "pickupLocation": "Abholort",
-    "dropoffLocation": "Rückgabeort",
-    "whereNeedCar": "Wo brauchst du das Auto?",
-    "whereReturnCar": "Wo gibst du es zurück?",
-    "pickupDate": "Abholdatum",
-    "returnDate": "Rückgabedatum",
-    "dateRange": "Abhol- & Rückgabedatum",
-    "pickupTime": "Abholzeit",
-    "returnTime": "Rückgabezeit",
-    "selectDate": "Datum wählen",
-    "selectTime": "Zeit wählen",
-    "searchCars": "Autos suchen",
-    "searching": "Suche läuft..."
-  },
-  "faq": {
-    "title": "Häufige Fragen",
-    "description": "Alles, was Sie vor dem Start wissen sollten"
-  },
-  "shared": {
-    "nav": {
-      "home": "Startseite",
-      "flights": "Flüge",
-      "flightsDesc": "Fragen und Antworten zu Flügen",
-      "cars": "Autovermietung",
-      "carsDesc": "Fragen und Antworten zur Autovermietung",
-      "booking": "Buchung",
-      "bookingDesc": "Fragen zum Buchungsprozess",
-      "documents": "Dokumente",
-      "documentsDesc": "Fragen zu erforderlichen Dokumenten",
-      "payment": "Zahlung",
-      "paymentDesc": "Fragen zu Zahlungsmethoden"
-    },
-    "footer": {
-      "copyright": "© {year} Krahaso.co. Alle Rechte vorbehalten."
-    },
-    "common": {
-      "loading": "Lädt...",
-      "error": "Fehler",
-      "noResults": "Keine Ergebnisse gefunden"
-    },
-    "cta": {
-      "title": "Bereit, Geld zu sparen?",
-      "description": "Entdecken Sie unsere Angebote und buchen Sie jetzt, um von exklusiven Rabatten zu profitieren",
-      "flights": "Flugangebote ansehen",
-      "cars": "Autoangebote ansehen"
-    },
-    "items": {
-      "flight1": {
-        "title": "20% Rabatt auf Flüge",
-        "description": "Sparen Sie 20% bei ausgewählten Flügen nach und vom Kosovo."
-      },
-      "car1": {
-        "title": "15% Rabatt auf Autovermietung",
-        "description": "Sparen Sie 15% bei Autovermietungsbuchungen im Kosovo."
-      },
-      "combo1": {
-        "title": "Kombipaket: Flug + Auto",
-        "description": "Sparen Sie 25%, wenn Sie Flug und Autovermietung zusammen buchen."
-      },
-      "earlyBird": {
-        "title": "Early Bird: 30% Rabatt",
-        "description": "Buchen Sie 3+ Monate im Voraus und sparen Sie bis zu 30% bei Flügen."
-      },
-      "weekend": {
-        "title": "Wochenendangebot",
-        "description": "20% Rabatt auf Autovermietungsbuchungen am Wochenende."
-      },
-      "lastMinute": {
-        "title": "Last-Minute-Angebote",
-        "description": "15% Rabatt auf Last-Minute-Flugbuchungen."
-      }
-    },
-    "errors": {
-      "notFound": "Seite nicht gefunden.",
-      "generic": "Etwas ist schiefgelaufen.",
-      "backHome": "Zur Startseite"
-    }
-  },
-  "core": {
-    "nav": {
-      "kontakt": "Kontakt",
-      "privacy": "Datenschutz",
-      "terms": "Nutzungsbedingungen"
-    },
-    "intro": {
-      "kontakt": "Kontaktieren Sie uns – Kernseite.",
-      "privacy": "Datenschutzerklärung – Kernseite.",
-      "terms": "Nutzungsbedingungen – Kernseite."
-    }
-  },
-  "howItWorks": {
-    "title": "Wie es funktioniert",
-    "description": "Drei einfache Schritte, um die besten Flüge zu finden",
-    "steps": {
-      "search": {
-        "title": "Flugdetails festlegen",
-        "description": "Wählen Sie Abflug, Ziel und Reisedatum."
-      },
-      "compare": {
-        "title": "Angebote vergleichen",
-        "description": "Entdecken Sie die besten Angebote von unseren vertrauenswürdigen Partnern."
-      },
-      "book": {
-        "title": "Zum Partner weiterleiten",
-        "description": "Wählen Sie das Angebot und gelangen Sie mit einem Klick zur offiziellen Seite des Partners zur Buchung."
-      }
-    }
-  },
-  "whatsapp": {
-    "title": "Flüge über WhatsApp suchen",
-    "description": "Schreiben Sie uns einfach Ihre Reisedaten und erhalten Sie sofort die besten Flugpreise - direkt auf WhatsApp.",
-    "features": {
-      "fast": "Antwort in Sekunden",
-      "easy": "Keine App erforderlich",
-      "free": "Völlig kostenlos"
-    },
-    "cta": "Gespräch starten",
-    "chat": {
-      "userMessage1": "Hallo! Ich möchte Flüge suchen.",
-      "botGreeting": "Hallo! 👋\n Ich bin Aviopikas Assistent und helfe Ihnen, günstige Flüge zu finden.\n Sprache wählen\n1️⃣ 🇦🇱 Albanisch\n2️⃣ 🇬🇧 Englisch\n3️⃣ 🇩🇪 Deutsch",
-      "userLanguage": "Deutsch",
-      "botWelcome": "*Willkommen bei Aviopika!* ✈️\nFinden Sie die günstigsten Flüge für Sie.\n*So funktioniert es:*\n\n• \"Düsseldorf Pristina morgen\"\n• \"DUS PRN 15.03-22.03\" (Hin- und Rückflug)\n\nWohin möchten Sie reisen?",
-      "userFlightSearch": "PRISTINA - MÜNCHEN 10.01",
-      "botFlightResults": "*Pristina → München*\n10. Januar 2026\n---\n1. *KosovaFly* - 219,00 EUR \n ⭐ Bester Preis\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219,00 EUR \n 🚀 Schnellster\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219,00 EUR\n11:30 → 13:15 (1h 45m)\n+3 weitere Flüge\n---\nAlle Ergebnisse unter https://www.aviopika.al \n\nAviopika ist ein unabhängiger Preisvergleich. Wir verkaufen keine Flugtickets. Alle Preise ohne Gewähr. Weiterleitung zur Anbieterseite.",
-      "inputPlaceholder": "Geben Sie Ihre Nachricht ein..."
-    }
-  },
-  "about": {
-    "title": "Über uns",
-    "description": "Erfahren Sie mehr über die Krahaso.co-Plattform und unsere Mission",
-    "mission": {
-      "title": "Unsere Mission",
-      "description": "Krahaso.co wurde mit dem Ziel gegründet, den Buchungsprozess für Flüge und Autovermietungen für Reisende aus dem Kosovo und der Diaspora zu vereinfachen. Wir glauben, dass jeder einfachen und transparenten Zugang zu den besten Marktangeboten haben sollte."
-    },
-    "whatWeOffer": {
-      "title": "Was wir anbieten",
-      "item1": "Preisvergleich von verifizierten Partnern",
-      "item2": "Vollständige Transparenz bei Preisen und Bedingungen",
-      "item3": "Einfacher und sicherer Buchungsprozess",
-      "item4": "24/7 Support für unsere Kunden"
-    },
-    "whyChooseUs": {
-      "title": "Warum uns wählen?",
-      "description": "Wir arbeiten nur mit vertrauenswürdigen und verifizierten Unternehmen. Die Preise, die wir anzeigen, sind die, die Sie zahlen werden, ohne Überraschungen oder versteckte Gebühren. Unsere Plattform ist mit moderner Technologie für eine schnelle und reibungslose Erfahrung gebaut."
-    },
-    "cta": {
-      "title": "Bereit loszulegen?",
-      "description": "Beginnen Sie, Flüge und Autovermietungen zu vergleichen, um die besten Angebote zu finden. Unsere Plattform hilft Ihnen, die wettbewerbsfähigsten Preise von verifizierten Partnern zu finden."
-    },
-    "stats": {
-      "partners": {
-        "value": "20+",
-        "label": "Verifizierte Partner"
-      },
-      "searches": {
-        "value": "1,000+",
-        "label": "Tägliche Suchen"
-      },
-      "support": {
-        "value": "24/7",
-        "label": "Kundensupport"
-      }
-    }
-  },
-  "contact": {
-    "title": "Kontakt",
-    "subtitle": "Wir freuen uns, von Ihnen zu hören",
-    "description": "Kontaktieren Sie uns bei Fragen oder Hilfe",
-    "info": {
-      "title": "Kontaktinformationen",
-      "email": "E-Mail",
-      "phone": "Telefon",
-      "hours": "Öffnungszeiten",
-      "hoursDesc": "Montag - Freitag ( 08:00 - 17:00 )"
-    },
-    "form": {
-      "name": "Name",
-      "namePlaceholder": "Ihr Name",
-      "email": "E-Mail",
-      "subject": "Betreff",
-      "subjectPlaceholder": "Betreff der Nachricht",
-      "message": "Nachricht",
-      "messagePlaceholder": "Schreiben Sie Ihre Nachricht hier...",
-      "submit": "Nachricht senden",
-      "errorRequired": "Bitte füllen Sie alle Pflichtfelder aus",
-      "success": "Nachricht erfolgreich gesendet",
-      "error": "Fehler beim Senden der Nachricht"
-    }
-  },
-  "footer": {
-    "description": "Krahaso.co hilft Ihnen, Preise für Flüge und Autovermietungen im Kosovo mit transparenten Preisen und verifizierten Partnern zu vergleichen.",
-    "quickLinks": "Schnelllinks",
-    "aboutUs": "Über uns",
-    "contact": "Kontakt",
-    "howItWorks": "Wie es funktioniert",
-    "popularLocations": "Beliebte Standorte",
-    "privacy": "Datenschutz",
-    "terms": "Nutzungsbedingungen",
-    "copyright": "© {year} Krahaso.co. Alle Rechte vorbehalten."
-  },
-  "privacy": {
-    "title": "Datenschutzerklärung",
-    "subtitle": "Datenschutzerklärung",
-    "description": "Wie wir Ihre Daten schützen und verwenden",
-    "section1": {
-      "title": "1. Informationen, die wir sammeln",
-      "content": "Wir sammeln Informationen, die Sie bereitstellen, wenn Sie sich registrieren, Anfragen stellen oder mit uns kommunizieren. Dies umfasst Name, E-Mail, Telefonnummer und Dokumente, die Sie hochladen."
-    },
-    "section2": {
-      "title": "2. Wie wir Informationen verwenden",
-      "content": "Ihre Daten werden verwendet, um Anfragen zu bearbeiten, unseren Service zu verbessern und mit Ihnen zu kommunizieren."
-    },
-    "intro": {
-      "kontakt": "Kontaktieren Sie uns – Kernseite.",
-      "privacy": "Datenschutzerklärung – Kernseite.",
-      "terms": "Nutzungsbedingungen – Kernseite."
     }
   },
   "landing": {
@@ -791,6 +321,462 @@
       "description": "Vergleichen Sie Angebote und finden Sie den besten Preis für Flüge und Autovermietungen",
       "flights": "Flüge vergleichen",
       "cars": "Autos vergleichen"
+    }
+  },
+  "flights": {
+    "title": "Flüge suchen",
+    "description": "Finde die besten Angebote für Flüge von und nach Kosovo.",
+    "searching": "Flüge werden gesucht...",
+    "error": "Fehler bei der Flugsuche",
+    "noResults": "Keine Flüge gefunden",
+    "noResultsDesc": "Bitte ändere die Daten oder Ziele.",
+    "noSearch": "Wähle Abflug, Ziel und Datum, um Angebote zu sehen.",
+    "stops": "Stopps",
+    "routeDescription": "Preise für Flüge vergleichen",
+    "comparePrices": "und das beste Angebot finden.",
+    "searchNow": "Jetzt suchen",
+    "duration": "Dauer",
+    "flightType": "Flugtyp",
+    "direct": "Direkt",
+    "withStop": "Mit Stopp",
+    "airports": "Flughäfen",
+    "avgPrice": "Durchschnittspreis",
+    "avgPriceLabel": "Ab {price}€",
+    "heroTitle": "Vergleiche und spare bei",
+    "heroHighlight": "Flügen.",
+    "heroDescription": "Wir durchsuchen Top-Flugpartner, um die besten Tarife zu finden. Transparente Preise ohne versteckte Gebühren.",
+    "popularRoutes": {
+      "title": "Beliebteste Routen",
+      "description": "Entdecke gefragte Ziele von und nach Kosovo"
+    },
+    "highlights": {
+      "title": "Warum Krahaso.co?",
+      "description": "Die vertrauenswürdigste Plattform für Flugvergleiche",
+      "direct": {
+        "title": "Direktflüge",
+        "description": "Viele Routen bieten Direktflüge ohne Zwischenstopp"
+      },
+      "prices": {
+        "title": "Transparente Preise",
+        "description": "Alle Preise sind klar und ohne versteckte Gebühren"
+      },
+      "verified": {
+        "title": "Verifizierte Partner",
+        "description": "Wir arbeiten nur mit vertrauenswürdigen, geprüften Firmen"
+      },
+      "fast": {
+        "title": "Schneller Prozess",
+        "description": "Vergleiche und buche in wenigen Minuten mit einfachem Ablauf"
+      }
+    },
+    "tips": {
+      "title": "Tipps für günstigere Flüge",
+      "description": "Lerne, wie du bei Flügen sparen kannst",
+      "intro": "Um die günstigsten Flüge zu finden, befolge diese praktischen Tipps:",
+      "flexible": {
+        "title": "Flexible Daten nutzen",
+        "description": "Suche mit flexiblen Daten, um die besten Preise zu sehen. Wochentagsflüge sind meist günstiger als am Wochenende."
+      },
+      "weekdays": {
+        "title": "Unter der Woche buchen",
+        "description": "Flüge am Dienstag und Mittwoch sind oft günstiger als am Wochenende oder an Feiertagen."
+      },
+      "advance": {
+        "title": "Früh buchen",
+        "description": "Eine Buchung 2–3 Monate im Voraus spart oft viel Geld. Preise steigen, je näher das Abflugdatum rückt."
+      },
+      "alerts": {
+        "title": "Preisalarm aktivieren",
+        "description": "Aktiviere Alarme, um informiert zu werden, wenn die Preise für deine Route fallen."
+      }
+    },
+    "results": {
+      "title": "Suchergebnisse",
+      "found": "Flüge gefunden"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "description": "Alles, was Sie über die Flugsuche wissen müssen",
+      "question1": "Wie funktioniert die Flugsuche?",
+      "answer1": "Sie suchen auf Krahaso.co, indem Sie Abflug, Ziel und Datum auswählen. Wir vergleichen Angebote unserer Partner und zeigen Ihnen die Ergebnisse.",
+      "question2": "Wie weit im Voraus sollte ich einen Flug buchen?",
+      "answer2": "Wir empfehlen eine Buchung 2-3 Monate im Voraus für bessere Preise. Sie können jedoch auch kurzfristig Angebote finden.",
+      "question3": "Kann ich direkt auf Ihrer Plattform buchen?",
+      "answer3": "Nein, unsere Plattform hilft Ihnen beim Vergleichen von Angeboten. Die endgültige Buchung erfolgt auf der offiziellen Website des ausgewählten Partners.",
+      "question4": "Sind die Preise endgültig?",
+      "answer4": "Ja, die angezeigten Preise sind transparent und beinhalten alle Grundgebühren, ohne unerwartete Zusatzkosten.",
+      "question5": "Kann ich für große Gruppen buchen?",
+      "answer5": "Ja. Sie können zunächst die Preise für gewünschte Flüge prüfen, während für Rabatte oder Gruppenangebote ein direkter Kontakt mit dem Partner empfohlen wird.",
+      "question6": "Benötigen Sie weitere Informationen?",
+      "answer6": "Wenn Sie weitere Informationen benötigen, können Sie uns über die Kontaktnummern oder E-Mail erreichen, die auf der Kontaktseite zu finden sind."
+    },
+    "cta": {
+      "title": "Bereit zu buchen?",
+      "description": "Buche danach den Mietwagen und komplettiere deine Reise",
+      "rentCar": "Mietwagen am Flughafen buchen"
+    },
+    "routes": {
+      "title": "Beliebteste Routen",
+      "description": "Entdecke gefragte Ziele von und nach Kosovo",
+      "related": "Ähnliche Routen",
+      "relatedDescription": "Weitere beliebte Ziele entdecken",
+      "compare": "Preise vergleichen",
+      "popular": {
+        "prishtine": "Prishtina",
+        "dusseldorf": "Düsseldorf",
+        "zurich": "Zürich",
+        "vienna": "Vienna",
+        "frankfurt": "Frankfurt",
+        "munich": "Munich",
+        "amsterdam": "Amsterdam"
+      }
+    },
+    "search": {
+      "roundtrip": "Hin- und Rückflug",
+      "oneway": "Nur Hinflug",
+      "from": "Von",
+      "to": "Nach",
+      "departureDate": "Abflugdatum",
+      "returnDate": "Rückflugdatum",
+      "passengers": "Passagiere",
+      "adults": "Erwachsene",
+      "children": "Kinder",
+      "infants": "Säuglinge",
+      "adultsAge": "12+ Jahre",
+      "childrenAge": "2-11 Jahre",
+      "infantsAge": "0-2 Jahre",
+      "maxPassengers": "Maximal 9 Passagiere",
+      "selectDate": "Datum wählen",
+      "swapAirports": "Flughäfen tauschen",
+      "flexibleLabel": "Flexible Daten",
+      "flexibleHint": "Suche Flüge mit flexiblen Daten, um bessere Preise zu finden",
+      "searchFlights": "Flüge suchen"
+    }
+  },
+  "cars": {
+    "title": "Autovermietung suchen",
+    "description": "Finde die besten Angebote für Autovermietung im Kosovo.",
+    "searching": "Autos werden gesucht...",
+    "error": "Fehler bei der Autosuche",
+    "noResults": "Keine Autos gefunden",
+    "noResultsDesc": "Bitte ändere die Daten oder Standorte.",
+    "noLocations": "Keine Standorte verfügbar",
+    "comparePrices": "und finde den besten Preis.",
+    "searchNow": "Jetzt suchen",
+    "pickup": "Abholung",
+    "dropoff": "Rückgabe",
+    "dates": "Daten",
+    "time": "Uhrzeit",
+    "editSearch": "Suche bearbeiten",
+    "pickupLocation": "Abholort",
+    "dropoffLocation": "Rückgabeort",
+    "selectDates": "Daten wählen",
+    "pickupTime": "Abholzeit",
+    "returnTime": "Rückgabezeit",
+    "filterLabel": "Filtern",
+    "priceRange": "Preisspanne",
+    "transmission": "Getriebe",
+    "fuelType": "Kraftstoffart",
+    "numberOfSeats": "Anzahl der Sitze",
+    "seats": "Sitze",
+    "category": "Kategorie",
+    "color": "Farbe",
+    "cars": "Autos",
+    "available": "verfügbar",
+    "pricePerDay": "pro Tag",
+    "avgPrice": "Durchschnittspreis",
+    "avgPriceLabel": "Ab {price}€",
+    "sortOptions": {
+      "priceLowToHigh": "Preis: aufsteigend",
+      "priceHighToLow": "Preis: absteigend",
+      "yearNewestFirst": "Baujahr: neueste zuerst",
+      "nameAToZ": "Name: A bis Z"
+    },
+    "sortBy": "Sortieren nach",
+    "results": { "description": "Verfügbare Angebote nach Ihren Kriterien" },
+    "conditions": {
+      "title": "Bedingungen & Dokumente",
+      "description": "Alles, was Sie über die Anmietung eines Autos im Kosovo wissen müssen",
+      "intro": "Für eine Autovermietung in Kosovo brauchst du bestimmte Dokumente und musst einige Bedingungen erfüllen:",
+      "documents": {
+        "title": "Benötigte Dokumente",
+        "description": "Erforderlich ist die Eingabe persönlicher Daten und das Hochladen des Personalausweises oder Reisepasses sowie eines gültigen Führerscheins."
+      },
+      "deposit": {
+        "title": "Zahlung bei der Buchung",
+        "description": "Die Zahlung erfolgt online während der Buchung, nach Auswahl des Fahrzeugs und Eingabe der Daten."
+      },
+      "insurance": {
+        "title": "Abhol- und Rückgabeauswahl",
+        "description": "Der Nutzer wählt selbst Abholort und Rückgabeort, Datum und Uhrzeit entsprechend seinen Bedürfnissen."
+      },
+      "cancellation": {
+        "title": "Stornierungsbedingungen",
+        "description": "Stornierungen und Buchungsänderungen hängen von den Bedingungen des jeweiligen Unternehmens und dem Zeitpunkt der Stornierung ab."
+      }
+    },
+    "filters": {
+      "title": "Suchfilter",
+      "description": "Nutze Filter, um das perfekte Auto zu finden",
+      "price": {
+        "title": "Nach Preis filtern",
+        "description": "Wähle die Preisspanne, die am besten passt"
+      },
+      "transmission": {
+        "title": "Getriebe",
+        "description": "Wähle zwischen Schalt- und Automatikgetriebe"
+      },
+      "fuel": {
+        "title": "Kraftstoff",
+        "description": "Filtere nach Benzin, Diesel oder Elektro"
+      },
+      "seats": {
+        "title": "Sitzanzahl",
+        "description": "Wähle die benötigte Sitzanzahl für deine Reise"
+      }
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "description": "Alles, was Sie über die Autovermietung wissen müssen",
+      "question1": "Wie funktioniert die Mietwagensuche?",
+      "answer1": "Sie suchen, indem Sie Standort, Daten und Fahrzeugkategorie auswählen. Wir vergleichen Angebote und zeigen Ihnen die Ergebnisse.",
+      "question2": "Welche Dokumente benötige ich?",
+      "answer2": "Erforderlich ist die Eingabe persönlicher Daten und das Hochladen des Personalausweises oder Reisepasses sowie eines gültigen Führerscheins.",
+      "question3": "Sind die Preise endgültig?",
+      "answer3": "Ja. Wir bemühen uns, transparente Preise mit den wichtigsten Details anzuzeigen, damit Sie Überraschungen im letzten Schritt vermeiden.",
+      "question4": "Kann ich das Auto an einem anderen Standort zurückgeben?",
+      "answer4": "Ja, wenn die Mietwagenfirma dies erlaubt, können Sie aus den verfügbaren Optionen einen anderen Rückgabeort wählen.",
+      "question5": "Wie weit im Voraus sollte ich buchen?",
+      "answer5": "Wir empfehlen eine Buchung 1-2 Wochen im Voraus für bessere Preise und Verfügbarkeit. Sie können jedoch auch kurzfristig Angebote finden.",
+      "question6": "Benötigen Sie weitere Informationen?",
+      "answer6": "Wenn Sie weitere Informationen benötigen, können Sie uns über die Kontaktnummern oder E-Mail erreichen, die auf der 'Kontakt'-Seite am Ende der Website zu finden sind."
+    },
+    "cta": {
+      "title": "Bereit zu buchen?",
+      "description": "Buche danach den Flug, um deine Reise zu kompletieren",
+      "searchFlights": "Flüge suchen"
+    }
+  },
+  "locations": {
+    "popular": {
+      "title": "Beliebte Standorte",
+      "description": "Wählen Sie aus den beliebtesten Standorten für die Abholung",
+      "airport": "Flughafen Prishtina",
+      "prishtine": "Prishtina",
+      "prizren": "Prizren",
+      "peje": "Peja"
+    },
+    "airport": { "description": "Abholung direkt am Flughafen. Buchen Sie Ihr Auto und holen Sie es am Flughafeneingang ab." },
+    "city": { "description": "Buchen Sie Ihr Auto nach Wunsch und holen Sie es am gewählten Ort ab. Maximale Flexibilität mit vielen Standorten und guten Preisen." },
+    "pickup": "Abholung",
+    "type": "Stadt",
+    "available": "Verfügbar",
+    "notAvailable": "Nicht verfügbar",
+    "verified": "Partnerschaft",
+    "partners": "Verifizierte Partner",
+    "related": "Ähnliche Standorte",
+    "relatedDescription": "Weitere beliebte Standorte entdecken",
+    "compare": "Preise vergleichen"
+  },
+  "carSearch": {
+    "sameLocation": "Gleicher Standort",
+    "differentLocation": "Anderer Standort",
+    "sameLocationCheckbox": "Gleicher Rückgabeort",
+    "pickupDropoffLocation": "Abhol- und Rückgabeort",
+    "pickupLocation": "Abholort",
+    "dropoffLocation": "Rückgabeort",
+    "whereNeedCar": "Wo brauchst du das Auto?",
+    "whereReturnCar": "Wo gibst du es zurück?",
+    "pickupDate": "Abholdatum",
+    "returnDate": "Rückgabedatum",
+    "dateRange": "Abhol- & Rückgabedatum",
+    "pickupTime": "Abholzeit",
+    "returnTime": "Rückgabezeit",
+    "selectDate": "Datum wählen",
+    "selectTime": "Zeit wählen",
+    "searchCars": "Autos suchen",
+    "searching": "Suche läuft..."
+  },
+  "shared": {
+    "nav": {
+      "flightsDesc": "Fragen und Antworten zu Flügen",
+      "carsDesc": "Fragen und Antworten zur Autovermietung",
+      "booking": "Buchung",
+      "bookingDesc": "Fragen zum Buchungsprozess",
+      "documents": "Dokumente",
+      "documentsDesc": "Fragen zu erforderlichen Dokumenten",
+      "payment": "Zahlung",
+      "paymentDesc": "Fragen zu Zahlungsmethoden"
+    },
+    "common": {
+      "loading": "Lädt...",
+      "error": "Fehler",
+      "noResults": "Keine Ergebnisse gefunden"
+    },
+    "cta": {
+      "title": "Bereit, Geld zu sparen?",
+      "description": "Entdecken Sie unsere Angebote und buchen Sie jetzt, um von exklusiven Rabatten zu profitieren",
+      "flights": "Flugangebote ansehen",
+      "cars": "Autoangebote ansehen"
+    },
+    "items": {
+      "flight1": {
+        "title": "20% Rabatt auf Flüge",
+        "description": "Sparen Sie 20% bei ausgewählten Flügen nach und vom Kosovo."
+      },
+      "car1": {
+        "title": "15% Rabatt auf Autovermietung",
+        "description": "Sparen Sie 15% bei Autovermietungsbuchungen im Kosovo."
+      },
+      "combo1": {
+        "title": "Kombipaket: Flug + Auto",
+        "description": "Sparen Sie 25%, wenn Sie Flug und Autovermietung zusammen buchen."
+      },
+      "earlyBird": {
+        "title": "Early Bird: 30% Rabatt",
+        "description": "Buchen Sie 3+ Monate im Voraus und sparen Sie bis zu 30% bei Flügen."
+      },
+      "weekend": {
+        "title": "Wochenendangebot",
+        "description": "20% Rabatt auf Autovermietungsbuchungen am Wochenende."
+      },
+      "lastMinute": {
+        "title": "Last-Minute-Angebote",
+        "description": "15% Rabatt auf Last-Minute-Flugbuchungen."
+      }
+    },
+    "errors": {
+      "notFound": "Seite nicht gefunden.",
+      "generic": "Etwas ist schiefgelaufen.",
+      "backHome": "Zur Startseite"
+    }
+  },
+  "howItWorks": {
+    "title": "Wie es funktioniert",
+    "description": "Drei einfache Schritte, um die besten Flüge zu finden",
+    "steps": {
+      "search": {
+        "title": "Flugdetails festlegen",
+        "description": "Wählen Sie Abflug, Ziel und Reisedatum."
+      },
+      "compare": {
+        "title": "Angebote vergleichen",
+        "description": "Entdecken Sie die besten Angebote von unseren vertrauenswürdigen Partnern."
+      },
+      "book": {
+        "title": "Zum Partner weiterleiten",
+        "description": "Wählen Sie das Angebot und gelangen Sie mit einem Klick zur offiziellen Seite des Partners zur Buchung."
+      }
+    }
+  },
+  "whatsapp": {
+    "title": "Flüge über WhatsApp suchen",
+    "description": "Schreiben Sie uns einfach Ihre Reisedaten und erhalten Sie sofort die besten Flugpreise - direkt auf WhatsApp.",
+    "features": {
+      "fast": "Antwort in Sekunden",
+      "easy": "Keine App erforderlich",
+      "free": "Völlig kostenlos"
+    },
+    "cta": "Gespräch starten",
+    "chat": {
+      "userMessage1": "Hallo! Ich möchte Flüge suchen.",
+      "botGreeting": "Hallo! 👋\n Ich bin Aviopikas Assistent und helfe Ihnen, günstige Flüge zu finden.\n Sprache wählen\n1️⃣ 🇦🇱 Albanisch\n2️⃣ 🇬🇧 Englisch\n3️⃣ 🇩🇪 Deutsch",
+      "userLanguage": "Deutsch",
+      "botWelcome": "*Willkommen bei Aviopika!* ✈️\nFinden Sie die günstigsten Flüge für Sie.\n*So funktioniert es:*\n\n• \"Düsseldorf Pristina morgen\"\n• \"DUS PRN 15.03-22.03\" (Hin- und Rückflug)\n\nWohin möchten Sie reisen?",
+      "userFlightSearch": "PRISTINA - MÜNCHEN 10.01",
+      "botFlightResults": "*Pristina → München*\n10. Januar 2026\n---\n1. *KosovaFly* - 219,00 EUR \n ⭐ Bester Preis\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219,00 EUR \n 🚀 Schnellster\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219,00 EUR\n11:30 → 13:15 (1h 45m)\n+3 weitere Flüge\n---\nAlle Ergebnisse unter https://www.aviopika.al \n\nAviopika ist ein unabhängiger Preisvergleich. Wir verkaufen keine Flugtickets. Alle Preise ohne Gewähr. Weiterleitung zur Anbieterseite.",
+      "inputPlaceholder": "Geben Sie Ihre Nachricht ein..."
+    }
+  },
+  "about": {
+    "title": "Über uns",
+    "description": "Erfahren Sie mehr über die Krahaso.co-Plattform und unsere Mission",
+    "mission": {
+      "title": "Unsere Mission",
+      "description": "Krahaso.co wurde mit dem Ziel gegründet, den Buchungsprozess für Flüge und Autovermietungen für Reisende aus dem Kosovo und der Diaspora zu vereinfachen. Wir glauben, dass jeder einfachen und transparenten Zugang zu den besten Marktangeboten haben sollte."
+    },
+    "whatWeOffer": {
+      "title": "Was wir anbieten",
+      "item1": "Preisvergleich von verifizierten Partnern",
+      "item2": "Vollständige Transparenz bei Preisen und Bedingungen",
+      "item3": "Einfacher und sicherer Buchungsprozess",
+      "item4": "24/7 Support für unsere Kunden"
+    },
+    "whyChooseUs": {
+      "title": "Warum uns wählen?",
+      "description": "Wir arbeiten nur mit vertrauenswürdigen und verifizierten Unternehmen. Die Preise, die wir anzeigen, sind die, die Sie zahlen werden, ohne Überraschungen oder versteckte Gebühren. Unsere Plattform ist mit moderner Technologie für eine schnelle und reibungslose Erfahrung gebaut."
+    },
+    "cta": {
+      "title": "Bereit loszulegen?",
+      "description": "Beginnen Sie, Flüge und Autovermietungen zu vergleichen, um die besten Angebote zu finden. Unsere Plattform hilft Ihnen, die wettbewerbsfähigsten Preise von verifizierten Partnern zu finden."
+    },
+    "stats": {
+      "partners": {
+        "value": "20+",
+        "label": "Verifizierte Partner"
+      },
+      "searches": {
+        "value": "1,000+",
+        "label": "Tägliche Suchen"
+      },
+      "support": {
+        "value": "24/7",
+        "label": "Kundensupport"
+      }
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Wir freuen uns, von Ihnen zu hören",
+    "description": "Kontaktieren Sie uns bei Fragen oder Hilfe",
+    "info": {
+      "title": "Kontaktinformationen",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "hours": "Öffnungszeiten",
+      "hoursDesc": "Montag - Freitag ( 08:00 - 17:00 )"
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Ihr Name",
+      "email": "E-Mail",
+      "subject": "Betreff",
+      "subjectPlaceholder": "Betreff der Nachricht",
+      "message": "Nachricht",
+      "messagePlaceholder": "Schreiben Sie Ihre Nachricht hier...",
+      "submit": "Nachricht senden",
+      "errorRequired": "Bitte füllen Sie alle Pflichtfelder aus",
+      "success": "Nachricht erfolgreich gesendet",
+      "error": "Fehler beim Senden der Nachricht"
+    }
+  },
+  "footer": {
+    "description": "Krahaso.co hilft Ihnen, Preise für Flüge und Autovermietungen im Kosovo mit transparenten Preisen und verifizierten Partnern zu vergleichen.",
+    "quickLinks": "Schnelllinks",
+    "aboutUs": "Über uns",
+    "contact": "Kontakt",
+    "howItWorks": "Wie es funktioniert",
+    "popularLocations": "Beliebte Standorte",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "copyright": "© {year} Krahaso.co. Alle Rechte vorbehalten."
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "subtitle": "Datenschutzerklärung",
+    "description": "Wie wir Ihre Daten schützen und verwenden",
+    "section1": {
+      "title": "1. Informationen, die wir sammeln",
+      "content": "Wir sammeln Informationen, die Sie bereitstellen, wenn Sie sich registrieren, Anfragen stellen oder mit uns kommunizieren. Dies umfasst Name, E-Mail, Telefonnummer und Dokumente, die Sie hochladen."
+    },
+    "section2": {
+      "title": "2. Wie wir Informationen verwenden",
+      "content": "Ihre Daten werden verwendet, um Anfragen zu bearbeiten, unseren Service zu verbessern und mit Ihnen zu kommunizieren."
+    },
+    "intro": {
+      "kontakt": "Kontaktieren Sie uns – Kernseite.",
+      "privacy": "Datenschutzerklärung – Kernseite.",
+      "terms": "Nutzungsbedingungen – Kernseite."
     }
   }
 }

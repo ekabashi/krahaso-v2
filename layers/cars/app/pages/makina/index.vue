@@ -300,10 +300,10 @@ useHead(() => ({
 
       <!-- FAQ (only on landing) -->
       <UPageSection
-        :title="t('faq.title')"
-        :description="t('faq.description')"
+        :title="t('cars.faq.title')"
+        :description="t('cars.faq.description')"
       >
-        <div class="w-full px-4 sm:px-6 lg:w-3xl">
+        <div class="w-full lg:w-3xl mx-auto px-4 sm:px-6">
           <UAccordion :items="faqs" />
         </div>
       </UPageSection>

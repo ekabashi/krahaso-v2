@@ -18,21 +18,21 @@ const localePath = useLocalePath()
           variant="ghost"
           size="sm"
         >
-          {{ $t('shared.nav.home') }}
+          {{ $t('nav.home') }}
         </ULink>
         <ULink
           :to="localePath('/flights')"
           variant="ghost"
           size="sm"
         >
-          {{ $t('shared.nav.flights') }}
+          {{ $t('nav.flights') }}
         </ULink>
         <ULink
           :to="localePath('/makina')"
           variant="ghost"
           size="sm"
         >
-          {{ $t('shared.nav.cars') }}
+          {{ $t('nav.cars') }}
         </ULink>
       </div>
     </template>

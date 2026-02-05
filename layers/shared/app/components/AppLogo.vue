@@ -6,7 +6,7 @@ const localePath = useLocalePath()
   <NuxtLink
     :to="localePath('/')"
     class="flex items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer"
-    :aria-label="$t('shared.nav.home')"
+    :aria-label="$t('nav.home')"
   >
     <img
       src="/logoRed.png"

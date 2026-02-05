@@ -109,12 +109,12 @@ onUnmounted(() => {
           <span class="text-primary-400">{{ props.titleHighlight }}</span>
         </template>
         <template v-else>
-          {{ $t('hero.title') }} <br>
+          {{ $t('landing.hero.title') }} <br>
           <span class="text-primary-400">{{ $t('hero.titleHighlight') }}</span>
         </template>
       </h1>
       <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-        {{ props.description || $t('hero.description') }}
+        {{ props.description || $t('landing.hero.description') }}
       </p>
     </div>
   </div>

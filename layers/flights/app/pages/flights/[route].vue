@@ -275,13 +275,13 @@ useHead(() => {
           {
             '@type': 'ListItem',
             'position': 1,
-            'name': t('shared.nav.home'),
+            'name': t('nav.home'),
             'item': 'https://krahaso.co'
           },
           {
             '@type': 'ListItem',
             'position': 2,
-            'name': t('shared.nav.flights'),
+            'name': t('nav.flights'),
             'item': 'https://krahaso.co/fluturime'
           },
           {
@@ -304,8 +304,8 @@ useHead(() => {
     <UContainer class="py-8">
       <UBreadcrumb
         :items="[
-          { label: $t('shared.nav.home'), to: '/' },
-          { label: $t('shared.nav.flights'), to: '/flights' },
+          { label: $t('nav.home'), to: '/' },
+          { label: $t('nav.flights'), to: '/flights' },
           { label: routeData ? `${routeData.origin} → ${routeData.destination}` : '' }
         ]"
         class="mb-6"
@@ -581,8 +581,8 @@ useHead(() => {
     <UContainer class="py-8">
       <!-- FAQ Section -->
       <UPageSection
-        :title="t('faq.title')"
-        :description="t('faq.description')"
+        :title="t('flights.faq.title')"
+        :description="t('flights.faq.description')"
       >
         <div class="w-full lg:w-3xl mx-auto px-4 sm:px-6">
           <UAccordion :items="faqs" />
@@ -592,8 +592,8 @@ useHead(() => {
       <!-- Related Routes Section -->
       <UPageSection
         v-if="relatedRoutes.length > 0"
-        :title="t('routes.related')"
-        :description="t('routes.relatedDescription')"
+        :title="t('flights.routes.related')"
+        :description="t('flights.routes.relatedDescription')"
         class="mb-12"
       >
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-12">
@@ -643,7 +643,7 @@ useHead(() => {
                     <span class="text-sm font-medium text-primary">
                       {{ relatedRoute.from }} → {{ relatedRoute.to }}
                     </span>
-                    <span class="text-xs text-gray-400 mt-0.5">{{ t('routes.compare') }}</span>
+                    <span class="text-xs text-gray-400 mt-0.5">{{ t('flights.routes.compare') }}</span>
                   </div>
 
                   <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
