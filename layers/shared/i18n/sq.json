@@ -233,6 +233,27 @@
       "title": "Gati për të Rezervuar?",
       "description": "Pas fluturimit, rezervo makinën me qera për të kompletuar udhëtimin tuaj",
       "rentCar": "Rezervo makinë në Aeroport"
+    },
+    "search": {
+      "roundtrip": "Vajtje-Ardhje",
+      "oneway": "Vetëm Vajtje",
+      "from": "Nga",
+      "to": "Në",
+      "departureDate": "Data e Nisjes",
+      "returnDate": "Data e Kthimit",
+      "passengers": "Pasagjerët",
+      "adults": "Të rritur",
+      "children": "Fëmijë",
+      "infants": "Foshnja",
+      "adultsAge": "12+ vjeç",
+      "childrenAge": "2-11 vjeç",
+      "infantsAge": "0-2 vjeç",
+      "maxPassengers": "Maksimumi 9 pasagjerë",
+      "selectDate": "Zgjidhni datën",
+      "swapAirports": "Ndërro aeroportet",
+      "flexibleLabel": "Data fleksibël",
+      "flexibleHint": "Kërko fluturime me datë fleksibël për të gjetur çmime më të mira",
+      "searchFlights": "Kërko Fluturime"
     }
   },
   "cars": {

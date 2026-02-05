@@ -32,8 +32,8 @@ const passengersOpen = ref(false)
 const minDate = computed(() => today(getLocalTimeZone()))
 
 const tripTypes = computed(() => [
-  { label: t('search.roundtrip'), value: 'roundtrip' },
-  { label: t('search.oneway'), value: 'oneway' }
+  { label: t('flights.search.roundtrip'), value: 'roundtrip' },
+  { label: t('flights.search.oneway'), value: 'oneway' }
 ])
 
 const totalPassengers = computed(() => {
@@ -44,10 +44,10 @@ const totalPassengers = computed(() => {
 const passengerLabel = computed(() => {
   const p = searchState.value.passengers
   const parts: string[] = []
-  if (p.adults > 0) parts.push(`${p.adults} ${t('search.adults').slice(0, 3)}.`)
-  if (p.children > 0) parts.push(`${p.children} ${t('search.children').slice(0, 4)}.`)
-  if (p.infants > 0) parts.push(`${p.infants} ${t('search.infants').slice(0, 4)}`)
-  return parts.join(', ') || `1 ${t('search.adults').slice(0, 3)}.`
+  if (p.adults > 0) parts.push(`${p.adults} ${t('flights.search.adults').slice(0, 3)}.`)
+  if (p.children > 0) parts.push(`${p.children} ${t('flights.search.children').slice(0, 4)}.`)
+  if (p.infants > 0) parts.push(`${p.infants} ${t('flights.search.infants').slice(0, 4)}`)
+  return parts.join(', ') || `1 ${t('flights.search.adults').slice(0, 3)}.`
 })
 
 function incrementPassenger(type: 'adults' | 'children' | 'infants') {
@@ -66,7 +66,7 @@ function decrementPassenger(type: 'adults' | 'children' | 'infants') {
 }
 
 function formatDate(date: CalendarDate | null): string {
-  if (!date) return t('search.selectDate')
+  if (!date) return t('flights.search.selectDate')
   return df.value.format(date.toDate(getLocalTimeZone()))
 }
 
@@ -140,12 +140,12 @@ async function onSubmit() {
       >
         <div class="w-full sm:flex-1 space-y-2">
           <label class="block text-sm font-semibold text-gray-700 mb-1.5">
-            {{ $t('search.from') }}
+            {{ $t('flights.search.from') }}
           </label>
           <ClientOnly>
             <AirportSelect
               v-model="searchState.origin"
-              :placeholder="$t('search.from')"
+              :placeholder="$t('flights.search.from')"
               icon="i-lucide-plane-takeoff"
             />
             <template #fallback>
@@ -159,7 +159,7 @@ async function onSubmit() {
           color="neutral"
           size="md"
           class="exclude-from-taller mt-2 p-0 shrink-0 h-10 w-10 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 disabled:opacity-40 pl-2 self-center sm:hidden"
-          :aria-label="$t('search.swapAirports')"
+          :aria-label="$t('flights.search.swapAirports')"
           :disabled="!searchState.origin && !searchState.destination"
           @click="swapAirports"
         >
@@ -174,19 +174,19 @@ async function onSubmit() {
           color="neutral"
           size="md"
           class="exclude-from-taller mt-6 shrink-0 h-10 w-10 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 disabled:opacity-40 pl-2 self-center hidden sm:flex"
-          :aria-label="$t('search.swapAirports')"
+          :aria-label="$t('flights.search.swapAirports')"
           :disabled="!searchState.origin && !searchState.destination"
           @click="swapAirports"
         />
 
         <div class="w-full sm:flex-1 space-y-2">
           <label class="block text-sm font-semibold text-gray-700 mb-1.5">
-            {{ $t('search.to') }}
+            {{ $t('flights.search.to') }}
           </label>
           <ClientOnly>
             <AirportSelect
               v-model="searchState.destination"
-              :placeholder="$t('search.to')"
+              :placeholder="$t('flights.search.to')"
               icon="i-lucide-plane-landing"
             />
             <template #fallback>
@@ -199,7 +199,7 @@ async function onSubmit() {
       <div class="form-controls-taller flex flex-col gap-4 sm:flex-row sm:items-end">
         <div class="space-y-2">
           <label class="block text-sm font-semibold text-gray-700 mb-1.5">
-            {{ $t('search.departureDate') }}
+            {{ $t('flights.search.departureDate') }}
           </label>
           <ClientOnly>
             <UPopover v-model:open="departureDateOpen">
@@ -234,7 +234,7 @@ async function onSubmit() {
           class="space-y-2"
         >
           <label class="block text-sm font-semibold text-gray-700 mb-1.5">
-            {{ $t('search.returnDate') }}
+            {{ $t('flights.search.returnDate') }}
           </label>
           <ClientOnly>
             <UPopover v-model:open="returnDateOpen">
@@ -264,7 +264,7 @@ async function onSubmit() {
         </div>
         <div class="space-y-2">
           <label class="block text-sm font-semibold text-gray-700 mb-1.5">
-            {{ $t('search.passengers') }}
+            {{ $t('flights.search.passengers') }}
           </label>
           <ClientOnly>
             <UPopover v-model:open="passengersOpen">
@@ -282,10 +282,10 @@ async function onSubmit() {
                   <div class="flex items-center justify-between">
                     <div>
                       <p class="font-medium">
-                        {{ $t('search.adults') }}
+                        {{ $t('flights.search.adults') }}
                       </p>
                       <p class="text-xs text-muted">
-                        {{ $t('search.adultsAge') }}
+                        {{ $t('flights.search.adultsAge') }}
                       </p>
                     </div>
                     <div class="flex items-center gap-2">
@@ -312,10 +312,10 @@ async function onSubmit() {
                   <div class="flex items-center justify-between">
                     <div>
                       <p class="font-medium">
-                        {{ $t('search.children') }}
+                        {{ $t('flights.search.children') }}
                       </p>
                       <p class="text-xs text-muted">
-                        {{ $t('search.childrenAge') }}
+                        {{ $t('flights.search.childrenAge') }}
                       </p>
                     </div>
                     <div class="flex items-center gap-2">
@@ -342,10 +342,10 @@ async function onSubmit() {
                   <div class="flex items-center justify-between">
                     <div>
                       <p class="font-medium">
-                        {{ $t('search.infants') }}
+                        {{ $t('flights.search.infants') }}
                       </p>
                       <p class="text-xs text-muted">
-                        {{ $t('search.infantsAge') }}
+                        {{ $t('flights.search.infantsAge') }}
                       </p>
                     </div>
                     <div class="flex items-center gap-2">
@@ -370,7 +370,7 @@ async function onSubmit() {
                   </div>
 
                   <p class="text-xs text-muted">
-                    {{ $t('search.maxPassengers') }}
+                    {{ $t('flights.search.maxPassengers') }}
                   </p>
                 </div>
               </template>
@@ -388,9 +388,9 @@ async function onSubmit() {
           >
             <UCheckbox
               v-model="searchState.flexibleDates"
-              :label="$t('search.flexibleLabel')"
+              :label="$t('flights.search.flexibleLabel')"
             />
-            <UTooltip :text="$t('search.flexibleHint')">
+            <UTooltip :text="$t('flights.search.flexibleHint')">
               <UIcon
                 name="i-lucide-info"
                 class="size-4 text-muted"
@@ -414,7 +414,7 @@ async function onSubmit() {
               icon="i-lucide-search"
               class="whitespace-nowrap h-11 w-full md:w-auto"
             >
-              {{ $t('search.searchFlights') }}
+              {{ $t('flights.search.searchFlights') }}
             </UButton>
             <template #fallback>
               <USkeleton class="h-10 w-32 rounded-md" />

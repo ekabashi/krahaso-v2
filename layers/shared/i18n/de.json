@@ -233,6 +233,27 @@
       "title": "Bereit zu buchen?",
       "description": "Buche danach den Mietwagen und komplettiere deine Reise",
       "rentCar": "Mietwagen am Flughafen buchen"
+    },
+    "search": {
+      "roundtrip": "Hin- und Rückflug",
+      "oneway": "Nur Hinflug",
+      "from": "Von",
+      "to": "Nach",
+      "departureDate": "Abflugdatum",
+      "returnDate": "Rückflugdatum",
+      "passengers": "Passagiere",
+      "adults": "Erwachsene",
+      "children": "Kinder",
+      "infants": "Säuglinge",
+      "adultsAge": "12+ Jahre",
+      "childrenAge": "2-11 Jahre",
+      "infantsAge": "0-2 Jahre",
+      "maxPassengers": "Maximal 9 Passagiere",
+      "selectDate": "Datum wählen",
+      "swapAirports": "Flughäfen tauschen",
+      "flexibleLabel": "Flexible Daten",
+      "flexibleHint": "Suche Flüge mit flexiblen Daten, um bessere Preise zu finden",
+      "searchFlights": "Flüge suchen"
     }
   },
   "cars": {
@@ -338,13 +359,20 @@
     }
   },
   "locations": {
+    "popular": {
+      "title": "Beliebte Standorte",
+      "description": "Wählen Sie aus den beliebtesten Standorten für die Abholung",
+      "airport": "Flughafen Prishtina",
+      "prishtine": "Prishtina",
+      "prizren": "Prizren",
+      "peje": "Peja"
+    },
     "airport": { "description": "Abholung direkt am Flughafen. Buchen Sie Ihr Auto und holen Sie es am Flughafeneingang ab." },
     "city": { "description": "Buchen Sie Ihr Auto nach Wunsch und holen Sie es am gewählten Ort ab. Maximale Flexibilität mit vielen Standorten und guten Preisen." },
     "pickup": "Abholung",
     "type": "Stadt",
     "available": "Verfügbar",
     "notAvailable": "Nicht verfügbar",
-    "popular": { "title": "Beliebte Standorte", "description": "Wählen Sie aus den beliebtesten Standorten für die Abholung" },
     "verified": "Partnerschaft",
     "partners": "Verifizierte Partner",
     "related": "Ähnliche Standorte",
@@ -378,7 +406,15 @@
     "nav": {
       "home": "Startseite",
       "flights": "Flüge",
-      "cars": "Autos"
+      "flightsDesc": "Fragen und Antworten zu Flügen",
+      "cars": "Autovermietung",
+      "carsDesc": "Fragen und Antworten zur Autovermietung",
+      "booking": "Buchung",
+      "bookingDesc": "Fragen zum Buchungsprozess",
+      "documents": "Dokumente",
+      "documentsDesc": "Fragen zu erforderlichen Dokumenten",
+      "payment": "Zahlung",
+      "paymentDesc": "Fragen zu Zahlungsmethoden"
     },
     "footer": {
       "copyright": "© {year} Krahaso.co. Alle Rechte vorbehalten."
@@ -387,6 +423,38 @@
       "loading": "Lädt...",
       "error": "Fehler",
       "noResults": "Keine Ergebnisse gefunden"
+    },
+    "cta": {
+      "title": "Bereit, Geld zu sparen?",
+      "description": "Entdecken Sie unsere Angebote und buchen Sie jetzt, um von exklusiven Rabatten zu profitieren",
+      "flights": "Flugangebote ansehen",
+      "cars": "Autoangebote ansehen"
+    },
+    "items": {
+      "flight1": {
+        "title": "20% Rabatt auf Flüge",
+        "description": "Sparen Sie 20% bei ausgewählten Flügen nach und vom Kosovo."
+      },
+      "car1": {
+        "title": "15% Rabatt auf Autovermietung",
+        "description": "Sparen Sie 15% bei Autovermietungsbuchungen im Kosovo."
+      },
+      "combo1": {
+        "title": "Kombipaket: Flug + Auto",
+        "description": "Sparen Sie 25%, wenn Sie Flug und Autovermietung zusammen buchen."
+      },
+      "earlyBird": {
+        "title": "Early Bird: 30% Rabatt",
+        "description": "Buchen Sie 3+ Monate im Voraus und sparen Sie bis zu 30% bei Flügen."
+      },
+      "weekend": {
+        "title": "Wochenendangebot",
+        "description": "20% Rabatt auf Autovermietungsbuchungen am Wochenende."
+      },
+      "lastMinute": {
+        "title": "Last-Minute-Angebote",
+        "description": "15% Rabatt auf Last-Minute-Flugbuchungen."
+      }
     },
     "errors": {
       "notFound": "Seite nicht gefunden.",
@@ -399,6 +467,134 @@
       "kontakt": "Kontakt",
       "privacy": "Datenschutz",
       "terms": "Nutzungsbedingungen"
+    },
+    "intro": {
+      "kontakt": "Kontaktieren Sie uns – Kernseite.",
+      "privacy": "Datenschutzerklärung – Kernseite.",
+      "terms": "Nutzungsbedingungen – Kernseite."
+    }
+  },
+  "howItWorks": {
+    "title": "Wie es funktioniert",
+    "description": "Drei einfache Schritte, um die besten Flüge zu finden",
+    "steps": {
+      "search": {
+        "title": "Flugdetails festlegen",
+        "description": "Wählen Sie Abflug, Ziel und Reisedatum."
+      },
+      "compare": {
+        "title": "Angebote vergleichen",
+        "description": "Entdecken Sie die besten Angebote von unseren vertrauenswürdigen Partnern."
+      },
+      "book": {
+        "title": "Zum Partner weiterleiten",
+        "description": "Wählen Sie das Angebot und gelangen Sie mit einem Klick zur offiziellen Seite des Partners zur Buchung."
+      }
+    }
+  },
+  "whatsapp": {
+    "title": "Flüge über WhatsApp suchen",
+    "description": "Schreiben Sie uns einfach Ihre Reisedaten und erhalten Sie sofort die besten Flugpreise - direkt auf WhatsApp.",
+    "features": {
+      "fast": "Antwort in Sekunden",
+      "easy": "Keine App erforderlich",
+      "free": "Völlig kostenlos"
+    },
+    "cta": "Gespräch starten",
+    "chat": {
+      "userMessage1": "Hallo! Ich möchte Flüge suchen.",
+      "botGreeting": "Hallo! 👋\n Ich bin Aviopikas Assistent und helfe Ihnen, günstige Flüge zu finden.\n Sprache wählen\n1️⃣ 🇦🇱 Albanisch\n2️⃣ 🇬🇧 Englisch\n3️⃣ 🇩🇪 Deutsch",
+      "userLanguage": "Deutsch",
+      "botWelcome": "*Willkommen bei Aviopika!* ✈️\nFinden Sie die günstigsten Flüge für Sie.\n*So funktioniert es:*\n\n• \"Düsseldorf Pristina morgen\"\n• \"DUS PRN 15.03-22.03\" (Hin- und Rückflug)\n\nWohin möchten Sie reisen?",
+      "userFlightSearch": "PRISTINA - MÜNCHEN 10.01",
+      "botFlightResults": "*Pristina → München*\n10. Januar 2026\n---\n1. *KosovaFly* - 219,00 EUR \n ⭐ Bester Preis\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219,00 EUR \n 🚀 Schnellster\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219,00 EUR\n11:30 → 13:15 (1h 45m)\n+3 weitere Flüge\n---\nAlle Ergebnisse unter https://www.aviopika.al \n\nAviopika ist ein unabhängiger Preisvergleich. Wir verkaufen keine Flugtickets. Alle Preise ohne Gewähr. Weiterleitung zur Anbieterseite.",
+      "inputPlaceholder": "Geben Sie Ihre Nachricht ein..."
+    }
+  },
+  "about": {
+    "title": "Über uns",
+    "description": "Erfahren Sie mehr über die Krahaso.co-Plattform und unsere Mission",
+    "mission": {
+      "title": "Unsere Mission",
+      "description": "Krahaso.co wurde mit dem Ziel gegründet, den Buchungsprozess für Flüge und Autovermietungen für Reisende aus dem Kosovo und der Diaspora zu vereinfachen. Wir glauben, dass jeder einfachen und transparenten Zugang zu den besten Marktangeboten haben sollte."
+    },
+    "whatWeOffer": {
+      "title": "Was wir anbieten",
+      "item1": "Preisvergleich von verifizierten Partnern",
+      "item2": "Vollständige Transparenz bei Preisen und Bedingungen",
+      "item3": "Einfacher und sicherer Buchungsprozess",
+      "item4": "24/7 Support für unsere Kunden"
+    },
+    "whyChooseUs": {
+      "title": "Warum uns wählen?",
+      "description": "Wir arbeiten nur mit vertrauenswürdigen und verifizierten Unternehmen. Die Preise, die wir anzeigen, sind die, die Sie zahlen werden, ohne Überraschungen oder versteckte Gebühren. Unsere Plattform ist mit moderner Technologie für eine schnelle und reibungslose Erfahrung gebaut."
+    },
+    "cta": {
+      "title": "Bereit loszulegen?",
+      "description": "Beginnen Sie, Flüge und Autovermietungen zu vergleichen, um die besten Angebote zu finden. Unsere Plattform hilft Ihnen, die wettbewerbsfähigsten Preise von verifizierten Partnern zu finden."
+    },
+    "stats": {
+      "partners": {
+        "value": "20+",
+        "label": "Verifizierte Partner"
+      },
+      "searches": {
+        "value": "1,000+",
+        "label": "Tägliche Suchen"
+      },
+      "support": {
+        "value": "24/7",
+        "label": "Kundensupport"
+      }
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Wir freuen uns, von Ihnen zu hören",
+    "description": "Kontaktieren Sie uns bei Fragen oder Hilfe",
+    "info": {
+      "title": "Kontaktinformationen",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "hours": "Öffnungszeiten",
+      "hoursDesc": "Montag - Freitag ( 08:00 - 17:00 )"
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Ihr Name",
+      "email": "E-Mail",
+      "subject": "Betreff",
+      "subjectPlaceholder": "Betreff der Nachricht",
+      "message": "Nachricht",
+      "messagePlaceholder": "Schreiben Sie Ihre Nachricht hier...",
+      "submit": "Nachricht senden",
+      "errorRequired": "Bitte füllen Sie alle Pflichtfelder aus",
+      "success": "Nachricht erfolgreich gesendet",
+      "error": "Fehler beim Senden der Nachricht"
+    }
+  },
+  "footer": {
+    "description": "Krahaso.co hilft Ihnen, Preise für Flüge und Autovermietungen im Kosovo mit transparenten Preisen und verifizierten Partnern zu vergleichen.",
+    "quickLinks": "Schnelllinks",
+    "aboutUs": "Über uns",
+    "contact": "Kontakt",
+    "howItWorks": "Wie es funktioniert",
+    "popularLocations": "Beliebte Standorte",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "copyright": "© {year} Krahaso.co. Alle Rechte vorbehalten."
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "subtitle": "Datenschutzerklärung",
+    "description": "Wie wir Ihre Daten schützen und verwenden",
+    "section1": {
+      "title": "1. Informationen, die wir sammeln",
+      "content": "Wir sammeln Informationen, die Sie bereitstellen, wenn Sie sich registrieren, Anfragen stellen oder mit uns kommunizieren. Dies umfasst Name, E-Mail, Telefonnummer und Dokumente, die Sie hochladen."
+    },
+    "section2": {
+      "title": "2. Wie wir Informationen verwenden",
+      "content": "Ihre Daten werden verwendet, um Anfragen zu bearbeiten, unseren Service zu verbessern und mit Ihnen zu kommunizieren."
     },
     "intro": {
       "kontakt": "Kontaktieren Sie uns – Kernseite.",

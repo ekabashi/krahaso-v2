@@ -233,6 +233,27 @@
       "title": "Ready to Book?",
       "description": "After your flight, reserve a car rental to complete your trip",
       "rentCar": "Book Airport Car"
+    },
+    "search": {
+      "roundtrip": "Round Trip",
+      "oneway": "One Way",
+      "from": "From",
+      "to": "To",
+      "departureDate": "Departure Date",
+      "returnDate": "Return Date",
+      "passengers": "Passengers",
+      "adults": "Adults",
+      "children": "Children",
+      "infants": "Infants",
+      "adultsAge": "12+ years",
+      "childrenAge": "2-11 years",
+      "infantsAge": "0-2 years",
+      "maxPassengers": "Maximum 9 passengers",
+      "selectDate": "Select date",
+      "swapAirports": "Swap airports",
+      "flexibleLabel": "Flexible dates",
+      "flexibleHint": "Search flights with flexible dates to find better prices",
+      "searchFlights": "Search Flights"
     }
   },
   "cars": {
@@ -338,13 +359,20 @@
     }
   },
   "locations": {
+    "popular": {
+      "title": "Popular Locations",
+      "description": "Choose from the most popular locations for car pickup",
+      "airport": "Prishtina Airport",
+      "prishtine": "Prishtina",
+      "prizren": "Prizren",
+      "peje": "Peja"
+    },
     "airport": { "description": "Direct pickup at the airport. Book your car and collect it at the airport entrance." },
     "city": { "description": "Book your car to your preference and collect it at your chosen location. Maximum flexibility with multiple locations and competitive prices." },
     "pickup": "Pickup",
     "type": "City",
     "available": "Available",
     "notAvailable": "Not available",
-    "popular": { "title": "Popular Locations", "description": "Choose from the most popular locations for car pickup" },
     "verified": "Partnership",
     "partners": "Verified partners",
     "related": "Related Locations",
@@ -378,7 +406,15 @@
     "nav": {
       "home": "Home",
       "flights": "Flights",
-      "cars": "Cars"
+      "flightsDesc": "Questions and answers about flights",
+      "cars": "Car Rental",
+      "carsDesc": "Questions and answers about car rental",
+      "booking": "Booking",
+      "bookingDesc": "Questions about the booking process",
+      "documents": "Documents",
+      "documentsDesc": "Questions about required documents",
+      "payment": "Payment",
+      "paymentDesc": "Questions about payment methods"
     },
     "footer": {
       "copyright": "© {year} Krahaso.co. All rights reserved."
@@ -387,6 +423,38 @@
       "loading": "Loading...",
       "error": "Error",
       "noResults": "No results found"
+    },
+    "cta": {
+      "title": "Ready to Save Money?",
+      "description": "Explore our offers and book now to benefit from exclusive discounts",
+      "flights": "View Flight Offers",
+      "cars": "View Car Offers"
+    },
+    "items": {
+      "flight1": {
+        "title": "20% Discount on Flights",
+        "description": "Save 20% on selected flights to and from Kosovo."
+      },
+      "car1": {
+        "title": "15% Discount on Car Rental",
+        "description": "Save 15% on car rental bookings in Kosovo."
+      },
+      "combo1": {
+        "title": "Combo Package: Flight + car",
+        "description": "Save 25% when you book a flight and car rental together."
+      },
+      "earlyBird": {
+        "title": "Early Bird: 30% Discount",
+        "description": "Book 3+ months in advance and save up to 30% on flights."
+      },
+      "weekend": {
+        "title": "Weekend Offer",
+        "description": "20% discount on car rental bookings on weekends."
+      },
+      "lastMinute": {
+        "title": "Last Minute Deals",
+        "description": "15% discount on last minute flight bookings."
+      }
     },
     "errors": {
       "notFound": "Page not found.",
@@ -399,6 +467,134 @@
       "kontakt": "Contact",
       "privacy": "Privacy",
       "terms": "Terms"
+    },
+    "intro": {
+      "kontakt": "Contact us – core page.",
+      "privacy": "Privacy policy – core page.",
+      "terms": "Terms of use – core page."
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "description": "Three simple steps to find the best flights",
+    "steps": {
+      "search": {
+        "title": "Set Flight Details",
+        "description": "Choose departure, destination and travel date."
+      },
+      "compare": {
+        "title": "Compare Offers",
+        "description": "Discover the best offers from our trusted partners."
+      },
+      "book": {
+        "title": "Continue to Partner",
+        "description": "Choose the offer and with one click continue to the partner's official page for booking."
+      }
+    }
+  },
+  "whatsapp": {
+    "title": "Search Flights via WhatsApp",
+    "description": "Simply write us your travel dates and get the best flight prices instantly - directly on WhatsApp.",
+    "features": {
+      "fast": "Response in seconds",
+      "easy": "No app needed",
+      "free": "Completely free"
+    },
+    "cta": "Start conversation",
+    "chat": {
+      "userMessage1": "Hello! I would like to search for flights.",
+      "botGreeting": "Hello! 👋\n I am Aviopika's Assistant and I help you find cheap flights.\n Choose language\n1️⃣ 🇦🇱 Albanian\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
+      "userLanguage": "English",
+      "botWelcome": "*Welcome to Aviopika!* ✈️\nFind the cheapest flights for you.\n*How it works:*\n\n• \"Düsseldorf Pristina tomorrow\"\n• \"DUS PRN 15.03-22.03\" (Round trip)\n\nWhere would you like to go?",
+      "userFlightSearch": "PRISTINA - MUNICH 10.01",
+      "botFlightResults": "*Pristina → Munich*\nJanuary 10, 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Best price\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Fastest\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 more flights\n---\nSee all results at https://www.aviopika.al \n\nAviopika is an independent price comparison. We do not sell flight tickets. All prices without guarantee. Redirect to provider's page.",
+      "inputPlaceholder": "Type your message..."
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Learn more about the Krahaso.co platform and our mission",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Krahaso.co was born with the goal of simplifying the flight and car rental booking process for travelers from Kosovo and the diaspora. We believe that everyone should have easy and transparent access to the best market offers."
+    },
+    "whatWeOffer": {
+      "title": "What We Offer",
+      "item1": "Price comparison from verified partners",
+      "item2": "Total transparency in prices and conditions",
+      "item3": "Simple and secure booking process",
+      "item4": "24/7 support for our customers"
+    },
+    "whyChooseUs": {
+      "title": "Why Choose Us?",
+      "description": "We work only with trusted and verified companies. The prices we show are what you will pay, with no surprises or hidden fees. Our platform is built with modern technology for a fast and smooth experience."
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Start comparing flights and car rentals to find the best offers. Our platform helps you find the most competitive prices from verified partners."
+    },
+    "stats": {
+      "partners": {
+        "value": "20+",
+        "label": "Verified partners"
+      },
+      "searches": {
+        "value": "1,000+",
+        "label": "Daily searches"
+      },
+      "support": {
+        "value": "24/7",
+        "label": "Customer support"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "We'd love to hear from you",
+    "description": "Contact us for any questions or help",
+    "info": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Hours",
+      "hoursDesc": "Monday - Friday ( 08:00 - 17:00 )"
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "subject": "Subject",
+      "subjectPlaceholder": "Message subject",
+      "message": "Message",
+      "messagePlaceholder": "Write your message here...",
+      "submit": "Send message",
+      "errorRequired": "Please fill in all required fields",
+      "success": "Message sent successfully",
+      "error": "Error sending message"
+    }
+  },
+  "footer": {
+    "description": "Krahaso.co helps you compare prices for flights and car rentals in Kosovo with transparent prices and verified partners.",
+    "quickLinks": "Quick Links",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "howItWorks": "How It Works",
+    "popularLocations": "Popular Locations",
+    "privacy": "Privacy",
+    "terms": "Terms of Use",
+    "copyright": "© {year} Krahaso.co. All rights reserved."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "Privacy Policy",
+    "description": "How we protect and use your data",
+    "section1": {
+      "title": "1. Information We Collect",
+      "content": "We collect information you provide when you register, make requests, or communicate with us. This includes name, email, phone number and documents you upload."
+    },
+    "section2": {
+      "title": "2. How We Use Information",
+      "content": "Your data is used to process requests, improve our service, and to communicate with you."
     },
     "intro": {
       "kontakt": "Contact us – core page.",
