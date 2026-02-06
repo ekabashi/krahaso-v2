@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { Flight } from '~/types/flight'
+import { useFlightAnalytics } from '../composables/useFlightAnalytics'
 
 const { locale } = useI18n()
-const { trackFlightClick, trackProviderRedirect } = useAnalytics()
+const { trackFlightClick, trackProviderRedirect } = useFlightAnalytics()
 
 const props = defineProps<{
   flight: Flight

@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { useAddressStore } from '../stores/addressStore'
-import type { CityOption } from '~/types'
+import type { CityOption } from '../types'
 
 const { t, locale } = useI18n()
 const { formatDate } = useFormatDate()
 const route = useRoute()
 const router = useRouter()
 const localePath = useLocalePath()
+const { trackSearchSubmitted } = useAnalytics()
 const addressStore = useAddressStore()
 const { getLocationByKey } = useAvailableLocations()
 
@@ -203,6 +204,19 @@ async function handleSearch() {
     startTime: selectedTimes.value.start ?? '10:00',
     endTime: selectedTimes.value.end ?? '10:00',
   }
+
+  trackSearchSubmitted('car', {
+    form_source: 'krahaso_car_search_form',
+    route_path: route.path,
+    location: selectedLocation.value,
+    pickupLocation: selectedLocation.value,
+    dropoffLocation: dropoff,
+    pickupDate: query.startDate,
+    dropoffDate: query.endDate,
+    pickupTime: query.startTime,
+    dropoffTime: query.endTime,
+    sameLocation: locationType.value === 'same',
+  })
 
   try {
     emit('search', { ...query, location: selectedLocation.value, dropoffLocation: dropoff })

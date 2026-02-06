@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     superadminCreatedBy: process.env.SUPERADMIN_CREATED_BY || 'autopika',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://krahaso.co',
+      gtmId: process.env.NUXT_PUBLIC_GTM_ID || '',
     },
   },
   // CSS loaded from app.vue with relative imports to avoid ~ resolution in virtual:nuxt/css.mjs
@@ -29,8 +30,24 @@ export default defineNuxtConfig({
         headers: {
           'X-Content-Type-Options': 'nosniff',
           'X-Frame-Options': 'SAMEORIGIN',
+          'X-XSS-Protection': '1; mode=block',
           'Referrer-Policy': 'strict-origin-when-cross-origin',
+          'Content-Security-Policy': [
+            'default-src \'self\'',
+            'script-src \'self\' \'unsafe-inline\' \'unsafe-eval\' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net',
+            'img-src \'self\' data: https: http:',
+            'style-src \'self\' \'unsafe-inline\' https://fonts.googleapis.com',
+            'font-src \'self\' data: https://fonts.gstatic.com',
+            'connect-src \'self\' https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://www.facebook.com',
+            'frame-src \'self\' https://www.googletagmanager.com',
+          ].join('; '),
         },
+      },
+      '/robots.txt': {
+        headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=3600' },
+      },
+      '/sitemap.xml': {
+        headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=3600' },
       },
     },
   },

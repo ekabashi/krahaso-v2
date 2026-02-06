@@ -505,7 +505,7 @@ function onBookFlight(flight: Flight) {
     <!-- Sort + Filter Bar (Mobile only - fixed) -->
     <div
       class="
-        fixed top-[var(--ui-header-height)] right-0 left-0 z-20 border-b
+        fixed top-(--ui-header-height) right-0 left-0 z-20 border-b
         border-default bg-default px-4 py-3
         lg:hidden
       "

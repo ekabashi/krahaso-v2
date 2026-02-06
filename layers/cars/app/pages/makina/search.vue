@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { CityOption } from '../../types'
 import { useCarStore, type CarFilters } from '../../stores/carStore'
 import { useAddressStore } from '../../stores/addressStore'
 
@@ -9,6 +10,7 @@ const localePath = useLocalePath()
 const carStore = useCarStore()
 const addressStore = useAddressStore()
 const { formatDate } = useFormatDate()
+const { trackResultsViewed } = useAnalytics()
 
 // URL: /makina/search?pickup=...&return=...&startDate=...&endDate=...&startTime=...&endTime=...
 const query = computed(() => route.query as Record<string, string>)
@@ -123,7 +125,7 @@ const dropOffLocation = ref('')
 const addressItems = computed(() => addressStore.pickupCities)
 const effectivePickupCity = computed(() => {
   if (!selectedLocation.value) return ''
-  const option = addressStore.pickupCities.find((o) => o.value === selectedLocation.value)
+  const option = addressStore.pickupCities.find((o: CityOption) => o.value === selectedLocation.value)
   return option?.city ?? selectedLocation.value
 })
 const dropOffAddressItems = computed(
@@ -164,6 +166,7 @@ async function searchCars() {
     location: searchParams.value.location,
     dropoffLocation: searchParams.value.dropoffLocation,
   })
+  trackResultsViewed('car', carStore.total)
 }
 
 if (import.meta.client) {

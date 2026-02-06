@@ -1,7 +1,6 @@
 /**
- * Analytics Composable
- *
- * Tracks user events for conversion optimization
+ * Flight-specific analytics (server-side funnel: search → click → redirect)
+ * Use shared useAnalytics() for dataLayer/GTM (search_submitted, results_viewed, etc.)
  */
 
 import type { Flight } from '~/types/flight'
@@ -16,12 +15,9 @@ interface SearchParams {
   infants?: number
 }
 
-export function useAnalytics() {
-  // Persistent session ID (survives page reloads)
-  // Use empty string on server to avoid hydration mismatch
+export function useFlightAnalytics() {
   const sessionId = useState<string>('analytics-session', () => '')
 
-  // Initialize session ID on client only
   onMounted(() => {
     if (!sessionId.value) {
       const stored = sessionStorage.getItem('analytics-session')
@@ -35,24 +31,18 @@ export function useAnalytics() {
     }
   })
 
-  // Current search context
   const searchId = useState<string | null>('analytics-search-id', () => null)
   const searchStartTime = useState<number | null>('analytics-search-start', () => null)
   const clickCount = useState<number>('analytics-click-count', () => 0)
 
   const { locale } = useI18n()
 
-  /**
-   * Track search initiation (called when search API is triggered)
-   * Returns searchId for correlation
-   */
   async function startSearch(params: SearchParams): Promise<string> {
     const newSearchId = crypto.randomUUID()
     searchId.value = newSearchId
     searchStartTime.value = Date.now()
     clickCount.value = 0
 
-    // Send search event to server
     try {
       await $fetch('/api/analytics/track', {
         method: 'POST',
@@ -68,21 +58,17 @@ export function useAnalytics() {
           passengers: {
             adults: params.adults ?? 1,
             children: params.children ?? 0,
-            infants: params.infants ?? 0
-          }
-        }
+            infants: params.infants ?? 0,
+          },
+        },
       })
     } catch (error) {
-      // Silent fail - don't break UX for analytics
-      console.warn('[Analytics] Failed to track search:', error)
+      console.warn('[FlightAnalytics] Failed to track search:', error)
     }
 
     return newSearchId
   }
 
-  /**
-   * Track flight card click
-   */
   async function trackFlightClick(
     flight: Flight,
     position: number,
@@ -104,18 +90,14 @@ export function useAnalytics() {
           flight,
           resultPosition: position,
           totalResults,
-          clickTarget
-        }
+          clickTarget,
+        },
       })
     } catch (error) {
-      // Silent fail - don't break UX for analytics
-      console.warn('[Analytics] Failed to track click:', error)
+      console.warn('[FlightAnalytics] Failed to track click:', error)
     }
   }
 
-  /**
-   * Track provider redirect (CONVERSION!)
-   */
   async function trackProviderRedirect(flight: Flight): Promise<void> {
     if (!searchId.value) return
 
@@ -133,25 +115,19 @@ export function useAnalytics() {
           language: locale.value,
           flight,
           timeFromSearch,
-          timeOnResults: timeFromSearch, // Same for now
-          clicksBeforeRedirect: clickCount.value
-        }
+          timeOnResults: timeFromSearch,
+          clicksBeforeRedirect: clickCount.value,
+        },
       })
     } catch (error) {
-      console.warn('[Analytics] Failed to track redirect:', error)
+      console.warn('[FlightAnalytics] Failed to track redirect:', error)
     }
   }
 
-  /**
-   * Get current search ID (for API calls)
-   */
   function getSearchId(): string | null {
     return searchId.value
   }
 
-  /**
-   * Get session ID
-   */
   function getSessionId(): string {
     return sessionId.value
   }
@@ -163,6 +139,6 @@ export function useAnalytics() {
     trackFlightClick,
     trackProviderRedirect,
     getSearchId,
-    getSessionId
+    getSessionId,
   }
 }

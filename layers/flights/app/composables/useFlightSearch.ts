@@ -39,7 +39,9 @@ export interface FlightSearchState {
  * Main composable for flight search functionality
  */
 export function useFlightSearch() {
-  const { startSearch: startAnalyticsSearch } = useAnalytics()
+  const route = useRoute()
+  const { startSearch: startFlightAnalyticsSearch } = useFlightAnalytics()
+  const { trackSearchSubmitted, trackResultsViewed } = useAnalytics()
 
   // Search form state
   const searchState = useState<FlightSearchState>('flight-search', () => ({
@@ -125,8 +127,8 @@ export function useFlightSearch() {
     searchError.value = null
     results.value = null
 
-    // Track search initiation
-    startAnalyticsSearch({
+    // Track search initiation (flight funnel + dataLayer for GTM)
+    startFlightAnalyticsSearch({
       origin: searchState.value.origin.code,
       destination: searchState.value.destination.code,
       departureDate: formatCalendarDate(searchState.value.departureDate),
@@ -135,7 +137,24 @@ export function useFlightSearch() {
         : undefined,
       adults: searchState.value.passengers.adults,
       children: searchState.value.passengers.children,
-      infants: searchState.value.passengers.infants
+      infants: searchState.value.passengers.infants,
+    })
+    trackSearchSubmitted('flight', {
+      form_source: 'krahaso_flight_search',
+      route_path: route.path,
+      from: searchState.value.origin.code,
+      to: searchState.value.destination.code,
+      departureDate: formatCalendarDate(searchState.value.departureDate),
+      returnDate:
+        searchState.value.tripType === 'roundtrip' && searchState.value.returnDate
+          ? formatCalendarDate(searchState.value.returnDate)
+          : undefined,
+      tripType: searchState.value.tripType,
+      passengers:
+        searchState.value.passengers.adults +
+        searchState.value.passengers.children +
+        searchState.value.passengers.infants,
+      flexibleDates: searchState.value.flexibleDates,
     })
 
     try {
@@ -159,6 +178,9 @@ export function useFlightSearch() {
       })
 
       results.value = data
+
+      const count = data?.flights?.length ?? 0
+      trackResultsViewed('flight', count)
 
       // Sync flexible matrix with actual search results
       syncFlexibleWithResults(data)
