@@ -132,7 +132,7 @@ useHead(() => ({
             '@type': 'ListItem',
             'position': 2,
             'name': t('nav.flights'),
-            'item': 'https://krahaso.co/flights'
+            'item': `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}${localePath('fluturime')}`
           }
         ]
       })
@@ -274,7 +274,7 @@ watch(
 async function onSearch() {
   const queryParams = buildFlightQueryFromState()
   const localePath = useLocalePath()
-  const path = localePath('/fluturime/search')
+  const path = localePath('fluturime-search')
   await router.push({ path, query: queryParams })
 }
 </script>
@@ -345,7 +345,7 @@ async function onSearch() {
             <NuxtLink
               v-for="routeItem in popularRoutes"
               :key="routeItem.slug"
-              :to="localePath(`/fluturime/${routeItem.slug}`)"
+              :to="localePath({ name: 'fluturime-route', params: { route: routeItem.slug } })"
               class="group relative block"
             >
               <div class="relative overflow-hidden rounded-2xl bg-white border border-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">

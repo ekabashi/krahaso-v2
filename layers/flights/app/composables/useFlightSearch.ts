@@ -522,7 +522,7 @@ export function useFlightSearch() {
   async function navigateToFlightsSearch(): Promise<void> {
     const router = useRouter()
     const localePath = useLocalePath()
-    const path = localePath('/fluturime/search')
+    const path = localePath('fluturime-search')
     const queryParams = buildFlightQueryFromState()
     if (import.meta.client) {
       const url = router.resolve({ path, query: queryParams }).href

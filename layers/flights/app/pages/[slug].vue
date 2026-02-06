@@ -15,6 +15,17 @@ const { t } = useI18n()
 const config = useRuntimeConfig()
 const localePath = useLocalePath()
 
+// Reserved slugs: fluturime index in other locales – redirect to localized fluturime page
+// (DE uses ASCII path /fluge to avoid redirect loop with [slug] when path contained /flüge)
+const slugParam = route.params.slug as string
+const reservedFlightsSlugs = ['flights', 'fluturime', 'flüge', 'fluge']
+if (slugParam && reservedFlightsSlugs.includes(slugParam)) {
+  const targetPath = localePath('fluturime')
+  if (route.path !== targetPath) {
+    await navigateTo(targetPath)
+  }
+}
+
 // WhatsApp link with pre-filled message
 const whatsappLink = computed(() => {
   const number = config.public.whatsappNumber?.replace(/[^0-9]/g, '') || ''
@@ -54,7 +65,7 @@ useSeoMeta({
 
 // Search link with pre-filled airports (keeps current locale)
 const searchLink = computed(() => ({
-  path: localePath('/fluturime/search'),
+  path: localePath('fluturime-search'),
   query: {
     from: origin.value,
     to: destination.value
@@ -248,7 +259,7 @@ const relatedRoutes = computed(() => {
       </div>
 
       <!-- Content -->
-      <article
+      <!-- <article
         class="
           prose
           dark:prose-invert
@@ -261,7 +272,7 @@ const relatedRoutes = computed(() => {
           v-if="page"
           :value="page as any"
         />
-      </article>
+      </article> -->
 
       <!-- Related Routes -->
       <div class="mb-8">
@@ -277,7 +288,7 @@ const relatedRoutes = computed(() => {
           <NuxtLink
             v-for="r in relatedRoutes"
             :key="r.slug"
-            :to="localePath(`/fluturime/${r.slug}`)"
+            :to="localePath({ name: 'fluturime-route', params: { route: r.slug } })"
             class="block"
           >
             <UCard

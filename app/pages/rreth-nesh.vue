@@ -191,7 +191,7 @@ useHead({
           </p>
           <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <UButton
-              :to="localePath('/fluturime')"
+              :to="localePath('fluturime')"
               size="lg"
               color="neutral"
               variant="solid"

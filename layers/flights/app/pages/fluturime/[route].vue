@@ -130,7 +130,7 @@ const siteUrl = (config.public as { siteUrl?: string }).siteUrl ?? 'https://krah
 useSeoPage({
   title: () => pageTitle.value,
   description: () => pageDescription.value,
-  canonical: localePath(`/fluturime/${routeSlug.value}`),
+  canonical: localePath({ name: 'fluturime-route', params: { route: routeSlug.value } }),
   ogImage: () => `${siteUrl}/img/airplane-aviopika_1280.jpg`,
 })
 
@@ -286,13 +286,13 @@ useHead(() => {
             '@type': 'ListItem',
             'position': 2,
             'name': t('shared.nav.flights'),
-            'item': 'https://krahaso.co/fluturime'
+            'item': `${siteUrl}${localePath('fluturime')}`
           },
           {
             '@type': 'ListItem',
             'position': 3,
             'name': `${routeData.value.origin} → ${routeData.value.destination}`,
-            'item': `https://krahaso.co/fluturime/${routeSlug.value}`
+            'item': `${siteUrl}${localePath({ name: 'fluturime-route', params: { route: routeSlug.value } })}`
           }
         ]
       })
@@ -309,7 +309,7 @@ useHead(() => {
       <UBreadcrumb
         :items="[
           { label: $t('shared.nav.home'), to: localePath('/') },
-          { label: $t('shared.nav.flights'), to: localePath('/fluturime') },
+          { label: $t('shared.nav.flights'), to: localePath('fluturime') },
           { label: routeData ? `${routeData.origin} → ${routeData.destination}` : '' }
         ]"
         class="mb-6"
@@ -604,7 +604,7 @@ useHead(() => {
           <NuxtLink
             v-for="relatedRoute in relatedRoutes"
             :key="relatedRoute.slug"
-            :to="localePath(`/fluturime/${relatedRoute.slug}`)"
+            :to="localePath({ name: 'fluturime-route', params: { route: relatedRoute.slug } })"
             class="group relative block"
           >
             <div class="relative overflow-hidden rounded-2xl bg-white border border-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">

@@ -959,7 +959,7 @@ useHead(() => ({
         <NuxtLink
           v-for="route in popularRoutes"
           :key="route.slug"
-          :to="localePath(`/fluturime/${route.slug}`)"
+          :to="localePath({ name: 'fluturime-route', params: { route: route.slug } })"
           class="group relative block"
         >
           <div class="relative overflow-hidden rounded-2xl bg-white border border-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
@@ -1093,7 +1093,7 @@ useHead(() => ({
         </p>
         <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
           <UButton
-            :to="localePath('/fluturime')"
+            :to="localePath('fluturime')"
             size="lg"
             :variant="isFlights ? 'solid' : 'outline'"
             trailing-icon="i-lucide-arrow-right"

@@ -155,7 +155,7 @@ useHead(() => ({
             '@type': 'ListItem',
             position: 2,
             name: t('nav.cars'),
-            item: `${useRuntimeConfig().public.siteUrl}${localePath('makina')}`,
+            item: `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}${localePath('makina')}`,
           },
         ],
       }),

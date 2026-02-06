@@ -39,13 +39,16 @@ export default defineNuxtConfig({
             'style-src \'self\' \'unsafe-inline\' https://fonts.googleapis.com',
             'font-src \'self\' data: https://fonts.gstatic.com',
             'connect-src \'self\' https://*.supabase.co https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://www.facebook.com',
-            'frame-src \'self\' https://www.googletagmanager.com',
+            'frame-src \'self\' https://www.googletagmanager.com https://www.google.com https://www.facebook.com',
           ].join('; '),
         },
       },
       '/robots.txt': {
         headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=3600' },
       },
+      // DE flights: redirect umlaut URL to ASCII to avoid redirect loop; canonical is /de/fluge
+      '/de/flüge': { redirect: { to: '/de/fluge', statusCode: 302 } },
+      '/de/flüge/search': { redirect: { to: '/de/fluge/search', statusCode: 302 } },
       '/sitemap.xml': {
         headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=3600' },
       },
@@ -88,17 +91,17 @@ export default defineNuxtConfig({
       fluturime: {
         sq: '/fluturime',
         en: '/flights',
-        de: '/flüge',
+        de: '/fluge',
       },
       'fluturime-search': {
         sq: '/fluturime/search',
         en: '/flights/search',
-        de: '/flüge/search',
+        de: '/fluge/search',
       },
       'fluturime-route': {
         sq: '/fluturime/[route]',
         en: '/flights/[route]',
-        de: '/flüge/[route]',
+        de: '/fluge/[route]',
       },
       superadmin: {
         sq: '/superadmin',

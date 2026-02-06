@@ -56,7 +56,7 @@ async function handleFindBooking(close?: () => void) {
           {{ $t('nav.home') }}
         </ULink>
         <ULink
-          :to="localePath('/flights')"
+          :to="localePath('fluturime')"
           variant="ghost"
           size="sm"
         >
