@@ -156,7 +156,7 @@ function getCellClass(date: DatePriceInfo): string {
           :name="legType === 'outbound' ? 'i-lucide-plane-takeoff' : 'i-lucide-plane-landing'"
           class="h-4 w-4"
         />
-        {{ legType === 'outbound' ? t('flexible.outbound') : t('flexible.return') }}
+        {{ legType === 'outbound' ? t('flights.flexible.outbound') : t('flights.flexible.return') }}
       </h3>
       <span
         v-if="isLoading"
@@ -175,7 +175,7 @@ function getCellClass(date: DatePriceInfo): string {
           name="i-lucide-badge-check"
           class="h-3 w-3"
         />
-        {{ t('flexible.cheapest') }}
+        {{ t('flights.flexible.cheapest') }}
       </span>
     </div>
 
@@ -231,7 +231,7 @@ function getCellClass(date: DatePriceInfo): string {
                 text-white
               "
             >
-              {{ t('flexible.yourDate') }} · {{ t('flexible.cheapest') }}
+              {{ t('flights.flexible.yourDate') }} · {{ t('flights.flexible.cheapest') }}
             </div>
 
             <!-- Cheapest Badge (only if selected is NOT tied for cheapest) -->
@@ -243,7 +243,7 @@ function getCellClass(date: DatePriceInfo): string {
                 text-white
               "
             >
-              {{ t('flexible.cheapest') }}
+              {{ t('flights.flexible.cheapest') }}
             </div>
 
             <!-- Selected Date Badge (only if NOT tied for cheapest) -->
@@ -255,7 +255,7 @@ function getCellClass(date: DatePriceInfo): string {
                 whitespace-nowrap text-white
               "
             >
-              {{ t('flexible.yourDate') }}
+              {{ t('flights.flexible.yourDate') }}
             </div>
 
             <!-- Day of Week -->
@@ -300,10 +300,10 @@ function getCellClass(date: DatePriceInfo): string {
                 />
               </template>
               <template v-else-if="date.flightCount > 0">
-                {{ date.flightCount }} {{ date.flightCount === 1 ? t('flexible.flight') : t('flexible.flights') }}
+                {{ date.flightCount }} {{ date.flightCount === 1 ? t('flights.flexible.flight') : t('flights.flexible.flights') }}
               </template>
               <template v-else>
-                {{ t('flexible.noFlights') }}
+                {{ t('flights.flexible.noFlights') }}
               </template>
             </p>
           </div>
@@ -329,7 +329,7 @@ function getCellClass(date: DatePriceInfo): string {
 
     <!-- Hint -->
     <p class="text-xs text-muted">
-      {{ t('flexible.selectHint') }}
+      {{ t('flights.flexible.selectHint') }}
     </p>
   </div>
 </template>

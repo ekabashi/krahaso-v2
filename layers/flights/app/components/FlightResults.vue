@@ -137,9 +137,9 @@ const loadingProviders = computed(() => {
 
 // Sort options (reactive to locale)
 const sortOptions = computed(() => [
-  { label: t('sort.cheapest'), value: 'price' },
-  { label: t('sort.shortest'), value: 'duration' },
-  { label: t('sort.earliest'), value: 'departure' }
+  { label: t('flights.sort.cheapest'), value: 'price' },
+  { label: t('flights.sort.shortest'), value: 'duration' },
+  { label: t('flights.sort.earliest'), value: 'departure' }
 ])
 
 // Date formatter (reactive to locale)
@@ -209,7 +209,7 @@ function onBookFlight(flight: Flight) {
       <!-- Price Filter -->
       <div>
         <label class="mb-2 block text-sm font-medium">
-          {{ $t('filter.maxPrice', { price: filters.maxPrice || priceRange.max }) }}
+          {{ $t('flights.filter.maxPrice', { price: filters.maxPrice || priceRange.max }) }}
         </label>
         <USlider
           :model-value="filters.maxPrice ?? priceRange.max"
@@ -224,13 +224,13 @@ function onBookFlight(flight: Flight) {
       <div>
         <UCheckbox
           v-model="filters.hideSoldOut"
-          :label="$t('filter.hideSoldOut')"
+          :label="$t('flights.filter.hideSoldOut')"
         />
       </div>
 
       <!-- Provider Filter -->
       <div v-if="availableProviders.length > 1">
-        <label class="mb-2 block text-sm font-medium">{{ $t('filter.providers') }}</label>
+        <label class="mb-2 block text-sm font-medium">{{ $t('flights.filter.providers') }}</label>
         <div class="space-y-2">
           <UCheckbox
             v-for="provider in availableProviders"
@@ -251,7 +251,7 @@ function onBookFlight(flight: Flight) {
 
       <!-- Carrier Filter -->
       <div v-if="availableCarriers.length > 1">
-        <label class="mb-2 block text-sm font-medium">{{ $t('filter.airlines') }}</label>
+        <label class="mb-2 block text-sm font-medium">{{ $t('flights.filter.airlines') }}</label>
         <div class="space-y-2">
           <UCheckbox
             v-for="carrier in availableCarriers"
@@ -272,7 +272,7 @@ function onBookFlight(flight: Flight) {
 
       <!-- Flight Number Filter -->
       <div v-if="availableFlightNumbers.length > 1">
-        <label class="mb-2 block text-sm font-medium">{{ $t('filter.flightNumber') }}</label>
+        <label class="mb-2 block text-sm font-medium">{{ $t('flights.filter.flightNumber') }}</label>
         <div class="max-h-48 space-y-2 overflow-y-auto">
           <UCheckbox
             v-for="flightNumber in availableFlightNumbers"
@@ -293,14 +293,14 @@ function onBookFlight(flight: Flight) {
 
       <!-- Departure Time Filter -->
       <div>
-        <label class="mb-2 block text-sm font-medium">{{ $t('filter.departureTime') }}</label>
+        <label class="mb-2 block text-sm font-medium">{{ $t('flights.filter.departureTime') }}</label>
         <URadioGroup
           :model-value="departureTimeRangeValue"
           :items="[
-            { label: $t('filter.anytime'), value: 'any' },
-            { label: $t('filter.morning'), value: 'morning' },
-            { label: $t('filter.afternoon'), value: 'afternoon' },
-            { label: $t('filter.evening'), value: 'evening' }
+            { label: $t('flights.filter.anytime'), value: 'any' },
+            { label: $t('flights.filter.morning'), value: 'morning' },
+            { label: $t('flights.filter.afternoon'), value: 'afternoon' },
+            { label: $t('flights.filter.evening'), value: 'evening' }
           ]"
           @update:model-value="onDepartureTimeChange"
         />
@@ -308,13 +308,13 @@ function onBookFlight(flight: Flight) {
 
       <!-- Stops Filter -->
       <div>
-        <label class="mb-2 block text-sm font-medium">{{ $t('filter.stops') }}</label>
+        <label class="mb-2 block text-sm font-medium">{{ $t('flights.filter.stops') }}</label>
         <URadioGroup
           :model-value="maxStopsValue"
           :items="[
-            { label: $t('filter.allStops'), value: 'any' },
-            { label: $t('filter.directOnly'), value: '0' },
-            { label: $t('filter.maxOneStop'), value: '1' }
+            { label: $t('flights.filter.allStops'), value: 'any' },
+            { label: $t('flights.filter.directOnly'), value: '0' },
+            { label: $t('flights.filter.maxOneStop'), value: '1' }
           ]"
           @update:model-value="onMaxStopsChange"
         />
@@ -332,10 +332,10 @@ function onBookFlight(flight: Flight) {
           name="i-lucide-loader-2"
           class="animate-spin text-primary"
         />
-        <span>{{ $t('loading.searching') }}</span>
+        <span>{{ $t('flights.loading.searching') }}</span>
       </div>
       <div class="text-xs text-muted">
-        {{ $t('loading.providers', { n: loadingProviders.length }) }}
+        {{ $t('flights.loading.providers', { n: loadingProviders.length }) }}
       </div>
     </div>
 
@@ -359,7 +359,7 @@ function onBookFlight(flight: Flight) {
             <UIcon
               name="i-lucide-loader-2"
               class="animate-spin text-primary"
-              :aria-label="$t('loading.searching')"
+              :aria-label="$t('flights.loading.searching')"
             />
           </span>
         </div>
@@ -381,7 +381,7 @@ function onBookFlight(flight: Flight) {
             name="i-lucide-plane-takeoff"
             class="h-4 w-4"
           />
-          {{ $t('flexible.outbound') }}
+          {{ $t('flights.flexible.outbound') }}
           <UIcon
             name="i-lucide-loader-2"
             class="h-3 w-3 animate-spin text-muted"
@@ -467,14 +467,14 @@ function onBookFlight(flight: Flight) {
     >
       <div>
         <h2 class="text-xl font-bold">
-          {{ $t('results.title', results.meta.totalResults) }}
+          {{ $t('flights.results.title', results.meta.totalResults) }}
         </h2>
         <p class="text-sm text-muted">
           {{ results.meta.origin }} → {{ results.meta.destination }}
-          {{ $t('results.onDate', { date: dateFormatter.format(new Date(results.meta.departureDate)) }) }}
+          {{ $t('flights.results.onDate', { date: dateFormatter.format(new Date(results.meta.departureDate)) }) }}
           <template v-if="results.meta.returnDate">
             · {{ results.meta.destination }} → {{ results.meta.origin }}
-            {{ $t('results.onDate', { date: dateFormatter.format(new Date(results.meta.returnDate)) }) }}
+            {{ $t('flights.results.onDate', { date: dateFormatter.format(new Date(results.meta.returnDate)) }) }}
           </template>
         </p>
       </div>
@@ -486,7 +486,7 @@ function onBookFlight(flight: Flight) {
           lg:flex
         "
       >
-        <span class="text-sm text-muted">{{ $t('sort.label') }}</span>
+        <span class="text-sm text-muted">{{ $t('flights.sort.label') }}</span>
         <USelect
           v-model="sortBy"
           :items="sortOptions"
@@ -530,7 +530,7 @@ function onBookFlight(flight: Flight) {
         <UDrawer
           v-model:open="mobileFiltersOpen"
           direction="right"
-          :title="$t('filter.title')"
+          :title="$t('flights.filter.title')"
         >
           <UButton
             icon="i-lucide-sliders-horizontal"
@@ -538,7 +538,7 @@ function onBookFlight(flight: Flight) {
             color="neutral"
             class="min-w-30"
           >
-            {{ $t('filter.title') }}
+            {{ $t('flights.filter.title') }}
             <UBadge
               v-if="hasActiveFilters"
               color="primary"
@@ -561,14 +561,14 @@ function onBookFlight(flight: Flight) {
               block
               @click="resetFilters"
             >
-              {{ $t('filter.reset') }}
+              {{ $t('flights.filter.reset') }}
             </UButton>
             <UButton
               color="primary"
               block
               @click="mobileFiltersOpen = false"
             >
-              {{ $t('common.showResults') }}
+              {{ $t('flights.showResults') }}
             </UButton>
           </template>
         </UDrawer>
@@ -592,7 +592,7 @@ function onBookFlight(flight: Flight) {
           <template #header>
             <div class="flex items-center justify-between">
               <h3 class="font-semibold">
-                {{ $t('filter.title') }}
+                {{ $t('flights.filter.title') }}
               </h3>
               <UButton
                 v-if="hasActiveFilters"
@@ -600,7 +600,7 @@ function onBookFlight(flight: Flight) {
                 size="xs"
                 @click="resetFilters"
               >
-                {{ $t('filter.reset') }}
+                {{ $t('flights.filter.reset') }}
               </UButton>
             </div>
           </template>
@@ -626,7 +626,7 @@ function onBookFlight(flight: Flight) {
                 name="i-lucide-loader-2"
                 class="h-4 w-4 animate-spin"
               />
-              {{ $t('loading.searching') }}...
+              {{ $t('flights.loading.searching') }}...
             </div>
             <div class="grid grid-cols-7 gap-2">
               <USkeleton
@@ -638,7 +638,7 @@ function onBookFlight(flight: Flight) {
           </div>
 
           <!-- Outbound Date Matrix -->
-          <FlightFlexibleDateMatrix
+          <FlexibleDateMatrix
             v-if="flexibleResults"
             :dates="flexibleResults.outbound"
             :cheapest-date="flexibleResults.cheapestOutboundDate"
@@ -649,7 +649,7 @@ function onBookFlight(flight: Flight) {
           />
 
           <!-- Return Date Matrix (only for roundtrip) -->
-          <FlightFlexibleDateMatrix
+          <FlexibleDateMatrix
             v-if="flexibleResults?.return && flexibleResults.return.length > 0"
             :dates="flexibleResults.return"
             :cheapest-date="flexibleResults.cheapestReturnDate ?? null"
@@ -669,7 +669,7 @@ function onBookFlight(flight: Flight) {
               name="i-lucide-plane-takeoff"
               class="text-primary"
             />
-            {{ $t('results.outbound') }}
+            {{ $t('flights.results.outbound') }}
             <span class="text-sm font-normal text-muted">
               {{ results.meta.origin }} → {{ results.meta.destination }}
               · {{ shortDateFormatter.format(new Date(results.meta.departureDate)) }}
@@ -681,8 +681,8 @@ function onBookFlight(flight: Flight) {
             v-if="filteredOutboundFlights.length === 0"
             icon="i-lucide-search-x"
             color="warning"
-            :title="$t('results.noOutbound')"
-            :description="$t('results.tryOther')"
+            :title="$t('flights.results.noOutbound')"
+            :description="$t('flights.results.tryOther')"
             class="mb-4"
           />
 
@@ -710,7 +710,7 @@ function onBookFlight(flight: Flight) {
               name="i-lucide-plane-landing"
               class="text-primary"
             />
-            {{ $t('results.return') }}
+            {{ $t('flights.results.return') }}
             <span class="text-sm font-normal text-muted">
               {{ results.meta.destination }} → {{ results.meta.origin }}
               · {{ shortDateFormatter.format(new Date(results.meta.returnDate!)) }}
@@ -722,8 +722,8 @@ function onBookFlight(flight: Flight) {
             v-if="filteredReturnFlights.length === 0"
             icon="i-lucide-search-x"
             color="warning"
-            :title="$t('results.noReturn')"
-            :description="$t('results.tryOther')"
+            :title="$t('flights.results.noReturn')"
+            :description="$t('flights.results.tryOther')"
             class="mb-4"
           />
 
@@ -747,12 +747,12 @@ function onBookFlight(flight: Flight) {
           v-if="results && filteredResults.length > 0"
           class="pt-4 text-center text-sm text-muted"
         >
-          {{ $t('results.outboundFlights', filteredOutboundFlights.length) }}
+          {{ $t('flights.results.outboundFlights', filteredOutboundFlights.length) }}
           <template v-if="isRoundTrip">
-            · {{ $t('results.returnFlights', filteredReturnFlights.length) }}
+            · {{ $t('flights.results.returnFlights', filteredReturnFlights.length) }}
           </template>
           <template v-if="results.meta.cacheHit">
-            · {{ $t('results.fromCache') }}
+            · {{ $t('flights.results.fromCache') }}
           </template>
         </p>
       </div>
@@ -769,14 +769,14 @@ function onBookFlight(flight: Flight) {
       class="mb-4 text-6xl text-muted"
     />
     <p class="text-lg text-muted">
-      {{ $t('search.searchFlights') }}
+      {{ $t('flights.search.searchFlights') }}
     </p>
   </div>
 
   <!-- Date Change Confirmation Modal -->
   <UModal
     v-model:open="dateChangeModalOpen"
-    :title="$t('flexible.confirmTitle')"
+    :title="$t('flights.flexible.confirmTitle')"
   >
     <template #content>
       <UCard>
@@ -787,13 +787,13 @@ function onBookFlight(flight: Flight) {
               class="h-5 w-5 text-primary"
             />
             <h3 class="font-semibold">
-              {{ $t('flexible.confirmTitle') }}
+              {{ $t('flights.flexible.confirmTitle') }}
             </h3>
           </div>
         </template>
 
         <p class="text-muted">
-          {{ $t('flexible.confirmMessage', { date: pendingDateFormatted }) }}
+          {{ $t('flights.flexible.confirmMessage', { date: pendingDateFormatted }) }}
         </p>
 
         <template #footer>
@@ -803,14 +803,14 @@ function onBookFlight(flight: Flight) {
               variant="outline"
               @click="cancelDateChange"
             >
-              {{ $t('flexible.confirmNo') }}
+              {{ $t('flights.flexible.confirmNo') }}
             </UButton>
             <UButton
               color="primary"
               :loading="isSearching"
               @click="confirmDateChange"
             >
-              {{ $t('flexible.confirmYes') }}
+              {{ $t('flights.flexible.confirmYes') }}
             </UButton>
           </div>
         </template>
