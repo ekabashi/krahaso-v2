@@ -2,10 +2,11 @@
 import { CalendarDate } from '@internationalized/date'
 
 const { t } = useI18n()
-const { searchState, searchError, clearResults, navigateToFlightsSearch } = useFlightSearch()
+const { searchState, searchError, clearResults, navigateToFlightsSearch, buildFlightQueryFromState } = useFlightSearch()
 const { getAirportByCode, fetchAirports, airports } = useAirports()
 
 const route = useRoute()
+const router = useRouter()
 const localePath = useLocalePath()
 
 useSeoPage({
@@ -269,7 +270,10 @@ watch(
 )
 
 async function onSearch() {
-  await navigateToFlightsSearch()
+  const queryParams = buildFlightQueryFromState()
+  const localePath = useLocalePath()
+  const path = localePath('/fluturime/search')
+  await router.push({ path, query: queryParams })
 }
 </script>
 
@@ -331,8 +335,8 @@ async function onSearch() {
       <div v-if="!hasSearchCriteria && !hasQueryParams">
         <!-- Popular Routes Section -->
         <UPageSection
-          :title="t('flights.routes.title')"
-          :description="t('flights.routes.description')"
+          :title="t('routes.title')"
+          :description="t('routes.description')"
           class="mb-12"
         >
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-12">
@@ -382,7 +386,7 @@ async function onSearch() {
                       <span class="text-sm font-medium text-primary">
                         {{ routeItem.from }} → {{ routeItem.to }}
                       </span>
-                      <span class="text-xs text-gray-400 mt-0.5">{{ t('flights.routes.compare') }}</span>
+                      <span class="text-xs text-gray-400 mt-0.5">{{ t('routes.compare') }}</span>
                     </div>
 
                     <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
@@ -466,8 +470,8 @@ async function onSearch() {
 
       <!-- FAQ Section -->
       <UPageSection
-        :title="t('flights.faq.title')"
-        :description="t('flights.faq.description')"
+        :title="t('faq.title')"
+        :description="t('faq.description')"
       >
         <div class="w-full lg:w-3xl mx-auto px-4 sm:px-6">
           <UAccordion
@@ -488,7 +492,7 @@ async function onSearch() {
             {{ t('flights.cta.description') }}
           </p>
           <UButton
-            :to="localePath({ name: 'makina-location', params: { location: 'aeroporti-prishtines' } })"
+            :to="localePath('/makina/aeroporti-prishtines')"
             size="lg"
             color="neutral"
             variant="solid"

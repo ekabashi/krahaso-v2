@@ -81,6 +81,15 @@ export interface FlightFilters {
   hideSoldOut: boolean
 }
 
+export interface FlightRoute {
+  originCode: string
+  originName: string
+  originCountry: string
+  destinationCode: string
+  destinationName: string
+  destinationCountry: string
+}
+
 export interface DatePriceInfo {
   date: string
   minPrice: number | null
