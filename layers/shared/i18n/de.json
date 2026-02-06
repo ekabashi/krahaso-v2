@@ -1392,5 +1392,55 @@
   "emptyState": {
     "noCarsFound": "Keine Autos gefunden",
     "tryAdjustingFilters": "Versuchen Sie, Ihre Filter oder Suchkriterien anzupassen."
+  },
+  "consent": {
+    "title": "Ihre Datenprivatsphäre",
+    "description": "Wir verwenden Cookies, um Ihr Erlebnis zu verbessern, den Traffic zu analysieren und personalisierte Inhalte bereitzustellen. Sie kontrollieren Ihre Daten.",
+    "acceptAll": "Alle akzeptieren",
+    "rejectAll": "Alle ablehnen",
+    "customize": "Anpassen",
+    "savePreferences": "Einstellungen speichern",
+    "cancel": "Abbrechen",
+    "manageTitle": "Einstellungen verwalten",
+    "learnMore": "Mehr erfahren",
+    "categories": {
+      "essential": {
+        "title": "Notwendige Cookies",
+        "description": "Erforderlich für grundlegende Funktionen der Website (z.B. Sprache, Sitzung).",
+        "alwaysActive": "Immer aktiv"
+      },
+      "analytics": {
+        "title": "Analyse-Cookies",
+        "description": "Helfen uns zu verstehen, wie Benutzer mit unserer Website interagieren, um unseren Service zu verbessern.",
+        "provider": "Google Analytics 4"
+      },
+      "marketing": {
+        "title": "Marketing-Cookies",
+        "description": "Werden verwendet, um personalisierte Werbung anzuzeigen und die Wirksamkeit von Kampagnen zu messen.",
+        "provider": "Meta Pixel"
+      }
+    }
+  },
+  "cookiePolicy": {
+    "title": "Cookie-Richtlinie",
+    "subtitle": "So verwenden wir Cookies auf unserer Plattform",
+    "description": "Informationen zur Verwendung von Cookies auf Krahaso.co",
+    "section1": {
+      "title": "Was sind Cookies?",
+      "content": "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden, wenn Sie eine Website besuchen. Sie helfen uns zu verstehen, wie unsere Plattform genutzt wird und Ihr Erlebnis zu verbessern."
+    },
+    "section2": {
+      "title": "Wie wir Cookies verwenden",
+      "content": "Wir verwenden Cookies für: die Aufrechterhaltung Ihrer Anmeldesitzung; das Speichern Ihrer Einstellungen; die Analyse der Plattformnutzung; und die Verbesserung der Leistung."
+    },
+    "section3": {
+      "title": "Arten von Cookies",
+      "content": "Notwendige Cookies: erforderlich für die Funktion der Plattform. Analyse-Cookies: um zu verstehen, wie die Plattform genutzt wird. Funktionale Cookies: um Ihre Einstellungen zu speichern."
+    },
+    "section4": {
+      "title": "Cookies verwalten",
+      "content": "Sie können Cookies jederzeit über die Einstellungen Ihres Browsers kontrollieren oder löschen. Einige Funktionen der Plattform funktionieren möglicherweise nicht, wenn Sie Cookies deaktivieren."
+    },
+    "lastUpdated": "Zuletzt aktualisiert"
   }
 }

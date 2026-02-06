@@ -1394,5 +1394,55 @@
   "emptyState": {
     "noCarsFound": "Nuk u gjetën makina",
     "tryAdjustingFilters": "Provoni të ndryshoni filtrat ose kriteret e kërkimit."
+  },
+  "consent": {
+    "title": "Privatësia e të dhënave tuaja",
+    "description": "Ne përdorim cookies për të përmirësuar përvojën tuaj, analizuar trafikun dhe ofruar përmbajtje të personalizuar. Ju kontrolloni të dhënat tuaja.",
+    "acceptAll": "Prano të gjitha",
+    "rejectAll": "Refuzo të gjitha",
+    "customize": "Personalizoje",
+    "savePreferences": "Ruaj Preferencat",
+    "cancel": "Anulo",
+    "manageTitle": "Menaxhimi i Preferencave",
+    "learnMore": "Mëso më shumë",
+    "categories": {
+      "essential": {
+        "title": "Cookies Thelbësore",
+        "description": "Të nevojshme për funksionimin bazik të faqes (p.sh. gjuha, sesioni).",
+        "alwaysActive": "Gjithmonë aktive"
+      },
+      "analytics": {
+        "title": "Cookies Analitike",
+        "description": "Na ndihmojnë të kuptojmë si përdoruesit ndërveprojnë me faqen për të përmirësuar shërbimin.",
+        "provider": "Google Analytics 4"
+      },
+      "marketing": {
+        "title": "Cookies Marketing",
+        "description": "Përdoren për të shfaqur reklama të personalizuara dhe për të matur efektivitetin e fushatave.",
+        "provider": "Meta Pixel"
+      }
+    }
+  },
+  "cookiePolicy": {
+    "title": "Politika e Cookies",
+    "subtitle": "Si përdorim cookies në platformën tonë",
+    "description": "Informacion rreth përdorimit të cookies në platformën Krahaso.co",
+    "section1": {
+      "title": "Çfarë janë cookies?",
+      "content": "Cookies janë fajla të vogla tekst që vendosen në pajisjen tuaj kur vizitoni një website. Ato na ndihmojnë të mësojmë më shumë se si përdoret platforma jonë dhe të përmirësojmë përvojën tuaj."
+    },
+    "section2": {
+      "title": "Si përdorim cookies",
+      "content": "Ne përdorim cookies për: mbajtjen e sesionit tuaj të hyrjes; memorizimin e preferencave tuaja; analizimin e përdorimit të platformës; dhe përmirësimin e performancës."
+    },
+    "section3": {
+      "title": "Llojet e cookies që përdorim",
+      "content": "Cookies thelbësore: të nevojshme për funksionimin e platformës. Cookies analitike: për të kuptuar se si përdoret platforma. Cookies funksionale: për memorizimin e preferencave tuaja."
+    },
+    "section4": {
+      "title": "Menaxhimi i cookies",
+      "content": "Ju mund të kontrolloni ose fshini cookies në çdo kohë përmes cilësimeve të shfletuesit tuaj. Megjithatë, disa veçori të platformës mund të mos funksionojnë nëse çaktivizoni cookies."
+    },
+    "lastUpdated": "Data e përditësimit"
   }
 }

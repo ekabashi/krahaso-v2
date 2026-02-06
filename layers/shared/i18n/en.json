@@ -1392,5 +1392,55 @@
   "emptyState": {
     "noCarsFound": "No cars found",
     "tryAdjustingFilters": "Try adjusting your filters or search criteria."
+  },
+  "consent": {
+    "title": "Your Data Privacy",
+    "description": "We use cookies to enhance your experience, analyze traffic, and provide personalized content. You control your data.",
+    "acceptAll": "Accept All",
+    "rejectAll": "Reject All",
+    "customize": "Customize",
+    "savePreferences": "Save Preferences",
+    "cancel": "Cancel",
+    "manageTitle": "Manage Preferences",
+    "learnMore": "Learn more",
+    "categories": {
+      "essential": {
+        "title": "Essential Cookies",
+        "description": "Required for basic site functionality (e.g. language, session).",
+        "alwaysActive": "Always active"
+      },
+      "analytics": {
+        "title": "Analytics Cookies",
+        "description": "Help us understand how users interact with our site to improve our service.",
+        "provider": "Google Analytics 4"
+      },
+      "marketing": {
+        "title": "Marketing Cookies",
+        "description": "Used to show personalized ads and measure campaign effectiveness.",
+        "provider": "Meta Pixel"
+      }
+    }
+  },
+  "cookiePolicy": {
+    "title": "Cookie Policy",
+    "subtitle": "How we use cookies on our platform",
+    "description": "Information about how we use cookies on Krahaso.co",
+    "section1": {
+      "title": "What are cookies?",
+      "content": "Cookies are small text files that are placed on your device when you visit a website. They help us learn more about how our platform is used and improve your experience."
+    },
+    "section2": {
+      "title": "How we use cookies",
+      "content": "We use cookies for: keeping your login session; remembering your preferences; analyzing platform usage; and improving performance."
+    },
+    "section3": {
+      "title": "Types of cookies we use",
+      "content": "Essential cookies: required for the platform to work. Analytics cookies: to understand how the platform is used. Functional cookies: to remember your preferences."
+    },
+    "section4": {
+      "title": "Managing cookies",
+      "content": "You can control or delete cookies at any time through your browser settings. However, some platform features may not work if you disable cookies."
+    },
+    "lastUpdated": "Last updated"
   }
 }
