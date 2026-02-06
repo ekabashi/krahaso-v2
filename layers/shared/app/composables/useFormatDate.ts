@@ -1,9 +1,9 @@
 import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
-import localizedFormat from 'dayjs/plugin/localizedFormat'
-import 'dayjs/locale/sq'
-import 'dayjs/locale/de'
-import 'dayjs/locale/en'
+import customParseFormat from 'dayjs/plugin/customParseFormat.js'
+import localizedFormat from 'dayjs/plugin/localizedFormat.js'
+import 'dayjs/locale/sq.js'
+import 'dayjs/locale/de.js'
+import 'dayjs/locale/en.js'
 
 dayjs.extend(customParseFormat)
 dayjs.extend(localizedFormat)
