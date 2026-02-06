@@ -505,7 +505,9 @@
     "pickupTime": "Pickup time",
     "returnTime": "Return time",
     "filterLabel": "Filter",
+    "clearAll": "Clear all",
     "priceRange": "Price range",
+    "minPrice": "Minimum price",
     "transmission": "Transmission",
     "fuelType": "Fuel type",
     "numberOfSeats": "Number of seats",
@@ -1042,6 +1044,9 @@
         "viewReports": "View Reports",
         "partnershipRequests": "Partnership Requests",
         "settlementRequests": "Settlement Requests"
+      },
+      "reportsModal": {
+        "subtitle": "Select the partner for which you want to view reports"
       }
     },
     "tenants": {
@@ -1049,6 +1054,12 @@
       "subtitle": "Manage all partners in the system",
       "searchPlaceholder": "Search partners...",
       "noTenantsFound": "No partners found",
+      "loadingPartners": "Loading partners...",
+      "errorLoadingPartners": "Error loading partners",
+      "noPartnersFoundSearch": "No partners found",
+      "tryAdjustingSearch": "Try adjusting your search query",
+      "noPartnersAvailable": "No partners available",
+      "unnamedTenant": "Unnamed Tenant",
       "details": {
         "title": "Partner Details"
       },
@@ -1066,12 +1077,22 @@
     "bookings": {
       "title": "Bookings",
       "subtitle": "All bookings from partners",
+      "searchPlaceholder": "Search by booking number, partner or status...",
       "loading": "Loading bookings...",
+      "filterByStatus": "Filter by status",
+      "filterByPartner": "Filter by partner",
+      "actions": {
+        "generateReport": "Generate Report"
+      },
+      "filter": {
+        "all": "All"
+      },
       "error": {
-        "fetchFailed": "Failed to fetch bookings"
+        "fetchFailed": "Failed to fetch bookings",
+        "unknown": "Unknown error"
       },
       "empty": {
-        "title": "No bookings",
+        "title": "No bookings found",
         "description": "No bookings to display."
       },
       "table": {
@@ -1085,19 +1106,136 @@
       "status": {
         "unknown": "Unknown",
         "upcoming": "Upcoming",
+        "confirmed": "Confirmed",
         "pending": "Pending",
         "completed": "Completed",
         "settled": "Settled",
         "cancelled": "Cancelled",
         "active": "Active"
+      },
+      "footer": {
+        "showing": "Showing",
+        "to": "to",
+        "of": "of",
+        "bookings": "bookings"
+      },
+      "report": {
+        "title": "Generate PDF Report",
+        "partner": "Partner",
+        "status": "Booking Status",
+        "startDate": "Start Date",
+        "endDate": "End Date",
+        "createdDateRange": "Date Range",
+        "totalBookings": "Total Bookings",
+        "totalRevenue": "Total Revenue",
+        "totalFee": "Total Fee",
+        "generate": "Generate PDF",
+        "partnerPlaceholder": "Select Partner",
+        "statusPlaceholder": "Select Booking Status",
+        "titlePDF": "Booking Report",
+        "bookingNr": "Booking Number",
+        "cancel": "Cancel",
+        "success": {
+          "title": "Report generated successfully",
+          "description": "PDF report downloaded with {count} bookings"
+        },
+        "error": {
+          "title": "Error generating report",
+          "dateRequired": "Please select start and end dates",
+          "generationFailed": "Failed to generate PDF report"
+        }
       }
     },
     "partnershipRequests": {
       "title": "Partnership Requests",
-      "subtitle": "Manage partnership requests",
+      "subtitle": "View and manage all partnership requests",
+      "loading": "Loading requests...",
+      "actions": {
+        "approve": "Approve",
+        "reject": "Reject",
+        "editPartnership": "Edit Partnership"
+      },
+      "approve": {
+        "success": "Request approved successfully",
+        "successDescription": "Partnership with {company} has been activated",
+        "error": "Failed to approve request",
+        "errorDescription": "Unable to approve the request at this time"
+      },
+      "approveModal": {
+        "title": "Approve Partnership Request",
+        "subtitle": "Set the marketplace fee percentage",
+        "percentageLabel": "Marketplace Fee Percentage (%)",
+        "percentagePlaceholder": "Enter percentage (0-100)",
+        "percentageHint": "The percentage fee that Krahaso will receive from bookings",
+        "cancel": "Cancel",
+        "confirm": "Approve & Activate"
+      },
       "emptyState": {
-        "title": "No requests to display.",
-        "description": "No partnership requests."
+        "title": "No pending requests",
+        "description": "All partnership requests have been processed"
+      },
+      "errors": {
+        "title": "Error",
+        "fetchFailed": "Failed to fetch requests",
+        "unknown": "Unknown error",
+        "invalidPercentage": "Invalid percentage",
+        "percentageRange": "Percentage must be between 0 and 100"
+      },
+      "searchPlaceholder": "Search by name, email, phone...",
+      "table": {
+        "status": "Status",
+        "companyName": "Company",
+        "email": "Email",
+        "phone": "Phone",
+        "subdomain": "Subdomain",
+        "createdAt": "Created At",
+        "showing": "Showing",
+        "to": "to",
+        "of": "of",
+        "requests": "requests"
+      },
+      "status": {
+        "pending": "Pending",
+        "approved": "Approved",
+        "rejected": "Rejected"
+      },
+      "reject": {
+        "success": "Request rejected successfully",
+        "successDescription": "Partnership request from {company} has been rejected",
+        "error": "Failed to reject request",
+        "errorDescription": "Unable to reject the request at this time"
+      },
+      "rejectModal": {
+        "title": "Reject Partnership Request",
+        "subtitle": "Are you sure you want to reject this request?",
+        "cancel": "Cancel",
+        "confirm": "Reject"
+      },
+      "updatePercentage": {
+        "success": "Percentage updated successfully"
+      },
+      "editPartnership": {
+        "success": "Partnership updated successfully",
+        "error": "Failed to update partnership",
+        "errorDescription": "Unable to update partnership at this time",
+        "noChanges": "No changes",
+        "noChangesDescription": "Please make at least one change before saving"
+      },
+      "editPartnershipModal": {
+        "title": "Edit Partnership",
+        "subtitle": "Update the percentage and/or partnership status",
+        "percentageLabel": "Market Rate Percentage (%)",
+        "percentagePlaceholder": "Enter percentage (0-100)",
+        "percentageHint": "The percentage of the rate that Krahaso will receive from bookings",
+        "partnershipLabel": "Partnership",
+        "cancel": "Cancel",
+        "confirm": "Save Changes"
+      },
+      "activatePartnership": {
+        "success": "Partnership activated successfully"
+      },
+      "deactivatePartnership": {
+        "success": "Partnership deactivated successfully"
       }
     },
     "settledRequests": {
@@ -1193,5 +1331,9 @@
         }
       }
     }
+  },
+  "emptyState": {
+    "noCarsFound": "No cars found",
+    "tryAdjustingFilters": "Try adjusting your filters or search criteria."
   }
 }

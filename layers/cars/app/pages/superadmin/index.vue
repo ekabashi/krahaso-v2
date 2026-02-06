@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SuperadminTenant } from '~/types'
+import type { SuperadminTenant } from '../../types'
 import { useTenantStore } from '../../stores/tenantStore'
 import { useSuperadminDashboardStore } from '../../stores/superadminDashboardStore'
 
@@ -207,8 +207,13 @@ const getStatusLabelForTenant = (status: string | null) => {
 <template>
   <div>
     <div class="flex flex-col gap-6">
+      <!-- First row: Partners & Cars + Total Bookings -->
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <UCard :ui="{ body: 'p-6' }">
+        <UCard
+          :ui="{ body: 'p-6' }"
+          class="cursor-pointer transition-all hover:border-primary-500 hover:shadow-md"
+          @click="openPartnersModal"
+        >
           <div class="flex flex-col gap-4">
             <h3 class="text-sm text-gray-600 dark:text-gray-400">
               {{ partnersAndCarsCard.label }}
@@ -285,6 +290,7 @@ const getStatusLabelForTenant = (status: string | null) => {
         </UCard>
       </div>
 
+      <!-- Second row: Fee + Total Revenue -->
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <UCard
           v-for="stat in secondRowStats"
@@ -331,6 +337,7 @@ const getStatusLabelForTenant = (status: string | null) => {
         </UCard>
       </div>
 
+      <!-- Quick Actions -->
       <UCard>
         <template #header>
           <h3 class="text-lg font-semibold">
@@ -360,6 +367,7 @@ const getStatusLabelForTenant = (status: string | null) => {
                   {{ action.label }}
                 </p>
               </div>
+              <!-- Pending counter badge -->
               <div
                 v-if="action.pendingCount > 0"
                 class="absolute -top-2 -right-2 flex size-6 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white shadow-sm ring-2 ring-white dark:ring-gray-900"
@@ -401,6 +409,7 @@ const getStatusLabelForTenant = (status: string | null) => {
         </div>
       </UCard>
 
+      <!-- Charts grid -->
       <div
         v-if="dashboardStore.monthlyRevenue.length > 0"
         class="grid grid-cols-1 lg:grid-cols-3 gap-6"
@@ -441,6 +450,7 @@ const getStatusLabelForTenant = (status: string | null) => {
       </div>
     </div>
 
+    <!-- Partners modal (list + search, click -> tenant detail) -->
     <Teleport to="body">
       <Transition
         enter-active-class="transition-opacity duration-200"
@@ -505,7 +515,7 @@ const getStatusLabelForTenant = (status: string | null) => {
                       class="size-8 text-primary-600 dark:text-primary-400 animate-spin"
                     />
                     <p class="text-sm text-gray-600 dark:text-gray-400">
-                      {{ t('common.loading') || 'Loading partners...' }}
+                      {{ t('superadmin.tenants.loadingPartners') }}
                     </p>
                   </div>
                 </div>
@@ -521,7 +531,7 @@ const getStatusLabelForTenant = (status: string | null) => {
                     </div>
                     <div>
                       <p class="text-lg font-medium text-red-600 dark:text-red-400 mb-1">
-                        {{ t('superadmin.tenants.error.fetchFailed') }}
+                        {{ t('superadmin.tenants.errorLoadingPartners') }}
                       </p>
                       <p class="text-sm text-gray-600 dark:text-gray-400">
                         {{ tenantStore.error }}
@@ -557,7 +567,7 @@ const getStatusLabelForTenant = (status: string | null) => {
                     <div class="flex-1 min-w-0">
                       <div class="flex items-center gap-2 mb-1">
                         <h3 class="font-semibold text-gray-900 dark:text-white truncate">
-                          {{ tenant.company_name || tenant.name || 'Unnamed Tenant' }}
+                          {{ tenant.company_name || tenant.name || t('superadmin.tenants.unnamedTenant') }}
                         </h3>
                         <UBadge
                           v-if="tenant.status"
@@ -606,10 +616,10 @@ const getStatusLabelForTenant = (status: string | null) => {
                     </div>
                     <div>
                       <p class="text-lg font-medium text-gray-900 dark:text-white mb-1">
-                        {{ searchQuery ? t('superadmin.tenants.noTenantsFound') : t('superadmin.tenants.noTenantsFound') }}
+                        {{ searchQuery ? t('superadmin.tenants.noPartnersFoundSearch') : t('superadmin.tenants.noTenantsFound') }}
                       </p>
                       <p class="text-sm text-gray-500 dark:text-gray-400">
-                        {{ searchQuery ? t('common.noResults') || 'Try adjusting your search' : t('superadmin.tenants.noTenantsFound') }}
+                        {{ searchQuery ? t('superadmin.tenants.tryAdjustingSearch') : t('superadmin.tenants.noPartnersAvailable') }}
                       </p>
                     </div>
                   </div>
@@ -621,6 +631,7 @@ const getStatusLabelForTenant = (status: string | null) => {
       </Transition>
     </Teleport>
 
+    <!-- Reports Modal -->
     <Teleport to="body">
       <Transition
         enter-active-class="transition-opacity duration-200"
@@ -660,7 +671,7 @@ const getStatusLabelForTenant = (status: string | null) => {
                         {{ t('superadmin.dashboard.actions.viewReports') }}
                       </h2>
                       <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                        {{ t('superadmin.dashboard.actions.viewReports') }}
+                        {{ t('superadmin.dashboard.reportsModal.subtitle') }}
                       </p>
                     </div>
                     <UButton
@@ -690,7 +701,7 @@ const getStatusLabelForTenant = (status: string | null) => {
                       class="size-8 text-primary-600 dark:text-primary-400 animate-spin"
                     />
                     <p class="text-sm text-gray-600 dark:text-gray-400">
-                      {{ t('common.loading') || 'Loading...' }}
+                      {{ t('superadmin.tenants.loadingPartners') }}
                     </p>
                   </div>
                 </div>
@@ -704,9 +715,14 @@ const getStatusLabelForTenant = (status: string | null) => {
                     >
                       <UIcon name="i-lucide-alert-circle" class="size-8 text-red-500" />
                     </div>
-                    <p class="text-lg font-medium text-red-600 dark:text-red-400">
-                      {{ tenantStore.error }}
-                    </p>
+                    <div>
+                      <p class="text-lg font-medium text-red-600 dark:text-red-400 mb-1">
+                        {{ t('superadmin.tenants.errorLoadingPartners') }}
+                      </p>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        {{ tenantStore.error }}
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -737,7 +753,7 @@ const getStatusLabelForTenant = (status: string | null) => {
                     <div class="flex-1 min-w-0">
                       <div class="flex items-center gap-2 mb-1">
                         <h3 class="font-semibold text-gray-900 dark:text-white truncate">
-                          {{ tenant.company_name || tenant.name || 'Partner' }}
+                          {{ tenant.company_name || tenant.name || t('superadmin.tenants.unnamedTenant') }}
                         </h3>
                         <UBadge
                           v-if="tenant.status"
@@ -767,9 +783,14 @@ const getStatusLabelForTenant = (status: string | null) => {
                     >
                       <UIcon name="i-lucide-building-2" class="size-8 text-gray-400" />
                     </div>
-                    <p class="text-lg font-medium text-gray-900 dark:text-white">
-                      {{ t('superadmin.tenants.noTenantsFound') }}
-                    </p>
+                    <div>
+                      <p class="text-lg font-medium text-gray-900 dark:text-white mb-1">
+                        {{ searchQuery ? t('superadmin.tenants.noPartnersFoundSearch') : t('superadmin.tenants.noTenantsFound') }}
+                      </p>
+                      <p class="text-sm text-gray-500 dark:text-gray-400">
+                        {{ searchQuery ? t('superadmin.tenants.tryAdjustingSearch') : t('superadmin.tenants.noPartnersAvailable') }}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     brevoApiKey: process.env.BREVO_API_KEY || '',
     supabaseStorageBucket: process.env.SUPABASE_STORAGE_BUCKET || 'customerid',
-    superadminCreatedBy: process.env.SUPERADMIN_CREATED_BY || 'krahaso',
+    superadminCreatedBy: process.env.SUPERADMIN_CREATED_BY || 'autopika',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://krahaso.co',
     },

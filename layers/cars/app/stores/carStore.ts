@@ -49,7 +49,7 @@ export const useCarStore = defineStore('carStore', {
       color: [],
       sortBy: 'price-asc',
     },
-    viewMode: 'grid',
+    viewMode: 'list',
     currentSearchParams: null,
   }),
 

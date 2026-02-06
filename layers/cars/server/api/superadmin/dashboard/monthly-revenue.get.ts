@@ -6,7 +6,8 @@ import { requireSuperadminAuth } from '../../../utils/auth.utils'
 export default defineEventHandler(async (event: H3Event) => {
   const { supabase } = await requireSuperadminAuth(event)
   const config = useRuntimeConfig(event)
-  const createdBy = (config as { superadminCreatedBy?: string }).superadminCreatedBy ?? 'krahaso'
+  // Same as autopika: filter by created_by so chart matches (autopika uses "autopika")
+  const createdBy = (config as { superadminCreatedBy?: string }).superadminCreatedBy ?? 'autopika'
   const log = getLogger(event)
 
   log.info('Fetching monthly revenue data')

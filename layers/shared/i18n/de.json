@@ -505,7 +505,9 @@
     "pickupTime": "Abholzeit",
     "returnTime": "Rückgabezeit",
     "filterLabel": "Filtern",
+    "clearAll": "Alle zurücksetzen",
     "priceRange": "Preisspanne",
+    "minPrice": "Mindestpreis",
     "transmission": "Getriebe",
     "fuelType": "Kraftstoffart",
     "numberOfSeats": "Anzahl der Sitze",
@@ -1042,6 +1044,9 @@
         "viewReports": "Berichte anzeigen",
         "partnershipRequests": "Partnerschaftsanfragen",
         "settlementRequests": "Abrechnungsanfragen"
+      },
+      "reportsModal": {
+        "subtitle": "Wählen Sie den Partner, für den Sie Berichte anzeigen möchten"
       }
     },
     "tenants": {
@@ -1049,6 +1054,12 @@
       "subtitle": "Alle Partner im System verwalten",
       "searchPlaceholder": "Partner suchen...",
       "noTenantsFound": "Keine Partner gefunden",
+      "loadingPartners": "Partner werden geladen...",
+      "errorLoadingPartners": "Fehler beim Laden der Partner",
+      "noPartnersFoundSearch": "Keine Partner gefunden",
+      "tryAdjustingSearch": "Versuchen Sie, Ihre Suche anzupassen",
+      "noPartnersAvailable": "Keine Partner verfügbar",
+      "unnamedTenant": "Unbenannter Partner",
       "details": {
         "title": "Partnerdetails"
       },
@@ -1066,12 +1077,22 @@
     "bookings": {
       "title": "Buchungen",
       "subtitle": "Alle Buchungen der Partner",
+      "searchPlaceholder": "Nach Buchungsnummer, Partner oder Status suchen...",
       "loading": "Buchungen werden geladen...",
+      "filterByStatus": "Nach Status filtern",
+      "filterByPartner": "Nach Partner filtern",
+      "actions": {
+        "generateReport": "Bericht erstellen"
+      },
+      "filter": {
+        "all": "Alle"
+      },
       "error": {
-        "fetchFailed": "Buchungen konnten nicht geladen werden"
+        "fetchFailed": "Buchungen konnten nicht geladen werden",
+        "unknown": "Unbekannter Fehler"
       },
       "empty": {
-        "title": "Keine Buchungen",
+        "title": "Keine Buchungen gefunden",
         "description": "Keine Buchungen vorhanden."
       },
       "table": {
@@ -1085,19 +1106,136 @@
       "status": {
         "unknown": "Unbekannt",
         "upcoming": "Bevorstehend",
+        "confirmed": "Bestätigt",
         "pending": "Ausstehend",
         "completed": "Abgeschlossen",
         "settled": "Abgerechnet",
         "cancelled": "Storniert",
         "active": "Aktiv"
+      },
+      "footer": {
+        "showing": "Zeige",
+        "to": "bis",
+        "of": "von",
+        "bookings": "Buchungen"
+      },
+      "report": {
+        "title": "PDF-Bericht erstellen",
+        "partner": "Partner",
+        "status": "Buchungsstatus",
+        "startDate": "Startdatum",
+        "endDate": "Enddatum",
+        "createdDateRange": "Datumsbereich",
+        "totalBookings": "Buchungen gesamt",
+        "totalRevenue": "Umsatz gesamt",
+        "totalFee": "Gebühr gesamt",
+        "generate": "PDF erstellen",
+        "partnerPlaceholder": "Partner auswählen",
+        "statusPlaceholder": "Buchungsstatus auswählen",
+        "titlePDF": "Buchungsbericht",
+        "bookingNr": "Buchungsnummer",
+        "cancel": "Abbrechen",
+        "success": {
+          "title": "Bericht erfolgreich erstellt",
+          "description": "PDF-Bericht mit {count} Buchungen heruntergeladen"
+        },
+        "error": {
+          "title": "Fehler bei der Berichterstellung",
+          "dateRequired": "Bitte Start- und Enddatum auswählen",
+          "generationFailed": "PDF-Bericht konnte nicht erstellt werden"
+        }
       }
     },
     "partnershipRequests": {
       "title": "Partnerschaftsanfragen",
-      "subtitle": "Partnerschaftsanfragen verwalten",
+      "subtitle": "Alle Partnerschaftsanfragen anzeigen und verwalten",
+      "loading": "Anfragen werden geladen...",
+      "actions": {
+        "approve": "Genehmigen",
+        "reject": "Ablehnen",
+        "editPartnership": "Partnerschaft bearbeiten"
+      },
+      "approve": {
+        "success": "Anfrage erfolgreich genehmigt",
+        "successDescription": "Partnerschaft mit {company} wurde aktiviert",
+        "error": "Genehmigung fehlgeschlagen",
+        "errorDescription": "Die Anfrage konnte derzeit nicht genehmigt werden"
+      },
+      "approveModal": {
+        "title": "Partnerschaftsanfrage genehmigen",
+        "subtitle": "Marktplatzgebühren-Prozentsatz festlegen",
+        "percentageLabel": "Marktplatzgebühren-Prozentsatz (%)",
+        "percentagePlaceholder": "Prozentsatz eingeben (0-100)",
+        "percentageHint": "Der Prozentsatz, den Krahaso von Buchungen erhält",
+        "cancel": "Abbrechen",
+        "confirm": "Genehmigen & Aktivieren"
+      },
       "emptyState": {
-        "title": "Keine Anfragen vorhanden.",
-        "description": "Keine Partnerschaftsanfragen."
+        "title": "Keine ausstehenden Anfragen",
+        "description": "Alle Partnerschaftsanfragen wurden bearbeitet"
+      },
+      "errors": {
+        "title": "Fehler",
+        "fetchFailed": "Anfragen konnten nicht geladen werden",
+        "unknown": "Unbekannter Fehler",
+        "invalidPercentage": "Ungültiger Prozentsatz",
+        "percentageRange": "Prozentsatz muss zwischen 0 und 100 liegen"
+      },
+      "searchPlaceholder": "Suche nach Name, E-Mail, Telefon...",
+      "table": {
+        "status": "Status",
+        "companyName": "Unternehmen",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "subdomain": "Subdomain",
+        "createdAt": "Erstellt am",
+        "showing": "Zeige",
+        "to": "bis",
+        "of": "von",
+        "requests": "Anfragen"
+      },
+      "status": {
+        "pending": "Ausstehend",
+        "approved": "Genehmigt",
+        "rejected": "Abgelehnt"
+      },
+      "reject": {
+        "success": "Anfrage erfolgreich abgelehnt",
+        "successDescription": "Partnerschaftsanfrage von {company} wurde abgelehnt",
+        "error": "Ablehnung fehlgeschlagen",
+        "errorDescription": "Die Anfrage konnte derzeit nicht abgelehnt werden"
+      },
+      "rejectModal": {
+        "title": "Partnerschaftsanfrage ablehnen",
+        "subtitle": "Möchten Sie diese Anfrage wirklich ablehnen?",
+        "cancel": "Abbrechen",
+        "confirm": "Ablehnen"
+      },
+      "updatePercentage": {
+        "success": "Prozentsatz erfolgreich aktualisiert"
+      },
+      "editPartnership": {
+        "success": "Partnerschaft erfolgreich aktualisiert",
+        "error": "Aktualisierung fehlgeschlagen",
+        "errorDescription": "Partnerschaft konnte derzeit nicht aktualisiert werden",
+        "noChanges": "Keine Änderungen",
+        "noChangesDescription": "Bitte nehmen Sie mindestens eine Änderung vor dem Speichern vor"
+      },
+      "editPartnershipModal": {
+        "title": "Partnerschaft bearbeiten",
+        "subtitle": "Prozentsatz und/oder Partnerschaftsstatus aktualisieren",
+        "percentageLabel": "Markt-Prozentsatz (%)",
+        "percentagePlaceholder": "Prozentsatz eingeben (0-100)",
+        "percentageHint": "Der Prozentsatz, den Krahaso von Buchungen erhält",
+        "partnershipLabel": "Partnerschaft",
+        "cancel": "Abbrechen",
+        "confirm": "Änderungen speichern"
+      },
+      "activatePartnership": {
+        "success": "Partnerschaft erfolgreich aktiviert"
+      },
+      "deactivatePartnership": {
+        "success": "Partnerschaft erfolgreich deaktiviert"
       }
     },
     "settledRequests": {
@@ -1193,5 +1331,9 @@
         }
       }
     }
+  },
+  "emptyState": {
+    "noCarsFound": "Keine Autos gefunden",
+    "tryAdjustingFilters": "Versuchen Sie, Ihre Filter oder Suchkriterien anzupassen."
   }
 }

@@ -112,6 +112,8 @@ function getActiveFiltersCountFromUrl(): number {
 
 const activeFiltersCount = computed(() => getActiveFiltersCountFromUrl())
 
+/** True only after search has completed for current params; avoids showing EmptyState before first load. */
+const searchCompletedForParams = ref(false)
 const isEditing = ref(false)
 const selectedDates = ref<{ start: Date | null; end: Date | null }>({ start: null, end: null })
 const selectedTimes = ref<{ start: string | null; end: string | null }>({ start: null, end: null })
@@ -196,6 +198,7 @@ if (import.meta.client) {
       }
       await carStore.setFilters(batched, true)
       await searchCars()
+      searchCompletedForParams.value = true
     }
   })
 }
@@ -204,6 +207,7 @@ watch(
   () => [query.value.startDate, query.value.endDate, query.value.startTime, query.value.endTime, query.value.pickup, query.value.return, query.value.page, query.value.sortBy, query.value.minPrice, query.value.maxPrice, query.value.transmission, query.value.fuel, query.value.seats],
   async () => {
     if (!hasSearchParams.value) return
+    searchCompletedForParams.value = false
     const q = query.value
     if (q.startDate) selectedDates.value.start = new Date(q.startDate)
     if (q.endDate) selectedDates.value.end = new Date(q.endDate)
@@ -233,6 +237,7 @@ watch(
     }
     await carStore.setFilters(batched, true)
     await searchCars()
+    searchCompletedForParams.value = true
   },
 )
 
@@ -248,13 +253,22 @@ const response = computed(() => ({
   limit: carStore.limit,
 }))
 const loading = computed(() => carStore.loading)
+/** True while search is in progress (API call or waiting for first result). Used for sidebar total spinner. */
+const isSearchLoading = computed(
+  () => loading.value || (hasSearchParams.value && !searchCompletedForParams.value),
+)
 const viewMode = computed({
   get: () => carStore.viewMode,
   set: (v: 'grid' | 'list') => carStore.setViewMode(v),
 })
 
 const isDesktop = ref(false)
+// Set viewMode from viewport before first paint (refresh/hydration), so list is selected on desktop
 if (import.meta.client) {
+  onBeforeMount(() => {
+    const w = typeof window !== 'undefined' ? window.innerWidth : 0
+    carStore.setViewMode(w >= 1024 ? 'list' : 'grid')
+  })
   onMounted(() => {
     const handleResize = () => {
       const w = typeof window !== 'undefined' ? window.innerWidth : 0
@@ -354,7 +368,7 @@ useSeoPage({
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 -mx-4 -mb-8 px-4 pb-8 sm:px-6 lg:px-8">
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 -mb-8 px-4 pb-8 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto py-6">
       <UBreadcrumb
         :items="[
@@ -370,9 +384,9 @@ useSeoPage({
           {{ t('cars.title') }}
         </h1>
 
-        <!-- Summary bar -->
+        <!-- Summary bar (only when we have params and user is not editing) -->
         <div
-          v-if="!isEditing"
+          v-if="hasSearchParams && !isEditing"
           class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700"
         >
           <div class="flex flex-wrap gap-4 text-sm items-center">
@@ -414,7 +428,7 @@ useSeoPage({
           </div>
         </div>
 
-        <!-- Edit search form -->
+        <!-- Edit search form (when no params yet, or user clicked Edit) -->
         <div
           v-else
           class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700"
@@ -522,7 +536,7 @@ useSeoPage({
       <div class="flex gap-6">
         <aside class="hidden lg:block w-80 shrink-0">
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 sticky top-6">
-            <CarFiltersSidebar search-page />
+            <CarFiltersSidebar search-page :search-loading="isSearchLoading" />
           </div>
         </aside>
 
@@ -544,9 +558,15 @@ useSeoPage({
                     class="ml-2"
                   />
                 </UButton>
-                <p class="text-sm text-muted">
-                  <span class="font-medium text-gray-900 dark:text-white">{{ carStore.total }}</span>
-                  {{ carStore.total === 1 ? t('cars.car') : t('cars.cars') }} {{ t('cars.available') }}
+                <p class="text-sm text-muted flex items-center gap-2">
+                  <UIcon
+                    v-if="isSearchLoading"
+                    name="i-lucide-loader-2"
+                    class="h-4 w-4 shrink-0 animate-spin text-primary"
+                    aria-hidden="true"
+                  />
+                  <span v-else class="font-medium text-gray-900 dark:text-white">{{ carStore.total }}</span>
+                  {{ isSearchLoading ? t('cars.cars') : (carStore.total === 1 ? t('cars.car') : t('cars.cars')) }} {{ t('cars.available') }}
                 </p>
               </div>
               <div class="flex items-center gap-4 w-full sm:w-auto">
@@ -577,25 +597,34 @@ useSeoPage({
           </div>
 
           <ClientOnly>
-            <div v-if="loading" class="space-y-6">
+            <div v-if="loading || (hasSearchParams && !searchCompletedForParams)" class="space-y-6">
+              <!-- Modern searching indicator -->
+              <div class="rounded-lg border border-primary-200 dark:border-primary-800 bg-primary-50/50 dark:bg-primary-950/30 px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <UIcon
+                    name="i-lucide-loader-2"
+                    class="h-5 w-5 shrink-0 text-primary animate-spin"
+                    aria-hidden="true"
+                  />
+                  <span class="text-sm font-medium text-primary-700 dark:text-primary-300">
+                    {{ t('cars.searching') }}
+                  </span>
+                </div>
+                <UProgress class="mt-2" color="primary" size="xs" animation="swing" />
+              </div>
+              <!-- Layout via CSS only (lg = 1024px): grid below lg, list from lg = no flash -->
               <div
-                :class="[
-                  'grid grid-cols-1 gap-6',
-                  viewMode === 'grid'
-                    ? 'md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'
-                    : 'md:grid md:grid-cols-1 md:space-y-6',
-                ]"
+                class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1 lg:space-y-6"
               >
                 <div
                   v-for="i in limit"
                   :key="i"
-                  :class="viewMode === 'list' ? 'md:flex md:gap-6' : ''"
+                  class="flex flex-col lg:flex-row lg:gap-6"
                 >
                   <USkeleton
-                    :class="viewMode === 'list' ? 'md:h-48 md:w-80 md:shrink-0 h-80' : 'h-80'"
-                    class="w-full rounded-xl"
+                    class="h-80 w-full rounded-xl lg:h-48 lg:w-80 lg:shrink-0"
                   />
-                  <div v-if="viewMode === 'list'" class="hidden md:flex flex-1 space-y-4">
+                  <div class="hidden lg:flex flex-1 flex-col space-y-4">
                     <USkeleton class="h-6 w-3/4" />
                     <USkeleton class="h-4 w-1/2" />
                     <USkeleton class="h-4 w-full" />
@@ -622,15 +651,34 @@ useSeoPage({
             </div>
 
             <EmptyState
-              v-else-if="hasSearchParams && response?.cars && response.cars.length === 0 && !loading"
+              v-else-if="hasSearchParams && searchCompletedForParams && !loading && response?.cars?.length === 0"
             />
 
             <template #fallback>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-                <div v-for="i in 6" :key="i" class="space-y-4">
-                  <USkeleton class="h-80 w-full rounded-xl" />
-                  <USkeleton class="h-4 w-3/4" />
-                  <USkeleton class="h-4 w-1/2" />
+              <div class="space-y-6">
+                <div class="rounded-lg border border-primary-200 dark:border-primary-800 bg-primary-50/50 dark:bg-primary-950/30 px-4 py-3">
+                  <div class="flex items-center gap-3">
+                    <UIcon
+                      name="i-lucide-loader-2"
+                      class="h-5 w-5 shrink-0 text-primary animate-spin"
+                      aria-hidden="true"
+                    />
+                    <span class="text-sm font-medium text-primary-700 dark:text-primary-300">
+                      {{ t('cars.searching') }}
+                    </span>
+                  </div>
+                  <UProgress class="mt-2" color="primary" size="xs" animation="swing" />
+                </div>
+                <!-- Same responsive layout as loading block (list on lg) so no grid→list flash -->
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1 lg:space-y-6">
+                  <div v-for="i in 6" :key="i" class="flex flex-col lg:flex-row lg:gap-6">
+                    <USkeleton class="h-80 w-full rounded-xl lg:h-48 lg:w-80 lg:shrink-0" />
+                    <div class="hidden lg:flex flex-1 flex-col space-y-4">
+                      <USkeleton class="h-6 w-3/4" />
+                      <USkeleton class="h-4 w-1/2" />
+                      <USkeleton class="h-4 w-full" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </template>
@@ -657,7 +705,7 @@ useSeoPage({
         :ui="{ content: 'w-full max-w-sm', body: 'overflow-y-auto' }"
       >
         <template #body>
-          <CarFiltersSidebar search-page />
+          <CarFiltersSidebar search-page :search-loading="isSearchLoading" />
         </template>
         <template #footer>
           <div class="flex gap-3 w-full">

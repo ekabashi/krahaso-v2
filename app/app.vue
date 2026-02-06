@@ -6,7 +6,7 @@ import './assets/css/tokens.css'
 
 <template>
   <UApp :toaster="{ position: 'bottom-right', duration: 5000, max: 5 }">
-    <NuxtLoadingIndicator />
+    <NuxtLoadingIndicator color="repeating-linear-gradient(to right,#d91e2e 0%,#d91e2e 100%)" />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

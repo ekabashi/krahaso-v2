@@ -507,7 +507,9 @@
     "pickupTime": "Ora e marrjes",
     "returnTime": "Ora e kthimit",
     "filterLabel": "Filtro",
+    "clearAll": "Pastro të gjitha",
     "priceRange": "Rangu i çmimit",
+    "minPrice": "Çmimi minimal",
     "transmission": "Transmisioni",
     "fuelType": "Lloji i karburantit",
     "numberOfSeats": "Numri i ulëseve",
@@ -1043,7 +1045,10 @@
       "actions": {
         "viewReports": "Shiko Raportet",
         "partnershipRequests": "Kërkesat e Partneritetit",
-        "settlementRequests": "Kërkesat për Barazim"
+        "settlementRequests": "Kërkesat per barazim"
+      },
+      "reportsModal": {
+        "subtitle": "Zgjidhni partnerin për të cilin dëshironi të shikoni raportet"
       }
     },
     "tenants": {
@@ -1051,6 +1056,12 @@
       "subtitle": "Menaxho të gjithë partnerët në sistem",
       "searchPlaceholder": "Kërko sipas emrit të kompanisë, subdomain..",
       "noTenantsFound": "Nuk u gjetën partnerë",
+      "loadingPartners": "Duke ngarkuar partnerët...",
+      "errorLoadingPartners": "Gabim në ngarkimin e partnerëve",
+      "noPartnersFoundSearch": "Nuk u gjetën partnerë",
+      "tryAdjustingSearch": "Provoni të ndryshoni kërkimin tuaj",
+      "noPartnersAvailable": "Nuk ka partnerë të disponueshëm",
+      "unnamedTenant": "Partner i panjohur",
       "details": {
         "title": "Detajet e partnerit"
       },
@@ -1068,12 +1079,22 @@
     "bookings": {
       "title": "Rezervimet",
       "subtitle": "Të gjitha rezervimet nga partnerët",
+      "searchPlaceholder": "Kërko sipas numrit të rezervimit, partnerit ose statusit...",
       "loading": "Duke ngarkuar rezervimet...",
+      "filterByStatus": "Filtro sipas statusit",
+      "filterByPartner": "Filtro sipas partnerit",
+      "actions": {
+        "generateReport": "Gjenero Raport"
+      },
+      "filter": {
+        "all": "Të gjitha"
+      },
       "error": {
-        "fetchFailed": "Dështoi ngarkimi i rezervimeve"
+        "fetchFailed": "Dështoi ngarkimi i rezervimeve",
+        "unknown": "Gabim i panjohur"
       },
       "empty": {
-        "title": "Nuk ka rezervime",
+        "title": "Nuk u gjetën rezervime",
         "description": "Nuk ka rezervime për të shfaqur."
       },
       "table": {
@@ -1087,19 +1108,136 @@
       "status": {
         "unknown": "E panjohur",
         "upcoming": "Ardhës",
+        "confirmed": "I konfirmuar",
         "pending": "Në pritje",
         "completed": "Përfunduar",
-        "settled": "Shlyer",
+        "settled": "Barazuar",
         "cancelled": "Anuluar",
         "active": "Aktiv"
+      },
+      "footer": {
+        "showing": "Duke shfaqur",
+        "to": "deri",
+        "of": "nga",
+        "bookings": "rezervime"
+      },
+      "report": {
+        "title": "Gjenero Raport PDF",
+        "partner": "Partneri",
+        "status": "Statusi i rezervimit",
+        "startDate": "Data e fillimit",
+        "endDate": "Data e mbarimit",
+        "createdDateRange": "Intervali i datave",
+        "totalBookings": "Rezervime gjithsej",
+        "totalRevenue": "Të ardhura gjithsej",
+        "totalFee": "Tarifa gjithsej",
+        "generate": "Gjenero PDF",
+        "partnerPlaceholder": "Zgjidhni partnerin",
+        "statusPlaceholder": "Zgjidhni statusin",
+        "titlePDF": "Raporti i Rezervimeve",
+        "bookingNr": "Numri i rezervimit",
+        "cancel": "Anulo",
+        "success": {
+          "title": "Raporti u gjenerua me sukses",
+          "description": "Raporti PDF u shkarkua me {count} rezervime"
+        },
+        "error": {
+          "title": "Gabim në gjenerimin e raportit",
+          "dateRequired": "Ju lutemi zgjidhni datën e fillimit dhe të mbarimit",
+          "generationFailed": "Dështoi gjenerimi i raportit PDF"
+        }
       }
     },
     "partnershipRequests": {
       "title": "Kërkesat e Partneritetit",
-      "subtitle": "Menaxho kërkesat e partneritetit",
+      "subtitle": "Shiko dhe menaxho të gjitha kërkesat e partneritetit",
+      "loading": "Duke ngarkuar kërkesat...",
+      "actions": {
+        "approve": "Aprovo",
+        "reject": "Refuzo",
+        "editPartnership": "Ndrysho Partneritetin"
+      },
+      "approve": {
+        "success": "Kërkesa u aprovua me sukses",
+        "successDescription": "Partneriteti me {company} u aktivizua",
+        "error": "Dështoi aprovimi i kërkesës",
+        "errorDescription": "Nuk mund të aprovohet kërkesa në këtë moment"
+      },
+      "approveModal": {
+        "title": "Aprovo Kërkesën e Partneritetit",
+        "subtitle": "Vendos përqindjen e tarifës së tregut",
+        "percentageLabel": "Përqindja e tarifës së tregut (%)",
+        "percentagePlaceholder": "Vendos përqindjen (0-100)",
+        "percentageHint": "Përqindja që Krahaso merr nga rezervimet",
+        "cancel": "Anulo",
+        "confirm": "Aprovo dhe Aktivizo"
+      },
       "emptyState": {
-        "title": "Nuk ka kërkesa për të shfaqur.",
-        "description": "Nuk ka kërkesa partneriteti."
+        "title": "Nuk ka kërkesa në pritje",
+        "description": "Të gjitha kërkesat e partneritetit janë përpunuar"
+      },
+      "errors": {
+        "title": "Gabim",
+        "fetchFailed": "Dështoi ngarkimi i kërkesave",
+        "unknown": "Gabim i panjohur",
+        "invalidPercentage": "Përqindje e pavlefshme",
+        "percentageRange": "Përqindja duhet të jetë midis 0 dhe 100"
+      },
+      "searchPlaceholder": "Kërko sipas emrit, emailit, telefonit...",
+      "table": {
+        "status": "Statusi",
+        "companyName": "Kompania",
+        "email": "Email",
+        "phone": "Telefoni",
+        "subdomain": "Nëndomeni",
+        "createdAt": "Krijuar më",
+        "showing": "Duke shfaqur",
+        "to": "deri",
+        "of": "nga",
+        "requests": "kërkesa"
+      },
+      "status": {
+        "pending": "Në pritje",
+        "approved": "E aprovuar",
+        "rejected": "E refuzuar"
+      },
+      "reject": {
+        "success": "Kërkesa u refuzua me sukses",
+        "successDescription": "Kërkesa e partneritetit nga {company} u refuzua",
+        "error": "Dështoi refuzimi i kërkesës",
+        "errorDescription": "Nuk mund të refuzohet kërkesa në këtë moment"
+      },
+      "rejectModal": {
+        "title": "Refuzo Kërkesën e Partneritetit",
+        "subtitle": "A jeni i sigurt që dëshironi ta refuzoni këtë kërkesë?",
+        "cancel": "Anulo",
+        "confirm": "Refuzo"
+      },
+      "updatePercentage": {
+        "success": "Përqindja u përditësua me sukses"
+      },
+      "editPartnership": {
+        "success": "Partneriteti u përditësua me sukses",
+        "error": "Dështoi përditësimi i partneritetit",
+        "errorDescription": "Nuk mund të përditësohet partneriteti në këtë moment",
+        "noChanges": "Nuk ka ndryshime",
+        "noChangesDescription": "Bëni të paktën një ndryshim para ruajtjes"
+      },
+      "editPartnershipModal": {
+        "title": "Ndrysho Partneritetin",
+        "subtitle": "Përditëso përqindjen dhe/ose statusin e partneritetit",
+        "percentageLabel": "Përqindja e tarifës së tregut (%)",
+        "percentagePlaceholder": "Vendos përqindjen (0-100)",
+        "percentageHint": "Përqindja që Krahaso merr nga rezervimet",
+        "partnershipLabel": "Partneriteti",
+        "cancel": "Anulo",
+        "confirm": "Ruaj Ndryshimet"
+      },
+      "activatePartnership": {
+        "success": "Partneriteti u aktivizua me sukses"
+      },
+      "deactivatePartnership": {
+        "success": "Partneriteti u çaktivizua me sukses"
       }
     },
     "settledRequests": {
@@ -1195,5 +1333,9 @@
         }
       }
     }
+  },
+  "emptyState": {
+    "noCarsFound": "Nuk u gjetën makina",
+    "tryAdjustingFilters": "Provoni të ndryshoni filtrat ose kriteret e kërkimit."
   }
 }

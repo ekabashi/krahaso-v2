@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { useCarStore, type CarFilters } from '~/stores/carStore'
+import { useCarStore, type CarFilters } from '../stores/carStore'
+
+const props = withDefaults(
+  defineProps<{
+    /** When true, show loading spinner for total (controlled by parent, e.g. search page). */
+    searchLoading?: boolean
+  }>(),
+  { searchLoading: false },
+)
 
 const route = useRoute()
 const router = useRouter()
@@ -22,9 +30,8 @@ function getFiltersFromUrl(): Partial<CarFilters> {
   }
 
   const min = q.minPrice ? Number(q.minPrice) : carStore.minPrice
-  const max = q.maxPrice ? Number(q.maxPrice) : carStore.maxPrice
-  if (!Number.isNaN(min) && !Number.isNaN(max)) {
-    filters.priceRange = [min, max]
+  if (!Number.isNaN(min)) {
+    filters.priceRange = [min, carStore.maxPrice]
   }
 
   if (q.transmission && typeof q.transmission === 'string') {
@@ -61,11 +68,14 @@ function getFiltersFromUrl(): Partial<CarFilters> {
 
 const urlFilters = computed(() => getFiltersFromUrl())
 
-const priceRange = computed({
+const minPrice = computed({
   get: () =>
-    urlFilters.value.priceRange ?? [carStore.minPrice, carStore.maxPrice],
-  set: (value: [number, number]) => {
-    updateUrlWithFilters({ ...urlFilters.value, priceRange: value })
+    urlFilters.value.priceRange?.[0] ?? carStore.minPrice,
+  set: (value: number) => {
+    updateUrlWithFilters({
+      ...urlFilters.value,
+      priceRange: [value, carStore.maxPrice],
+    })
   },
 })
 
@@ -83,13 +93,8 @@ function buildSearchQuery(filters: Partial<CarFilters>): Record<string, string> 
   if (q.page) out.page = String(q.page)
 
   const min = carStore.minPrice
-  const max = carStore.maxPrice
-  if (
-    filters.priceRange &&
-    (filters.priceRange[0] !== min || filters.priceRange[1] !== max)
-  ) {
+  if (filters.priceRange && filters.priceRange[0] > min) {
     out.minPrice = String(filters.priceRange[0])
-    out.maxPrice = String(filters.priceRange[1])
   }
   if (filters.transmission?.length) out.transmission = filters.transmission.join(',')
   if (filters.fuel?.length) out.fuel = filters.fuel.join(',')
@@ -163,11 +168,7 @@ function clearAllFilters() {
 const activeFiltersCount = computed(() => {
   let count = 0
   const filters = urlFilters.value
-  if (
-    filters.priceRange &&
-    (filters.priceRange[0] !== carStore.minPrice ||
-      filters.priceRange[1] !== carStore.maxPrice)
-  )
+  if (filters.priceRange && filters.priceRange[0] !== carStore.minPrice)
     count++
   if (filters.transmission?.length) count++
   if (filters.fuel?.length) count++
@@ -227,9 +228,15 @@ function getColorValue(color: string): string {
           {{ t('cars.clearAll') }}
         </UButton>
       </div>
-      <p v-if="carStore.total > 0" class="text-sm text-muted mt-1">
-        {{ carStore.total }}
-        {{ carStore.total === 1 ? t('cars.car') : t('cars.cars') }}
+      <p class="text-sm text-muted mt-1 flex items-center gap-2">
+        <UIcon
+          v-if="searchLoading"
+          name="i-lucide-loader-2"
+          class="h-4 w-4 shrink-0 animate-spin text-primary"
+          aria-hidden="true"
+        />
+        <span v-else>{{ carStore.total }}</span>
+        {{ searchLoading ? t('cars.cars') : (carStore.total === 1 ? t('cars.car') : t('cars.cars')) }}
         {{ t('cars.available') }}
       </p>
     </div>
@@ -237,17 +244,16 @@ function getColorValue(color: string): string {
     <div class="p-4 space-y-6 max-h-[calc(100vh-12rem)] overflow-y-auto">
       <div>
         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-          {{ t('cars.priceRange') }}
+          {{ t('cars.minPrice') }}
         </label>
         <USlider
-          v-model="priceRange"
+          v-model="minPrice"
           :min="carStore.minPrice"
           :max="carStore.maxPrice"
           :step="5"
         />
-        <div class="flex justify-between text-sm text-muted mt-2">
-          <span>{{ formatPrice(priceRange[0]) }}</span>
-          <span>{{ formatPrice(priceRange[1]) }}</span>
+        <div class="text-sm text-muted mt-2">
+          {{ formatPrice(minPrice) }}
         </div>
       </div>
 
