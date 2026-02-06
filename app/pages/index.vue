@@ -385,10 +385,10 @@ useHead(() => ({
             class="w-full bg-white rounded-3xl shadow-2xl border border-gray-100 pt-14 pb-6 px-6 md:pt-16 md:pb-8 md:px-8 transition-all duration-300"
           >
             <div v-if="isFlights">
-              <!-- <FlightSearchForm
+              <FlightSearchForm
                 embedded
                 @search="onFlightSearch"
-              /> -->
+              />
             </div>
             <div v-else>
               <CarSearchForm
