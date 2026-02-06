@@ -1111,6 +1111,9 @@
         "marketplaceShare": "Krahaso-Anteil",
         "tenantShare": "Partner-Anteil",
         "notes": "Notizen",
+        "actions": {
+          "generateReport": "Bericht erstellen"
+        },
         "emptyState": {
           "noHistory": "Keine Abrechnungshistorie",
           "noHistoryDescription": "Keine Abrechnungshistorie für diesen Partner."
@@ -1385,6 +1388,20 @@
             "description": "Dies ist der Gesamtbetrag, der an den Partner überwiesen wird.",
             "transferAmount": "Überweisungsbetrag"
           }
+        }
+      },
+      "report": {
+        "titlePDF": "Abrechnungsbericht",
+        "createdDate": "Abrechnungsdatum",
+        "totalRevenue": "Gesamtpreis",
+        "totalFee": "Krahaso-Gebühr",
+        "transferAmount": "Überweisungsbetrag",
+        "table": {
+          "bookingNumber": "Buchungsnummer",
+          "vehicle": "Fahrzeug",
+          "totalPrice": "Gesamtpreis",
+          "fee": "Krahaso-Gebühr",
+          "rentalPeriod": "Mietzeitraum"
         }
       }
     }

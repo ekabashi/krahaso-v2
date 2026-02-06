@@ -2,7 +2,7 @@
 import { h, resolveComponent } from 'vue'
 import type { TableColumn } from '@nuxt/ui'
 import { useSettlementRequestStore } from '../../../stores/settlementRequestStore'
-import type { TenantSettlementSummary } from '~/types'
+import type { TenantSettlementSummary } from '../../../types'
 
 definePageMeta({
   layout: 'superadmin',

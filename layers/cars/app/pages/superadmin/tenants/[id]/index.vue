@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { h, resolveComponent } from 'vue'
 import type { TableColumn } from '@nuxt/ui'
-import type { TenantBookingStats } from '~/types'
+import type { TenantBookingStats } from '../../../../types'
 import { useTenantStore } from '../../../../stores/tenantStore'
 
 definePageMeta({

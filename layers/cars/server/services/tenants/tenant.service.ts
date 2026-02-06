@@ -745,4 +745,152 @@ export class TenantService {
       }),
     }
   }
+
+  async getReconciliationDetails(reconciliationId: number): Promise<{
+    id: number
+    tenant_id: number
+    settled_count: number
+    total_revenue: number
+    marketplace_share: number
+    tenant_share: number
+    percentage: number
+    booking_ids: number[]
+    created_at: string
+    created_by: string
+    notes: string | null
+    bookings: Array<{
+      id: number
+      booking_number: string
+      total_price: number
+      status: string
+      created_at: string
+      startDateTime: string
+      endDateTime: string
+      vehicle: { make: string; model: string; year: number }
+      customer: { name: string; surname: string; email: string }
+    }>
+  }> {
+    const { data: reconciliationEntry, error: entryError } = await this.client
+      .from('reconciliation_history')
+      .select('*')
+      .eq('id', reconciliationId)
+      .single()
+
+    if (entryError) {
+      log.error(
+        'Failed to fetch reconciliation entry from database',
+        entryError as Error,
+        {
+          reconciliationId,
+          supabaseError: entryError.message,
+        }
+      )
+      throw new Error(`Database error: ${entryError.message}`)
+    }
+
+    if (!reconciliationEntry) {
+      throw new Error(`Reconciliation entry with ID ${reconciliationId} not found`)
+    }
+
+    const bookingIds = (reconciliationEntry.booking_ids as number[]) || []
+
+    if (bookingIds.length === 0) {
+      return {
+        id: reconciliationEntry.id as number,
+        tenant_id: reconciliationEntry.tenant_id as number,
+        settled_count: reconciliationEntry.settled_count as number,
+        total_revenue: Number(reconciliationEntry.total_revenue),
+        marketplace_share: Number(reconciliationEntry.marketplace_share),
+        tenant_share: Number(reconciliationEntry.tenant_share),
+        percentage: reconciliationEntry.percentage as number,
+        booking_ids: bookingIds,
+        created_at: reconciliationEntry.created_at as string,
+        created_by: (reconciliationEntry.created_by as string) || 'superadmin',
+        notes: (reconciliationEntry.notes as string | null) || null,
+        bookings: [],
+      }
+    }
+
+    const { data: bookings, error: bookingsError } = await this.client
+      .from('bookings')
+      .select(
+        `
+        id,
+        booking_number,
+        total_price,
+        status,
+        created_at,
+        startDateTime,
+        endDateTime,
+        vehicles:vehicle_id (
+          make,
+          model,
+          year
+        ),
+        customers:customer_id (
+          name,
+          surname,
+          email
+        )
+      `
+      )
+      .in('id', bookingIds)
+      .order('created_at', { ascending: false })
+
+    if (bookingsError) {
+      log.error(
+        'Failed to fetch bookings for reconciliation details',
+        bookingsError as Error,
+        {
+          reconciliationId,
+          bookingIds,
+          supabaseError: bookingsError.message,
+        }
+      )
+      throw new Error(`Database error: ${bookingsError.message}`)
+    }
+
+    const bookingsList = (bookings || []).map((booking: any) => {
+      const vehicles = booking.vehicles
+      const customers = booking.customers
+
+      const vehicle = Array.isArray(vehicles) ? vehicles[0] : vehicles
+      const customer = Array.isArray(customers) ? customers[0] : customers
+
+      return {
+        id: booking.id as number,
+        booking_number: booking.booking_number as string,
+        total_price: Number(booking.total_price),
+        status: booking.status as string,
+        created_at: booking.created_at as string,
+        startDateTime: booking.startDateTime as string,
+        endDateTime: booking.endDateTime as string,
+        vehicle: {
+          make: vehicle?.make || 'Unknown',
+          model: vehicle?.model || 'Unknown',
+          year: vehicle?.year || 0,
+        },
+        customer: {
+          name: customer?.name || 'Unknown',
+          surname: customer?.surname || '',
+          email: customer?.email || '',
+        },
+      }
+    })
+
+    return {
+      id: reconciliationEntry.id as number,
+      tenant_id: reconciliationEntry.tenant_id as number,
+      settled_count: reconciliationEntry.settled_count as number,
+      total_revenue: Number(reconciliationEntry.total_revenue),
+      marketplace_share: Number(reconciliationEntry.marketplace_share),
+      tenant_share: Number(reconciliationEntry.tenant_share),
+      percentage: reconciliationEntry.percentage as number,
+      booking_ids: bookingIds,
+      created_at: reconciliationEntry.created_at as string,
+      created_by: (reconciliationEntry.created_by as string) || 'superadmin',
+      notes: (reconciliationEntry.notes as string | null) || null,
+      bookings: bookingsList,
+    }
+  }
 }

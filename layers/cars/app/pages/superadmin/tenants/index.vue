@@ -2,7 +2,7 @@
 import { h, resolveComponent } from 'vue'
 import { getPaginationRowModel } from '@tanstack/vue-table'
 import type { TableColumn } from '@nuxt/ui'
-import type { SuperadminTenant } from '~/types'
+import type { SuperadminTenant } from '../../../types'
 import { useTenantStore } from '../../../stores/tenantStore'
 
 definePageMeta({

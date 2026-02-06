@@ -16,6 +16,7 @@ const tenantStore = useTenantStore()
 const toast = useToast()
 const { t } = useI18n()
 const { formatDate } = useFormatDate()
+const { formatPrice } = useFormatPrice()
 
 const UIcon = resolveComponent('UIcon')
 const UButton = resolveComponent('UButton')
@@ -135,7 +136,141 @@ const columns = computed<TableColumn<ReconciliationHistoryEntry>[]>(() => [
       ])
     },
   },
+  {
+    id: 'actions',
+    header: '',
+    cell: ({ row }) => {
+      return h(
+        UDropdownMenu,
+        {
+          items: [
+            [
+              {
+                label: t(
+                  'superadmin.tenants.reconciliationHistory.actions.generateReport'
+                ),
+                icon: 'i-lucide-file-text',
+                loading: isGeneratingReport.value,
+                onSelect: () => handleGenerateReport(row.original),
+              },
+            ],
+          ],
+        },
+        () =>
+          h(UButton, {
+            icon: 'i-lucide-ellipsis-vertical',
+            color: 'neutral',
+            variant: 'ghost',
+            size: 'sm',
+          })
+      )
+    },
+  },
 ])
+
+const handleGenerateReport = async (reconciliation: ReconciliationHistoryEntry) => {
+  if (isGeneratingReport.value) return
+  isGeneratingReport.value = true
+
+  try {
+    const details = await tenantStore.fetchReconciliationDetails(
+      tenantId.value,
+      reconciliation.id
+    )
+
+    const { generateSettlementReportPDF } = await import(
+      '../../../../utils/reportTemplate'
+    )
+
+    const percentage = details.percentage || 0
+    const convertedRequests = [{
+      id: String(details.id),
+      tenant_id: details.tenant_id,
+      booking_numbers: details.bookings.map((b) => b.booking_number),
+      booking_ids: details.booking_ids,
+      status: 'completed' as const,
+      requested_by: details.created_by,
+      notes: details.notes,
+      created_at: details.created_at,
+      updated_at: details.created_at,
+      tenant: tenantStore.reconciliationHistory?.tenant,
+      bookings: details.bookings.map((booking) => {
+        const totalPrice = Number(booking.total_price) || 0
+        const fee = percentage > 0
+          ? Math.round((totalPrice * percentage) * 100) / 10000
+          : 0
+        
+        return {
+          id: booking.id,
+          booking_number: booking.booking_number,
+          total_price: totalPrice,
+          fee,
+          vehicle: booking.vehicle ? {
+            make: booking.vehicle.make,
+            model: booking.vehicle.model,
+            license_plate: null,
+          } : null,
+          customer: booking.customer ? {
+            name: booking.customer.name,
+            surname: booking.customer.surname,
+          } : null,
+          startDateTime: booking.startDateTime,
+          endDateTime: booking.endDateTime,
+        }
+      }),
+    }]
+
+    const pdfBytes = await generateSettlementReportPDF(
+      convertedRequests,
+      {
+        title: t('superadmin.settledRequests.report.titlePDF'),
+        partnerLabel: t('superadmin.bookings.report.partner'),
+        createdDateLabel: t('superadmin.settledRequests.report.createdDate'),
+        totalRevenueLabel: t('superadmin.settledRequests.report.totalRevenue'),
+        totalFeeLabel: t('superadmin.settledRequests.report.totalFee'),
+        transferAmountLabel: t('superadmin.settledRequests.report.transferAmount'),
+        partnerName: tenantStore.reconciliationHistory?.tenant?.company_name || tenantStore.reconciliationHistory?.tenant?.name || '-',
+        tableHeaders: {
+          bookingNumber: t('superadmin.settledRequests.report.table.bookingNumber'),
+          vehicle: t('superadmin.settledRequests.report.table.vehicle'),
+          totalPrice: t('superadmin.settledRequests.report.table.totalPrice'),
+          fee: t('superadmin.settledRequests.report.table.fee'),
+          rentalPeriod: t('superadmin.settledRequests.report.table.rentalPeriod'),
+        },
+        formatCurrency: (amount) => formatPrice(amount).replace('€', '').trim() + ' €',
+        formatDate,
+      }
+    )
+
+    const blob = new Blob([pdfBytes as BlobPart], { type: 'application/pdf' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `Raporti-Barazimit-${formatDate(
+      new Date().toISOString(),
+      'YYYY-MM-DD'
+    )}.pdf`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+
+    toast.add({
+      title: 'Success',
+      description: 'Report generated successfully',
+      color: 'success',
+    })
+  } catch (error) {
+    console.error('Error generating report:', error)
+    toast.add({
+      title: 'Error',
+      description: 'Failed to generate report',
+      color: 'error',
+    })
+  } finally {
+    isGeneratingReport.value = false
+  }
+}
 
 onMounted(async () => {
   try {

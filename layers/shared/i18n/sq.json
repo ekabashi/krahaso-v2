@@ -1113,6 +1113,9 @@
         "marketplaceShare": "Pjesa e Krahaso",
         "tenantShare": "Pjesa e Partnerit",
         "notes": "Shënime",
+        "actions": {
+          "generateReport": "Gjenero Raport"
+        },
         "emptyState": {
           "noHistory": "Nuk ka histori barazimi",
           "noHistoryDescription": "Nuk ka histori barazimi për këtë partner."
@@ -1387,6 +1390,20 @@
             "description": "Kjo është shuma totale që do të transferohet te partneri.",
             "transferAmount": "Shuma e Transferimit"
           }
+        }
+      },
+      "report": {
+        "titlePDF": "Raporti i Barazimit",
+        "createdDate": "Data e Barazimit",
+        "totalRevenue": "Çmimi Total",
+        "totalFee": "Tarifa Krahaso",
+        "transferAmount": "Shuma për Transfer",
+        "table": {
+          "bookingNumber": "Nr. i Rezervimit",
+          "vehicle": "Automjeti",
+          "totalPrice": "Çmimi Total",
+          "fee": "Tarifa Krahaso",
+          "rentalPeriod": "Periudha e Qirasë"
         }
       }
     }

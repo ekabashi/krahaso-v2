@@ -1111,6 +1111,9 @@
         "marketplaceShare": "Krahaso Share",
         "tenantShare": "Partner Share",
         "notes": "Notes",
+        "actions": {
+          "generateReport": "Generate Report"
+        },
         "emptyState": {
           "noHistory": "No reconciliation history",
           "noHistoryDescription": "No reconciliation history for this partner."
@@ -1385,6 +1388,20 @@
             "description": "This is the total amount that will be transferred to the partner.",
             "transferAmount": "Transfer Amount"
           }
+        }
+      },
+      "report": {
+        "titlePDF": "Settlement Report",
+        "createdDate": "Settlement Date",
+        "totalRevenue": "Total Price",
+        "totalFee": "Krahaso Fee",
+        "transferAmount": "Transfer Amount",
+        "table": {
+          "bookingNumber": "Booking Number",
+          "vehicle": "Vehicle",
+          "totalPrice": "Total Price",
+          "fee": "Krahaso Fee",
+          "rentalPeriod": "Rental Period"
         }
       }
     }
