@@ -7,11 +7,21 @@
  * - Link to cookie policy (localePath)
  */
 
+const COOKIE_KEY = 'i18n_locale'
+
 const { t, locale } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const localePath = useLocalePath()
 const consent = useConsent()
-const showBanner = ref(!consent.hasConsent.value)
+const localeCookie = useCookie<string | undefined>(COOKIE_KEY, {
+  default: () => undefined,
+  maxAge: 60 * 60 * 24 * 365,
+  sameSite: 'lax',
+  path: '/',
+})
+
+// Reactive: only show banner if no consent exists (works in SSR + client, no flash)
+const showBanner = computed(() => !consent.hasConsent.value)
 const showCustomize = ref(false)
 
 const analyticsConsent = ref(true)
@@ -23,28 +33,18 @@ const locales = [
   { code: 'de' as const, name: 'Deutsch' },
 ]
 
-watch(
-  () => consent.hasConsent.value,
-  (hasConsent) => {
-    if (hasConsent) showBanner.value = false
-  },
-)
-
 function acceptAll() {
   consent.acceptAll()
-  showBanner.value = false
   showCustomize.value = false
 }
 
 function rejectAll() {
   consent.rejectAll()
-  showBanner.value = false
   showCustomize.value = false
 }
 
 function saveCustom() {
   consent.setConsent(analyticsConsent.value, marketingConsent.value)
-  showBanner.value = false
   showCustomize.value = false
 }
 
@@ -54,6 +54,10 @@ function toggleCustomize() {
 
 function switchLanguage(code: 'sq' | 'en' | 'de') {
   if (code === locale.value) return
+  
+  // Set cookie BEFORE navigation so middleware sees correct locale
+  localeCookie.value = code === 'sq' ? undefined : code
+  
   navigateTo(switchLocalePath(code))
 }
 </script>

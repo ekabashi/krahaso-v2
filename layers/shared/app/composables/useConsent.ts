@@ -4,7 +4,7 @@
  * Manages user consent for analytics and marketing tracking.
  * Critical for GDPR/privacy compliance, especially in EU.
  *
- * - Store consent in localStorage (krahaso_consent) with timestamp
+ * - Store consent in cookie (krahaso_consent) so it works in SSR (no flash on load)
  * - Update GTM consent mode when consent changes
  * - useAnalytics checks this before sending dataLayer events
  */
@@ -18,24 +18,16 @@ export interface ConsentState {
 const CONSENT_KEY = 'krahaso_consent'
 
 export function useConsent() {
-  const consentState = useState<ConsentState | null>('consent', () => null)
+  // Use cookie instead of localStorage so it works in SSR and avoids flash
+  const consentCookie = useCookie<ConsentState | null>(CONSENT_KEY, {
+    default: () => null,
+    maxAge: 60 * 60 * 24 * 365, // 1 year
+    sameSite: 'lax',
+    path: '/',
+  })
 
-  // After hydration (client): restore consent from localStorage so it persists across refresh
-  if (import.meta.client) {
-    onMounted(() => {
-      try {
-        const stored = localStorage.getItem(CONSENT_KEY)
-        if (stored) {
-          const parsed = JSON.parse(stored) as ConsentState
-          if (parsed && typeof parsed.analytics === 'boolean' && typeof parsed.marketing === 'boolean') {
-            consentState.value = parsed
-          }
-        }
-      } catch {
-        // ignore
-      }
-    })
-  }
+  // Initialize state from cookie (works in server + client, no flash)
+  const consentState = useState<ConsentState | null>('consent', () => consentCookie.value)
 
   const hasConsent = computed(() => !!consentState.value)
   const hasAnalyticsConsent = computed(() => consentState.value?.analytics ?? false)
@@ -49,9 +41,9 @@ export function useConsent() {
     }
 
     consentState.value = consent
+    consentCookie.value = consent
 
     if (import.meta.client) {
-      localStorage.setItem(CONSENT_KEY, JSON.stringify(consent))
       updateGtmConsent(consent)
     }
   }
@@ -66,14 +58,9 @@ export function useConsent() {
 
   function clearConsent() {
     consentState.value = null
+    consentCookie.value = null
 
     if (import.meta.client) {
-      try {
-        localStorage.removeItem(CONSENT_KEY)
-      } catch {
-        // ignore
-      }
-
       const w = globalThis as unknown as { gtag?: (...args: unknown[]) => void }
       if (w.gtag) {
         w.gtag('consent', 'update', {
