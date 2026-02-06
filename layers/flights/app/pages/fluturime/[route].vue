@@ -304,8 +304,8 @@ useHead(() => {
     <UContainer class="py-8">
       <UBreadcrumb
         :items="[
-          { label: $t('shared.nav.home'), to: '/' },
-          { label: $t('shared.nav.flights'), to: '/flights' },
+          { label: $t('shared.nav.home'), to: localePath('/') },
+          { label: $t('shared.nav.flights'), to: localePath('/fluturime') },
           { label: routeData ? `${routeData.origin} → ${routeData.destination}` : '' }
         ]"
         class="mb-6"

@@ -397,7 +397,7 @@ function onBookFlight(flight: Flight) {
       </div>
 
       <!-- Actual flexible results -->
-      <FlightFlexibleDateMatrix
+      <FlexibleDateMatrix
         v-if="flexibleResults"
         :dates="flexibleResults.outbound"
         :cheapest-date="flexibleResults.cheapestOutboundDate"
@@ -407,7 +407,7 @@ function onBookFlight(flight: Flight) {
         @select="(date: string) => onFlexibleDateSelect(date, 'outbound')"
       />
 
-      <FlightFlexibleDateMatrix
+      <FlexibleDateMatrix
         v-if="flexibleResults?.return && flexibleResults.return.length > 0"
         :dates="flexibleResults.return"
         :cheapest-date="flexibleResults.cheapestReturnDate ?? null"

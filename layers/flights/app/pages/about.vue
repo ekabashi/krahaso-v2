@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const values = [
   { key: 'transparency', icon: 'i-lucide-shield-check' },
@@ -61,7 +62,7 @@ useSeoMeta({
                 bg-white text-primary-800
                 hover:bg-primary-50
               "
-              to="/"
+              :to="localePath('/')"
             >
               {{ $t('about.hero.cta') }}
             </UButton>
@@ -70,7 +71,7 @@ useSeoMeta({
               variant="outline"
               color="neutral"
               icon="i-lucide-handshake"
-              to="/partner"
+              :to="localePath('/partner')"
             >
               {{ $t('about.hero.partnerCta') }}
             </UButton>
@@ -247,7 +248,7 @@ useSeoMeta({
                 bg-white text-primary-800
                 hover:bg-primary-50
               "
-              to="/"
+              :to="localePath('/')"
             >
               {{ $t('about.cta.primary') }}
             </UButton>

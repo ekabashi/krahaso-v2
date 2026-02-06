@@ -11,11 +11,6 @@ export default defineNuxtConfig({
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://krahaso.co',
     },
   },
-  extends: [
-    './layers/shared',
-    './layers/cars',
-    './layers/flights',
-  ],
   // CSS loaded from app.vue with relative imports to avoid ~ resolution in virtual:nuxt/css.mjs
   modules: ['@nuxt/ui', '@nuxtjs/i18n', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase'],
 
@@ -71,6 +66,21 @@ export default defineNuxtConfig({
         sq: '/makina/[location]',
         en: '/cars/[location]',
         de: '/autos/[location]',
+      },
+      fluturime: {
+        sq: '/fluturime',
+        en: '/flights',
+        de: '/flüge',
+      },
+      'fluturime-search': {
+        sq: '/fluturime/search',
+        en: '/flights/search',
+        de: '/flüge/search',
+      },
+      'fluturime-route': {
+        sq: '/fluturime/[route]',
+        en: '/flights/[route]',
+        de: '/flüge/[route]',
       },
       superadmin: {
         sq: '/superadmin',

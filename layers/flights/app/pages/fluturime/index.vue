@@ -283,7 +283,7 @@ async function onSearch() {
     <UContainer class="py-8">
       <UBreadcrumb
         :items="[
-          { label: $t('nav.home'), to: '/' },
+          { label: $t('nav.home'), to: localePath('/') },
           { label: $t('nav.flights') }
         ]"
         class="mb-6"
@@ -343,7 +343,7 @@ async function onSearch() {
             <NuxtLink
               v-for="routeItem in popularRoutes"
               :key="routeItem.slug"
-              :to="localePath(`/flights/${routeItem.slug}`)"
+              :to="localePath(`/fluturime/${routeItem.slug}`)"
               class="group relative block"
             >
               <div class="relative overflow-hidden rounded-2xl bg-white border border-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">

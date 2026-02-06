@@ -13,6 +13,7 @@ interface FlugePage {
 const route = useRoute()
 const { t } = useI18n()
 const config = useRuntimeConfig()
+const localePath = useLocalePath()
 
 // WhatsApp link with pre-filled message
 const whatsappLink = computed(() => {
@@ -51,9 +52,9 @@ useSeoMeta({
   ogImage: flugePage.image
 })
 
-// Search link with pre-filled airports
+// Search link with pre-filled airports (keeps current locale)
 const searchLink = computed(() => ({
-  path: '/flights',
+  path: localePath('/fluturime/search'),
   query: {
     from: origin.value,
     to: destination.value
@@ -276,7 +277,7 @@ const relatedRoutes = computed(() => {
           <NuxtLink
             v-for="r in relatedRoutes"
             :key="r.slug"
-            :to="`/fluege/${r.slug}`"
+            :to="localePath(`/fluturime/${r.slug}`)"
             class="block"
           >
             <UCard

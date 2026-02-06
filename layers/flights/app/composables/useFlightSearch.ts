@@ -495,16 +495,18 @@ export function useFlightSearch() {
   }
 
   /**
-   * Navigate to flight search page with current search parameters
+   * Navigate to flight search page with current search parameters (keeps current locale)
    */
   async function navigateToFlightsSearch(): Promise<void> {
     const router = useRouter()
+    const localePath = useLocalePath()
+    const path = localePath('/fluturime/search')
     const queryParams = buildFlightQueryFromState()
     if (import.meta.client) {
-      const url = router.resolve({ path: '/fluturime/search', query: queryParams }).href
+      const url = router.resolve({ path, query: queryParams }).href
       await navigateTo(url, { external: true })
     } else {
-      await router.push({ path: '/fluturime/search', query: queryParams })
+      await router.push({ path, query: queryParams })
     }
   }
 

@@ -22,8 +22,6 @@ export default defineNuxtConfig({
     // Public Configuration (available on client)
     public: {
       whatsappNumber: process.env.NUXT_PUBLIC_WHATSAPP_NUMBER || '+38349999408',
-      aviopikaHosts: (process.env.AVIOPIKA_HOSTS || 'localhost:3002').split(',').map((s: string) => s.trim()),
-      krahasoBaseUrl: process.env.KRAHASO_BASE_URL
     }
   },
 })

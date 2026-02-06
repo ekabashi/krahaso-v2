@@ -5,6 +5,7 @@ export default defineNuxtRouteMiddleware(async (_to, _from) => {
   const isAuthenticated = await authStore.checkAuth()
 
   if (!isAuthenticated) {
-    return navigateTo('/superadmin/login')
+    const localePath = useLocalePath()
+    return navigateTo(localePath('/superadmin/login'))
   }
 })

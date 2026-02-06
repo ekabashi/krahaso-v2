@@ -228,7 +228,7 @@ onMounted(() => {
 })
 
 const goBack = () => {
-  void router.push('/superadmin/settled-requests')
+  void router.push(localePath('/superadmin/settled-requests'))
 }
 
 const tenantInfo = computed(() => {

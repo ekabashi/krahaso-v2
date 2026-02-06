@@ -74,7 +74,7 @@ export const useAuthStore = defineStore('authStore', {
           avatar: data.user.user_metadata?.avatar,
         }
 
-        await navigateTo('/superadmin')
+        await navigateTo(useLocalePath()('/superadmin'))
       } catch (err) {
         this.error =
           err instanceof Error
@@ -147,7 +147,7 @@ export const useAuthStore = defineStore('authStore', {
         await supabase.auth.signOut()
         this.user = null
         this.error = null
-        await navigateTo('/superadmin/login')
+        await navigateTo(useLocalePath()('/superadmin/login'))
       } catch (err) {
         this.error =
           err instanceof Error ? err.message : 'Failed to log out'
