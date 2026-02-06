@@ -63,10 +63,17 @@ const canonical = computed(() => {
   return `${config.public.siteUrl}${localePath({ name: 'makina-location', params: { location: slug } })}`
 })
 
+const ogImage = computed(() => {
+  if (!locationDef.value) return `${config.public.siteUrl}/og/default.jpg`
+  const path = getLocationImage(locationDef.value)
+  return `${config.public.siteUrl}${path}`
+})
+
 useSeoPage({
   title: () => pageTitle.value,
   description: () => pageDescription.value,
   canonical: () => canonical.value,
+  ogImage: () => ogImage.value,
 })
 
 function scrollToSearchForm() {

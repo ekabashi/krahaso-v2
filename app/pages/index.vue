@@ -10,7 +10,8 @@ const { availableLocations, getLocationImage } = useAvailableLocations()
 useSeoPage({
   title: t('landing.seo.title'),
   description: t('landing.seo.description'),
-  canonical: '/'
+  canonical: '/',
+  ogImage: () => `${config.public.siteUrl}/logoRed.png`,
 })
 
 const { partners: partnerLogos } = usePartners()

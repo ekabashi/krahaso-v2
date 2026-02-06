@@ -7,6 +7,7 @@ const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const localePath = useLocalePath()
+const config = useRuntimeConfig()
 const carStore = useCarStore()
 const addressStore = useAddressStore()
 const { formatDate } = useFormatDate()
@@ -366,6 +367,7 @@ useSeoPage({
       : `${t('cars.title')} | Krahaso.co`,
   description: () => t('cars.description'),
   canonical: () => localePath('makina-search'),
+  ogImage: () => `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}/logoRed.png`,
 })
 
 </script>

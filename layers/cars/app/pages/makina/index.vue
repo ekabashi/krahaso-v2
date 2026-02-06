@@ -8,11 +8,13 @@ const addressStore = useAddressStore()
 const { availableLocations, getLocationImage } = useAvailableLocations()
 
 const currentLocale = computed(() => locale.value as 'sq' | 'en' | 'de')
+const config = useRuntimeConfig()
 
 useSeoPage({
   title: () => `${t('cars.title')} | Krahaso.co`,
   description: () => t('cars.description'),
   canonical: () => localePath('makina'),
+  ogImage: () => `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}/logoRed.png`,
 })
 
 if (import.meta.client) {

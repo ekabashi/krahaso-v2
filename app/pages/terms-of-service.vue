@@ -1,10 +1,12 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const config = useRuntimeConfig()
 
 useSeoPage({
   title: () => `${t('terms.title')} - Krahaso.co`,
   description: () => t('terms.description'),
-  canonical: '/terms-of-service'
+  canonical: '/terms-of-service',
+  ogImage: () => `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}/logoRed.png`,
 })
 
 useHead({

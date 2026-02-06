@@ -2,7 +2,7 @@ export function useSeoPage(seo: {
   title: string | (() => string)
   description: string | (() => string)
   canonical?: string | (() => string)
-  ogImage?: string
+  ogImage?: string | (() => string)
   noindex?: boolean
 }) {
   const config = useRuntimeConfig()
@@ -17,6 +17,7 @@ export function useSeoPage(seo: {
     const canonical =
       typeof seo.canonical === 'function' ? seo.canonical() : (seo.canonical ?? route.fullPath)
     const canonicalHref = canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`
+    const ogImage = typeof seo.ogImage === 'function' ? seo.ogImage() : seo.ogImage
     return {
       title,
       meta: [
@@ -25,10 +26,11 @@ export function useSeoPage(seo: {
         { property: 'og:description', content: description },
         { property: 'og:url', content: canonicalHref },
         { property: 'og:type', content: 'website' },
-        ...(seo.ogImage ? [{ property: 'og:image', content: seo.ogImage }] : []),
+        ...(ogImage ? [{ property: 'og:image', content: ogImage }] : []),
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: title },
         { name: 'twitter:description', content: description },
+        ...(ogImage ? [{ name: 'twitter:image', content: ogImage }] : []),
         ...(seo.noindex ? [{ name: 'robots', content: 'noindex, nofollow' }] : []),
       ],
       link: [{ rel: 'canonical', href: canonicalHref }],

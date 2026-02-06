@@ -124,10 +124,14 @@ const pageDescription = computed(() => {
   return `${t('flights.title')} ${routeData.value.origin} → ${routeData.value.destination}. ${t('flights.routeDescription')} ${routeData.value.duration}. ${t('flights.comparePrices')}`
 })
 
+const config = useRuntimeConfig()
+const siteUrl = (config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'
+
 useSeoPage({
   title: () => pageTitle.value,
   description: () => pageDescription.value,
-  canonical: localePath(`/fluturime/${routeSlug.value}`)
+  canonical: localePath(`/fluturime/${routeSlug.value}`),
+  ogImage: () => `${siteUrl}/img/airplane-aviopika_1280.jpg`,
 })
 
 const { searchState, navigateToFlightsSearch } = useFlightSearch()

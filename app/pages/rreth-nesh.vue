@@ -1,11 +1,13 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const localePath = useLocalePath()
+const config = useRuntimeConfig()
 
 useSeoPage({
   title: () => `${t('about.title')} - Krahaso.co`,
   description: () => t('about.description'),
-  canonical: '/rreth-nesh'
+  canonical: '/rreth-nesh',
+  ogImage: () => `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}/logoRed.png`,
 })
 
 const stats = computed(() => [

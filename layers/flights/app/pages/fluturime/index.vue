@@ -8,10 +8,12 @@ const { getAirportByCode, fetchAirports, airports } = useAirports()
 const route = useRoute()
 const router = useRouter()
 const localePath = useLocalePath()
+const config = useRuntimeConfig()
 
 useSeoPage({
   title: () => `${t('flights.title')} | Krahaso.co`,
-  description: () => t('flights.description')
+  description: () => t('flights.description'),
+  ogImage: () => `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}/img/airplane-aviopika_1280.jpg`,
 })
 
 const popularRoutes = [

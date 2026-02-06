@@ -1,10 +1,12 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const config = useRuntimeConfig()
 
 useSeoPage({
   title: () => `${t('contact.title')} - Krahaso.co`,
   description: () => t('contact.description'),
-  canonical: '/kontakt'
+  canonical: '/kontakt',
+  ogImage: () => `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}/logoRed.png`,
 })
 
 const contactInfo = computed(() => [

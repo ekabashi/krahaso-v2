@@ -7,6 +7,7 @@ useSeoPage({
   title: () => `${t('cookiePolicy.title')} - Krahaso.co`,
   description: () => t('cookiePolicy.description'),
   canonical: localePath('/cookie-policy'),
+  ogImage: () => `${config.public.siteUrl}/logoRed.png`,
 })
 
 const siteUrl = config.public.siteUrl || 'https://krahaso.co'
