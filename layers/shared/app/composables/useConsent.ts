@@ -18,17 +18,24 @@ export interface ConsentState {
 const CONSENT_KEY = 'krahaso_consent'
 
 export function useConsent() {
-  const consentState = useState<ConsentState | null>('consent', () => {
-    if (import.meta.server) return null
+  const consentState = useState<ConsentState | null>('consent', () => null)
 
-    try {
-      const stored = localStorage.getItem(CONSENT_KEY)
-      if (!stored) return null
-      return JSON.parse(stored) as ConsentState
-    } catch {
-      return null
-    }
-  })
+  // After hydration (client): restore consent from localStorage so it persists across refresh
+  if (import.meta.client) {
+    onMounted(() => {
+      try {
+        const stored = localStorage.getItem(CONSENT_KEY)
+        if (stored) {
+          const parsed = JSON.parse(stored) as ConsentState
+          if (parsed && typeof parsed.analytics === 'boolean' && typeof parsed.marketing === 'boolean') {
+            consentState.value = parsed
+          }
+        }
+      } catch {
+        // ignore
+      }
+    })
+  }
 
   const hasConsent = computed(() => !!consentState.value)
   const hasAnalyticsConsent = computed(() => consentState.value?.analytics ?? false)

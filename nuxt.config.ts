@@ -62,6 +62,7 @@ export default defineNuxtConfig({
       { code: 'en', iso: 'en-GB', file: 'en.json' },
     ],
     defaultLocale: 'sq',
+    detectBrowserLanguage: false,
     customRoutes: 'config',
     pages: {
       makina: {
