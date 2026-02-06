@@ -1061,7 +1061,64 @@
       "noPartnersAvailable": "No partners available",
       "unnamedTenant": "Unnamed Tenant",
       "details": {
-        "title": "Partner Details"
+        "title": "Partner Details",
+        "backToTenants": "Back to Partners",
+        "loadingStatistics": "Loading statistics...",
+        "partnershipStatistics": "Partnership statistics - ({percentage}%) of Krahaso",
+        "reconcile": "Reconcile",
+        "totalBookings": "Total Bookings",
+        "totalRevenue": "Total Revenue",
+        "marketplaceShare": "Krahaso Share",
+        "tenantShare": "Partner Share",
+        "autopikaBookings": "Krahaso Bookings",
+        "booking": "booking",
+        "bookings": "bookings",
+        "table": {
+          "bookingNumber": "Booking Number",
+          "vehicle": "Vehicle",
+          "customer": "Customer",
+          "rentalPeriod": "Rental Period",
+          "totalPrice": "Total Price",
+          "status": "Status"
+        },
+        "emptyState": {
+          "noBookingsFound": "No bookings found",
+          "noBookingsDescription": "No bookings for this partner."
+        },
+        "error": {
+          "title": "Error",
+          "failedToLoad": "Failed to load statistics"
+        }
+      },
+      "actions": {
+        "viewDetails": "View Details",
+        "viewClosedBookings": "View Closed Bookings",
+        "suspend": "Suspend",
+        "delete": "Delete"
+      },
+      "reconciliationHistory": {
+        "title": "Reconciliation History",
+        "subtitle": "Reconciliation History",
+        "description": "View reconciliation history for {count} entries",
+        "backToTenants": "Back to Partners",
+        "loading": "Loading history...",
+        "table": {
+          "rentalPeriod": "Reconciliation Date"
+        },
+        "bookings": "Bookings",
+        "booking": "booking",
+        "totalRevenue": "Total Revenue",
+        "marketplaceShare": "Krahaso Share",
+        "tenantShare": "Partner Share",
+        "notes": "Notes",
+        "emptyState": {
+          "noHistory": "No reconciliation history",
+          "noHistoryDescription": "No reconciliation history for this partner."
+        },
+        "error": {
+          "title": "Error",
+          "failedToLoad": "Failed to load reconciliation history"
+        }
       },
       "status": {
         "active": "Active",

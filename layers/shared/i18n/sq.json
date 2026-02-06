@@ -1063,7 +1063,64 @@
       "noPartnersAvailable": "Nuk ka partnerë të disponueshëm",
       "unnamedTenant": "Partner i panjohur",
       "details": {
-        "title": "Detajet e partnerit"
+        "title": "Detajet e partnerit",
+        "backToTenants": "Kthehu te Partnerët",
+        "loadingStatistics": "Duke ngarkuar statistikat...",
+        "partnershipStatistics": "Statistikat e Partneritetit - ({percentage}%) nga Krahaso",
+        "reconcile": "Barazohu",
+        "totalBookings": "Rezervimet Totale",
+        "totalRevenue": "Të Ardhurat Totale",
+        "marketplaceShare": "Pjesa e Krahaso",
+        "tenantShare": "Pjesa e Partnerit",
+        "autopikaBookings": "Rezervimet e Krahaso",
+        "booking": "rezervim",
+        "bookings": "rezervime",
+        "table": {
+          "bookingNumber": "Numri i Rezervimit",
+          "vehicle": "Automjeti",
+          "customer": "Klienti",
+          "rentalPeriod": "Periudha e Qirasë",
+          "totalPrice": "Çmimi Total",
+          "status": "Statusi"
+        },
+        "emptyState": {
+          "noBookingsFound": "Nuk u gjetën rezervime",
+          "noBookingsDescription": "Nuk ka rezervime për këtë partner."
+        },
+        "error": {
+          "title": "Gabim",
+          "failedToLoad": "Dështoi ngarkimi i statistikave"
+        }
+      },
+      "actions": {
+        "viewDetails": "Shiko Detajet",
+        "viewClosedBookings": "Shiko Rezervimet e Mbyllura",
+        "suspend": "Pezullo",
+        "delete": "Fshi"
+      },
+      "reconciliationHistory": {
+        "title": "Historia e Barazimit",
+        "subtitle": "Historia e Barazimit",
+        "description": "Duke parë {count} grup(e) barazimi",
+        "backToTenants": "Kthehu te Partnerët",
+        "loading": "Duke ngarkuar historinë...",
+        "table": {
+          "rentalPeriod": "Data e Barazimit"
+        },
+        "bookings": "Rezervimet",
+        "booking": "rezervim",
+        "totalRevenue": "Të Ardhurat Totale",
+        "marketplaceShare": "Pjesa e Krahaso",
+        "tenantShare": "Pjesa e Partnerit",
+        "notes": "Shënime",
+        "emptyState": {
+          "noHistory": "Nuk ka histori barazimi",
+          "noHistoryDescription": "Nuk ka histori barazimi për këtë partner."
+        },
+        "error": {
+          "title": "Gabim",
+          "failedToLoad": "Dështoi ngarkimi i historisë së barazimit"
+        }
       },
       "status": {
         "active": "Aktiv",

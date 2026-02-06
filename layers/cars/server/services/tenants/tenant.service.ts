@@ -353,4 +353,396 @@ export class TenantService {
 
     return result
   }
+
+  async getTenantBookingStats(tenantId: number): Promise<{
+    tenant: SuperadminTenant
+    totalBookings: number
+    totalRevenue: number
+    marketplaceShare: number
+    tenantShare: number
+    percentage: number
+    bookings: Array<{
+      id: number
+      booking_number: string
+      total_price: number
+      status: string
+      created_at: string
+      startDateTime: string
+      endDateTime: string
+      vehicle: { make: string; model: string; year: number }
+      customer: { name: string; surname: string; email: string }
+    }>
+  }> {
+    const { data: partnership, error: partnershipError } = await this.client
+      .from('partnership')
+      .select('tenant_id, is_partnership, percentage')
+      .eq('tenant_id', tenantId)
+      .eq('is_partnership', true)
+      .maybeSingle()
+
+    if (partnershipError) {
+      log.error('Failed to fetch partnership from database', partnershipError as Error, {
+        tenantId,
+        supabaseError: partnershipError.message,
+      })
+      throw new Error(`Database error: ${partnershipError.message}`)
+    }
+
+    if (!partnership) {
+      throw new Error(`Tenant with ID ${tenantId} is not a partnership tenant`)
+    }
+
+    const { data: tenant, error: tenantError } = await this.client
+      .from('tenants')
+      .select('id, name, status, created_at, subdomain')
+      .eq('id', tenantId)
+      .single()
+
+    if (tenantError) {
+      log.error('Failed to fetch tenant from database', tenantError as Error, {
+        tenantId,
+        supabaseError: tenantError.message,
+      })
+      throw new Error(`Database error: ${tenantError.message}`)
+    }
+
+    if (!tenant) {
+      throw new Error(`Tenant with ID ${tenantId} not found`)
+    }
+
+    const { data: companyInfo, error: companyError } = await this.client
+      .from('company_public_info')
+      .select('company_name, logo_url, public_phone, public_email')
+      .eq('tenant_id', tenantId)
+      .maybeSingle()
+
+    if (companyError) {
+      log.error('Failed to fetch company info', companyError as Error, {
+        tenantId,
+        supabaseError: companyError.message,
+      })
+    }
+
+    const superadminTenant: SuperadminTenant = {
+      id: tenant.id as number,
+      name: tenant.name as string | null,
+      company_name: (companyInfo?.company_name as string | null) || null,
+      logo_url: (companyInfo?.logo_url as string | null) || null,
+      public_phone: (companyInfo?.public_phone as string | null) || null,
+      public_email: (companyInfo?.public_email as string | null) || null,
+      status: tenant.status as string | null,
+      created_at: tenant.created_at as string,
+      subdomain: tenant.subdomain as string,
+      isPartnership: partnership.is_partnership as boolean,
+      percentage: partnership.percentage as number | null,
+    }
+
+    // Fetch all bookings created by autopika for this tenant
+    const { data: bookings, error: bookingsError } = await this.client
+      .from('bookings')
+      .select(
+        `
+        id,
+        booking_number,
+        total_price,
+        status,
+        created_at,
+        startDateTime,
+        endDateTime,
+        vehicles:vehicle_id (
+          make,
+          model,
+          year
+        ),
+        customers:customer_id (
+          name,
+          surname,
+          email
+        )
+      `
+      )
+      .eq('tenant_id', tenantId)
+      .eq('created_by', 'autopika')
+      .neq('status', 'cancelled')
+      .order('created_at', { ascending: false })
+
+    if (bookingsError) {
+      log.error('Failed to fetch bookings from database', bookingsError as Error, {
+        tenantId,
+        supabaseError: bookingsError.message,
+      })
+      throw new Error(`Database error: ${bookingsError.message}`)
+    }
+
+    const bookingsList = (bookings || []).map((booking: any) => {
+      const vehicles = booking.vehicles
+      const customers = booking.customers
+
+      const vehicle = Array.isArray(vehicles) ? vehicles[0] : vehicles
+      const customer = Array.isArray(customers) ? customers[0] : customers
+
+      return {
+        id: booking.id as number,
+        booking_number: booking.booking_number as string,
+        total_price: Number(booking.total_price),
+        status: booking.status as string,
+        created_at: booking.created_at as string,
+        startDateTime: booking.startDateTime as string,
+        endDateTime: booking.endDateTime as string,
+        vehicle: {
+          make: vehicle?.make || 'Unknown',
+          model: vehicle?.model || 'Unknown',
+          year: vehicle?.year || 0,
+        },
+        customer: {
+          name: customer?.name || 'Unknown',
+          surname: customer?.surname || '',
+          email: customer?.email || '',
+        },
+      }
+    })
+
+    // Calculate statistics
+    const totalRevenue = bookingsList.reduce(
+      (sum, booking) => sum + booking.total_price,
+      0
+    )
+    const percentage = (partnership.percentage as number) || 0
+    const marketplaceShare = (totalRevenue * percentage) / 100
+    const tenantShare = totalRevenue - marketplaceShare
+
+    return {
+      tenant: superadminTenant,
+      totalBookings: bookingsList.length,
+      totalRevenue,
+      marketplaceShare,
+      tenantShare,
+      percentage,
+      bookings: bookingsList,
+    }
+  }
+
+  async getTenantReconciliationHistory(tenantId: number): Promise<{
+    tenant: SuperadminTenant
+    history: Array<{
+      id: number
+      tenant_id: number
+      settled_count: number
+      total_revenue: number
+      marketplace_share: number
+      tenant_share: number
+      percentage: number
+      booking_ids: number[]
+      created_at: string
+      created_by: string
+      notes: string | null
+      bookings: Array<{
+        id: number
+        booking_number: string
+        total_price: number
+        status: string
+        created_at: string
+        startDateTime: string
+        endDateTime: string
+        vehicle: { make: string; model: string; year: number }
+        customer: { name: string; surname: string; email: string }
+      }>
+    }>
+  }> {
+    const { data: tenant, error: tenantError } = await this.client
+      .from('tenants')
+      .select('id, name, status, created_at, subdomain')
+      .eq('id', tenantId)
+      .single()
+
+    if (tenantError) {
+      log.error('Failed to fetch tenant from database', tenantError as Error, {
+        tenantId,
+        supabaseError: tenantError.message,
+      })
+      throw new Error(`Database error: ${tenantError.message}`)
+    }
+
+    if (!tenant) {
+      throw new Error(`Tenant with ID ${tenantId} not found`)
+    }
+
+    const { data: partnership, error: partnershipError } = await this.client
+      .from('partnership')
+      .select('tenant_id, is_partnership, percentage')
+      .eq('tenant_id', tenantId)
+      .eq('is_partnership', true)
+      .maybeSingle()
+
+    if (partnershipError) {
+      log.error('Failed to fetch partnership', partnershipError as Error, {
+        tenantId,
+        supabaseError: partnershipError.message,
+      })
+    }
+
+    const { data: companyInfo, error: companyError } = await this.client
+      .from('company_public_info')
+      .select('company_name, logo_url, public_phone, public_email')
+      .eq('tenant_id', tenantId)
+      .maybeSingle()
+
+    if (companyError) {
+      log.error('Failed to fetch company info', companyError as Error, {
+        tenantId,
+        supabaseError: companyError.message,
+      })
+    }
+
+    const superadminTenant: SuperadminTenant = {
+      id: tenant.id as number,
+      name: tenant.name as string | null,
+      company_name: (companyInfo?.company_name as string | null) || null,
+      logo_url: (companyInfo?.logo_url as string | null) || null,
+      public_phone: (companyInfo?.public_phone as string | null) || null,
+      public_email: (companyInfo?.public_email as string | null) || null,
+      status: tenant.status as string | null,
+      created_at: tenant.created_at as string,
+      subdomain: tenant.subdomain as string,
+      isPartnership: partnership?.is_partnership ?? false,
+      percentage: partnership?.percentage ?? null,
+    }
+
+    const { data: reconciliationHistory, error: historyError } = await this.client
+      .from('reconciliation_history')
+      .select('*')
+      .eq('tenant_id', tenantId)
+      .order('created_at', { ascending: false })
+
+    if (historyError) {
+      log.error(
+        'Failed to fetch reconciliation history from database',
+        historyError as Error,
+        {
+          tenantId,
+          supabaseError: historyError.message,
+        }
+      )
+      throw new Error(`Database error: ${historyError.message}`)
+    }
+
+    if (!reconciliationHistory || reconciliationHistory.length === 0) {
+      return {
+        tenant: superadminTenant,
+        history: [],
+      }
+    }
+
+    const allBookingIds = new Set<number>()
+    reconciliationHistory.forEach((entry: any) => {
+      const bookingIds = (entry.booking_ids as number[]) || []
+      bookingIds.forEach((id) => allBookingIds.add(id))
+    })
+
+    if (allBookingIds.size === 0) {
+      return {
+        tenant: superadminTenant,
+        history: reconciliationHistory.map((entry: any) => ({
+          id: entry.id as number,
+          tenant_id: entry.tenant_id as number,
+          settled_count: entry.settled_count as number,
+          total_revenue: Number(entry.total_revenue),
+          marketplace_share: Number(entry.marketplace_share),
+          tenant_share: Number(entry.tenant_share),
+          percentage: entry.percentage as number,
+          booking_ids: (entry.booking_ids as number[]) || [],
+          created_at: entry.created_at as string,
+          created_by: (entry.created_by as string) || 'superadmin',
+          notes: (entry.notes as string | null) || null,
+          bookings: [],
+        })),
+      }
+    }
+
+    const { data: bookings, error: bookingsError } = await this.client
+      .from('bookings')
+      .select(
+        `
+        id,
+        booking_number,
+        total_price,
+        status,
+        created_at,
+        startDateTime,
+        endDateTime,
+        vehicles:vehicle_id (
+          make,
+          model,
+          year
+        ),
+        customers:customer_id (
+          name,
+          surname,
+          email
+        )
+      `
+      )
+      .in('id', Array.from(allBookingIds))
+
+    if (bookingsError) {
+      log.error('Failed to fetch bookings for reconciliation history', bookingsError as Error, {
+        tenantId,
+        supabaseError: bookingsError.message,
+      })
+    }
+
+    const bookingsMap = new Map(
+      (bookings || []).map((booking: any) => {
+        const vehicles = booking.vehicles
+        const customers = booking.customers
+
+        const vehicle = Array.isArray(vehicles) ? vehicles[0] : vehicles
+        const customer = Array.isArray(customers) ? customers[0] : customers
+
+        return [
+          booking.id as number,
+          {
+            id: booking.id as number,
+            booking_number: booking.booking_number as string,
+            total_price: Number(booking.total_price),
+            status: booking.status as string,
+            created_at: booking.created_at as string,
+            startDateTime: booking.startDateTime as string,
+            endDateTime: booking.endDateTime as string,
+            vehicle: {
+              make: vehicle?.make || 'Unknown',
+              model: vehicle?.model || 'Unknown',
+              year: vehicle?.year || 0,
+            },
+            customer: {
+              name: customer?.name || 'Unknown',
+              surname: customer?.surname || '',
+              email: customer?.email || '',
+            },
+          },
+        ]
+      })
+    )
+
+    return {
+      tenant: superadminTenant,
+      history: reconciliationHistory.map((entry: any) => {
+        const bookingIds = (entry.booking_ids as number[]) || []
+        return {
+          id: entry.id as number,
+          tenant_id: entry.tenant_id as number,
+          settled_count: entry.settled_count as number,
+          total_revenue: Number(entry.total_revenue),
+          marketplace_share: Number(entry.marketplace_share),
+          tenant_share: Number(entry.tenant_share),
+          percentage: entry.percentage as number,
+          booking_ids: bookingIds,
+          created_at: entry.created_at as string,
+          created_by: (entry.created_by as string) || 'superadmin',
+          notes: (entry.notes as string | null) || null,
+          bookings: bookingIds.map((id) => bookingsMap.get(id)).filter(Boolean) as any[],
+        }
+      }),
+    }
+  }
 }
