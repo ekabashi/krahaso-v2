@@ -337,8 +337,8 @@ async function onSearch() {
       <div v-if="!hasSearchCriteria && !hasQueryParams">
         <!-- Popular Routes Section -->
         <UPageSection
-          :title="t('routes.title')"
-          :description="t('routes.description')"
+          :title="t('flights.routes.title')"
+          :description="t('flights.routes.description')"
           class="mb-12"
         >
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-12">
@@ -388,7 +388,7 @@ async function onSearch() {
                       <span class="text-sm font-medium text-primary">
                         {{ routeItem.from }} → {{ routeItem.to }}
                       </span>
-                      <span class="text-xs text-gray-400 mt-0.5">{{ t('routes.compare') }}</span>
+                      <span class="text-xs text-gray-400 mt-0.5">{{ t('flights.routes.compare') }}</span>
                     </div>
 
                     <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
