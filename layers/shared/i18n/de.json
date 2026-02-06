@@ -360,13 +360,11 @@
     "noResults": "Keine Flüge gefunden",
     "noResultsDesc": "Bitte ändere die Daten oder Ziele.",
     "noSearch": "Wähle Abflug, Ziel und Datum, um Angebote zu sehen.",
-    "stops": "Stopps",
     "routeDescription": "Preise für Flüge vergleichen",
     "comparePrices": "und das beste Angebot finden.",
     "searchNow": "Jetzt suchen",
     "duration": "Dauer",
     "flightType": "Flugtyp",
-    "direct": "Direkt",
     "withStop": "Mit Stopp",
     "airports": "Flughäfen",
     "avgPrice": "Durchschnittspreis",
@@ -418,10 +416,6 @@
         "title": "Preisalarm aktivieren",
         "description": "Aktiviere Alarme, um informiert zu werden, wenn die Preise für deine Route fallen."
       }
-    },
-    "results": {
-      "title": "Suchergebnisse",
-      "found": "Flüge gefunden"
     },
     "faq": {
       "title": "Häufig gestellte Fragen",
@@ -479,8 +473,76 @@
       "swapAirports": "Flughäfen tauschen",
       "flexibleLabel": "Flexible Daten",
       "flexibleHint": "Suche Flüge mit flexiblen Daten, um bessere Preise zu finden",
-      "searchFlights": "Flüge suchen"
-    }
+      "searchFlights": "Flüge suchen",
+      "title": "Flüge suchen"
+    },
+    "errors": {
+      "title": "Ungültige Parameter",
+      "invalidDate": "Das Datum ist ungültig. Bitte verwenden Sie das Suchformular unten, um eine neue Suche zu starten."
+    },
+    "loading": {
+      "searching": "Flüge werden gesucht",
+      "providers": "Suche bei {n} Anbietern"
+    },
+    "flexible": {
+      "outbound": "Hinflugdaten",
+      "return": "Rückflugdaten",
+      "cheapest": "Günstigste",
+      "yourDate": "Ihr Datum",
+      "noFlights": "Keine Flüge",
+      "flight": "Flug",
+      "flights": "Flüge",
+      "selectHint": "Klicken Sie auf ein Datum, um das Datum zu ändern",
+      "confirmTitle": "Datum ändern?",
+      "confirmMessage": "Möchten Sie das Datum auf {date} ändern und erneut suchen?",
+      "confirmYes": "Ja, ändern",
+      "confirmNo": "Abbrechen"
+    },
+    "results": {
+      "title": "{n} Flug gefunden | {n} Flüge gefunden",
+      "onDate": "am {date}",
+      "outbound": "Hinflug",
+      "return": "Rückflug",
+      "noOutbound": "Keine Hinflüge gefunden",
+      "noReturn": "Keine Rückflüge gefunden",
+      "tryOther": "Versuchen Sie andere Filter oder Daten.",
+      "outboundFlights": "{n} Hinflug | {n} Hinflüge",
+      "returnFlights": "{n} Rückflug | {n} Rückflüge",
+      "fromCache": "Aus Cache"
+    },
+    "sort": {
+      "label": "Sortieren nach:",
+      "cheapest": "Günstigste",
+      "shortest": "Kürzeste Dauer",
+      "earliest": "Früheste Abfahrt"
+    },
+    "filter": {
+      "title": "Filtern",
+      "reset": "Zurücksetzen",
+      "maxPrice": "Max. Preis: {price}€",
+      "hideSoldOut": "Ausverkaufte ausblenden",
+      "providers": "Anbieter",
+      "airlines": "Fluggesellschaften",
+      "flightNumber": "Flugnummer",
+      "departureTime": "Abflugzeit",
+      "anytime": "Jederzeit",
+      "morning": "Morgen (06-12)",
+      "afternoon": "Nachmittag (12-18)",
+      "evening": "Abend (18-24)",
+      "stops": "Stopps",
+      "allStops": "Alle",
+      "directOnly": "Nur Direktflüge",
+      "maxOneStop": "Max. 1 Stopp"
+    },
+    "direct": "Direkt",
+    "stops": "{n} Stopp | {n} Stopps",
+    "seats": "Nur noch {n} Plätze",
+    "soldOut": "Ausverkauft",
+    "noSeats": "Keine Plätze verfügbar",
+    "toProvider": "Zum Anbieter",
+    "perPerson": "pro Person",
+    "close": "Schließen",
+    "showResults": "Ergebnisse anzeigen"
   },
   "cars": {
     "title": "Autovermietung suchen",

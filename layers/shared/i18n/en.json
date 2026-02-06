@@ -360,13 +360,11 @@
     "noResults": "No flights found",
     "noResultsDesc": "Please try changing dates or destinations.",
     "noSearch": "Select origin, destination, and date to see offers.",
-    "stops": "stops",
     "routeDescription": "Compare prices for flights",
     "comparePrices": "and find the best deal.",
     "searchNow": "Search Now",
     "duration": "Duration",
     "flightType": "Flight Type",
-    "direct": "Direct",
     "withStop": "With stop",
     "airports": "Airports",
     "avgPrice": "Average Price",
@@ -418,10 +416,6 @@
         "title": "Enable Price Alerts",
         "description": "Turn on alerts to get notified when prices drop for your preferred route."
       }
-    },
-    "results": {
-      "title": "Search Results",
-      "found": "flights found"
     },
     "faq": {
       "title": "Frequently Asked Questions",
@@ -479,8 +473,76 @@
       "swapAirports": "Swap airports",
       "flexibleLabel": "Flexible dates",
       "flexibleHint": "Search flights with flexible dates to find better prices",
-      "searchFlights": "Search Flights"
-    }
+      "searchFlights": "Search Flights",
+      "title": "Search Flights"
+    },
+    "errors": {
+      "title": "Invalid parameters",
+      "invalidDate": "The date is invalid. Please use the search form below to start a new search."
+    },
+    "loading": {
+      "searching": "Searching flights",
+      "providers": "Searching {n} providers"
+    },
+    "flexible": {
+      "outbound": "Outbound dates",
+      "return": "Return dates",
+      "cheapest": "Cheapest",
+      "yourDate": "Your date",
+      "noFlights": "No flights",
+      "flight": "flight",
+      "flights": "flights",
+      "selectHint": "Click on a date to change the date",
+      "confirmTitle": "Change date?",
+      "confirmMessage": "Do you want to change the date to {date} and search again?",
+      "confirmYes": "Yes, change",
+      "confirmNo": "Cancel"
+    },
+    "results": {
+      "title": "{n} flight found | {n} flights found",
+      "onDate": "on {date}",
+      "outbound": "Outbound",
+      "return": "Return",
+      "noOutbound": "No outbound flights found",
+      "noReturn": "No return flights found",
+      "tryOther": "Try other filters or dates.",
+      "outboundFlights": "{n} outbound flight | {n} outbound flights",
+      "returnFlights": "{n} return flight | {n} return flights",
+      "fromCache": "From cache"
+    },
+    "sort": {
+      "label": "Sort by:",
+      "cheapest": "Cheapest",
+      "shortest": "Shortest duration",
+      "earliest": "Earliest departure"
+    },
+    "filter": {
+      "title": "Filter",
+      "reset": "Reset",
+      "maxPrice": "Max price: {price}€",
+      "hideSoldOut": "Hide sold out",
+      "providers": "Providers",
+      "airlines": "Airlines",
+      "flightNumber": "Flight number",
+      "departureTime": "Departure time",
+      "anytime": "Anytime",
+      "morning": "Morning (06-12)",
+      "afternoon": "Afternoon (12-18)",
+      "evening": "Evening (18-24)",
+      "stops": "Stops",
+      "allStops": "All",
+      "directOnly": "Direct only",
+      "maxOneStop": "Max. 1 stop"
+    },
+    "direct": "Direct",
+    "stops": "{n} stop | {n} stops",
+    "seats": "Only {n} seats left",
+    "soldOut": "Sold out",
+    "noSeats": "No seats available",
+    "toProvider": "Go to provider",
+    "perPerson": "per person",
+    "close": "Close",
+    "showResults": "Show results"
   },
   "cars": {
     "title": "Search Car Rental",

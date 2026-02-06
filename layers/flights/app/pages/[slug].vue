@@ -148,7 +148,7 @@ const relatedRoutes = computed(() => {
               name="i-lucide-search"
               class="mr-2 h-5 w-5"
             />
-            {{ t('search.searchFlights') }}
+            {{ t('flights.search.searchFlights') }}
           </UButton>
         </NuxtLink>
       </div>

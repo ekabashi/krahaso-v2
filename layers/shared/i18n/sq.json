@@ -362,13 +362,11 @@
     "noResults": "Nuk u gjetën fluturime",
     "noResultsDesc": "Provoni të ndryshoni datat ose destinacionet.",
     "noSearch": "Zgjidhni nisjen, destinacionin dhe datën për të parë ofertat.",
-    "stops": "ndalesa",
     "routeDescription": "Krahaso çmimet për fluturime",
     "comparePrices": "dhe gjej ofertën më të mirë.",
     "searchNow": "Kërko Tani",
     "duration": "Kohëzgjatja",
     "flightType": "Lloji i Fluturimit",
-    "direct": "Direkt",
     "withStop": "Me ndalesë",
     "airports": "Aeroportet",
     "avgPrice": "Çmimi Mesatar",
@@ -421,10 +419,6 @@
         "description": "Aktivizo alarmet për të marrë njoftime kur çmimet bien për rrugën tuaj të preferuar."
       }
     },
-    "results": {
-      "title": "Rezultatet e Kërkimit",
-      "found": "fluturime të gjetura"
-    },
     "faq": {
       "title": "Pyetjet më të shpeshta",
       "description": "Gjithçka që duhet të dini para se të filloni",
@@ -463,6 +457,7 @@
       "rentCar": "Rezervo makinë në Aeroport"
     },
     "search": {
+      "title": "Kërko Fluturime",
       "roundtrip": "Vajtje-Ardhje",
       "oneway": "Vetëm Vajtje",
       "from": "Nga",
@@ -482,6 +477,76 @@
       "flexibleLabel": "Data fleksibël",
       "flexibleHint": "Kërko fluturime me datë fleksibël për të gjetur çmime më të mira",
       "searchFlights": "Kërko Fluturime"
+    },
+    "errors": {
+      "title": "Parametra të pavlefshëm",
+      "invalidDate": "Data është e pavlefshme. Ju lutem përdorni formularin e kërkimit më poshtë për të filluar një kërkim të ri."
+    },
+    "loading": {
+      "searching": "Duke kerkuar fluturime",
+      "providers": "Duke kerkuar te {n} ofrues"
+    },
+    "flexible": {
+      "outbound": "Datat e vajtjes",
+      "return": "Datat e kthimit",
+      "cheapest": "Më i liri",
+      "yourDate": "Data jote",
+      "noFlights": "Nuk ka fluturime",
+      "flight": "fluturim",
+      "flights": "fluturime",
+      "selectHint": "Kliko mbi një ditë për të ndryshuar datën",
+      "confirmTitle": "Ndrysho datën?",
+      "confirmMessage": "Dëshiron të ndryshosh datën në {date} dhe të kërkosh përsëri?",
+      "confirmYes": "Po, ndrysho",
+      "confirmNo": "Anulo"
+    },
+    "results": {
+      "title": "{n} fluturim u gjet | {n} fluturime u gjetën",
+      "onDate": "më {date}",
+      "outbound": "Vajtja",
+      "return": "Kthimi",
+      "noOutbound": "Nuk u gjetën fluturime vajtje",
+      "noReturn": "Nuk u gjetën fluturime kthimi",
+      "tryOther": "Provo filtra ose data të tjera.",
+      "outboundFlights": "{n} fluturim vajtje | {n} fluturime vajtje",
+      "returnFlights": "{n} fluturim kthimi | {n} fluturime kthimi",
+      "fromCache": "Nga cache"
+    },
+    "sort": {
+      "label": "Renditi:",
+      "cheapest": "Çmimi më i lirë",
+      "shortest": "Kohëzgjatja më e shkurtër",
+      "earliest": "Nisja më e hershme"
+    },
+    "filter": {
+      "title": "Filtro",
+      "reset": "Rivendos",
+      "maxPrice": "Çmimi max.: {price}€",
+      "hideSoldOut": "Fshih të shiturit",
+      "providers": "Ofruesit",
+      "airlines": "Linja ajrore",
+      "flightNumber": "Numri i fluturimit",
+      "departureTime": "Ora e nisjes",
+      "anytime": "Çdo kohë",
+      "morning": "Mëngjes (06-12)",
+      "afternoon": "Pasdite (12-18)",
+      "evening": "Mbrëmje (18-24)",
+      "stops": "Ndalesat",
+      "allStops": "Të gjitha",
+      "directOnly": "Vetëm direkt",
+      "maxOneStop": "Max. 1 ndalesë"
+    },
+    "direct": "Direkt",
+    "stops": "{n} ndalesë | {n} ndalesa",
+    "seats": "Vetëm {n} vende të lira",
+    "soldOut": "Shitur",
+    "noSeats": "Nuk ka vende të lira",
+    "toProvider": "Tek ofruesi",
+    "perPerson": "për person",
+    "close": "Mbyll",
+    "showResults": "Shfaq rezultatet",
+    "seo": {
+      "description": "Krahaso dhe rezervo fluturime të lira për në dhe nga Kosova. Gjej çmimet më të mira për fluturime në Prishtinë (PRN) nga Gjermania, Zvicra dhe Austria."
     }
   },
   "cars": {

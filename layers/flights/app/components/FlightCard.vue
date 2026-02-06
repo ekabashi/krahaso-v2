@@ -199,13 +199,13 @@ function confirmOpenProvider() {
                 dark:text-green-400
               "
             >
-              {{ $t('common.direct') }}
+              {{ $t('flights.direct') }}
             </span>
             <span
               v-else
               class="mt-1 text-xs text-warning"
             >
-              {{ $t('common.stops', flight.stops) }}
+              {{ $t('flights.stops', flight.stops) }}
             </span>
           </div>
 
@@ -237,14 +237,14 @@ function confirmOpenProvider() {
           <!-- Sold out -->
           <template v-if="!flight.available">
             <p class="text-xl font-bold text-error">
-              {{ $t('common.soldOut') }}
+              {{ $t('flights.soldOut') }}
             </p>
             <UBadge
               color="error"
               size="xs"
               class="mt-1"
             >
-              {{ $t('common.noSeats') }}
+              {{ $t('flights.noSeats') }}
             </UBadge>
           </template>
 
@@ -254,7 +254,7 @@ function confirmOpenProvider() {
               {{ formattedPrice }}
             </p>
             <p class="text-xs text-muted">
-              {{ $t('common.perPerson') }}
+              {{ $t('flights.perPerson') }}
             </p>
             <UBadge
               v-if="seatsUrgency"
@@ -262,7 +262,7 @@ function confirmOpenProvider() {
               size="xs"
               class="mt-1"
             >
-              {{ $t('common.seats', { n: flight.seatsAvailable }) }}
+              {{ $t('flights.seats', { n: flight.seatsAvailable }) }}
             </UBadge>
           </template>
         </div>
@@ -272,7 +272,7 @@ function confirmOpenProvider() {
           size="lg"
           @click.stop="handleOpenProvider"
         >
-          {{ $t('common.toProvider') }}
+          {{ $t('flights.toProvider') }}
         </UButton>
       </div>
     </div>
@@ -423,7 +423,7 @@ function confirmOpenProvider() {
               color="neutral"
               @click="showExitModal = false"
             >
-              {{ $t('common.close') }}
+              {{ $t('flights.close') }}
             </UButton>
             <UButton
               icon="i-lucide-external-link"

@@ -233,7 +233,7 @@ async function handleSearch() {
       'w-full',
       embedded
         ? ''
-        : 'rounded-3xl border border-gray-200 bg-white p-6 shadow-2xl transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-900 md:p-8',
+        : 'rounded-3xl border border-gray-100 bg-white p-6 shadow-2xl transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-900 md:p-8',
     ]"
   >
     <form class="landing-car-form space-y-6" @submit.prevent="handleSearch">

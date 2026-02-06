@@ -184,7 +184,7 @@ useHead(() => ({
       </div>
 
       <!-- Search form -->
-      <div class="mb-8">
+      <div class="px-4 mb-8">
         <CarSearchForm />
       </div>
 
