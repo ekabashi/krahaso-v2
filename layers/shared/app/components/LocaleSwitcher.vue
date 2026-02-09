@@ -31,10 +31,11 @@ const currentLocale = computed(() => {
   return current ?? { code: 'sq', name: 'Shqip', flag: '🇽🇰' }
 })
 
-// Use pathForLocale so we get /en/, /sq/ etc. instead of wrong /sq/en (switchLocalePath bug)
+// Use route name + params so localePath resolves translated paths for each locale
 function pathForLocale(code: string) {
-  const pathOnly = route.path.replace(/^\/(sq|de|en)(\/|$)/i, '$2') || '/'
-  return localePath(pathOnly, code as 'sq' | 'de' | 'en')
+  const name = route.name
+  const baseName = typeof name === 'string' ? name.replace(/___\w+$/, '') : name
+  return localePath({ name: baseName, params: route.params }, code as 'sq' | 'de' | 'en')
 }
 
 const items = computed(() =>

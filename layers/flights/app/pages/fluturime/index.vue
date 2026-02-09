@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { CalendarDate } from '@internationalized/date'
-
 const { t } = useI18n()
-const { searchState, searchError, clearResults, navigateToFlightsSearch, buildFlightQueryFromState } = useFlightSearch()
-const { getAirportByCode, fetchAirports, airports } = useAirports()
+const { buildFlightQueryFromState } = useFlightSearch()
 
-const route = useRoute()
-const router = useRouter()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
 
@@ -140,206 +135,40 @@ useHead(() => ({
   ]
 }))
 
-const autoSearchAttempted = ref(false)
-const isApplyingQuery = ref(false)
-const queryError = ref<string | null>(null)
-const searchFormOpen = ref<string | undefined>('0')
-
-const hasQueryParams = computed(() => Object.keys(route.query).length > 0)
-
-const hasSearchCriteria = computed(() => {
-  return !!(searchState.value.origin && searchState.value.destination && searchState.value.departureDate)
-})
-
-function parseDateParam(value: string | null): CalendarDate | null {
-  if (!value) return null
-  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/)
-  if (!match) return null
-  const year = Number(match[1])
-  const month = Number(match[2])
-  const day = Number(match[3])
-  if (!year || !month || !day) return null
-  return new CalendarDate(year, month, day)
-}
-
-function buildAirport(code: string) {
-  const upper = code.toUpperCase()
-  return {
-    id: upper,
-    code: upper,
-    name: upper,
-    city: upper,
-    country: 'Unknown'
-  }
-}
-
-async function resolveAirport(code: string) {
-  const upper = code.toUpperCase()
-  const resolved = await getAirportByCode(upper)
-  return resolved || buildAirport(upper)
-}
-
-async function applyQueryToSearchState(): Promise<void> {
-  if (isApplyingQuery.value) return
-  isApplyingQuery.value = true
-  queryError.value = null
-
-  const from = typeof route.query.from === 'string' ? route.query.from : null
-  const to = typeof route.query.to === 'string' ? route.query.to : null
-  const date = typeof route.query.date === 'string' ? route.query.date : (typeof route.query.departDate === 'string' ? route.query.departDate : null)
-  const returnDate = typeof route.query.returnDate === 'string' ? route.query.returnDate : null
-
-  if (airports.value.length === 0) {
-    await fetchAirports()
-  }
-
-  if (!from || !to) {
-    if (from || to) {
-      const [origin, destination] = await Promise.all([
-        from ? resolveAirport(from) : Promise.resolve(null),
-        to ? resolveAirport(to) : Promise.resolve(null)
-      ])
-      if (origin) searchState.value.origin = origin
-      if (destination) searchState.value.destination = destination
-      searchFormOpen.value = '0'
-    }
-    isApplyingQuery.value = false
-    return
-  }
-
-  if (!date) {
-    const [origin, destination] = await Promise.all([
-      resolveAirport(from),
-      resolveAirport(to)
-    ])
-    searchState.value.origin = origin
-    searchState.value.destination = destination
-    searchFormOpen.value = '0'
-    isApplyingQuery.value = false
-    return
-  }
-
-  const departure = parseDateParam(date)
-  if (!departure) {
-    queryError.value = t('errors.invalidDate')
-    searchFormOpen.value = '0'
-    isApplyingQuery.value = false
-    return
-  }
-
-  const [origin, destination] = await Promise.all([
-    resolveAirport(from),
-    resolveAirport(to)
-  ])
-
-  searchState.value.origin = origin
-  searchState.value.destination = destination
-  searchState.value.departureDate = departure
-  searchState.value.returnDate = returnDate ? parseDateParam(returnDate) : null
-  searchState.value.tripType = returnDate ? 'roundtrip' : 'oneway'
-
-  if (typeof route.query.adults === 'string') {
-    const adults = Number(route.query.adults)
-    if (Number.isFinite(adults) && adults > 0) searchState.value.passengers.adults = adults
-  }
-  if (typeof route.query.children === 'string') {
-    const children = Number(route.query.children)
-    if (Number.isFinite(children) && children >= 0) searchState.value.passengers.children = children
-  }
-  if (typeof route.query.infants === 'string') {
-    const infants = Number(route.query.infants)
-    if (Number.isFinite(infants) && infants >= 0) searchState.value.passengers.infants = infants
-  }
-
-  clearResults()
-  autoSearchAttempted.value = false
-  isApplyingQuery.value = false
-}
-
-onMounted(() => {
-  if (Object.keys(route.query).length > 0) {
-    void applyQueryToSearchState()
-  }
-})
-
-watch(
-  () => route.query,
-  (next, prev) => {
-    if (next !== prev) {
-      void applyQueryToSearchState()
-    }
-  }
-)
-
-async function onSearch() {
-  const queryParams = buildFlightQueryFromState()
-  const localePath = useLocalePath()
-  const path = localePath('fluturime-search')
-  await router.push({ path, query: queryParams })
+function onSearch() {
+  const query = buildFlightQueryFromState()
+  navigateTo({ path: localePath('fluturime-search'), query })
 }
 </script>
 
 <template>
   <div class="relative">
 
-    <UContainer class="py-8">
-      <UBreadcrumb
-        :items="[
-          { label: $t('nav.home'), to: localePath('/') },
-          { label: $t('nav.flights') }
-        ]"
-        class="mb-6"
-      />
-
-      <!-- Hero Section (only when no search) -->
-      <div
-        v-if="!hasSearchCriteria && !hasQueryParams"
-        class="mb-8"
-      >
-        <h1 class="text-3xl font-bold mb-2">
+    <!-- Hero header band -->
+    <HeroSection>
+      <div class="py-10 sm:py-20">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight lg:leading-tight text-center mb-10 sm:mb-14">
           {{ t('flights.title') }}
         </h1>
-        <p class="text-muted">
-          {{ t('flights.description') }}
-        </p>
+
+        <!-- Search Card with floating Tabs -->
+        <div class="relative">
+          <ProductTabs
+            class="absolute left-6 top-3 -translate-y-1/2 z-10 md:left-8"
+          />
+          <div class="w-full bg-white dark:bg-neutral-900 rounded-3xl shadow-2xl border border-neutral-100 dark:border-neutral-800 pt-18 pb-8 px-6 md:pt-20 md:pb-10 md:px-8">
+            <FlightSearchForm embedded @search="onSearch" />
+          </div>
+        </div>
       </div>
+    </HeroSection>
 
-      <!-- Search Form -->
-      <div class="px-4 mb-8">
-        <FlightSearchForm @search="onSearch" />
-      </div>
-
-      <UAlert
-        v-if="queryError"
-        color="error"
-        variant="soft"
-        icon="i-lucide-alert-circle"
-        :title="$t('errors.title')"
-        :description="queryError"
-        class="mb-6"
-        close
-        @update:open="queryError = null"
-      />
-
-      <UAlert
-        v-if="searchError"
-        color="error"
-        variant="soft"
-        icon="i-lucide-alert-circle"
-        :title="$t('errors.title')"
-        :description="searchError"
-        class="mb-6"
-        close
-        @update:open="searchError = null"
-      />
-
-      <!-- Results Section -->
-      <div v-if="!hasSearchCriteria && !hasQueryParams">
-        <!-- Popular Routes Section -->
+    <!-- Popular Routes -->
+    <section class="py-16 sm:py-20">
+      <UContainer>
         <UPageSection
           :title="t('flights.routes.title')"
           :description="t('flights.routes.description')"
-          class="mb-12"
         >
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-12">
             <NuxtLink
@@ -348,7 +177,7 @@ async function onSearch() {
               :to="localePath({ name: 'fluturime-route', params: { route: routeItem.slug } })"
               class="group relative block"
             >
-              <div class="relative overflow-hidden rounded-2xl bg-white border border-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
+              <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 border border-primary/10 dark:border-neutral-800 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
                 <!-- Top Decoration Line -->
                 <div class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-primary/20 via-primary/70 to-primary/20" />
 
@@ -357,33 +186,33 @@ async function onSearch() {
                   <div class="flex items-center justify-between mb-6 relative">
                     <!-- Origin -->
                     <div class="text-center z-10">
-                      <span class="block text-2xl font-bold text-gray-900 mb-1">{{ routeItem.code.split('-')[0] }}</span>
+                      <span class="block text-2xl font-bold text-gray-900 dark:text-white mb-1">{{ routeItem.code.split('-')[0] }}</span>
                       <span class="block text-xs text-gray-400 font-medium tracking-wide uppercase">Origin</span>
                     </div>
 
                     <!-- Flight Path Graphic -->
                     <div class="flex-1 px-4 flex flex-col items-center relative">
-                      <div class="w-full h-[2px] bg-gray-100 relative overflow-hidden">
+                      <div class="w-full h-[2px] bg-gray-100 dark:bg-neutral-700 relative overflow-hidden">
                         <div class="absolute inset-0 bg-primary/30 w-full -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
                         <!-- Dots -->
-                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-200" />
-                        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-200" />
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-200 dark:bg-neutral-600" />
+                        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-200 dark:bg-neutral-600" />
                       </div>
                       <UIcon
                         name="i-lucide-plane"
-                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 text-primary rotate-90"
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 text-primary"
                       />
                     </div>
 
                     <!-- Destination -->
                     <div class="text-center z-10">
-                      <span class="block text-2xl font-bold text-gray-900 mb-1">{{ routeItem.code.split('-')[1] }}</span>
+                      <span class="block text-2xl font-bold text-gray-900 dark:text-white mb-1">{{ routeItem.code.split('-')[1] }}</span>
                       <span class="block text-xs text-gray-400 font-medium tracking-wide uppercase">Destinacion</span>
                     </div>
                   </div>
 
                   <!-- Route Details -->
-                  <div class="flex items-center justify-between pt-4 border-t border-dashed border-gray-100">
+                  <div class="flex items-center justify-between pt-4 border-t border-dashed border-gray-100 dark:border-neutral-700">
                     <div class="flex flex-col">
                       <span class="text-sm font-medium text-primary">
                         {{ routeItem.from }} → {{ routeItem.to }}
@@ -401,49 +230,36 @@ async function onSearch() {
                 </div>
 
                 <!-- Side Cutouts (Ticket Style) -->
-                <div class="absolute top-[88px] -left-1.5 w-3 h-3 rounded-full bg-gray-50 border border-t-transparent border-l-transparent border-gray-100 rotate-45" />
-                <div class="absolute top-[88px] -right-1.5 w-3 h-3 rounded-full bg-gray-50 border border-t-transparent border-r-transparent border-gray-100 -rotate-45" />
+                <div class="absolute top-[88px] -left-1.5 w-3 h-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-t-transparent border-l-transparent border-gray-100 dark:border-neutral-800 rotate-45" />
+                <div class="absolute top-[88px] -right-1.5 w-3 h-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-t-transparent border-r-transparent border-gray-100 dark:border-neutral-800 -rotate-45" />
               </div>
             </NuxtLink>
           </div>
         </UPageSection>
+      </UContainer>
+    </section>
 
-        <!-- Highlights Section -->
+    <!-- Highlights -->
+    <section class="py-16 sm:py-20 bg-neutral-50 dark:bg-neutral-900">
+      <UContainer>
         <UPageSection
           :title="t('flights.highlights.title')"
           :description="t('flights.highlights.description')"
-          class="mb-8 sm:mb-12"
         >
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            <UCard
-              v-for="highlight in highlights"
-              :key="highlight.title"
-              :ui="{ body: 'p-4 sm:p-6' }"
-              class="text-center"
-            >
-              <div class="flex flex-col items-center space-y-2 sm:space-y-3">
-                <div class="flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-primary/10">
-                  <UIcon
-                    :name="highlight.icon"
-                    class="text-2xl sm:text-3xl text-primary"
-                  />
-                </div>
-                <h3 class="font-semibold text-sm sm:text-base">
-                  {{ highlight.title }}
-                </h3>
-                <p class="text-xs sm:text-sm text-muted wrap-break-word">
-                  {{ highlight.description }}
-                </p>
-              </div>
-            </UCard>
+          <div class="max-w-6xl mx-auto">
+            <LandingFeatureGrid :features="highlights" />
           </div>
         </UPageSection>
+      </UContainer>
+    </section>
 
-        <!-- Tips Section -->
+    <!-- Tips -->
+    <section class="py-16 sm:py-20">
+      <UContainer>
         <UPageSection
           :title="t('flights.tips.title')"
           :description="t('flights.tips.description')"
-          class="mb-8 sm:mb-12 bg-linear-to-br from-primary-50 to-primary-100/50 dark:from-primary-950/20 dark:to-primary-900/20 rounded-2xl p-4 sm:p-6 lg:p-8"
+          class="bg-linear-to-br from-primary-50 to-primary-100/50 dark:from-primary-950/20 dark:to-primary-900/20 rounded-2xl p-4 sm:p-6 lg:p-8"
         >
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div
@@ -468,33 +284,29 @@ async function onSearch() {
             </div>
           </div>
         </UPageSection>
-      </div>
+      </UContainer>
+    </section>
 
-      <!-- FAQ Section -->
-      <UPageSection
-        :title="t('faq.title')"
-        :description="t('faq.description')"
-      >
-        <div class="w-full lg:w-3xl mx-auto px-4 sm:px-6">
-          <UAccordion
-            :items="faqs"
-          />
-        </div>
-      </UPageSection>
+    <!-- FAQ -->
+    <section class="py-16 sm:py-20 bg-neutral-50 dark:bg-neutral-900">
+      <UContainer>
+        <LandingFAQSection
+          :items="faqs"
+          :title="t('flights.faq.title')"
+          :description="t('flights.faq.description')"
+        />
+      </UContainer>
+    </section>
 
-      <!-- CTA Section -->
-      <UPageSection
-        class="bg-linear-to-br from-primary-600 to-primary-700 text-white rounded-2xl p-6 sm:p-8"
-      >
-        <div class="max-w-2xl mx-auto text-center px-4 sm:px-6">
-          <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
-            {{ t('flights.cta.title') }}
-          </h2>
-          <p class="mb-4 sm:mb-6 text-sm sm:text-base text-primary-100">
-            {{ t('flights.cta.description') }}
-          </p>
+    <!-- CTA -->
+    <section class="py-16 sm:py-20">
+      <UContainer>
+        <LandingCTASection
+          :title="t('flights.cta.title')"
+          :description="t('flights.cta.description')"
+        >
           <UButton
-            :to="localePath('/makina/aeroporti-prishtines')"
+            :to="localePath({ name: 'makina-location', params: { location: 'aeroporti-prishtines' } })"
             size="lg"
             color="neutral"
             variant="solid"
@@ -503,8 +315,8 @@ async function onSearch() {
           >
             {{ t('flights.cta.rentCar') }}
           </UButton>
-        </div>
-      </UPageSection>
-    </UContainer>
+        </LandingCTASection>
+      </UContainer>
+    </section>
   </div>
 </template>

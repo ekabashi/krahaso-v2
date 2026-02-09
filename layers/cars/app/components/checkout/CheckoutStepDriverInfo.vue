@@ -32,16 +32,98 @@ const isEmailValid = computed(
 const previousEmail = ref<string>('')
 const isInitialMount = ref(true)
 
-function getFileUrl(file: File | null): string {
-  if (!file) return ''
-  try {
-    return URL.createObjectURL(file)
-  } catch {
-    return ''
+// Preview URLs ruhen lokalisht që img :src të jetë reaktiv dhe të shfaqet fotografia
+const frontIdPreviewUrl = ref('')
+const backIdPreviewUrl = ref('')
+const passportPreviewUrl = ref('')
+const patentShoferPreviewUrl = ref('')
+
+const previewRefs = {
+  frontIdFile: frontIdPreviewUrl,
+  backIdFile: backIdPreviewUrl,
+  passportFile: passportPreviewUrl,
+  patentShoferFile: patentShoferPreviewUrl,
+} as const
+
+function setFileWithPreview(
+  field: keyof typeof previewRefs,
+  file: File | null,
+) {
+  const previewRef = previewRefs[field]
+  // Pastrojmë preview të mëparshëm (blob ose data URL)
+  if (previewRef.value) {
+    if (previewRef.value.startsWith('blob:')) {
+      URL.revokeObjectURL(previewRef.value)
+    }
+    previewRef.value = ''
+  }
+  customer.setCustomerField(field, file)
+  if (file && import.meta.client) {
+    const reader = new FileReader()
+    reader.onload = () => {
+      const result = reader.result
+      if (typeof result === 'string') {
+        previewRef.value = result
+      }
+    }
+    reader.onerror = () => {
+      previewRef.value = ''
+    }
+    reader.readAsDataURL(file)
+  }
+}
+
+function clearPreviewUrl(previewRef: { value: string }) {
+  if (previewRef.value?.startsWith('blob:')) {
+    URL.revokeObjectURL(previewRef.value)
+  }
+  previewRef.value = ''
+}
+
+function clearFrontIdFile() {
+  clearPreviewUrl(frontIdPreviewUrl)
+  customer.setCustomerField('frontIdFile', null)
+}
+
+function clearBackIdFile() {
+  clearPreviewUrl(backIdPreviewUrl)
+  customer.setCustomerField('backIdFile', null)
+}
+
+function clearPassportFile() {
+  clearPreviewUrl(passportPreviewUrl)
+  customer.setCustomerField('passportFile', null)
+}
+
+function clearPatentShoferFile() {
+  clearPreviewUrl(patentShoferPreviewUrl)
+  customer.setCustomerField('patentShoferFile', null)
+}
+
+// Sync preview nga state në mount (nëse File ekziston ende, p.sh. pas navigimit)
+function syncPreviewsFromState() {
+  if (import.meta.client && state.value.customerForm.frontIdFile instanceof File) {
+    if (frontIdPreviewUrl.value) URL.revokeObjectURL(frontIdPreviewUrl.value)
+    frontIdPreviewUrl.value = URL.createObjectURL(state.value.customerForm.frontIdFile)
+  }
+  if (import.meta.client && state.value.customerForm.backIdFile instanceof File) {
+    if (backIdPreviewUrl.value) URL.revokeObjectURL(backIdPreviewUrl.value)
+    backIdPreviewUrl.value = URL.createObjectURL(state.value.customerForm.backIdFile)
+  }
+  if (import.meta.client && state.value.customerForm.passportFile instanceof File) {
+    if (passportPreviewUrl.value) URL.revokeObjectURL(passportPreviewUrl.value)
+    passportPreviewUrl.value = URL.createObjectURL(state.value.customerForm.passportFile)
+  }
+  if (import.meta.client && state.value.customerForm.patentShoferFile instanceof File) {
+    if (patentShoferPreviewUrl.value) URL.revokeObjectURL(patentShoferPreviewUrl.value)
+    patentShoferPreviewUrl.value = URL.createObjectURL(state.value.customerForm.patentShoferFile)
   }
 }
 
 function clearSubsequentSteps() {
+  ;[frontIdPreviewUrl, backIdPreviewUrl, passportPreviewUrl, patentShoferPreviewUrl].forEach(
+    (previewRef) => clearPreviewUrl(previewRef),
+  )
   const currentEmail = state.value.customerForm.email
   customer.resetCustomerForm()
   customer.setCustomerField('email', currentEmail)
@@ -74,9 +156,16 @@ watch(
 
 onMounted(() => {
   previousEmail.value = state.value.customerForm.email
+  syncPreviewsFromState()
   nextTick(() => {
     isInitialMount.value = false
   })
+})
+
+onBeforeUnmount(() => {
+  ;[frontIdPreviewUrl, backIdPreviewUrl, passportPreviewUrl, patentShoferPreviewUrl].forEach(
+    (previewRef) => clearPreviewUrl(previewRef),
+  )
 })
 
 function validateStep(): boolean {
@@ -318,14 +407,15 @@ function handleNext() {
           required
           :error="errors['frontIdFile']"
         >
-          <div v-if="state.customerForm.frontIdFile" class="relative">
+          <div v-if="frontIdPreviewUrl" class="relative">
             <div
               class="relative rounded-lg overflow-hidden border-2 border-gray-300 dark:border-gray-600"
             >
               <img
-                :src="getFileUrl(state.customerForm.frontIdFile)"
-                :alt="state.customerForm.frontIdFile.name"
-                class="w-full h-48 object-cover"
+                :key="frontIdPreviewUrl"
+                :src="frontIdPreviewUrl"
+                :alt="state.customerForm.frontIdFile?.name ?? ''"
+                class="w-full h-48 object-contain bg-gray-100 dark:bg-gray-800"
               />
               <UButton
                 icon="i-lucide-x"
@@ -333,7 +423,7 @@ function handleNext() {
                 variant="solid"
                 size="xs"
                 class="absolute top-2 right-2"
-                @click="state.customerForm.frontIdFile = null"
+                @click="clearFrontIdFile"
               />
             </div>
           </div>
@@ -348,7 +438,7 @@ function handleNext() {
                 @change="
                   (e) => {
                     const file = (e.target as HTMLInputElement).files?.[0]
-                    if (file) state.customerForm.frontIdFile = file
+                    if (file) setFileWithPreview('frontIdFile', file)
                   }
                 "
               />
@@ -369,14 +459,15 @@ function handleNext() {
           required
           :error="errors['backIdFile']"
         >
-          <div v-if="state.customerForm.backIdFile" class="relative">
+          <div v-if="backIdPreviewUrl" class="relative">
             <div
               class="relative rounded-lg overflow-hidden border-2 border-gray-300 dark:border-gray-600"
             >
               <img
-                :src="getFileUrl(state.customerForm.backIdFile)"
-                :alt="state.customerForm.backIdFile.name"
-                class="w-full h-48 object-cover"
+                :key="backIdPreviewUrl"
+                :src="backIdPreviewUrl"
+                :alt="state.customerForm.backIdFile?.name ?? ''"
+                class="w-full h-48 object-contain bg-gray-100 dark:bg-gray-800"
               />
               <UButton
                 icon="i-lucide-x"
@@ -384,7 +475,7 @@ function handleNext() {
                 variant="solid"
                 size="xs"
                 class="absolute top-2 right-2"
-                @click="state.customerForm.backIdFile = null"
+                @click="clearBackIdFile"
               />
             </div>
           </div>
@@ -399,7 +490,7 @@ function handleNext() {
                 @change="
                   (e) => {
                     const file = (e.target as HTMLInputElement).files?.[0]
-                    if (file) state.customerForm.backIdFile = file
+                    if (file) setFileWithPreview('backIdFile', file)
                   }
                 "
               />
@@ -422,14 +513,15 @@ function handleNext() {
           required
           :error="errors['passportFile']"
         >
-          <div v-if="state.customerForm.passportFile" class="relative">
+          <div v-if="passportPreviewUrl" class="relative">
             <div
               class="relative rounded-lg overflow-hidden border-2 border-gray-300 dark:border-gray-600"
             >
               <img
-                :src="getFileUrl(state.customerForm.passportFile)"
-                :alt="state.customerForm.passportFile.name"
-                class="w-full h-48 object-cover"
+                :key="passportPreviewUrl"
+                :src="passportPreviewUrl"
+                :alt="state.customerForm.passportFile?.name ?? ''"
+                class="w-full h-48 object-contain bg-gray-100 dark:bg-gray-800"
               />
               <UButton
                 icon="i-lucide-x"
@@ -437,7 +529,7 @@ function handleNext() {
                 variant="solid"
                 size="xs"
                 class="absolute top-2 right-2"
-                @click="state.customerForm.passportFile = null"
+                @click="clearPassportFile"
               />
             </div>
           </div>
@@ -452,7 +544,7 @@ function handleNext() {
                 @change="
                   (e) => {
                     const file = (e.target as HTMLInputElement).files?.[0]
-                    if (file) state.customerForm.passportFile = file
+                    if (file) setFileWithPreview('passportFile', file)
                   }
                 "
               />
@@ -474,14 +566,15 @@ function handleNext() {
         required
         :error="errors['patentShoferFile']"
       >
-        <div v-if="state.customerForm.patentShoferFile" class="relative">
+        <div v-if="patentShoferPreviewUrl" class="relative">
           <div
             class="relative rounded-lg overflow-hidden border-2 border-gray-300 dark:border-gray-600"
           >
             <img
-              :src="getFileUrl(state.customerForm.patentShoferFile)"
-              :alt="state.customerForm.patentShoferFile.name"
-              class="w-full h-48 object-cover"
+              :key="patentShoferPreviewUrl"
+              :src="patentShoferPreviewUrl"
+              :alt="state.customerForm.patentShoferFile?.name ?? ''"
+              class="w-full h-48 object-contain bg-gray-100 dark:bg-gray-800"
             />
             <UButton
               icon="i-lucide-x"
@@ -489,7 +582,7 @@ function handleNext() {
               variant="solid"
               size="xs"
               class="absolute top-2 right-2"
-              @click="state.customerForm.patentShoferFile = null"
+              @click="clearPatentShoferFile"
             />
           </div>
         </div>
@@ -504,7 +597,7 @@ function handleNext() {
               @change="
                 (e) => {
                   const file = (e.target as HTMLInputElement).files?.[0]
-                  if (file) state.customerForm.patentShoferFile = file
+                  if (file) setFileWithPreview('patentShoferFile', file)
                 }
               "
             />

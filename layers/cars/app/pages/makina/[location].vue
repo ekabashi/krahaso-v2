@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useAvailableLocations, type LocationDef } from '../../composables/useAvailableLocations'
+import { useAvailableLocations } from '../../composables/useAvailableLocations'
+import type { LocationDef } from '../../utils/locations'
 
 const route = useRoute()
 const { t, locale } = useI18n()
@@ -181,6 +182,31 @@ useHead(() =>
                 { '@type': 'ListItem', position: 2, name: t('nav.cars'), item: `${config.public.siteUrl}${localePath('makina')}` },
                 { '@type': 'ListItem', position: 3, name: locationData.value.name, item: `${config.public.siteUrl}${localePath({ name: 'makina-location', params: { location: locationSlug.value } })}` },
               ],
+            }),
+          },
+          {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Place',
+              'name': locationData.value.name,
+              'address': {
+                '@type': 'PostalAddress',
+                'addressLocality': locationData.value.name,
+                'addressCountry': 'XK',
+              },
+              ...(locationDef.value?.airport ? { additionalType: 'https://schema.org/Airport' } : {}),
+              'makesOffer': {
+                '@type': 'AggregateOffer',
+                'priceCurrency': 'EUR',
+                ...(locationData.value.avgPrice ? { lowPrice: locationData.value.avgPrice } : {}),
+                'offerCount': '150+',
+                'itemOffered': {
+                  '@type': 'Product',
+                  'name': `${t('cars.title')} ${locationData.value.name}`,
+                  'description': pageDescription.value,
+                },
+              },
             }),
           },
         ],

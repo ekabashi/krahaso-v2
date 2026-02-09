@@ -191,9 +191,9 @@
       }
     },
     "hero": {
-      "title": "Compare and Save on",
-      "titleHighlight": "Car Rentals.",
-      "description": "We search the major rental companies to find the best prices for you. Transparent prices, zero hidden fees.",
+      "title": "Your journey home",
+      "titleHighlight": "starts here",
+      "description": "Compare flights and car rentals for Kosovo — the best deals at a glance.",
       "flights": {
         "title": "Compare and Save on",
         "titleHighlight": "Flight Bookings.",
@@ -215,7 +215,7 @@
       "carsFleet": "Cars available"
     },
     "routes": {
-      "title": "Most requested routes",
+      "title": "Popular flight routes",
       "description": "Most popular destinations to and from Kosovo",
       "compare": "Compare prices",
       "popular": {
@@ -230,7 +230,7 @@
     },
     "locations": {
       "popular": {
-        "title": "Popular Locations",
+        "title": "Popular Car Rental Locations",
         "description": "Choose from the most popular locations for car pickup"
       }
     },
@@ -256,11 +256,11 @@
     },
     "howItWorks": {
       "title": "How It Works",
-      "description": "Three simple steps to find the best flights",
+      "description": "Three simple steps to find the best deals",
       "steps": {
         "search": {
-          "title": "Set Flight Details",
-          "description": "Choose departure, destination and travel date."
+          "title": "Set Travel Details",
+          "description": "Choose your route, dates, or pickup location."
         },
         "compare": {
           "title": "Compare Offers",
@@ -273,8 +273,8 @@
       }
     },
     "whatsapp": {
-      "title": "Search Flights via WhatsApp",
-      "description": "Simply write us your travel dates and get the best flight prices instantly - directly on WhatsApp.",
+      "title": "Search via WhatsApp",
+      "description": "Simply write us your travel details and get the best prices for flights and car rentals instantly - directly on WhatsApp.",
       "features": {
         "fast": "Response in seconds",
         "easy": "No app needed",
@@ -283,11 +283,11 @@
       "cta": "Start conversation",
       "chat": {
         "userMessage1": "Hello! I would like to search for flights.",
-        "botGreeting": "Hello! 👋\n I am Aviopika's Assistant and I help you find cheap flights.\n Choose language\n1️⃣ 🇦🇱 Albanian\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
+        "botGreeting": "Hello! 👋\n I am Krahaso's Assistant and I help you find cheap flights.\n Choose language\n1️⃣ 🇦🇱 Albanian\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
         "userLanguage": "English",
-        "botWelcome": "*Welcome to Aviopika!* ✈️\nFind the cheapest flights for you.\n*How it works:*\n\n• \"Düsseldorf Pristina tomorrow\"\n• \"DUS PRN 15.03-22.03\" (Round trip)\n\nWhere would you like to go?",
+        "botWelcome": "*Welcome to Krahaso!* ✈️\nFind the cheapest flights for you.\n*How it works:*\n\n• \"Düsseldorf Pristina tomorrow\"\n• \"DUS PRN 15.03-22.03\" (Round trip)\n\nWhere would you like to go?",
         "userFlightSearch": "PRISTINA - MUNICH 10.01",
-        "botFlightResults": "*Pristina → Munich*\nJanuary 10, 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Best price\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Fastest\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 more flights\n---\nSee all results at https://www.aviopika.al \n\nAviopika is an independent price comparison. We do not sell flight tickets. All prices without guarantee. Redirect to provider's page.",
+        "botFlightResults": "*Pristina → Munich*\nJanuary 10, 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Best price\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Fastest\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 more flights\n---\nSee all results at https://www.krahaso.co \n\nKrahaso is an independent price comparison. We do not sell flight tickets. All prices without guarantee. Redirect to provider's page.",
         "inputPlaceholder": "Type your message..."
       }
     },
@@ -343,7 +343,19 @@
     },
     "faq": {
       "title": "Frequently asked questions",
-      "description": "Everything you need to know before you start"
+      "description": "Everything you need to know before you start",
+      "items": {
+        "q1": "What is Krahaso?",
+        "a1": "Krahaso is a free price comparison platform for flights and car rentals in Kosovo. We compare offers from multiple providers so you can find the best deal.",
+        "q2": "Is the search free?",
+        "a2": "Yes, the search and comparison are completely free. You pay nothing extra through Krahaso.",
+        "q3": "How does booking work?",
+        "a3": "After comparing offers, you are redirected to the provider's page to complete your booking directly and securely.",
+        "q4": "Are the displayed prices binding?",
+        "a4": "For car rentals, the displayed prices are binding. For flights, prices serve as a guide since flight prices can change quickly. The current price is always confirmed on the provider's page.",
+        "q5": "How can I get help?",
+        "a5": "You can reach us anytime via WhatsApp or through our contact page. We are happy to help with any questions."
+      }
     },
     "cta": {
       "title": "Ready to start your journey?",
@@ -542,7 +554,27 @@
     "toProvider": "Go to provider",
     "perPerson": "per person",
     "close": "Close",
-    "showResults": "Show results"
+    "showResults": "Show results",
+    "bookingClass": "Booking Class",
+    "aircraft": "Aircraft",
+    "tba": "To be announced",
+    "basePrice": "Base Price",
+    "taxesFees": "Taxes & Fees",
+    "exitModal": {
+      "title": "Leaving to provider",
+      "disclaimer": "You are leaving Krahaso.co and will be redirected to {provider}. Final booking will be completed on their official website.",
+      "continue": "Continue to {provider}",
+      "autopika": {
+        "headline": "Looking for Car Rental?",
+        "subline": "Compare prices from leading partners in Kosovo",
+        "benefits": {
+          "local": "Verified local partners",
+          "realtime": "Real-time availability",
+          "direct": "Direct booking with the company"
+        },
+        "cta": "View Car Rentals"
+      }
+    }
   },
   "cars": {
     "title": "Search Car Rental",
@@ -649,6 +681,7 @@
     "cta": {
       "title": "Ready to Book?",
       "description": "After renting the car, search flights to complete your trip",
+      "searchCars": "Search Cars",
       "searchFlights": "Search Flights"
     }
   },
@@ -711,6 +744,8 @@
     "returnTime": "Return time",
     "selectDate": "Select date",
     "selectTime": "Select time",
+    "midnight": "Midnight",
+    "noon": "Noon",
     "searchCars": "Search cars",
     "searching": "Searching..."
   },
@@ -730,6 +765,7 @@
     },
     "layout": {
       "findBooking": "Find booking",
+      "findBookingDesc": "Find the booking of the car",
       "bookingNumber": "Booking number",
       "enterBookingNumber": "Enter your booking number",
       "cancel": "Cancel",
@@ -783,11 +819,11 @@
   },
   "howItWorks": {
     "title": "How It Works",
-    "description": "Three simple steps to find the best flights",
+    "description": "Three simple steps to find the best deals",
     "steps": {
       "search": {
-        "title": "Set Flight Details",
-        "description": "Choose departure, destination and travel date."
+        "title": "Set Travel Details",
+        "description": "Choose your route, dates, or pickup location."
       },
       "compare": {
         "title": "Compare Offers",
@@ -800,8 +836,8 @@
     }
   },
   "whatsapp": {
-    "title": "Search Flights via WhatsApp",
-    "description": "Simply write us your travel dates and get the best flight prices instantly - directly on WhatsApp.",
+    "title": "Search via WhatsApp",
+    "description": "Simply write us your travel details and get the best prices for flights and car rentals instantly - directly on WhatsApp.",
     "features": {
       "fast": "Response in seconds",
       "easy": "No app needed",
@@ -810,11 +846,11 @@
     "cta": "Start conversation",
     "chat": {
       "userMessage1": "Hello! I would like to search for flights.",
-      "botGreeting": "Hello! 👋\n I am Aviopika's Assistant and I help you find cheap flights.\n Choose language\n1️⃣ 🇦🇱 Albanian\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
+      "botGreeting": "Hello! 👋\n I am Krahaso's Assistant and I help you find cheap flights.\n Choose language\n1️⃣ 🇦🇱 Albanian\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
       "userLanguage": "English",
-      "botWelcome": "*Welcome to Aviopika!* ✈️\nFind the cheapest flights for you.\n*How it works:*\n\n• \"Düsseldorf Pristina tomorrow\"\n• \"DUS PRN 15.03-22.03\" (Round trip)\n\nWhere would you like to go?",
+      "botWelcome": "*Welcome to Krahaso!* ✈️\nFind the cheapest flights for you.\n*How it works:*\n\n• \"Düsseldorf Pristina tomorrow\"\n• \"DUS PRN 15.03-22.03\" (Round trip)\n\nWhere would you like to go?",
       "userFlightSearch": "PRISTINA - MUNICH 10.01",
-      "botFlightResults": "*Pristina → Munich*\nJanuary 10, 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Best price\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Fastest\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 more flights\n---\nSee all results at https://www.aviopika.al \n\nAviopika is an independent price comparison. We do not sell flight tickets. All prices without guarantee. Redirect to provider's page.",
+      "botFlightResults": "*Pristina → Munich*\nJanuary 10, 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Best price\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Fastest\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 more flights\n---\nSee all results at https://www.krahaso.co \n\nKrahaso is an independent price comparison. We do not sell flight tickets. All prices without guarantee. Redirect to provider's page.",
       "inputPlaceholder": "Type your message..."
     }
   },
@@ -902,6 +938,14 @@
     "section2": {
       "title": "2. How We Use Information",
       "content": "Your data is used to process requests, improve our service, and to communicate with you."
+    },
+    "section3": {
+      "title": "3. Data Protection",
+      "content": "We use technical and organizational measures to protect your data from unauthorized access, loss or misuse. Data is stored on secure servers with encryption."
+    },
+    "section4": {
+      "title": "4. Your Rights",
+      "content": "You have the right to request access, correction or deletion of your personal data. For any requests, please contact us at info{'@'}krahaso.co."
     },
     "intro": {
       "kontakt": "Contact us – core page.",
@@ -1218,12 +1262,12 @@
         "description": "No bookings to display."
       },
       "table": {
-        "bookingNumber": "Booking number",
+        "bookingNumber": "Booking Number",
         "tenant": "Partner",
         "status": "Status",
-        "totalPrice": "Total price",
-        "fee": "Fee",
-        "rentalPeriod": "Rental period"
+        "totalPrice": "Total Price",
+        "fee": "Krahaso Fee",
+        "rentalPeriod": "Rental Period"
       },
       "status": {
         "unknown": "Unknown",

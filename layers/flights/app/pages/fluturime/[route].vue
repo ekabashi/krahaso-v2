@@ -279,13 +279,13 @@ useHead(() => {
           {
             '@type': 'ListItem',
             'position': 1,
-            'name': t('shared.nav.home'),
+            'name': t('nav.home'),
             'item': 'https://krahaso.co'
           },
           {
             '@type': 'ListItem',
             'position': 2,
-            'name': t('shared.nav.flights'),
+            'name': t('nav.flights'),
             'item': `${siteUrl}${localePath('fluturime')}`
           },
           {
@@ -295,6 +295,47 @@ useHead(() => {
             'item': `${siteUrl}${localePath({ name: 'fluturime-route', params: { route: routeSlug.value } })}`
           }
         ]
+      })
+    })
+
+    // Trip schema with Airport origin/destination
+    scripts.push({
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Trip',
+        'name': `${routeData.value.origin} → ${routeData.value.destination}`,
+        'description': pageDescription.value,
+        'itinerary': {
+          '@type': 'ItemList',
+          'itemListElement': [
+            {
+              '@type': 'ListItem',
+              'position': 1,
+              'item': {
+                '@type': 'Airport',
+                'name': routeData.value.origin,
+                'iataCode': routeData.value.originCode,
+              },
+            },
+            {
+              '@type': 'ListItem',
+              'position': 2,
+              'item': {
+                '@type': 'Airport',
+                'name': routeData.value.destination,
+                'iataCode': routeData.value.destinationCode,
+              },
+            },
+          ],
+        },
+        ...(routeData.value.avgPrice ? {
+          'offers': {
+            '@type': 'AggregateOffer',
+            'priceCurrency': 'EUR',
+            'lowPrice': routeData.value.avgPrice,
+          },
+        } : {}),
       })
     })
   }
@@ -308,8 +349,8 @@ useHead(() => {
     <UContainer class="py-8">
       <UBreadcrumb
         :items="[
-          { label: $t('shared.nav.home'), to: localePath('/') },
-          { label: $t('shared.nav.flights'), to: localePath('fluturime') },
+          { label: $t('nav.home'), to: localePath('/') },
+          { label: $t('nav.flights'), to: localePath('fluturime') },
           { label: routeData ? `${routeData.origin} → ${routeData.destination}` : '' }
         ]"
         class="mb-6"
@@ -340,7 +381,7 @@ useHead(() => {
             {{ t('flights.searchNow') }}
           </UButton>
           <UButton
-            :to="localePath('/makina/aeroporti-prishtines')"
+            :to="localePath({ name: 'makina-location', params: { location: 'aeroporti-prishtines' } })"
             color="neutral"
             variant="outline"
             size="lg"
@@ -596,8 +637,8 @@ useHead(() => {
       <!-- Related Routes Section -->
       <UPageSection
         v-if="relatedRoutes.length > 0"
-        :title="t('routes.related')"
-        :description="t('routes.relatedDescription')"
+        :title="t('flights.routes.related')"
+        :description="t('flights.routes.relatedDescription')"
         class="mb-12"
       >
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-12">
@@ -630,7 +671,7 @@ useHead(() => {
                     </div>
                     <UIcon
                       name="i-lucide-plane"
-                      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 text-primary rotate-90"
+                      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 text-primary"
                     />
                   </div>
 
@@ -647,7 +688,7 @@ useHead(() => {
                     <span class="text-sm font-medium text-primary">
                       {{ relatedRoute.from }} → {{ relatedRoute.to }}
                     </span>
-                    <span class="text-xs text-gray-400 mt-0.5">{{ t('routes.compare') }}</span>
+                    <span class="text-xs text-gray-400 mt-0.5">{{ t('flights.routes.compare') }}</span>
                   </div>
 
                   <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
@@ -678,7 +719,7 @@ useHead(() => {
           </p>
           <div class="flex flex-wrap justify-center gap-4">
             <UButton
-              :to="localePath('/makina/aeroporti-prishtines')"
+              :to="localePath({ name: 'makina-location', params: { location: 'aeroporti-prishtines' } })"
               size="lg"
               color="neutral"
               variant="solid"

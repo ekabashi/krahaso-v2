@@ -191,9 +191,9 @@
       }
     },
     "hero": {
-      "title": "Krahasoni dhe Kurseni në",
-      "titleHighlight": "Marrje me Qira Makinash.",
-      "description": "Ne kërkojmë në kompanitë kryesore të marrjes me qira për të gjetur çmimet më të mira për ju. Çmime transparente, zero tarifa të fshehura.",
+      "title": "Udhëtimi yt drejt shtëpisë",
+      "titleHighlight": "fillon këtu",
+      "description": "Krahaso fluturime dhe makina me qera për Kosovë — ofertat më të mira në një vend.",
       "flights": {
         "title": "Krahaso dhe Kurse në",
         "titleHighlight": "Rezervime të Fluturimeve.",
@@ -215,7 +215,7 @@
       "carsFleet": "Makina në dispozicion"
     },
     "routes": {
-      "title": "Rrugët më të kërkuara",
+      "title": "Fluturimet më të kërkuara",
       "description": "Destinacionet më popullore nga dhe për Kosovë",
       "compare": "Krahaso çmimet",
       "popular": {
@@ -230,7 +230,7 @@
     },
     "locations": {
       "popular": {
-        "title": "Lokacione Popullore",
+        "title": "Lokacione Popullore për Makina",
         "description": "Zgjidhni nga lokacionet më popullore për marrjen e makinës"
       }
     },
@@ -256,11 +256,11 @@
     },
     "howItWorks": {
       "title": "Si Funksionon",
-      "description": "Tre hapa të thjeshtë për të gjetur fluturimet më të mira",
+      "description": "Tre hapa të thjeshtë për të gjetur ofertat më të mira",
       "steps": {
         "search": {
-          "title": "Përcaktoni Detajet e Fluturimit",
-          "description": "Zgjidhni nisjen, destinacionin dhe datën e udhëtimit."
+          "title": "Përcaktoni Detajet e Udhëtimit",
+          "description": "Zgjidhni rrugën, datat, ose vendin e marrjes."
         },
         "compare": {
           "title": "Krahasoni Ofertat",
@@ -273,8 +273,8 @@
       }
     },
     "whatsapp": {
-      "title": "Kërko Fluturime përmes WhatsApp",
-      "description": "Na shkruaj thjesht datat e udhëtimit dhe merr çmimet më të mira të fluturimeve menjëherë - direkt në WhatsApp.",
+      "title": "Kërko përmes WhatsApp",
+      "description": "Na shkruaj thjesht detajet e udhëtimit dhe merr çmimet më të mira për fluturime dhe makina me qera - direkt në WhatsApp.",
       "features": {
         "fast": "Përgjigje në sekonda",
         "easy": "Nuk nevojitet aplikacion",
@@ -283,11 +283,11 @@
       "cta": "Fillo bisedën",
       "chat": {
         "userMessage1": "Përshëndetje! Dëshiroj të kërkoj fluturime.",
-        "botGreeting": "Përshëndetje! 👋\n Unë jam Asistenti i Aviopika's dhe të ndihmoj të gjesh fluturime të lira.\n Zgjidh gjuhën\n1️⃣ 🇦🇱 Shqip\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
+        "botGreeting": "Përshëndetje! 👋\n Unë jam Asistenti i Krahaso's dhe të ndihmoj të gjesh fluturime të lira.\n Zgjidh gjuhën\n1️⃣ 🇦🇱 Shqip\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
         "userLanguage": "Shqip",
-        "botWelcome": "*Mirë se vini në Aviopika!* ✈️\nGjej fluturimet më të lira për ty.\n*Si funksionon:*\n\n• \"Düsseldorf Pristina nesër\"\n• \"DUS PRN 15.03-22.03\" (Vajtje-ardhje)\n\nKu dëshiron të shkosh?",
+        "botWelcome": "*Mirë se vini në Krahaso!* ✈️\nGjej fluturimet më të lira për ty.\n*Si funksionon:*\n\n• \"Düsseldorf Pristina nesër\"\n• \"DUS PRN 15.03-22.03\" (Vajtje-ardhje)\n\nKu dëshiron të shkosh?",
         "userFlightSearch": "PRISHTINE - MUNCHEN 10.01",
-        "botFlightResults": "*Pristina → München*\n10 janar 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Çmimi më i mirë\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Më e shpejta\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 fluturime të tjera\n---\nShiko të gjitha rezultatet në https://www.aviopika.al \n\nAviopika është një krahasim i pavarur çmimesh. Nuk shesim bileta fluturimi. Të gjitha çmimet pa garanci. Ridrejtim në faqen e ofruesit.",
+        "botFlightResults": "*Pristina → München*\n10 janar 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Çmimi më i mirë\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Më e shpejta\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 fluturime të tjera\n---\nShiko të gjitha rezultatet në https://www.krahaso.co \n\nKrahaso është një krahasim i pavarur çmimesh. Nuk shesim bileta fluturimi. Të gjitha çmimet pa garanci. Ridrejtim në faqen e ofruesit.",
         "inputPlaceholder": "Shkruani mesazhin tuaj..."
       }
     },
@@ -345,7 +345,19 @@
     },
   "faq": {
     "title": "Pyetjet më të shpeshta",
-    "description": "Gjithçka që duhet të dini para se të filloni"
+    "description": "Gjithçka që duhet të dini para se të filloni",
+    "items": {
+      "q1": "Çfarë është Krahaso?",
+      "a1": "Krahaso është një platformë falas për krahasimin e çmimeve të fluturimeve dhe makinave me qera në Kosovë. Ne krahasojmë ofertat nga disa ofrues që ju të gjeni më të mirën.",
+      "q2": "A është kërkimi falas?",
+      "a2": "Po, kërkimi dhe krahasimi janë plotësisht falas. Nuk paguani asgjë shtesë përmes Krahaso.",
+      "q3": "Si funksionon rezervimi?",
+      "a3": "Pas krahasimit, ju ridrejtoheni te faqja e ofruesit ku mund të rezervoni drejtpërdrejt dhe me siguri.",
+      "q4": "A janë çmimet e shfaqura të detyrueshme?",
+      "a4": "Për makina me qera, çmimet e shfaqura janë të detyrueshme. Për fluturime, çmimet shërbejnë si orientim pasi çmimet e fluturimeve mund të ndryshojnë shpejt. Çmimi aktual konfirmohet gjithmonë në faqjen e ofruesit.",
+      "q5": "Si mund të marr ndihmë?",
+      "a5": "Na kontaktoni në çdo kohë përmes WhatsApp ose faqjes sonë të kontaktit. Jemi të gatshëm t'ju ndihmojmë."
+    }
   },
     "cta": {
       "title": "Gati për të filluar udhëtimin tuaj?",
@@ -436,7 +448,7 @@
       "answer6": "Nëse keni nevojë për më shumë informacion, mund të na kontaktoni përmes numrave të kontaktit ose emailit që gjenden në faqen Kontakti."
     },
     "routes": {
-      "title": "Rrugët më të kërkuara",
+      "title": "Fluturimet më të kërkuara",
       "description": "Destinacionet më popullore nga dhe për Kosovë",
       "related": "Rrugë të Ngjashme",
       "relatedDescription": "Eksploro destinacione të tjera popullore",
@@ -545,6 +557,26 @@
     "perPerson": "për person",
     "close": "Mbyll",
     "showResults": "Shfaq rezultatet",
+    "bookingClass": "Klasa e rezervimit",
+    "aircraft": "Aeroplani",
+    "tba": "Të përcaktohet",
+    "basePrice": "Çmimi bazë",
+    "taxesFees": "Taksat dhe tarifat",
+    "exitModal": {
+      "title": "Duke u dërguar te ofruesi",
+      "disclaimer": "Ju po largoheni nga Krahaso.co dhe po ridrejtoheni te {provider}. Rezervimi përfundimtar do të bëhet në faqen e tyre zyrtare.",
+      "continue": "Vazhdo te {provider}",
+      "autopika": {
+        "headline": "Kërko Makina me Qera?",
+        "subline": "Krahaso çmimet nga partnerët kryesorë në Kosovë",
+        "benefits": {
+          "local": "Partnerë lokalë të verifikuar",
+          "realtime": "Disponueshmëri në kohë reale",
+          "direct": "Rezervim direkt me kompaninë"
+        },
+        "cta": "Shiko Makina me Qera"
+      }
+    },
     "seo": {
       "description": "Krahaso dhe rezervo fluturime të lira për në dhe nga Kosova. Gjej çmimet më të mira për fluturime në Prishtinë (PRN) nga Gjermania, Zvicra dhe Austria."
     }
@@ -654,6 +686,7 @@
     "cta": {
       "title": "Gati për të Rezervuar?",
       "description": "Pas rezervimit të makinës, rezervo fluturimin për të kompletuar udhëtimin tuaj",
+      "searchCars": "Kërko Makina",
       "searchFlights": "Kërko Fluturime"
     }
   },
@@ -716,6 +749,8 @@
     "returnTime": "Ora e kthimit",
     "selectDate": "Zgjidhni datën",
     "selectTime": "Zgjidhni orën",
+    "midnight": "Mesnatë",
+    "noon": "Mesditë",
     "searchCars": "Kërko makinat",
     "searching": "Duke kërkuar..."
   },
@@ -735,6 +770,7 @@
     },
     "layout": {
       "findBooking": "Gjej rezervimin",
+      "findBookingDesc": "Gjej rezervimin e makines",
       "bookingNumber": "Numri i rezervimit",
       "enterBookingNumber": "Vendosni numrin e rezervimit",
       "cancel": "Anulo",
@@ -788,11 +824,11 @@
   },
   "howItWorks": {
     "title": "Si Funksionon",
-    "description": "Tre hapa të thjeshtë për të gjetur fluturimet më të mira",
+    "description": "Tre hapa të thjeshtë për të gjetur ofertat më të mira",
     "steps": {
       "search": {
-        "title": "Përcaktoni Detajet e Fluturimit",
-        "description": "Zgjidhni nisjen, destinacionin dhe datën e udhëtimit."
+        "title": "Përcaktoni Detajet e Udhëtimit",
+        "description": "Zgjidhni rrugën, datat, ose vendin e marrjes."
       },
       "compare": {
         "title": "Krahasoni Ofertat",
@@ -805,8 +841,8 @@
     }
   },
   "whatsapp": {
-    "title": "Kërko Fluturime përmes WhatsApp",
-    "description": "Na shkruaj thjesht datat e udhëtimit dhe merr çmimet më të mira të fluturimeve menjëherë - direkt në WhatsApp.",
+    "title": "Kërko përmes WhatsApp",
+    "description": "Na shkruaj thjesht detajet e udhëtimit dhe merr çmimet më të mira për fluturime dhe makina me qera - direkt në WhatsApp.",
     "features": {
       "fast": "Përgjigje në sekonda",
       "easy": "Nuk nevojitet aplikacion",
@@ -815,11 +851,11 @@
     "cta": "Fillo bisedën",
     "chat": {
       "userMessage1": "Përshëndetje! Dëshiroj të kërkoj fluturime.",
-      "botGreeting": "Përshëndetje! 👋\n Unë jam Asistenti i Aviopika's dhe të ndihmoj të gjesh fluturime të lira.\n Zgjidh gjuhën\n1️⃣ 🇦🇱 Shqip\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
+      "botGreeting": "Përshëndetje! 👋\n Unë jam Asistenti i Krahaso's dhe të ndihmoj të gjesh fluturime të lira.\n Zgjidh gjuhën\n1️⃣ 🇦🇱 Shqip\n2️⃣ 🇬🇧 English\n3️⃣ 🇩🇪 Deutsch",
       "userLanguage": "Shqip",
-      "botWelcome": "*Mirë se vini në Aviopika!* ✈️\nGjej fluturimet më të lira për ty.\n*Si funksionon:*\n\n• \"Düsseldorf Pristina nesër\"\n• \"DUS PRN 15.03-22.03\" (Vajtje-ardhje)\n\nKu dëshiron të shkosh?",
+      "botWelcome": "*Mirë se vini në Krahaso!* ✈️\nGjej fluturimet më të lira për ty.\n*Si funksionon:*\n\n• \"Düsseldorf Pristina nesër\"\n• \"DUS PRN 15.03-22.03\" (Vajtje-ardhje)\n\nKu dëshiron të shkosh?",
       "userFlightSearch": "PRISHTINE - MUNCHEN 10.01",
-      "botFlightResults": "*Pristina → München*\n10 janar 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Çmimi më i mirë\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Më e shpejta\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 fluturime të tjera\n---\nShiko të gjitha rezultatet në https://www.aviopika.al \n\nAviopika është një krahasim i pavarur çmimesh. Nuk shesim bileta fluturimi. Të gjitha çmimet pa garanci. Ridrejtim në faqen e ofruesit.",
+      "botFlightResults": "*Pristina → München*\n10 janar 2026\n---\n1. *KosovaFly* - 219.00 EUR \n ⭐ Çmimi më i mirë\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219.00 EUR \n 🚀 Më e shpejta\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219.00 EUR\n11:30 → 13:15 (1h 45m)\n+3 fluturime të tjera\n---\nShiko të gjitha rezultatet në https://www.krahaso.co \n\nKrahaso është një krahasim i pavarur çmimesh. Nuk shesim bileta fluturimi. Të gjitha çmimet pa garanci. Ridrejtim në faqen e ofruesit.",
       "inputPlaceholder": "Shkruani mesazhin tuaj..."
     }
   },
@@ -887,7 +923,7 @@
   },
   "footer": {
     "description": "Krahaso.co ju ndihmon të krahasoni çmimet për fluturime dhe makina me qera në Kosovë me çmime transparente dhe partnerë të verifikuar.",
-    "quickLinks": "Linqe të shpejta",
+    "quickLinks": "Lidhjet e Shpejta",
     "aboutUs": "Rreth nesh",
     "contact": "Kontakt",
     "howItWorks": "Si funksionon",
@@ -907,6 +943,14 @@
     "section2": {
       "title": "2. Si përdorim informacionin",
       "content": "Të dhënat tuaja përdoren për të procesuar kërkesat, përmirësuar shërbimin tonë, dhe për të komunikuar me ju."
+    },
+    "section3": {
+      "title": "3. Mbrojtja e të dhënave",
+      "content": "Ne përdorim masa teknike dhe organizative për të mbrojtur të dhënat tuaja nga aksesi i paautorizuar, humbja ose keqpërdorimi. Të dhënat ruhen në servera të sigurt me enkriptim."
+    },
+    "section4": {
+      "title": "4. Të drejtat tuaja",
+      "content": "Ju keni të drejtë të kërkoni akses, korrigjim ose fshirje të të dhënave tuaja personale. Për çdo kërkesë, na kontaktoni në info{'@'}krahaso.co."
     },
     "intro": {
       "kontakt": "Na kontaktoni – faqe core.",
@@ -1057,7 +1101,19 @@
   },
   "faq": {
     "title": "Pyetjet më të shpeshta",
-    "description": "Gjithçka që duhet të dini para se të filloni"
+    "description": "Gjithçka që duhet të dini para se të filloni",
+    "items": {
+      "q1": "Çfarë është Krahaso?",
+      "a1": "Krahaso është një platformë falas për krahasimin e çmimeve të fluturimeve dhe makinave me qera në Kosovë. Ne krahasojmë ofertat nga disa ofrues që ju të gjeni më të mirën.",
+      "q2": "A është kërkimi falas?",
+      "a2": "Po, kërkimi dhe krahasimi janë plotësisht falas. Nuk paguani asgjë shtesë përmes Krahaso.",
+      "q3": "Si funksionon rezervimi?",
+      "a3": "Pas krahasimit, ju ridrejtoheni te faqja e ofruesit ku mund të rezervoni drejtpërdrejt dhe me siguri.",
+      "q4": "A janë çmimet e shfaqura të detyrueshme?",
+      "a4": "Për makina me qera, çmimet e shfaqura janë të detyrueshme. Për fluturime, çmimet shërbejnë si orientim pasi çmimet e fluturimeve mund të ndryshojnë shpejt. Çmimi aktual konfirmohet gjithmonë në faqjen e ofruesit.",
+      "q5": "Si mund të marr ndihmë?",
+      "a5": "Na kontaktoni në çdo kohë përmes WhatsApp ose faqjes sonë të kontaktit. Jemi të gatshëm t'ju ndihmojmë."
+    }
   },
   "cta": {
     "title": "Gati për të filluar udhëtimin tuaj?",
@@ -1102,7 +1158,7 @@
         "activeCars": "Makinat Aktive",
         "partnersAndCars": "Partnerët & Makinat",
         "totalFee": "Tarifa Krahaso",
-        "revenue": "Të ardhura Totale",
+        "revenue": "Të Ardhurat Totale",
         "revenueHistory": "Historia e të ardhurave për 12 muajt e fundit",
         "bookingsHistory": "Historia e rezervimeve për 12 muajt e fundit"
       },
@@ -1110,7 +1166,7 @@
       "actions": {
         "viewReports": "Shiko Raportet",
         "partnershipRequests": "Kërkesat e Partneritetit",
-        "settlementRequests": "Kërkesat per barazim"
+        "settlementRequests": "Kërkesat për barazim"
       },
       "reportsModal": {
         "subtitle": "Zgjidhni partnerin për të cilin dëshironi të shikoni raportet"
@@ -1179,7 +1235,7 @@
         "tenantShare": "Pjesa e Partnerit",
         "notes": "Shënime",
         "actions": {
-          "generateReport": "Gjenero Raport"
+          "generateReport": "Gjeneroni Raportin"
         },
         "emptyState": {
           "noHistory": "Nuk ka histori barazimi",
@@ -1209,7 +1265,7 @@
       "filterByStatus": "Filtro sipas statusit",
       "filterByPartner": "Filtro sipas partnerit",
       "actions": {
-        "generateReport": "Gjenero Raport"
+        "generateReport": "Gjeneroni Raportin"
       },
       "filter": {
         "all": "Të gjitha"
@@ -1223,12 +1279,12 @@
         "description": "Nuk ka rezervime për të shfaqur."
       },
       "table": {
-        "bookingNumber": "Numri i rezervimit",
+        "bookingNumber": "Numri i Rezervimit",
         "tenant": "Partneri",
         "status": "Statusi",
-        "totalPrice": "Çmimi total",
-        "fee": "Tarifa",
-        "rentalPeriod": "Periudha e qirasë"
+        "totalPrice": "Çmimi Total",
+        "fee": "Tarifa Krahaso",
+        "rentalPeriod": "Periudha e Qirasë"
       },
       "status": {
         "unknown": "E panjohur",
@@ -1275,7 +1331,7 @@
     },
     "partnershipRequests": {
       "title": "Kërkesat e Partneritetit",
-      "subtitle": "Shiko dhe menaxho të gjitha kërkesat e partneritetit",
+      "subtitle": "Shikoni dhe menaxhoni të gjitha kërkesat e partneritetit",
       "loading": "Duke ngarkuar kërkesat...",
       "actions": {
         "approve": "Aprovo",
@@ -1323,7 +1379,7 @@
       },
       "status": {
         "pending": "Në pritje",
-        "approved": "E aprovuar",
+        "approved": "E Pranuar",
         "rejected": "E refuzuar"
       },
       "reject": {

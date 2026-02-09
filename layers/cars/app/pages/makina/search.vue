@@ -2,6 +2,7 @@
 import type { CityOption } from '../../types'
 import { useCarStore, type CarFilters } from '../../stores/carStore'
 import { useAddressStore } from '../../stores/addressStore'
+import { slugify, resolveLocationSlug } from '../../utils/slugify'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -24,6 +25,18 @@ const searchParams = computed(() => ({
   startTime: query.value.startTime || undefined,
   endTime: query.value.endTime || undefined,
 }))
+
+/** Resolve URL slugs back to display names for API calls and display */
+const resolvedLocation = computed(() => {
+  const slug = searchParams.value.location
+  if (!slug) return undefined
+  return resolveLocationSlug(slug, addressStore.pickupCities)
+})
+const resolvedDropoff = computed(() => {
+  const slug = searchParams.value.dropoffLocation
+  if (!slug) return undefined
+  return resolveLocationSlug(slug, addressStore.pickupCities)
+})
 
 const hasSearchParams = computed(
   () =>
@@ -164,8 +177,8 @@ async function searchCars() {
     endDate: searchParams.value.endDate,
     startTime: searchParams.value.startTime,
     endTime: searchParams.value.endTime,
-    location: searchParams.value.location,
-    dropoffLocation: searchParams.value.dropoffLocation,
+    location: resolvedLocation.value,
+    dropoffLocation: resolvedDropoff.value,
   })
   trackResultsViewed('car', carStore.total)
 }
@@ -182,10 +195,10 @@ if (import.meta.client) {
       if (q.startTime) selectedTimes.value.start = q.startTime
       if (q.endTime) selectedTimes.value.end = q.endTime
       const pickup = q.pickup || q.location
-      if (pickup) selectedLocation.value = pickup
+      if (pickup) selectedLocation.value = resolveLocationSlug(pickup, addressStore.pickupCities)
       const ret = q.return || q.dropoffLocation
       if (ret && ret !== pickup) {
-        dropOffLocation.value = ret
+        dropOffLocation.value = resolveLocationSlug(ret, addressStore.pickupCities)
         showDropOff.value = true
       }
       const pageNum = q.page ? Number(q.page) : 1
@@ -218,10 +231,10 @@ watch(
     if (q.startTime) selectedTimes.value.start = q.startTime
     if (q.endTime) selectedTimes.value.end = q.endTime
     const pickup = q.pickup || q.location
-    if (pickup) selectedLocation.value = pickup
+    if (pickup) selectedLocation.value = resolveLocationSlug(pickup, addressStore.pickupCities)
     const ret = q.return || q.dropoffLocation
     if (ret && ret !== pickup) {
-      dropOffLocation.value = ret
+      dropOffLocation.value = resolveLocationSlug(ret, addressStore.pickupCities)
       showDropOff.value = true
     } else {
       showDropOff.value = false
@@ -331,8 +344,8 @@ function toggleDropOff() {
 function handleSearch() {
   if (!selectedDates.value.start || !selectedDates.value.end) return
   const q: Record<string, string> = {
-    pickup: selectedLocation.value,
-    return: dropOffLocation.value || selectedLocation.value,
+    pickup: slugify(selectedLocation.value),
+    return: slugify(dropOffLocation.value || selectedLocation.value),
     startDate: formatDate(selectedDates.value.start, 'YYYY-MM-DD'),
     endDate: formatDate(selectedDates.value.end, 'YYYY-MM-DD'),
     startTime: selectedTimes.value.start ?? '10:00',
@@ -362,8 +375,8 @@ watch(page, (newPage) => {
 
 useSeoPage({
   title: () =>
-    hasSearchParams.value && searchParams.value.location
-      ? `${t('cars.title')} ${searchParams.value.location} | Krahaso.co`
+    hasSearchParams.value && resolvedLocation.value
+      ? `${t('cars.title')} ${resolvedLocation.value} | Krahaso.co`
       : `${t('cars.title')} | Krahaso.co`,
   description: () => t('cars.description'),
   canonical: () => localePath('makina-search'),
@@ -398,13 +411,13 @@ useSeoPage({
             <div v-if="hasLocation" class="flex items-center gap-2">
               <UIcon name="i-lucide-map-pin" class="w-4 h-4 text-primary" />
               <span class="text-muted">
-                {{ t('cars.pickup') }}: <strong>{{ searchParams.location }}</strong>
+                {{ t('cars.pickup') }}: <strong>{{ resolvedLocation }}</strong>
               </span>
             </div>
             <div v-if="hasDropoffLocation" class="flex items-center gap-2">
               <UIcon name="i-lucide-map-pin" class="w-4 h-4 text-primary" />
               <span class="text-muted">
-                {{ t('cars.dropoff') }}: <strong>{{ searchParams.dropoffLocation }}</strong>
+                {{ t('cars.dropoff') }}: <strong>{{ resolvedDropoff }}</strong>
               </span>
             </div>
             <div v-if="searchParams.startDate && searchParams.endDate" class="flex items-center gap-2">

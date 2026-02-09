@@ -1,8 +1,6 @@
 import type { LocationDef } from '../utils/locations'
 import { LOCATIONS, POPULAR_LOCATION_KEYS } from '../utils/locations'
 
-export type { LocationDef }
-
 export function useAvailableLocations() {
   const availableLocations = computed<LocationDef[]>(() =>
     LOCATIONS.filter((loc) => (POPULAR_LOCATION_KEYS as readonly string[]).includes(loc.key)),

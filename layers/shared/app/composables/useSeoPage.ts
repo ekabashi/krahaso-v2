@@ -1,3 +1,5 @@
+const LOCALES = ['sq', 'de', 'en'] as const
+
 export function useSeoPage(seo: {
   title: string | (() => string)
   description: string | (() => string)
@@ -7,8 +9,28 @@ export function useSeoPage(seo: {
 }) {
   const config = useRuntimeConfig()
   const route = useRoute()
+  const localePath = useLocalePath()
 
   const siteUrl = (config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'
+
+  // Route name + params for hreflang alternates (resolves translated paths per locale)
+  const routeLocation = computed(() => {
+    const name = route.name
+    const baseName = typeof name === 'string' ? name.replace(/___\w+$/, '') : name
+    return { name: baseName, params: route.params }
+  })
+
+  const alternates = computed(() => {
+    const links = LOCALES.map((code) => {
+      const href = `${siteUrl}${localePath(routeLocation.value, code)}`
+      return { hreflang: code, href }
+    })
+    links.push({
+      hreflang: 'x-default',
+      href: `${siteUrl}${localePath(routeLocation.value, 'sq')}`,
+    })
+    return links
+  })
 
   useHead(() => {
     const title = typeof seo.title === 'function' ? seo.title() : seo.title
@@ -33,7 +55,14 @@ export function useSeoPage(seo: {
         ...(ogImage ? [{ name: 'twitter:image', content: ogImage }] : []),
         ...(seo.noindex ? [{ name: 'robots', content: 'noindex, nofollow' }] : []),
       ],
-      link: [{ rel: 'canonical', href: canonicalHref }],
+      link: [
+        { rel: 'canonical', href: canonicalHref },
+        ...alternates.value.map((a) => ({
+          rel: 'alternate',
+          hreflang: a.hreflang,
+          href: a.href,
+        })),
+      ],
     }
   })
 }

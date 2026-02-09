@@ -161,7 +161,7 @@ const isStepActive = (stepNumber: number) => state.value.step === stepNumber
       </div>
 
       <div
-        class="mb-8 flex items-center justify-center gap-2 sm:gap-3 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        class="sticky top-(--ui-header-height) z-40 -mx-4 sm:-mx-6 lg:-mx-8 mb-8 flex items-center justify-center gap-2 sm:gap-3 overflow-x-auto py-4 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         <div
           v-for="(step, index) in steps"

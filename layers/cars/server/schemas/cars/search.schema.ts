@@ -19,8 +19,8 @@ const dateTimeSearchSchema = z.object({
   endDate: dateSchema,
   startTime: timeSchema,
   endTime: timeSchema,
-  location: z.string().optional(),
-  dropoffLocation: z.string().optional(),
+  location: z.string().max(200).optional(),
+  dropoffLocation: z.string().max(200).optional(),
 })
 
 const filterSchema = z.object({

@@ -21,7 +21,6 @@ export const POPULAR_LOCATION_KEYS = [
   'gjilan',
   'malisheva',
   'suhareka',
-  'rahovec',
 ] as const
 
 export const LOCATIONS: LocationDef[] = [

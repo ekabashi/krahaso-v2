@@ -288,7 +288,7 @@ function confirmOpenProvider() {
       >
         <div>
           <p class="text-muted">
-            {{ $t('flight.bookingClass') }}
+            {{ $t('flights.bookingClass') }}
           </p>
           <p class="font-medium">
             {{ flight.cabinClass }}
@@ -296,15 +296,15 @@ function confirmOpenProvider() {
         </div>
         <div>
           <p class="text-muted">
-            {{ $t('flight.aircraft') }}
+            {{ $t('flights.aircraft') }}
           </p>
           <p class="font-medium">
-            {{ flight.aircraft || $t('flight.tba') }}
+            {{ flight.aircraft || $t('flights.tba') }}
           </p>
         </div>
         <div>
           <p class="text-muted">
-            {{ $t('flight.basePrice') }}
+            {{ $t('flights.basePrice') }}
           </p>
           <p class="font-medium">
             {{ formattedBasePrice }}
@@ -312,7 +312,7 @@ function confirmOpenProvider() {
         </div>
         <div>
           <p class="text-muted">
-            {{ $t('flight.taxesFees') }}
+            {{ $t('flights.taxesFees') }}
           </p>
           <p class="font-medium">
             {{ formattedTaxPrice }}
@@ -325,8 +325,8 @@ function confirmOpenProvider() {
   <!-- Exit Modal -->
   <UModal
     v-model:open="showExitModal"
-    :title="$t('exitModal.title')"
-    :description="$t('exitModal.disclaimer', { provider: providerName })"
+    :title="$t('flights.exitModal.title')"
+    :description="$t('flights.exitModal.disclaimer', { provider: providerName })"
   >
     <template #content>
       <UCard>
@@ -340,7 +340,7 @@ function confirmOpenProvider() {
                 />
               </div>
               <h3 class="text-lg font-semibold">
-                {{ $t('exitModal.title') }}
+                {{ $t('flights.exitModal.title') }}
               </h3>
             </div>
             <UButton
@@ -356,7 +356,7 @@ function confirmOpenProvider() {
         <div class="space-y-4">
           <!-- Disclaimer -->
           <p class="text-sm text-muted">
-            {{ $t('exitModal.disclaimer', { provider: providerName }) }}
+            {{ $t('flights.exitModal.disclaimer', { provider: providerName }) }}
           </p>
 
           <!-- Autopika Promo (subtle container) -->
@@ -373,10 +373,10 @@ function confirmOpenProvider() {
               <div class="flex-1">
                 <!-- Headline + Subline -->
                 <p class="font-semibold">
-                  {{ $t('exitModal.autopika.headline') }}
+                  {{ $t('flights.exitModal.autopika.headline') }}
                 </p>
                 <p class="mb-2 text-xs text-muted">
-                  {{ $t('exitModal.autopika.subline') }}
+                  {{ $t('flights.exitModal.autopika.subline') }}
                 </p>
 
                 <!-- Benefits -->
@@ -390,7 +390,7 @@ function confirmOpenProvider() {
                       name="i-lucide-check"
                       class="shrink-0 text-xs text-primary"
                     />
-                    <span>{{ $t(`exitModal.autopika.benefits.${benefit}`) }}</span>
+                    <span>{{ $t(`flights.exitModal.autopika.benefits.${benefit}`) }}</span>
                   </li>
                 </ul>
 
@@ -405,7 +405,7 @@ function confirmOpenProvider() {
                     hover:underline
                   "
                 >
-                  {{ $t('exitModal.autopika.cta') }}
+                  {{ $t('flights.exitModal.autopika.cta') }}
                   <UIcon
                     name="i-lucide-arrow-right"
                     class="text-xs"
@@ -429,7 +429,7 @@ function confirmOpenProvider() {
               icon="i-lucide-external-link"
               @click="confirmOpenProvider"
             >
-              {{ $t('exitModal.continue', { provider: providerName }) }}
+              {{ $t('flights.exitModal.continue', { provider: providerName }) }}
             </UButton>
           </div>
         </template>

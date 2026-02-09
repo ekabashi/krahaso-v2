@@ -13,15 +13,41 @@ export default defineNuxtConfig({
     },
   },
   // CSS loaded from app.vue with relative imports to avoid ~ resolution in virtual:nuxt/css.mjs
-  modules: ['@nuxt/ui', '@nuxtjs/i18n', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase'],
+  modules: ['@nuxt/ui', '@nuxtjs/i18n', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase', '@nuxtjs/sitemap'],
 
   supabase: {
     url: process.env.SUPABASE_URL,
     key: process.env.SUPABASE_KEY,
     redirect: false,
+    types: false,
   },
   ui: {
     fonts: false, // avoid Fontshare/API 503 during dev; use system/fallback fonts
+  },
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://krahaso.co',
+  },
+  sitemap: {
+    // Auto-discovers routes from i18n; each locale gets its own sitemap
+    sitemaps: true,
+    excludeAppSources: ['route-rules'],
+    exclude: [
+      '/superadmin/**',
+      '/superadmin',
+      '/**/superadmin/**',
+      '/**/superadmin',
+    ],
+  },
+  vite: {
+    build: {
+      rollupOptions: {
+        onwarn(warning, defaultHandler) {
+          // Suppress unused export warnings from Supabase SDK internals
+          if (warning.code === 'UNUSED_EXTERNAL_IMPORT' && warning.exporter?.includes('@supabase/')) return
+          defaultHandler(warning)
+        },
+      },
+    },
   },
   nitro: {
     preset: 'vercel',
@@ -32,12 +58,14 @@ export default defineNuxtConfig({
           'X-Frame-Options': 'SAMEORIGIN',
           'X-XSS-Protection': '1; mode=block',
           'Referrer-Policy': 'strict-origin-when-cross-origin',
+          'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+          'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
           'Content-Security-Policy': [
             'default-src \'self\'',
             'script-src \'self\' \'unsafe-inline\' \'unsafe-eval\' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net',
             'img-src \'self\' data: https: http:',
-            'style-src \'self\' \'unsafe-inline\' https://fonts.googleapis.com',
-            'font-src \'self\' data: https://fonts.gstatic.com',
+            'style-src \'self\' \'unsafe-inline\'',
+            'font-src \'self\' data:',
             'connect-src \'self\' https://*.supabase.co https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://www.facebook.com',
             'frame-src \'self\' https://www.googletagmanager.com https://www.google.com https://www.facebook.com',
           ].join('; '),
@@ -46,18 +74,41 @@ export default defineNuxtConfig({
       '/robots.txt': {
         headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=3600' },
       },
-      // DE flights: redirect umlaut URL to ASCII to avoid redirect loop; canonical is /de/fluge
-      '/de/flüge': { redirect: { to: '/de/fluge', statusCode: 302 } },
-      '/de/flüge/search': { redirect: { to: '/de/fluge/search', statusCode: 302 } },
       '/sitemap.xml': {
         headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=3600' },
       },
+      // Static pages: prerender at build time
+      '/sq/': { prerender: true },
+      '/de/': { prerender: true },
+      '/en/': { prerender: true },
+      '/sq/kontakt': { prerender: true },
+      '/de/kontakt': { prerender: true },
+      '/en/contact': { prerender: true },
+      '/sq/rreth-nesh': { prerender: true },
+      '/de/ueber-uns': { prerender: true },
+      '/en/about-us': { prerender: true },
+      '/sq/privacy-policy': { prerender: true },
+      '/de/privacy-policy': { prerender: true },
+      '/en/privacy-policy': { prerender: true },
+      '/sq/terms-of-service': { prerender: true },
+      '/de/terms-of-service': { prerender: true },
+      '/en/terms-of-service': { prerender: true },
+      '/sq/cookie-policy': { prerender: true },
+      '/de/cookie-policy': { prerender: true },
+      '/en/cookie-policy': { prerender: true },
+      // Landing pages: ISR with 1h cache (exclude /search which is dynamic)
+      '/sq/makina': { isr: 3600 },
+      '/de/autos': { isr: 3600 },
+      '/en/cars': { isr: 3600 },
+      '/sq/fluturime': { isr: 3600 },
+      '/de/fluege': { isr: 3600 },
+      '/en/flights': { isr: 3600 },
     },
   },
   // optional: vercel: { preferredRegion: 'fra1' },
 
   i18n: {
-    strategy: 'prefix_except_default', // default locale (sq) has no /sq in URL
+    strategy: 'prefix', // all locales with prefix: /sq/, /de/, /en/
     langDir: '../layers/shared/i18n', // module resolves as i18n/<langDir>; this yields layers/shared/i18n
     locales: [
       { code: 'sq', iso: 'sq-AL', file: 'sq.json' },
@@ -91,17 +142,17 @@ export default defineNuxtConfig({
       fluturime: {
         sq: '/fluturime',
         en: '/flights',
-        de: '/fluge',
+        de: '/fluege',
       },
       'fluturime-search': {
         sq: '/fluturime/search',
         en: '/flights/search',
-        de: '/fluge/search',
+        de: '/fluege/search',
       },
       'fluturime-route': {
         sq: '/fluturime/[route]',
         en: '/flights/[route]',
-        de: '/fluge/[route]',
+        de: '/fluege/[route]',
       },
       superadmin: {
         sq: '/superadmin',
@@ -112,6 +163,16 @@ export default defineNuxtConfig({
         sq: '/superadmin/login',
         en: '/superadmin/login',
         de: '/superadmin/login',
+      },
+      'rreth-nesh': {
+        sq: '/rreth-nesh',
+        en: '/about-us',
+        de: '/ueber-uns',
+      },
+      kontakt: {
+        sq: '/kontakt',
+        en: '/contact',
+        de: '/kontakt',
       },
     },
   },

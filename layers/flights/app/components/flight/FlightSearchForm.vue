@@ -5,7 +5,6 @@ import type { DateRange } from 'reka-ui'
 import { useI18n } from 'vue-i18n'
 
 const { t, locale } = useI18n()
-const route = useRoute()
 
 const props = withDefaults(
   defineProps<{
@@ -30,11 +29,6 @@ const returnDateOpen = ref(false)
 const passengersOpen = ref(false)
 
 const minDate = computed(() => today(getLocalTimeZone()))
-
-const tripTypes = computed(() => [
-  { label: t('flights.search.roundtrip'), value: 'roundtrip' },
-  { label: t('flights.search.oneway'), value: 'oneway' }
-])
 
 const totalPassengers = computed(() => {
   const p = searchState.value.passengers
@@ -94,12 +88,6 @@ const canSubmit = computed(() => {
   return true
 })
 
-function onTripTypeChange(value: string | number) {
-  if (value === 'roundtrip' || value === 'oneway') {
-    searchState.value.tripType = value
-  }
-}
-
 async function onSubmit() {
   if (!canSubmit.value) return
 
@@ -111,35 +99,51 @@ async function onSubmit() {
   <div
     :class="[
       'w-full',
-      props.embedded ? '' : 'bg-white rounded-3xl shadow-2xl border border-gray-100 p-6 md:p-8 transition-all duration-300 hover:shadow-3xl'
+      props.embedded ? '' : 'bg-white rounded-3xl shadow-2xl border border-neutral-100 p-6 md:p-8 transition-all duration-300 hover:shadow-xl'
     ]"
   >
-    <form
-      class="flight-search-form space-y-4"
-      @submit.prevent="onSubmit"
-    >
-      <div class="flex justify-end">
-        <ClientOnly>
-          <UTabs
-            :items="tripTypes"
-            :model-value="searchState.tripType"
-            class="w-fit"
-            @update:model-value="onTripTypeChange"
-          />
-          <template #fallback>
-            <div class="flex gap-2 w-fit">
-              <USkeleton class="h-8 w-24 rounded-md" />
-              <USkeleton class="h-8 w-20 rounded-md" />
-            </div>
-          </template>
-        </ClientOnly>
-      </div>
+    <form class="space-y-6" @submit.prevent="onSubmit">
+      <!-- Mobile: trip type toggle -->
+      <ClientOnly>
+        <div class="flex lg:hidden items-center gap-1 rounded-lg bg-neutral-100 p-0.5">
+          <button
+            type="button"
+            :class="[
+              'flex-1 rounded-md px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer',
+              searchState.tripType === 'roundtrip'
+                ? 'bg-white text-primary-600 shadow-sm ring-1 ring-primary-200'
+                : 'text-neutral-500 hover:text-neutral-700',
+            ]"
+            @click="searchState.tripType = 'roundtrip'"
+          >
+            {{ t('flights.search.roundtrip') }}
+          </button>
+          <button
+            type="button"
+            :class="[
+              'flex-1 rounded-md px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer',
+              searchState.tripType === 'oneway'
+                ? 'bg-white text-primary-600 shadow-sm ring-1 ring-primary-200'
+                : 'text-neutral-500 hover:text-neutral-700',
+            ]"
+            @click="searchState.tripType = 'oneway'"
+          >
+            {{ t('flights.search.oneway') }}
+          </button>
+        </div>
+        <template #fallback>
+          <div class="flex lg:hidden w-full gap-2">
+            <USkeleton class="h-8 flex-1 rounded-md" />
+            <USkeleton class="h-8 flex-1 rounded-md" />
+          </div>
+        </template>
+      </ClientOnly>
 
-      <div
-        class="form-controls-taller flex flex-col items-stretch sm:items-center md:gap-3 sm:flex-row"
-      >
-        <div class="w-full sm:flex-1 space-y-2">
-          <label class="block text-sm font-semibold text-gray-700 mb-1.5">
+      <!-- Row 1: From | Swap | To | Trip type toggle (desktop) -->
+      <div class="flex flex-col lg:flex-row lg:items-end gap-4">
+        <!-- From -->
+        <div class="flex-1 min-w-0 space-y-1.5">
+          <label class="block text-sm font-semibold text-neutral-700">
             {{ $t('flights.search.from') }}
           </label>
           <ClientOnly>
@@ -147,6 +151,7 @@ async function onSubmit() {
               v-model="searchState.origin"
               :placeholder="$t('flights.search.from')"
               icon="i-lucide-plane-takeoff"
+              size="lg"
             />
             <template #fallback>
               <USkeleton class="h-10 w-full rounded-md" />
@@ -154,33 +159,34 @@ async function onSubmit() {
           </ClientOnly>
         </div>
 
-        <UButton
-          variant="ghost"
-          color="neutral"
-          size="md"
-          class="exclude-from-taller mt-2 p-0 shrink-0 h-10 w-10 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 disabled:opacity-40 pl-2 self-center sm:hidden"
-          :aria-label="$t('flights.search.swapAirports')"
-          :disabled="!searchState.origin && !searchState.destination"
-          @click="swapAirports"
-        >
-          <UIcon
-            name="i-lucide-arrow-down-up"
-            class="size-6"
+        <!-- Swap buttons -->
+        <div class="flex justify-center lg:pb-0.5">
+          <UButton
+            variant="ghost"
+            color="neutral"
+            size="lg"
+            class="h-10 w-10 shrink-0 p-0 transition-all duration-200 hover:bg-primary-50 hover:text-primary-600 disabled:opacity-40 lg:hidden"
+            :aria-label="$t('flights.search.swapAirports')"
+            :disabled="!searchState.origin && !searchState.destination"
+            @click="swapAirports"
+          >
+            <UIcon name="i-lucide-arrow-down-up" class="size-5" />
+          </UButton>
+          <UButton
+            icon="i-lucide-arrow-left-right"
+            variant="ghost"
+            color="neutral"
+            size="md"
+            class="hidden h-[45px] shrink-0 transition-all duration-200 hover:bg-primary-50 hover:text-primary-600 disabled:opacity-40 lg:flex"
+            :aria-label="$t('flights.search.swapAirports')"
+            :disabled="!searchState.origin && !searchState.destination"
+            @click="swapAirports"
           />
-        </UButton>
-        <UButton
-          icon="i-lucide-arrow-left-right"
-          variant="ghost"
-          color="neutral"
-          size="md"
-          class="exclude-from-taller mt-6 shrink-0 h-10 w-10 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 disabled:opacity-40 pl-2 self-center hidden sm:flex"
-          :aria-label="$t('flights.search.swapAirports')"
-          :disabled="!searchState.origin && !searchState.destination"
-          @click="swapAirports"
-        />
+        </div>
 
-        <div class="w-full sm:flex-1 space-y-2">
-          <label class="block text-sm font-semibold text-gray-700 mb-1.5">
+        <!-- To -->
+        <div class="flex-1 min-w-0 space-y-1.5">
+          <label class="block text-sm font-semibold text-neutral-700">
             {{ $t('flights.search.to') }}
           </label>
           <ClientOnly>
@@ -188,17 +194,60 @@ async function onSubmit() {
               v-model="searchState.destination"
               :placeholder="$t('flights.search.to')"
               icon="i-lucide-plane-landing"
+              size="lg"
             />
             <template #fallback>
               <USkeleton class="h-10 w-full rounded-md" />
             </template>
           </ClientOnly>
         </div>
+
+        <!-- Desktop: trip type toggle -->
+        <ClientOnly>
+          <div class="hidden lg:flex items-stretch gap-1 rounded-lg bg-neutral-100 p-0.5 self-end action-col h-9">
+            <button
+              type="button"
+              :class="[
+                'flex-1 flex items-center justify-center rounded-md px-3 text-xs font-medium transition-colors cursor-pointer whitespace-nowrap',
+                searchState.tripType === 'roundtrip'
+                  ? 'bg-white text-primary-600 shadow-sm ring-1 ring-primary-200'
+                  : 'text-neutral-500 hover:text-neutral-700',
+              ]"
+              @click="searchState.tripType = 'roundtrip'"
+            >
+              {{ t('flights.search.roundtrip') }}
+            </button>
+            <button
+              type="button"
+              :class="[
+                'flex-1 flex items-center justify-center rounded-md px-3 text-xs font-medium transition-colors cursor-pointer whitespace-nowrap',
+                searchState.tripType === 'oneway'
+                  ? 'bg-white text-primary-600 shadow-sm ring-1 ring-primary-200'
+                  : 'text-neutral-500 hover:text-neutral-700',
+              ]"
+              @click="searchState.tripType = 'oneway'"
+            >
+              {{ t('flights.search.oneway') }}
+            </button>
+          </div>
+          <template #fallback>
+            <div class="hidden lg:flex gap-2 self-end action-col">
+              <USkeleton class="h-9 flex-1 rounded-md" />
+              <USkeleton class="h-9 flex-1 rounded-md" />
+            </div>
+          </template>
+        </ClientOnly>
       </div>
 
-      <div class="form-controls-taller flex flex-col gap-4 sm:flex-row sm:items-end">
-        <div class="space-y-2">
-          <label class="block text-sm font-semibold text-gray-700 mb-1.5">
+      <!-- Row 2: Dates | Passengers | Search -->
+      <div
+        class="grid grid-cols-1 items-end gap-4 sm:grid-cols-2"
+        :class="searchState.tripType === 'roundtrip'
+          ? 'lg:grid-cols-[1fr_1fr_1fr_auto_auto]'
+          : 'lg:grid-cols-[1fr_1fr_auto_auto]'"
+      >
+        <div class="min-w-0 space-y-1.5">
+          <label class="block text-sm font-semibold text-neutral-700">
             {{ $t('flights.search.departureDate') }}
           </label>
           <ClientOnly>
@@ -206,12 +255,17 @@ async function onSubmit() {
               <UButton
                 color="neutral"
                 variant="outline"
-                class="w-full justify-start"
-                icon="i-lucide-calendar"
                 size="lg"
+                block
+                class="justify-start rounded-md"
+                icon="i-lucide-calendar"
               >
                 <span
-                  :class="searchState.departureDate ? 'text-default' : `text-muted`"
+                  :class="[
+                    searchState.departureDate
+                      ? 'font-normal text-neutral-900'
+                      : 'font-normal text-neutral-400',
+                  ]"
                 >
                   {{ formatDate(searchState.departureDate) }}
                 </span>
@@ -229,11 +283,9 @@ async function onSubmit() {
             </template>
           </ClientOnly>
         </div>
-        <div
-          v-if="searchState.tripType === 'roundtrip'"
-          class="space-y-2"
-        >
-          <label class="block text-sm font-semibold text-gray-700 mb-1.5">
+
+        <div v-if="searchState.tripType === 'roundtrip'" class="min-w-0 space-y-1.5">
+          <label class="block text-sm font-semibold text-neutral-700">
             {{ $t('flights.search.returnDate') }}
           </label>
           <ClientOnly>
@@ -241,11 +293,18 @@ async function onSubmit() {
               <UButton
                 color="neutral"
                 variant="outline"
-                class="w-full justify-start"
-                icon="i-lucide-calendar"
                 size="lg"
+                block
+                class="justify-start rounded-md"
+                icon="i-lucide-calendar"
               >
-                <span :class="searchState.returnDate ? 'text-default' : 'text-muted'">
+                <span
+                  :class="[
+                    searchState.returnDate
+                      ? 'font-normal text-neutral-900'
+                      : 'font-normal text-neutral-400',
+                  ]"
+                >
                   {{ formatDate(searchState.returnDate) }}
                 </span>
               </UButton>
@@ -262,8 +321,9 @@ async function onSubmit() {
             </template>
           </ClientOnly>
         </div>
-        <div class="space-y-2">
-          <label class="block text-sm font-semibold text-gray-700 mb-1.5">
+
+        <div class="min-w-0 space-y-1.5">
+          <label class="block text-sm font-semibold text-neutral-700">
             {{ $t('flights.search.passengers') }}
           </label>
           <ClientOnly>
@@ -271,9 +331,10 @@ async function onSubmit() {
               <UButton
                 color="neutral"
                 variant="outline"
-                class="w-full justify-start"
-                icon="i-lucide-users"
                 size="lg"
+                block
+                class="justify-start rounded-md"
+                icon="i-lucide-users"
               >
                 <span class="truncate">{{ passengerLabel }}</span>
               </UButton>
@@ -376,16 +437,14 @@ async function onSubmit() {
               </template>
             </UPopover>
             <template #fallback>
-              <USkeleton class="h-10 w-32 rounded-md" />
+              <USkeleton class="h-10 w-full rounded-md" />
             </template>
           </ClientOnly>
         </div>
 
-        <ClientOnly>
-          <div
-            id="flexible-dates-checkbox"
-            class="exclude-from-taller flex items-center gap-1 self-left"
-          >
+        <!-- Flexible dates -->
+        <div class="flex items-center gap-1 self-end pb-2.5">
+          <ClientOnly>
             <UCheckbox
               v-model="searchState.flexibleDates"
               :label="$t('flights.search.flexibleLabel')"
@@ -396,23 +455,24 @@ async function onSubmit() {
                 class="size-4 text-muted"
               />
             </UTooltip>
-          </div>
-          <template #fallback>
-            <div class="flex items-center gap-1">
+            <template #fallback>
               <USkeleton class="size-4 rounded" />
               <USkeleton class="h-4 w-24" />
-            </div>
-          </template>
-        </ClientOnly>
+            </template>
+          </ClientOnly>
+        </div>
 
-        <div class="sm:ml-auto">
+        <div class="flex items-end sm:col-span-2 lg:col-span-1 action-col">
           <ClientOnly>
             <UButton
               type="submit"
+              block
+              size="lg"
+              color="primary"
               :loading="isSearching"
               :disabled="!canSubmit || !searchState.origin || !searchState.destination || !searchState.departureDate"
               icon="i-lucide-search"
-              class="whitespace-nowrap h-11 w-full md:w-auto"
+              class="font-bold"
             >
               {{ $t('flights.search.searchFlights') }}
             </UButton>
@@ -433,7 +493,7 @@ async function onSubmit() {
       />
     </form>
 
-    <div class="mt-4 sm:mt-6 flex flex-wrap justify-center gap-2 sm:gap-3">
+    <div class="mt-8 flex flex-wrap justify-center gap-2 sm:mt-10 sm:gap-3">
       <div
         v-for="badge in [
           { icon: 'i-lucide-badge-check', key: 'noFees' },
@@ -441,11 +501,11 @@ async function onSubmit() {
           { icon: 'i-lucide-lock', key: 'secureData' }
         ]"
         :key="badge.key"
-        class="flex items-center gap-1.5 sm:gap-2 rounded-full border border-primary/20 bg-primary/5 px-2 py-1.5 sm:px-4 sm:py-2"
+        class="flex items-center gap-1.5 sm:gap-2 rounded-full border border-primary-600/20 bg-primary-50 px-2 py-1.5 sm:px-4 sm:py-2"
       >
         <UIcon
           :name="badge.icon"
-          class="h-3 w-3 sm:h-4 sm:w-4 text-primary shrink-0"
+          class="h-3.5 w-3.5 shrink-0 text-primary-600 sm:h-4 sm:w-4"
         />
         <span class="text-xs sm:text-sm font-medium whitespace-nowrap">{{ t(`trustBadges.${badge.key}`) }}</span>
       </div>
@@ -454,25 +514,10 @@ async function onSubmit() {
 </template>
 
 <style scoped>
-/* E njëjta lartësi si te makina: 45px për from/to (UInputMenu), datat, pasagjerët. Tabs, swap dhe checkbox përjashtuar. */
-.flight-search-form .form-controls-taller :deep(button[type="button"]:not(.exclude-from-taller)) {
-  height: 45px !important;
-  min-height: 45px !important;
-  box-sizing: border-box;
-}
-.flight-search-form .form-controls-taller :deep(input:not([type="checkbox"]):not([type="hidden"])) {
-  height: 45px !important;
-  min-height: 45px !important;
-  box-sizing: border-box;
-}
-/* Checkbox "Data fleksibël": lartësi normale, jo 45px (ID për specifikë më të lartë) */
-#flexible-dates-checkbox :deep(label) {
-  height: auto !important;
-  min-height: 0 !important;
-}
-#flexible-dates-checkbox :deep(button),
-#flexible-dates-checkbox :deep(input[type="checkbox"]) {
-  height: 1rem !important;
-  min-height: 1rem !important;
+@media (min-width: 1024px) {
+  .action-col {
+    width: 18rem;
+    flex-shrink: 0;
+  }
 }
 </style>

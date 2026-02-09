@@ -99,7 +99,7 @@
           "point4": "Vertrauenswürdige Partner in ganz Kosovo"
         },
         "popular": {
-          "title": "Beliebteste Routen",
+          "title": "Beliebte Flugrouten",
           "description": "Die gefragtesten Flüge von und nach Kosovo beinhalten Ziele in Deutschland, der Schweiz, Österreich und weiteren europäischen Ländern."
         }
       },
@@ -191,9 +191,9 @@
       }
     },
     "hero": {
-      "title": "Vergleichen und sparen bei",
-      "titleHighlight": "Autovermietungen.",
-      "description": "Wir durchsuchen die wichtigsten Vermieter, um die besten Preise für Sie zu finden. Transparente Preise, keine versteckten Gebühren.",
+      "title": "Deine Reise nach Hause",
+      "titleHighlight": "beginnt hier",
+      "description": "Vergleiche Flüge und Mietwagen für Kosovo — die besten Angebote auf einen Blick.",
       "flights": {
         "title": "Vergleichen und sparen bei",
         "titleHighlight": "Flugbuchungen.",
@@ -215,7 +215,7 @@
       "carsFleet": "Verfügbare Autos"
     },
     "routes": {
-      "title": "Meistgesuchte Routen",
+      "title": "Beliebte Flugrouten",
       "description": "Beliebteste Reiseziele nach und vom Kosovo",
       "compare": "Preise vergleichen",
       "popular": {
@@ -230,7 +230,7 @@
     },
     "locations": {
       "popular": {
-        "title": "Beliebte Standorte",
+        "title": "Beliebte Mietwagen-Standorte",
         "description": "Wählen Sie aus den beliebtesten Standorten für die Abholung"
       }
     },
@@ -256,11 +256,11 @@
     },
     "howItWorks": {
       "title": "Wie es funktioniert",
-      "description": "Drei einfache Schritte, um die besten Flüge zu finden",
+      "description": "Drei einfache Schritte zu den besten Angeboten",
       "steps": {
         "search": {
-          "title": "Flugdetails festlegen",
-          "description": "Wählen Sie Abflug, Ziel und Reisedatum."
+          "title": "Reisedetails festlegen",
+          "description": "Wählen Sie Route, Daten oder Abholort."
         },
         "compare": {
           "title": "Angebote vergleichen",
@@ -273,8 +273,8 @@
       }
     },
     "whatsapp": {
-      "title": "Flüge über WhatsApp suchen",
-      "description": "Schreiben Sie uns einfach Ihre Reisedaten und erhalten Sie sofort die besten Flugpreise - direkt auf WhatsApp.",
+      "title": "Suche über WhatsApp",
+      "description": "Schreiben Sie uns einfach Ihre Reisedetails und erhalten Sie sofort die besten Preise für Flüge und Mietwagen - direkt auf WhatsApp.",
       "features": {
         "fast": "Antwort in Sekunden",
         "easy": "Keine App erforderlich",
@@ -283,11 +283,11 @@
       "cta": "Gespräch starten",
       "chat": {
         "userMessage1": "Hallo! Ich möchte Flüge suchen.",
-        "botGreeting": "Hallo! 👋\n Ich bin Aviopikas Assistent und helfe Ihnen, günstige Flüge zu finden.\n Sprache wählen\n1️⃣ 🇦🇱 Albanisch\n2️⃣ 🇬🇧 Englisch\n3️⃣ 🇩🇪 Deutsch",
+        "botGreeting": "Hallo! 👋\n Ich bin Krahasos Assistent und helfe Ihnen, günstige Flüge zu finden.\n Sprache wählen\n1️⃣ 🇦🇱 Albanisch\n2️⃣ 🇬🇧 Englisch\n3️⃣ 🇩🇪 Deutsch",
         "userLanguage": "Deutsch",
-        "botWelcome": "*Willkommen bei Aviopika!* ✈️\nFinden Sie die günstigsten Flüge für Sie.\n*So funktioniert es:*\n\n• \"Düsseldorf Pristina morgen\"\n• \"DUS PRN 15.03-22.03\" (Hin- und Rückflug)\n\nWohin möchten Sie reisen?",
+        "botWelcome": "*Willkommen bei Krahaso!* ✈️\nFinden Sie die günstigsten Flüge für Sie.\n*So funktioniert es:*\n\n• \"Düsseldorf Pristina morgen\"\n• \"DUS PRN 15.03-22.03\" (Hin- und Rückflug)\n\nWohin möchten Sie reisen?",
         "userFlightSearch": "PRISTINA - MÜNCHEN 10.01",
-        "botFlightResults": "*Pristina → München*\n10. Januar 2026\n---\n1. *KosovaFly* - 219,00 EUR \n ⭐ Bester Preis\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219,00 EUR \n 🚀 Schnellster\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219,00 EUR\n11:30 → 13:15 (1h 45m)\n+3 weitere Flüge\n---\nAlle Ergebnisse unter https://www.aviopika.al \n\nAviopika ist ein unabhängiger Preisvergleich. Wir verkaufen keine Flugtickets. Alle Preise ohne Gewähr. Weiterleitung zur Anbieterseite.",
+        "botFlightResults": "*Pristina → München*\n10. Januar 2026\n---\n1. *KosovaFly* - 219,00 EUR \n ⭐ Bester Preis\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219,00 EUR \n 🚀 Schnellster\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219,00 EUR\n11:30 → 13:15 (1h 45m)\n+3 weitere Flüge\n---\nAlle Ergebnisse unter https://www.krahaso.co \n\nKrahaso ist ein unabhängiger Preisvergleich. Wir verkaufen keine Flugtickets. Alle Preise ohne Gewähr. Weiterleitung zur Anbieterseite.",
         "inputPlaceholder": "Geben Sie Ihre Nachricht ein..."
       }
     },
@@ -343,7 +343,19 @@
     },
     "faq": {
       "title": "Häufige Fragen",
-      "description": "Alles, was Sie vor dem Start wissen sollten"
+      "description": "Alles, was Sie vor dem Start wissen sollten",
+      "items": {
+        "q1": "Was ist Krahaso?",
+        "a1": "Krahaso ist eine kostenlose Preisvergleichsplattform für Flüge und Mietwagen im Kosovo. Wir vergleichen Angebote mehrerer Anbieter, damit Sie das beste finden.",
+        "q2": "Ist die Suche kostenlos?",
+        "a2": "Ja, Suche und Vergleich sind komplett kostenlos. Über Krahaso zahlen Sie keinen Aufpreis.",
+        "q3": "Wie funktioniert die Buchung?",
+        "a3": "Nach dem Vergleich werden Sie zur Seite des Anbieters weitergeleitet, wo Sie direkt und sicher buchen.",
+        "q4": "Sind die angezeigten Preise verbindlich?",
+        "a4": "Bei Mietwagen sind die angezeigten Preise verbindlich. Bei Flügen dienen die Preise als Richtwert, da sich Flugpreise schnell ändern können. Der aktuelle Preis wird immer auf der Anbieterseite bestätigt.",
+        "q5": "Wie kann ich Hilfe bekommen?",
+        "a5": "Sie erreichen uns jederzeit über WhatsApp oder unsere Kontaktseite. Wir helfen Ihnen gerne weiter."
+      }
     },
     "cta": {
       "title": "Bereit, Ihre Reise zu beginnen?",
@@ -373,7 +385,7 @@
     "heroHighlight": "Flügen.",
     "heroDescription": "Wir durchsuchen Top-Flugpartner, um die besten Tarife zu finden. Transparente Preise ohne versteckte Gebühren.",
     "popularRoutes": {
-      "title": "Beliebteste Routen",
+      "title": "Beliebte Flugrouten",
       "description": "Entdecke gefragte Ziele von und nach Kosovo"
     },
     "highlights": {
@@ -439,7 +451,7 @@
       "rentCar": "Mietwagen am Flughafen buchen"
     },
     "routes": {
-      "title": "Beliebteste Routen",
+      "title": "Beliebte Flugrouten",
       "description": "Entdecke gefragte Ziele von und nach Kosovo",
       "related": "Ähnliche Routen",
       "relatedDescription": "Weitere beliebte Ziele entdecken",
@@ -542,7 +554,27 @@
     "toProvider": "Zum Anbieter",
     "perPerson": "pro Person",
     "close": "Schließen",
-    "showResults": "Ergebnisse anzeigen"
+    "showResults": "Ergebnisse anzeigen",
+    "bookingClass": "Buchungsklasse",
+    "aircraft": "Flugzeug",
+    "tba": "Wird bekannt gegeben",
+    "basePrice": "Grundpreis",
+    "taxesFees": "Steuern & Gebühren",
+    "exitModal": {
+      "title": "Weiterleitung zum Anbieter",
+      "disclaimer": "Sie verlassen Krahaso.co und werden zu {provider} weitergeleitet. Die endgültige Buchung erfolgt auf deren offizieller Website.",
+      "continue": "Weiter zu {provider}",
+      "autopika": {
+        "headline": "Mietwagen gesucht?",
+        "subline": "Vergleichen Sie Preise von führenden Partnern im Kosovo",
+        "benefits": {
+          "local": "Verifizierte lokale Partner",
+          "realtime": "Echtzeit-Verfügbarkeit",
+          "direct": "Direkte Buchung beim Unternehmen"
+        },
+        "cta": "Mietwagen ansehen"
+      }
+    }
   },
   "cars": {
     "title": "Autovermietung suchen",
@@ -649,6 +681,7 @@
     "cta": {
       "title": "Bereit zu buchen?",
       "description": "Buche danach den Flug, um deine Reise zu kompletieren",
+      "searchCars": "Mietwagen suchen",
       "searchFlights": "Flüge suchen"
     }
   },
@@ -711,6 +744,8 @@
     "returnTime": "Rückgabezeit",
     "selectDate": "Datum wählen",
     "selectTime": "Zeit wählen",
+    "midnight": "Mitternacht",
+    "noon": "Mittags",
     "searchCars": "Autos suchen",
     "searching": "Suche läuft..."
   },
@@ -730,6 +765,7 @@
     },
     "layout": {
       "findBooking": "Buchung finden",
+      "findBookingDesc": "Buchung der Autovermietung finden",
       "bookingNumber": "Buchungsnummer",
       "enterBookingNumber": "Buchungsnummer eingeben",
       "cancel": "Abbrechen",
@@ -783,11 +819,11 @@
     },
     "howItWorks": {
       "title": "Wie es funktioniert",
-      "description": "Drei einfache Schritte, um die besten Flüge zu finden",
+      "description": "Drei einfache Schritte zu den besten Angeboten",
       "steps": {
         "search": {
-          "title": "Flugdetails festlegen",
-          "description": "Wählen Sie Abflug, Ziel und Reisedatum."
+          "title": "Reisedetails festlegen",
+          "description": "Wählen Sie Route, Daten oder Abholort."
         },
         "compare": {
           "title": "Angebote vergleichen",
@@ -800,8 +836,8 @@
       }
     },
     "whatsapp": {
-      "title": "Flüge über WhatsApp suchen",
-      "description": "Schreiben Sie uns einfach Ihre Reisedaten und erhalten Sie sofort die besten Flugpreise - direkt auf WhatsApp.",
+      "title": "Suche über WhatsApp",
+      "description": "Schreiben Sie uns einfach Ihre Reisedetails und erhalten Sie sofort die besten Preise für Flüge und Mietwagen - direkt auf WhatsApp.",
       "features": {
         "fast": "Antwort in Sekunden",
         "easy": "Keine App erforderlich",
@@ -810,11 +846,11 @@
       "cta": "Gespräch starten",
       "chat": {
         "userMessage1": "Hallo! Ich möchte Flüge suchen.",
-        "botGreeting": "Hallo! 👋\n Ich bin Aviopikas Assistent und helfe Ihnen, günstige Flüge zu finden.\n Sprache wählen\n1️⃣ 🇦🇱 Albanisch\n2️⃣ 🇬🇧 Englisch\n3️⃣ 🇩🇪 Deutsch",
+        "botGreeting": "Hallo! 👋\n Ich bin Krahasos Assistent und helfe Ihnen, günstige Flüge zu finden.\n Sprache wählen\n1️⃣ 🇦🇱 Albanisch\n2️⃣ 🇬🇧 Englisch\n3️⃣ 🇩🇪 Deutsch",
         "userLanguage": "Deutsch",
-        "botWelcome": "*Willkommen bei Aviopika!* ✈️\nFinden Sie die günstigsten Flüge für Sie.\n*So funktioniert es:*\n\n• \"Düsseldorf Pristina morgen\"\n• \"DUS PRN 15.03-22.03\" (Hin- und Rückflug)\n\nWohin möchten Sie reisen?",
+        "botWelcome": "*Willkommen bei Krahaso!* ✈️\nFinden Sie die günstigsten Flüge für Sie.\n*So funktioniert es:*\n\n• \"Düsseldorf Pristina morgen\"\n• \"DUS PRN 15.03-22.03\" (Hin- und Rückflug)\n\nWohin möchten Sie reisen?",
         "userFlightSearch": "PRISTINA - MÜNCHEN 10.01",
-        "botFlightResults": "*Pristina → München*\n10. Januar 2026\n---\n1. *KosovaFly* - 219,00 EUR \n ⭐ Bester Preis\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219,00 EUR \n 🚀 Schnellster\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219,00 EUR\n11:30 → 13:15 (1h 45m)\n+3 weitere Flüge\n---\nAlle Ergebnisse unter https://www.aviopika.al \n\nAviopika ist ein unabhängiger Preisvergleich. Wir verkaufen keine Flugtickets. Alle Preise ohne Gewähr. Weiterleitung zur Anbieterseite.",
+        "botFlightResults": "*Pristina → München*\n10. Januar 2026\n---\n1. *KosovaFly* - 219,00 EUR \n ⭐ Bester Preis\n11:30 → 13:15 (1h 45m)\n2. *AirPrishtina* - 219,00 EUR \n 🚀 Schnellster\n12:40 → 14:20 (1h 40m)\n3. *Dituria* - \n 219,00 EUR\n11:30 → 13:15 (1h 45m)\n+3 weitere Flüge\n---\nAlle Ergebnisse unter https://www.krahaso.co \n\nKrahaso ist ein unabhängiger Preisvergleich. Wir verkaufen keine Flugtickets. Alle Preise ohne Gewähr. Weiterleitung zur Anbieterseite.",
         "inputPlaceholder": "Geben Sie Ihre Nachricht ein..."
       }
     },
@@ -902,6 +938,14 @@
     "section2": {
       "title": "2. Wie wir Informationen verwenden",
       "content": "Ihre Daten werden verwendet, um Anfragen zu bearbeiten, unseren Service zu verbessern und mit Ihnen zu kommunizieren."
+    },
+    "section3": {
+      "title": "3. Datenschutz",
+      "content": "Wir verwenden technische und organisatorische Maßnahmen, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Daten werden auf sicheren Servern mit Verschlüsselung gespeichert."
+    },
+    "section4": {
+      "title": "4. Ihre Rechte",
+      "content": "Sie haben das Recht, Auskunft, Berichtigung oder Löschung Ihrer personenbezogenen Daten zu verlangen. Für Anfragen kontaktieren Sie uns unter info{'@'}krahaso.co."
     },
     "intro": {
       "kontakt": "Kontaktieren Sie uns – Kernseite.",
@@ -1052,7 +1096,19 @@
     },
     "faq": {
       "title": "Häufige Fragen",
-      "description": "Alles, was Sie vor dem Start wissen sollten"
+      "description": "Alles, was Sie vor dem Start wissen sollten",
+      "items": {
+        "q1": "Was ist Krahaso?",
+        "a1": "Krahaso ist eine kostenlose Preisvergleichsplattform für Flüge und Mietwagen im Kosovo. Wir vergleichen Angebote mehrerer Anbieter, damit Sie das beste finden.",
+        "q2": "Ist die Suche kostenlos?",
+        "a2": "Ja, Suche und Vergleich sind komplett kostenlos. Über Krahaso zahlen Sie keinen Aufpreis.",
+        "q3": "Wie funktioniert die Buchung?",
+        "a3": "Nach dem Vergleich werden Sie zur Seite des Anbieters weitergeleitet, wo Sie direkt und sicher buchen.",
+        "q4": "Sind die angezeigten Preise verbindlich?",
+        "a4": "Bei Mietwagen sind die angezeigten Preise verbindlich. Bei Flügen dienen die Preise als Richtwert, da sich Flugpreise schnell ändern können. Der aktuelle Preis wird immer auf der Anbieterseite bestätigt.",
+        "q5": "Wie kann ich Hilfe bekommen?",
+        "a5": "Sie erreichen uns jederzeit über WhatsApp oder unsere Kontaktseite. Wir helfen Ihnen gerne weiter."
+      }
     },
     "cta": {
       "title": "Bereit, Ihre Reise zu beginnen?",
@@ -1222,7 +1278,7 @@
         "tenant": "Partner",
         "status": "Status",
         "totalPrice": "Gesamtpreis",
-        "fee": "Gebühr",
+        "fee": "Krahaso-Gebühr",
         "rentalPeriod": "Mietzeitraum"
       },
       "status": {
