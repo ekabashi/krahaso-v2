@@ -231,34 +231,38 @@ useHead(() => ({
       </UContainer>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA – minimal, i njëjtë si [location] -->
     <section class="py-16 sm:py-20">
       <UContainer>
-        <LandingCTASection
-          :title="t('cars.cta.title')"
-          :description="t('cars.cta.description')"
-        >
-          <UButton
-            :to="localePath('makina')"
-            size="lg"
-            color="neutral"
-            variant="solid"
-            trailing-icon="i-lucide-arrow-up"
-            class="w-full bg-white text-primary-700 hover:bg-primary-50 sm:w-auto"
-          >
-            {{ t('cars.cta.searchCars') }}
-          </UButton>
-          <UButton
-            :to="localePath('fluturime')"
-            size="lg"
-            color="neutral"
-            variant="solid"
-            trailing-icon="i-lucide-arrow-right"
-            class="w-full bg-white/15 text-white hover:bg-white/25 sm:w-auto"
-          >
-            {{ t('cars.cta.searchFlights') }}
-          </UButton>
-        </LandingCTASection>
+        <div class="max-w-7xl mx-4 sm:mx-auto rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50 px-6 py-20 sm:px-8 sm:py-20">
+          <div class="text-center">
+            <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+              {{ t('cars.cta.title') }}
+            </h2>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
+              {{ t('cars.cta.description') }}
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <UButton
+                :to="localePath('makina')"
+                size="lg"
+                color="primary"
+                icon="i-lucide-search"
+                trailing-icon="i-lucide-arrow-right"
+                class="w-full sm:w-auto"
+              >
+                {{ t('cars.cta.searchCars') }}
+              </UButton>
+              <NuxtLink
+                :to="localePath('fluturime')"
+                class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline inline-flex items-center gap-1"
+              >
+                {{ t('cars.cta.searchFlights') }}
+                <UIcon name="i-lucide-arrow-right" class="w-4 h-4" />
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
       </UContainer>
     </section>
   </div>

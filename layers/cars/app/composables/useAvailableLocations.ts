@@ -6,7 +6,7 @@ export function useAvailableLocations() {
     LOCATIONS.filter((loc) => (POPULAR_LOCATION_KEYS as readonly string[]).includes(loc.key)),
   )
 
-  const getLocationImage = (loc: LocationDef): string => `/city/${loc.key}.jpg`
+  const getLocationImage = (loc: LocationDef): string => `/city/${loc.key}.webp`
 
   const findLocationBySlug = (slug: string): LocationDef | undefined =>
     LOCATIONS.find(

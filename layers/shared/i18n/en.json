@@ -272,9 +272,31 @@
         }
       }
     },
+    "whyChooseUs": {
+      "title": "Why Choose Krahaso.co?",
+      "description": "We make your trip easier, cheaper and safer — for flights and car rental.",
+      "items": {
+        "prices": {
+          "title": "Best prices",
+          "description": "We compare hundreds of offers from our flight and car rental partners for the best price."
+        },
+        "transparency": {
+          "title": "Full transparency",
+          "description": "No hidden fees. The price you see is the price you pay — for flights and car hire."
+        },
+        "partners": {
+          "title": "Trusted partners",
+          "description": "We work only with verified airlines and car rental agencies."
+        },
+        "support": {
+          "title": "24/7 support",
+          "description": "We're here to help you every step of the way, whenever you need us."
+        }
+      }
+    },
     "whatsapp": {
-      "title": "Search via WhatsApp",
-      "description": "Simply write us your travel details and get the best prices for flights and car rentals instantly - directly on WhatsApp.",
+      "title": "Search Flights via WhatsApp",
+      "description": "Simply write us your travel details and get the best prices for flights instantly - directly on WhatsApp.",
       "features": {
         "fast": "Response in seconds",
         "easy": "No app needed",
@@ -823,7 +845,7 @@
     "steps": {
       "search": {
         "title": "Set Travel Details",
-        "description": "Choose your route, dates, or pickup location."
+        "description": "Legen Sie das Reiseziel, die Reisedaten und die Details Ihrer Reise fest."
       },
       "compare": {
         "title": "Compare Offers",
@@ -831,7 +853,7 @@
       },
       "book": {
         "title": "Continue to Partner",
-        "description": "Choose the offer and with one click continue to the partner's official page for booking."
+        "description": "Choose the offer and complete the booking - directly on the platform or at the partner."
       }
     }
   },
@@ -947,11 +969,34 @@
       "title": "4. Your Rights",
       "content": "You have the right to request access, correction or deletion of your personal data. For any requests, please contact us at info{'@'}krahaso.co."
     },
+    "lastUpdated": "Last updated",
     "intro": {
       "kontakt": "Contact us – core page.",
       "privacy": "Privacy policy – core page.",
       "terms": "Terms of use – core page."
     }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "subtitle": "Terms of Service",
+    "description": "Terms and rules for using the Krahaso.co platform",
+    "section1": {
+      "title": "1. Platform Usage",
+      "content": "By using Krahaso.co, you agree to comply with these terms. The platform provides price comparison services for flights and car rentals. We are not responsible for the prices or availability of services offered by our partners."
+    },
+    "section2": {
+      "title": "2. Bookings",
+      "content": "Bookings are made directly with our partners. We are not part of the booking process and are not responsible for any issues that may arise during booking or while using the service."
+    },
+    "section3": {
+      "title": "3. Responsibilities",
+      "content": "Krahaso.co acts as a comparison platform and does not assume responsibility for services provided by partners. Any issues related to booking, cancellation, or service must be handled directly with the respective partner."
+    },
+    "section4": {
+      "title": "4. Changes to Terms",
+      "content": "We reserve the right to change these terms at any time. Changes will be made visible on this page. Continued use of the platform after changes will be considered acceptance of the new terms."
+    },
+    "lastUpdated": "Last updated"
   },
   "checkout": {
       "title": "Checkout",

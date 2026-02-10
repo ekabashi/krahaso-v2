@@ -90,10 +90,10 @@ useHead({
         <div class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 sm:mb-6">
           {{ t('contact.title').toUpperCase() }}
         </div>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-foreground">
+        <h1 class="text-3xl sm:text-4xl lg:text-4xl font-bold mb-4 sm:mb-6 text-foreground">
           {{ t('contact.subtitle') }}
         </h1>
-        <p class="text-lg sm:text-xl text-muted max-w-3xl mx-auto">
+        <p class="text-md sm:text-xl text-muted max-w-3xl mx-auto">
           {{ t('contact.description') }}
         </p>
       </div>
@@ -101,12 +101,14 @@ useHead({
       <!-- Contact Information Section -->
       <div class="mb-8 sm:mb-12">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-          <UCard
+          <div
             v-for="info in contactInfo"
             :key="info.title"
-            :ui="{ body: 'p-6 sm:p-8' }"
-            class="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+            class="relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 border border-primary/30 p-6 sm:p-8 text-center shadow-lg transition-all duration-300 hover:shadow-xl"
           >
+            <!-- Decorative top accent -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-primary-500 to-primary-600" />
+            
             <div class="flex flex-col items-center space-y-3 sm:space-y-4">
               <div class="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-primary/10">
                 <UIcon
@@ -115,7 +117,7 @@ useHead({
                 />
               </div>
               <div class="flex-1">
-                <h3 class="font-semibold text-base sm:text-lg mb-2">
+                <h3 class="font-semibold text-base sm:text-lg mb-2 text-neutral-900 dark:text-white">
                   {{ info.title }}
                 </h3>
                 <component
@@ -123,14 +125,14 @@ useHead({
                   :href="info.link"
                   :class="[
                     'text-sm sm:text-base',
-                    info.link ? 'text-primary hover:underline' : 'text-muted'
+                    info.link ? 'text-primary hover:underline' : 'text-neutral-500 dark:text-neutral-400'
                   ]"
                 >
                   {{ info.value }}
                 </component>
               </div>
             </div>
-          </UCard>
+          </div>
         </div>
       </div>
     </UContainer>

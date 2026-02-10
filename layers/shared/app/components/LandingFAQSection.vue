@@ -18,7 +18,7 @@ defineProps<Props>()
     :title="title"
     :description="description"
   >
-    <div class="w-full lg:w-3xl mx-auto px-4 sm:px-6">
+    <div class="w-full lg:w-4xl mx-auto px-4 sm:px-6">
       <UAccordion :items="items" />
     </div>
   </UPageSection>

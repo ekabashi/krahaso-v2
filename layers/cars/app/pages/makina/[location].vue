@@ -322,21 +322,8 @@ useHead(() =>
         :description="t('cars.conditions.description')"
         class="mb-12"
       >
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <UCard
-            v-for="condition in conditions"
-            :key="condition.title"
-            :ui="{ body: 'p-6' }"
-            class="text-center hover:shadow-md transition-shadow"
-          >
-            <div class="flex flex-col items-center space-y-3">
-              <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                <UIcon :name="condition.icon" class="text-3xl text-primary" />
-              </div>
-              <h3 class="font-semibold">{{ condition.title }}</h3>
-              <p class="text-sm text-muted">{{ condition.description }}</p>
-            </div>
-          </UCard>
+        <div class="max-w-6xl mx-auto">
+          <LandingFeatureGrid :features="conditions" />
         </div>
       </UPageSection>
     </UContainer>
@@ -448,7 +435,7 @@ useHead(() =>
 
     <div class="py-4">
       <UPageSection :title="t('faq.title')" :description="t('faq.description')">
-        <div class="w-full max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="w-full max-w-4xl mx-auto px-4 sm:px-6">
           <UAccordion :items="faqs" />
         </div>
       </UPageSection>
@@ -483,31 +470,35 @@ useHead(() =>
         </div>
       </UPageSection>
 
-      <UPageSection class="rounded-2xl bg-linear-to-br from-primary-600 to-primary-700 text-white p-8">
-        <div class="max-w-2xl mx-auto text-center">
-          <h2 class="text-2xl font-bold mb-4">{{ t('seo.location.cta') }}</h2>
-          <p class="mb-6 text-primary-100">{{ t('seo.location.ctaDescription') }}</p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <UButton
-              :to="localePath('/')"
-              size="lg"
-              trailing-icon="i-lucide-arrow-right"
-              class="bg-white text-primary-700 hover:bg-primary-50"
-            >
-              {{ t('seo.location.searchFlights') }}
-            </UButton>
+      <!-- CTA – minimal, i pastër, një veprim i qartë -->
+      <section class="max-w-7xl mx-4 sm:mx-auto rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50 px-6 py-20 sm:px-8 sm:py-20">
+        <div class="text-center">
+          <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+            {{ t('seo.location.cta') }}
+          </h2>
+          <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
+            {{ t('seo.location.ctaDescription') }}
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <UButton
               size="lg"
-              variant="outline"
+              color="primary"
+              icon="i-lucide-search"
               trailing-icon="i-lucide-arrow-right"
-              class="border-white text-white hover:bg-white/10"
               @click="scrollToSearchForm"
             >
               {{ t('cars.searchNow') }}
             </UButton>
+            <NuxtLink
+              :to="localePath('/')"
+              class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline inline-flex items-center gap-1"
+            >
+              {{ t('seo.location.searchFlights') }}
+              <UIcon name="i-lucide-arrow-right" class="w-4 h-4" />
+            </NuxtLink>
           </div>
         </div>
-      </UPageSection>
+      </section>
     </div>
   </div>
 </template>

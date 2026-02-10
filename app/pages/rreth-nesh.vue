@@ -78,104 +78,115 @@ useHead({
         <div class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 sm:mb-6">
           {{ t('about.title').toUpperCase() }}
         </div>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-foreground">
+        <h1 class="text-3xl sm:text-4xl lg:text-4xl font-bold mb-4 sm:mb-6 text-foreground">
           {{ t('about.description') }}
         </h1>
       </div>
 
       <!-- Statistics Section -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
-        <UCard
+        <div
           v-for="stat in stats"
           :key="stat.label"
-          :ui="{ body: 'p-6 sm:p-8' }"
-          class="text-center"
+          class="relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 border border-primary/30 p-6 sm:p-8 text-center shadow-lg transition-all duration-300 hover:shadow-xl"
         >
-          <div class="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-2 sm:mb-3">
+          <!-- Decorative top accent -->
+          <div class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-primary-500 to-primary-600" />
+          
+          <!-- Value -->
+          <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary mb-2 sm:mb-3">
             {{ stat.value }}
           </div>
-          <div class="text-sm sm:text-base text-muted">
+          
+          <!-- Label -->
+          <div class="text-sm sm:text-base text-neutral-500 dark:text-neutral-400 font-medium">
             {{ stat.label }}
           </div>
-        </UCard>
+        </div>
       </div>
 
       <!-- Mission and What We Offer Section -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16">
-        <!-- Mission Section -->
-        <div>
-          <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-foreground">
-            {{ t('about.mission.title') }}
-          </h2>
-          <div class="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-            <p>
-              {{ t('about.mission.description') }}
-            </p>
+      <section class="py-12 sm:py-16 bg-white dark:bg-neutral-900 border-y border-neutral-100 dark:border-neutral-800 mb-12 sm:mb-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+            <!-- Mission Section -->
+            <div class="relative">
+              <div class="absolute -left-4 top-0 bottom-0 w-1 bg-linear-to-b from-primary-500 to-primary-600 rounded-full" />
+              <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-4">
+                {{ t('about.mission.title') }}
+              </h2>
+              <div class="space-y-3 text-base sm:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                <p>
+                  {{ t('about.mission.description') }}
+                </p>
+              </div>
+            </div>
+
+            <!-- What We Offer Section -->
+            <div class="relative">
+              <div class="absolute -left-4 top-0 bottom-0 w-1 bg-linear-to-b from-primary-500 to-primary-600 rounded-full" />
+              <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-4">
+                {{ t('about.whatWeOffer.title') }}
+              </h2>
+              <div class="space-y-3 text-base sm:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                <div class="flex items-start gap-3">
+                  <div class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-white mt-0.5">
+                    <UIcon
+                      name="i-lucide-check"
+                      class="h-3 w-3"
+                    />
+                  </div>
+                  <p>{{ t('about.whatWeOffer.item1') }}</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-white mt-0.5">
+                    <UIcon
+                      name="i-lucide-check"
+                      class="h-3 w-3"
+                    />
+                  </div>
+                  <p>{{ t('about.whatWeOffer.item2') }}</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-white mt-0.5">
+                    <UIcon
+                      name="i-lucide-check"
+                      class="h-3 w-3"
+                    />
+                  </div>
+                  <p>{{ t('about.whatWeOffer.item3') }}</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-white mt-0.5">
+                    <UIcon
+                      name="i-lucide-check"
+                      class="h-3 w-3"
+                    />
+                  </div>
+                  <p>{{ t('about.whatWeOffer.item4') }}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <!-- What We Offer Section -->
-        <div>
-          <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-foreground">
-            {{ t('about.whatWeOffer.title') }}
-          </h2>
-          <UCard
-            :ui="{ body: 'p-6 sm:p-8' }"
-            class="bg-primary/5 border-primary/20"
-          >
-            <ul class="space-y-3 sm:space-y-4">
-              <li class="flex items-start gap-3">
-                <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white mt-0.5">
-                  <UIcon
-                    name="i-lucide-check"
-                    class="h-4 w-4"
-                  />
-                </div>
-                <span class="text-sm sm:text-base text-muted-foreground">{{ t('about.whatWeOffer.item1') }}</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white mt-0.5">
-                  <UIcon
-                    name="i-lucide-check"
-                    class="h-4 w-4"
-                  />
-                </div>
-                <span class="text-sm sm:text-base text-muted-foreground">{{ t('about.whatWeOffer.item2') }}</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white mt-0.5">
-                  <UIcon
-                    name="i-lucide-check"
-                    class="h-4 w-4"
-                  />
-                </div>
-                <span class="text-sm sm:text-base text-muted-foreground">{{ t('about.whatWeOffer.item3') }}</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white mt-0.5">
-                  <UIcon
-                    name="i-lucide-check"
-                    class="h-4 w-4"
-                  />
-                </div>
-                <span class="text-sm sm:text-base text-muted-foreground">{{ t('about.whatWeOffer.item4') }}</span>
-              </li>
-            </ul>
-          </UCard>
-        </div>
-      </div>
+      </section>
 
       <!-- Why Choose Us Section -->
-      <div class="mb-12 sm:mb-16">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-foreground">
-          {{ t('about.whyChooseUs.title') }}
-        </h2>
-        <UCard :ui="{ body: 'p-6 sm:p-8' }">
-          <p class="text-base sm:text-lg text-muted-foreground leading-relaxed">
-            {{ t('about.whyChooseUs.description') }}
-          </p>
-        </UCard>
-      </div>
+      <section class="mb-12 sm:mb-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+          <div class="relative">
+            <div class="absolute -left-4 top-0 bottom-0 w-1 bg-linear-to-b from-primary-500 to-primary-600 rounded-full" />
+            <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-4">
+              {{ t('about.whyChooseUs.title') }}
+            </h2>
+            <div class="space-y-3 text-base sm:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
+              <p>
+                {{ t('about.whyChooseUs.description') }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- CTA Section -->
       <UCard

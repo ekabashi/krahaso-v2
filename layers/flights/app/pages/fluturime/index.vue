@@ -35,11 +35,6 @@ const tips = [
     icon: 'i-lucide-calendar-clock',
     title: t('flights.tips.advance.title'),
     description: t('flights.tips.advance.description')
-  },
-  {
-    icon: 'i-lucide-bell',
-    title: t('flights.tips.alerts.title'),
-    description: t('flights.tips.alerts.description')
   }
 ]
 
@@ -239,51 +234,49 @@ function onSearch() {
       </UContainer>
     </section>
 
-    <!-- Highlights -->
-    <section class="py-16 sm:py-20 bg-neutral-50 dark:bg-neutral-900">
-      <UContainer>
-        <UPageSection
-          :title="t('flights.highlights.title')"
-          :description="t('flights.highlights.description')"
-        >
-          <div class="max-w-6xl mx-auto">
-            <LandingFeatureGrid :features="highlights" />
-          </div>
-        </UPageSection>
-      </UContainer>
-    </section>
-
-    <!-- Tips -->
+    <!-- Tips – timeline vertikal, pa karta -->
     <section class="py-16 sm:py-20">
       <UContainer>
-        <UPageSection
-          :title="t('flights.tips.title')"
-          :description="t('flights.tips.description')"
-          class="bg-linear-to-br from-primary-50 to-primary-100/50 dark:from-primary-950/20 dark:to-primary-900/20 rounded-2xl p-4 sm:p-6 lg:p-8"
-        >
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <div
-              v-for="tip in tips"
+        <div class="text-center mb-12">
+          <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+            {{ t('flights.tips.title') }}
+          </h2>
+          <p class="text-sm text-neutral-500 dark:text-neutral-400 max-w-2xl mx-auto">
+            {{ t('flights.tips.description') }}
+          </p>
+        </div>
+
+        <div class="relative max-w-2xl mx-auto">
+          <!-- Vija vertikale e ndërprerë -->
+          <div
+            class="absolute left-5 sm:left-6 top-6 bottom-6 w-px border-l-2 border-dashed border-neutral-200 dark:border-neutral-700"
+            aria-hidden="true"
+          />
+
+          <ul class="space-y-0">
+            <li
+              v-for="(tip, i) in tips"
               :key="tip.title"
-              class="flex gap-3 sm:gap-4"
+              class="relative flex gap-4 sm:gap-6 pb-10 last:pb-0"
             >
-              <div class="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                <UIcon
-                  :name="tip.icon"
-                  class="h-5 w-5 sm:h-6 sm:w-6 text-primary"
-                />
+              <!-- Nyja mbi vijë (rreth + ikonë) -->
+              <div
+                class="relative z-10 flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400 ring-4 ring-white dark:ring-neutral-950"
+              >
+                <UIcon :name="tip.icon" class="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
-              <div class="flex-1 min-w-0">
-                <h4 class="font-semibold mb-1 text-sm sm:text-base">
+              <!-- Përmbajtja -->
+              <div class="flex-1 min-w-0 pt-0.5">
+                <h4 class="font-semibold text-neutral-900 dark:text-white text-sm sm:text-base mb-1">
                   {{ tip.title }}
                 </h4>
-                <p class="text-xs sm:text-sm text-muted wrap-break-word">
+                <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed wrap-break-word">
                   {{ tip.description }}
                 </p>
               </div>
-            </div>
-          </div>
-        </UPageSection>
+            </li>
+          </ul>
+        </div>
       </UContainer>
     </section>
 
@@ -298,24 +291,31 @@ function onSearch() {
       </UContainer>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA – minimal, i njëjtë si makina [location] -->
     <section class="py-16 sm:py-20">
       <UContainer>
-        <LandingCTASection
-          :title="t('flights.cta.title')"
-          :description="t('flights.cta.description')"
-        >
-          <UButton
-            :to="localePath({ name: 'makina-location', params: { location: 'aeroporti-prishtines' } })"
-            size="lg"
-            color="neutral"
-            variant="solid"
-            trailing-icon="i-lucide-arrow-right"
-            class="bg-white text-primary-700 hover:bg-primary-50 w-full sm:w-auto"
-          >
-            {{ t('flights.cta.rentCar') }}
-          </UButton>
-        </LandingCTASection>
+        <div class="max-w-7xl mx-4 sm:mx-auto rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50 px-6 py-20 sm:px-8 sm:py-20">
+          <div class="text-center">
+            <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+              {{ t('flights.cta.title') }}
+            </h2>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
+              {{ t('flights.cta.description') }}
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <UButton
+                :to="localePath({ name: 'makina-location', params: { location: 'aeroporti-prishtines' } })"
+                size="lg"
+                color="primary"
+                icon="i-lucide-car"
+                trailing-icon="i-lucide-arrow-right"
+                class="w-full sm:w-auto"
+              >
+                {{ t('flights.cta.rentCar') }}
+              </UButton>
+            </div>
+          </div>
+        </div>
       </UContainer>
     </section>
   </div>

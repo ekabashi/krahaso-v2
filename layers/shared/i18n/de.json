@@ -268,13 +268,35 @@
         },
         "book": {
           "title": "Zum Partner weiterleiten",
-          "description": "Wählen Sie das Angebot und gelangen Sie mit einem Klick zur offiziellen Seite des Partners zur Buchung."
+          "description": "Wählen Sie das gewünschte Angebot und schließen Sie die Buchung ab – entweder direkt auf der Plattform oder beim Partner."
+        }
+      }
+    },
+    "whyChooseUs": {
+      "title": "Warum Krahaso.co?",
+      "description": "Wir machen deine Reise einfacher, günstiger und sicherer — für Flüge und Mietwagen.",
+      "items": {
+        "prices": {
+          "title": "Beste Preise",
+          "description": "Wir vergleichen hunderte Angebote unserer Flug- und Mietwagenpartner für den besten Preis."
+        },
+        "transparency": {
+          "title": "Volle Transparenz",
+          "description": "Keine versteckten Gebühren. Der angezeigte Preis ist der Preis, den du zahlst — für Flüge und Mietwagen."
+        },
+        "partners": {
+          "title": "Vertrauenswürdige Partner",
+          "description": "Wir arbeiten nur mit verifizierten Airlines und Autovermietungen."
+        },
+        "support": {
+          "title": "Support 24/7",
+          "description": "Wir sind rund um die Uhr für dich da – bei jedem Schritt deiner Reise."
         }
       }
     },
     "whatsapp": {
-      "title": "Suche über WhatsApp",
-      "description": "Schreiben Sie uns einfach Ihre Reisedetails und erhalten Sie sofort die besten Preise für Flüge und Mietwagen - direkt auf WhatsApp.",
+      "title": "Suche Flüge über WhatsApp",
+      "description": "Schreiben Sie uns einfach Ihre Reisedetails und erhalten Sie sofort die besten Preise für Flüge - direkt auf WhatsApp.",
       "features": {
         "fast": "Antwort in Sekunden",
         "easy": "Keine App erforderlich",
@@ -947,11 +969,34 @@
       "title": "4. Ihre Rechte",
       "content": "Sie haben das Recht, Auskunft, Berichtigung oder Löschung Ihrer personenbezogenen Daten zu verlangen. Für Anfragen kontaktieren Sie uns unter info{'@'}krahaso.co."
     },
+    "lastUpdated": "Zuletzt aktualisiert",
     "intro": {
       "kontakt": "Kontaktieren Sie uns – Kernseite.",
       "privacy": "Datenschutzerklärung – Kernseite.",
       "terms": "Nutzungsbedingungen – Kernseite."
     }
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "subtitle": "Nutzungsbedingungen",
+    "description": "Bedingungen und Regeln für die Nutzung der Krahaso.co-Plattform",
+    "section1": {
+      "title": "1. Plattformnutzung",
+      "content": "Durch die Nutzung von Krahaso.co stimmen Sie zu, diese Bedingungen einzuhalten. Die Plattform bietet Preisvergleichsdienste für Flüge und Autovermietungen. Wir sind nicht verantwortlich für die Preise oder Verfügbarkeit der von unseren Partnern angebotenen Dienstleistungen."
+    },
+    "section2": {
+      "title": "2. Buchungen",
+      "content": "Buchungen werden direkt bei unseren Partnern vorgenommen. Wir sind nicht Teil des Buchungsprozesses und übernehmen keine Verantwortung für Probleme, die während der Buchung oder bei der Nutzung des Dienstes auftreten können."
+    },
+    "section3": {
+      "title": "3. Verantwortlichkeiten",
+      "content": "Krahaso.co fungiert als Vergleichsplattform und übernimmt keine Verantwortung für die von Partnern erbrachten Dienstleistungen. Alle Fragen im Zusammenhang mit Buchung, Stornierung oder Service müssen direkt mit dem jeweiligen Partner geklärt werden."
+    },
+    "section4": {
+      "title": "4. Änderungen der Bedingungen",
+      "content": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen werden auf dieser Seite sichtbar gemacht. Die fortgesetzte Nutzung der Plattform nach Änderungen gilt als Annahme der neuen Bedingungen."
+    },
+    "lastUpdated": "Zuletzt aktualisiert"
   },
   "checkout": {
       "title": "Kasse",

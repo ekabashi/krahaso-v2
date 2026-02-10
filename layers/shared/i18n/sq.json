@@ -260,7 +260,7 @@
       "steps": {
         "search": {
           "title": "Përcaktoni Detajet e Udhëtimit",
-          "description": "Zgjidhni rrugën, datat, ose vendin e marrjes."
+          "description": "Përcaktoni destinacionin, datat dhe detajet e udhëtimit tuaj."
         },
         "compare": {
           "title": "Krahasoni Ofertat",
@@ -268,13 +268,35 @@
         },
         "book": {
           "title": "Vazhdoni te Partneri",
-          "description": "Zgjidhni ofertën dhe përmes një klikimi vazhdoni në faqen zyrtare të partnerit për rezervim."
+          "description": "Zgjidhni ofertën dhe përfundoni rezervimin - direkt në platformë ose tek partneri."
+        }
+      }
+    },
+    "whyChooseUs": {
+      "title": "Pse të zgjidhni Krahaso.co?",
+      "description": "Ne e bëjmë udhëtimin tuaj më të lehtë, më të lirë dhe më të sigurt — për fluturime dhe makina me qera.",
+      "items": {
+        "prices": {
+          "title": "Çmimet më të mira",
+          "description": "Krahasojmë qindra oferta nga partnerët e fluturimeve dhe të makinave me qera për çmimin më të mirë."
+        },
+        "transparency": {
+          "title": "Transparencë e plotë",
+          "description": "Pa kosto të fshehura. Çmimi që shihni është ai që paguani — për fluturime dhe qira makine."
+        },
+        "partners": {
+          "title": "Partnerë të besuar",
+          "description": "Bashkëpunojmë vetëm me kompani ajrore dhe agjensione makina të verifikuara."
+        },
+        "support": {
+          "title": "Mbështetje 24/7",
+          "description": "Jemi këtu për t'ju ndihmuar në çdo hap të udhëtimit tuaj, kurdo që keni nevojë."
         }
       }
     },
     "whatsapp": {
-      "title": "Kërko përmes WhatsApp",
-      "description": "Na shkruaj thjesht detajet e udhëtimit dhe merr çmimet më të mira për fluturime dhe makina me qera - direkt në WhatsApp.",
+      "title": "Kërko Fluturime përmes WhatsApp",
+      "description": "Na shkruaj thjesht datat e udhëtimit dhe merr çmimet më të mira të fluturimeve menjëherë - direkt në WhatsApp.",
       "features": {
         "fast": "Përgjigje në sekonda",
         "easy": "Nuk nevojitet aplikacion",
@@ -952,11 +974,34 @@
       "title": "4. Të drejtat tuaja",
       "content": "Ju keni të drejtë të kërkoni akses, korrigjim ose fshirje të të dhënave tuaja personale. Për çdo kërkesë, na kontaktoni në info{'@'}krahaso.co."
     },
+    "lastUpdated": "Data e përditësimit",
     "intro": {
       "kontakt": "Na kontaktoni – faqe core.",
       "privacy": "Politika e privatësisë – faqe core.",
       "terms": "Kushtet e përdorimit – faqe core."
     }
+  },
+  "terms": {
+    "title": "Kushtet e Përdorimit",
+    "subtitle": "Kushtet e Përdorimit",
+    "description": "Kushtet dhe rregullat për përdorimin e platformës Krahaso.co",
+    "section1": {
+      "title": "1. Përdorimi i Platformës",
+      "content": "Duke përdorur Krahaso.co, ju pranoni të respektoni këto kushte. Platforma ofron shërbime krahasimi çmimesh për fluturime dhe makina me qera. Ne nuk jemi përgjegjës për çmimet ose disponueshmërinë e shërbimeve të ofruara nga partnerët tanë."
+    },
+    "section2": {
+      "title": "2. Rezervimet",
+      "content": "Rezervimet bëhen direkt me partnerët tanë. Ne nuk jemi pjesë e procesit të rezervimit dhe nuk jemi përgjegjës për çdo problem që mund të lindë gjatë rezervimit ose gjatë përdorimit të shërbimit."
+    },
+    "section3": {
+      "title": "3. Përgjegjësitë",
+      "content": "Krahaso.co vepron si platformë krahasimi dhe nuk merr përgjegjësi për shërbimet e ofruara nga partnerët. Çdo çështje lidhur me rezervimin, anulimin ose shërbimin duhet të trajtohet direkt me partnerin përkatës."
+    },
+    "section4": {
+      "title": "4. Ndryshimet në Kushtet",
+      "content": "Ne mbajmë të drejtën të ndryshojmë këto kushte në çdo kohë. Ndryshimet do të bëhen të dukshme në këtë faqe. Vazhdimi i përdorimit të platformës pas ndryshimeve do të konsiderohet si pranim i kushteve të reja."
+    },
+    "lastUpdated": "Data e përditësimit"
   },
   "checkout": {
     "title": "Rezervimi",
