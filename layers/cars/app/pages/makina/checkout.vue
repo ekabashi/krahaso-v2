@@ -17,6 +17,8 @@ const router = useRouter()
 const toast = useToast()
 const localePath = useLocalePath()
 const { formatDate } = useFormatDate()
+const { calculateRentalDays } = useRentalPricing()
+const { trackLeadStarted } = useAnalytics()
 const {
   state,
   bookingOptions,
@@ -114,6 +116,23 @@ async function loadVehicle() {
         end: endTime ?? '',
       })
       await loadBookingData(vehicleData.tenant_id)
+
+      const rentalDaysInfo = calculateRentalDays(startDate, endDate, startTime, endTime)
+      const pickupQuery = typeof route.query.pickup === 'string' ? route.query.pickup : null
+      const dropoffQuery = typeof route.query.return === 'string' ? route.query.return : null
+
+      trackLeadStarted(String(vehicleData.id), 'car', {
+        pagePath: route.path,
+        tenantId: vehicleData.tenant_id,
+        vehicleMake: vehicleData.make,
+        vehicleModel: vehicleData.model,
+        vehicleCategory: vehicleData.category ?? null,
+        dailyRate: vehicleData.daily_rate,
+        pickup: pickupQuery,
+        dropoff: dropoffQuery,
+        rentalDays: rentalDaysInfo.days,
+        checkoutStep: 1,
+      })
     } else {
       toast.add({
         title: t('checkout.errors.error'),

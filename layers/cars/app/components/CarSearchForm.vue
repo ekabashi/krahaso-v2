@@ -256,7 +256,6 @@ async function handleSearch() {
   trackSearchSubmitted('car', {
     form_source: 'krahaso_car_search_form',
     route_path: route.path,
-    location: selectedLocation.value,
     pickupLocation: selectedLocation.value,
     dropoffLocation: dropoff,
     pickupDate: query.startDate,

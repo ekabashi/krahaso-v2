@@ -116,8 +116,8 @@ export function useAnalytics() {
     trackFiltersApplied: (type: OfferType, filters: AnalyticsProps) =>
       pushEvent('filters_applied', { type, ...filters }),
 
-    trackLeadStarted: (offerId: string, offerType: OfferType) =>
-      pushEvent('lead_started', { offerId, offerType }, `lead_started:${offerId}`, 1500),
+    trackLeadStarted: (offerId: string, offerType: OfferType, params: AnalyticsProps = {}) =>
+      pushEvent('lead_started', { offerId, offerType, ...params }, `lead_started:${offerId}`, 1500),
 
     trackLeadSubmitted: (offerId: string, offerType: OfferType) =>
       pushEvent('lead_submitted', { offerId, offerType }, `lead_submitted:${offerId}`, 2500),
