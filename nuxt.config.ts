@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     superadminCreatedBy: process.env.SUPERADMIN_CREATED_BY || 'autopika',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://krahaso.co',
-      gtmId: process.env.NUXT_PUBLIC_GTM_ID || '',
+      gtmId: process.env.NUXT_PUBLIC_GTM_ID || 'GTM-W6LJMGVC',
     },
   },
   // CSS loaded from app.vue with relative imports to avoid ~ resolution in virtual:nuxt/css.mjs
