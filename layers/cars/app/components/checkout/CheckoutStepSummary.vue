@@ -14,7 +14,9 @@ const emit = defineEmits<{
 }>()
 
 const { state, submitBooking, vehicle: vehicleComposable } = useCheckout()
+const { trackLeadSubmitted } = useAnalytics()
 const { formatDate } = useFormatDate()
+const route = useRoute()
 const bookingStore = useBookingStore()
 const carStore = useCarStore()
 const toast = useToast()
@@ -44,6 +46,18 @@ async function handleSubmit() {
 
     const response = await bookingStore.createBooking(formData)
     vehicleComposable.setBookingResponse(response)
+    trackLeadSubmitted(String(vehicle.id), 'car', {
+      pagePath: route.path,
+      tenantId: vehicle.tenant_id,
+      vehicleMake: vehicle.make,
+      vehicleModel: vehicle.model,
+      vehicleCategory: vehicle.category ?? null,
+      dailyRate: vehicle.daily_rate,
+      pickup: state.value.pickupPoint,
+      dropoff: state.value.returnPoint,
+      checkoutStep: 5,
+      bookingNumber: response.booking_number,
+    })
 
     toast.add({
       title: t('checkout.steps.summary.success'),
