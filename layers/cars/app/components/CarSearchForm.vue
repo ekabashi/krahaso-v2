@@ -262,7 +262,6 @@ async function handleSearch() {
     dropoffDate: query.endDate,
     pickupTime: query.startTime,
     dropoffTime: query.endTime,
-    sameLocation: locationType.value === 'same',
   })
 
   try {

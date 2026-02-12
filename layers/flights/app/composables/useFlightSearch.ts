@@ -149,7 +149,6 @@ export function useFlightSearch() {
         searchState.value.tripType === 'roundtrip' && searchState.value.returnDate
           ? formatCalendarDate(searchState.value.returnDate)
           : undefined,
-      tripType: searchState.value.tripType,
       passengers:
         searchState.value.passengers.adults +
         searchState.value.passengers.children +
