@@ -1,3 +1,7 @@
+import { computed } from 'vue'
+import { useRuntimeConfig, useRoute, useHead } from 'nuxt/app'
+import { useLocalePath } from '#imports'
+
 const LOCALES = ['sq', 'de', 'en'] as const
 
 export function useSeoPage(seo: {

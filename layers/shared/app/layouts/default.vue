@@ -5,6 +5,8 @@
       <NuxtPage />
     </main>
     <AppFooter />
-    <ConsentBanner />
+    <ClientOnly>
+      <ConsentBanner />
+    </ClientOnly>
   </div>
 </template>

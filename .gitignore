@@ -5,8 +5,10 @@
 .nitro
 .cache
 .vercel
+.codex
 dist
 
+AGENTS.md
 # Node dependencies
 node_modules
 

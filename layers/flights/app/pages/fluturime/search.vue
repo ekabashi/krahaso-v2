@@ -237,13 +237,15 @@ const passengerSummary = computed(() => {
 })
 
 // SEO
-useSeoMeta({
+useSeoPage({
   title: () => results.value
     ? `${t('flights.title')} ${results.value.meta.origin} → ${results.value.meta.destination} | Krahaso.co`
     : `${t('flights.title')} | Krahaso.co`,
   description: () => results.value
     ? `${results.value.meta.totalResults} ${t('flights.title')} ${t('common.from')} ${results.value.meta.origin} ${t('common.to')} ${results.value.meta.destination}`
-    : t('flights.seo.description')
+    : t('flights.seo.description'),
+  canonical: () => localePath('fluturime-search'),
+  noindex: true,
 })
 </script>
 

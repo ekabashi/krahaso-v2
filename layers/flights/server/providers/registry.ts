@@ -7,7 +7,7 @@ import { AirTiketaProvider } from './airtiketa.provider'
 import { PrishtinaTicketProvider } from './prishtinaticket.provider'
 import { FlyKsaProvider } from './flyksa.provider'
 
-class ProviderRegistry {
+export class ProviderRegistry {
   private providers = new Map<string, IFlightProvider>()
   private initialized = false
 

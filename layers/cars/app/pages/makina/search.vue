@@ -1,168 +1,305 @@
 <script setup lang="ts">
-import type { CityOption } from '../../types'
-import { useCarStore, type CarFilters } from '../../stores/carStore'
-import { useAddressStore } from '../../stores/addressStore'
-import { slugify, resolveLocationSlug } from '../../utils/slugify'
+import type { CityOption } from "../../types";
+import { useCarStore, type CarFilters } from "../../stores/carStore";
+import { useAddressStore } from "../../stores/addressStore";
+import { slugify, resolveLocationSlug } from "../../utils/slugify";
 
-const { t } = useI18n()
-const route = useRoute()
-const router = useRouter()
-const localePath = useLocalePath()
-const config = useRuntimeConfig()
-const carStore = useCarStore()
-const addressStore = useAddressStore()
-const { formatDate } = useFormatDate()
-const { trackResultsViewed } = useAnalytics()
+const { t } = useI18n();
+const route = useRoute();
+const router = useRouter();
+const localePath = useLocalePath();
+const config = useRuntimeConfig();
+const carStore = useCarStore();
+const addressStore = useAddressStore();
+const { formatDate } = useFormatDate();
+const { trackResultsViewed } = useAnalytics();
 
 // URL: /makina/search?pickup=...&return=...&startDate=...&endDate=...&startTime=...&endTime=...
-const query = computed(() => route.query as Record<string, string>)
+const query = computed(() => route.query as Record<string, string>);
 
 const searchParams = computed(() => ({
   location: query.value.pickup || query.value.location || undefined,
-  dropoffLocation: query.value.return || query.value.dropoffLocation || undefined,
+  dropoffLocation:
+    query.value.return || query.value.dropoffLocation || undefined,
   startDate: query.value.startDate || undefined,
   endDate: query.value.endDate || undefined,
   startTime: query.value.startTime || undefined,
   endTime: query.value.endTime || undefined,
-}))
+}));
 
 /** Resolve URL slugs back to display names for API calls and display */
 const resolvedLocation = computed(() => {
-  const slug = searchParams.value.location
-  if (!slug) return undefined
-  return resolveLocationSlug(slug, addressStore.pickupCities)
-})
+  const slug = searchParams.value.location;
+  if (!slug) return undefined;
+  return resolveLocationSlug(slug, addressStore.pickupCities);
+});
 const resolvedDropoff = computed(() => {
-  const slug = searchParams.value.dropoffLocation
-  if (!slug) return undefined
-  return resolveLocationSlug(slug, addressStore.pickupCities)
-})
+  const slug = searchParams.value.dropoffLocation;
+  if (!slug) return undefined;
+  return resolveLocationSlug(slug, addressStore.pickupCities);
+});
 
 const hasSearchParams = computed(
   () =>
-    !!(query.value.startDate && query.value.endDate && query.value.startTime && query.value.endTime),
-)
+    !!(
+      query.value.startDate &&
+      query.value.endDate &&
+      query.value.startTime &&
+      query.value.endTime
+    ),
+);
 
 function buildSearchQuery(updates: Record<string, string> = {}) {
-  const q = { ...query.value, ...updates }
-  const out: Record<string, string> = {}
-  if (q.pickup) out.pickup = q.pickup
-  else if (q.location) out.pickup = q.location
-  if (q.return) out.return = q.return
-  else if (q.dropoffLocation) out.return = q.dropoffLocation
-  if (q.startDate) out.startDate = q.startDate
-  if (q.endDate) out.endDate = q.endDate
-  if (q.startTime) out.startTime = q.startTime
-  if (q.endTime) out.endTime = q.endTime
-  if (q.minPrice) out.minPrice = q.minPrice
-  if (q.maxPrice) out.maxPrice = q.maxPrice
-  if (q.transmission) out.transmission = q.transmission
-  if (q.fuel) out.fuel = q.fuel
-  if (q.seats) out.seats = q.seats
-  if (q.category) out.category = q.category
-  if (q.color) out.color = q.color
-  if (q.sortBy && q.sortBy !== 'price-asc') out.sortBy = q.sortBy
-  if (q.page && q.page !== '1') out.page = q.page
-  if (q.vehicle_id) out.vehicle_id = q.vehicle_id
-  return out
+  const q = { ...query.value, ...updates };
+  const out: Record<string, string> = {};
+  if (q.pickup) out.pickup = q.pickup;
+  else if (q.location) out.pickup = q.location;
+  if (q.return) out.return = q.return;
+  else if (q.dropoffLocation) out.return = q.dropoffLocation;
+  if (q.startDate) out.startDate = q.startDate;
+  if (q.endDate) out.endDate = q.endDate;
+  if (q.startTime) out.startTime = q.startTime;
+  if (q.endTime) out.endTime = q.endTime;
+  if (q.minPrice) out.minPrice = q.minPrice;
+  if (q.maxPrice) out.maxPrice = q.maxPrice;
+  if (q.transmission) out.transmission = q.transmission;
+  if (q.fuel) out.fuel = q.fuel;
+  if (q.seats) out.seats = q.seats;
+  if (q.category) out.category = q.category;
+  if (q.color) out.color = q.color;
+  if (q.sortBy && q.sortBy !== "price-asc") out.sortBy = q.sortBy;
+  if (q.page && q.page !== "1") out.page = q.page;
+  if (q.vehicle_id) out.vehicle_id = q.vehicle_id;
+  return out;
 }
 
 function pushSearchQuery(updates: Record<string, string>) {
-  void router.push({ path: route.path, query: buildSearchQuery(updates) })
+  void router.push({ path: route.path, query: buildSearchQuery(updates) });
 }
 
-function getFiltersFromUrl(): ReturnType<() => {
-  minPrice?: number
-  maxPrice?: number
-  transmission?: string[]
-  fuel?: string[]
-  seats?: number[]
-  category?: string[]
-  color?: string[]
-  sortBy?: 'price-asc' | 'price-desc' | 'year-desc' | 'name-asc'
-}> {
-  const q = query.value
-  const filters: Record<string, unknown> = {}
+function getFiltersFromUrl(): ReturnType<
+  () => {
+    minPrice?: number;
+    maxPrice?: number;
+    transmission?: string[];
+    fuel?: string[];
+    seats?: number[];
+    category?: string[];
+    color?: string[];
+    sortBy?: "price-asc" | "price-desc" | "year-desc" | "name-asc";
+  }
+> {
+  const q = query.value;
+  const filters: Record<string, unknown> = {};
   if (q.minPrice) {
-    const min = Number(q.minPrice)
-    if (!Number.isNaN(min)) filters.minPrice = min
+    const min = Number(q.minPrice);
+    if (!Number.isNaN(min)) filters.minPrice = min;
   }
   if (q.maxPrice) {
-    const max = Number(q.maxPrice)
-    if (!Number.isNaN(max)) filters.maxPrice = max
+    const max = Number(q.maxPrice);
+    if (!Number.isNaN(max)) filters.maxPrice = max;
   }
-  if (q.transmission && typeof q.transmission === 'string')
-    filters.transmission = q.transmission.split(',').map((s) => s.trim()).filter(Boolean)
-  if (q.fuel && typeof q.fuel === 'string')
-    filters.fuel = q.fuel.split(',').map((s) => s.trim()).filter(Boolean)
-  if (q.seats && typeof q.seats === 'string')
-    filters.seats = q.seats.split(',').map((s) => Number(s.trim())).filter((n) => !Number.isNaN(n))
-  if (q.category && typeof q.category === 'string')
-    filters.category = q.category.split(',').map((s) => s.trim()).filter(Boolean)
-  if (q.color && typeof q.color === 'string') {
-    const arr = q.color.split(',').map((s) => s.trim()).filter(Boolean)
-    if (arr.length) filters.color = arr
+  if (q.transmission && typeof q.transmission === "string")
+    filters.transmission = q.transmission
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  if (q.fuel && typeof q.fuel === "string")
+    filters.fuel = q.fuel
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  if (q.seats && typeof q.seats === "string")
+    filters.seats = q.seats
+      .split(",")
+      .map((s) => Number(s.trim()))
+      .filter((n) => !Number.isNaN(n));
+  if (q.category && typeof q.category === "string")
+    filters.category = q.category
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  if (q.color && typeof q.color === "string") {
+    const arr = q.color
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (arr.length) filters.color = arr;
   }
-  if (q.sortBy && typeof q.sortBy === 'string') {
-    const valid = ['price-asc', 'price-desc', 'year-desc', 'name-asc']
-    if (valid.includes(q.sortBy)) filters.sortBy = q.sortBy
+  if (q.sortBy && typeof q.sortBy === "string") {
+    const valid = ["price-asc", "price-desc", "year-desc", "name-asc"];
+    if (valid.includes(q.sortBy)) filters.sortBy = q.sortBy;
   }
-  return filters as ReturnType<typeof getFiltersFromUrl>
+  return filters as ReturnType<typeof getFiltersFromUrl>;
 }
 
 function getActiveFiltersCountFromUrl(): number {
-  const q = query.value
-  let count = 0
-  const min = q.minPrice ? Number(q.minPrice) : carStore.minPrice
-  const max = q.maxPrice ? Number(q.maxPrice) : carStore.maxPrice
-  if (!Number.isNaN(min) && !Number.isNaN(max) && (min !== carStore.minPrice || max !== carStore.maxPrice))
-    count++
-  if (q.transmission && typeof q.transmission === 'string' && q.transmission.split(',').filter(Boolean).length)
-    count++
-  if (q.fuel && typeof q.fuel === 'string' && q.fuel.split(',').filter(Boolean).length) count++
-  if (q.seats && typeof q.seats === 'string' && q.seats.split(',').filter(Boolean).length) count++
-  if (q.category && typeof q.category === 'string' && q.category.split(',').filter(Boolean).length) count++
-  if (q.color && typeof q.color === 'string' && q.color.split(',').filter(Boolean).length) count++
-  return count
+  const q = query.value;
+  let count = 0;
+  const min = q.minPrice ? Number(q.minPrice) : carStore.minPrice;
+  const max = q.maxPrice ? Number(q.maxPrice) : carStore.maxPrice;
+  if (
+    !Number.isNaN(min) &&
+    !Number.isNaN(max) &&
+    (min !== carStore.minPrice || max !== carStore.maxPrice)
+  )
+    count++;
+  if (
+    q.transmission &&
+    typeof q.transmission === "string" &&
+    q.transmission.split(",").filter(Boolean).length
+  )
+    count++;
+  if (
+    q.fuel &&
+    typeof q.fuel === "string" &&
+    q.fuel.split(",").filter(Boolean).length
+  )
+    count++;
+  if (
+    q.seats &&
+    typeof q.seats === "string" &&
+    q.seats.split(",").filter(Boolean).length
+  )
+    count++;
+  if (
+    q.category &&
+    typeof q.category === "string" &&
+    q.category.split(",").filter(Boolean).length
+  )
+    count++;
+  if (
+    q.color &&
+    typeof q.color === "string" &&
+    q.color.split(",").filter(Boolean).length
+  )
+    count++;
+  return count;
 }
 
-const activeFiltersCount = computed(() => getActiveFiltersCountFromUrl())
+const activeFiltersCount = computed(() => getActiveFiltersCountFromUrl());
 
 /** True only after search has completed for current params; avoids showing EmptyState before first load. */
-const searchCompletedForParams = ref(false)
-const isEditing = ref(false)
-const selectedDates = ref<{ start: Date | null; end: Date | null }>({ start: null, end: null })
-const selectedTimes = ref<{ start: string | null; end: string | null }>({ start: null, end: null })
-const selectedLocation = ref('')
-const showDropOff = ref(false)
-const dropOffLocation = ref('')
-const addressItems = computed(() => addressStore.pickupCities)
+const searchCompletedForParams = ref(false);
+const isEditing = ref(false);
+const selectedDates = ref<{ start: Date | null; end: Date | null }>({
+  start: null,
+  end: null,
+});
+const selectedTimes = ref<{ start: string | null; end: string | null }>({
+  start: null,
+  end: null,
+});
+const selectedLocation = ref("");
+const showDropOff = ref(false);
+const dropOffLocation = ref("");
+const pickupTimeOpen = ref(false);
+const returnTimeOpen = ref(false);
+const addressItems = computed(() => addressStore.pickupCities);
 const effectivePickupCity = computed(() => {
-  if (!selectedLocation.value) return ''
-  const option = addressStore.pickupCities.find((o: CityOption) => o.value === selectedLocation.value)
-  return option?.city ?? selectedLocation.value
-})
-const dropOffAddressItems = computed(
-  () => (selectedLocation.value ? addressStore.dropOffByPickupCity[effectivePickupCity.value] ?? [] : []),
-)
+  if (!selectedLocation.value) return "";
+  const option = addressStore.pickupCities.find(
+    (o: CityOption) => o.value === selectedLocation.value,
+  );
+  return option?.city ?? selectedLocation.value;
+});
+const dropOffAddressItems = computed(() =>
+  selectedLocation.value
+    ? (addressStore.dropOffByPickupCity[effectivePickupCity.value] ?? [])
+    : [],
+);
 
-const hasLocation = computed(() => !!(searchParams.value.location && searchParams.value.location !== ''))
+const hasLocation = computed(
+  () => !!(searchParams.value.location && searchParams.value.location !== ""),
+);
 const hasDropoffLocation = computed(
   () =>
     !!(
       searchParams.value.dropoffLocation &&
-      searchParams.value.dropoffLocation !== '' &&
+      searchParams.value.dropoffLocation !== "" &&
       searchParams.value.dropoffLocation !== searchParams.value.location
     ),
-)
+);
 
 const timeOptions = [
-  '00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30',
-  '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30',
-  '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
-  '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30',
-  '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00', '23:30',
-]
+  "00:00",
+  "00:30",
+  "01:00",
+  "01:30",
+  "02:00",
+  "02:30",
+  "03:00",
+  "03:30",
+  "04:00",
+  "04:30",
+  "05:00",
+  "05:30",
+  "06:00",
+  "06:30",
+  "07:00",
+  "07:30",
+  "08:00",
+  "08:30",
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "12:30",
+  "13:00",
+  "13:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+  "17:00",
+  "17:30",
+  "18:00",
+  "18:30",
+  "19:00",
+  "19:30",
+  "20:00",
+  "20:30",
+  "21:00",
+  "21:30",
+  "22:00",
+  "22:30",
+  "23:00",
+  "23:30",
+];
+
+function timeLabel(time: string): string {
+  if (time === "00:00") return t("carSearch.midnight");
+  if (time === "12:00") return t("carSearch.noon");
+  return time;
+}
+
+const pickupTimeGrid = useTemplateRef<HTMLElement>("pickupTimeGrid");
+const returnTimeGrid = useTemplateRef<HTMLElement>("returnTimeGrid");
+
+function scrollToSelected(gridEl: HTMLElement | null, time: string | null) {
+  if (!time) return;
+  nextTick(() => {
+    nextTick(() => {
+      const el = gridEl ?? pickupTimeGrid.value ?? returnTimeGrid.value;
+      if (!el) return;
+      const btn = el.querySelector(`[data-time="${time}"]`) as HTMLElement | null;
+      if (btn) btn.scrollIntoView({ block: "center", behavior: "instant" });
+    });
+  });
+}
+
+watch(pickupTimeOpen, (open) => {
+  if (open) scrollToSelected(pickupTimeGrid.value, selectedTimes.value.start);
+});
+
+watch(returnTimeOpen, (open) => {
+  if (open) scrollToSelected(returnTimeGrid.value, selectedTimes.value.end);
+});
 
 async function searchCars() {
   if (
@@ -171,7 +308,7 @@ async function searchCars() {
     !searchParams.value.startTime ||
     !searchParams.value.endTime
   )
-    return
+    return;
   await carStore.searchCars({
     startDate: searchParams.value.startDate,
     endDate: searchParams.value.endDate,
@@ -179,214 +316,264 @@ async function searchCars() {
     endTime: searchParams.value.endTime,
     location: resolvedLocation.value,
     dropoffLocation: resolvedDropoff.value,
-  })
-  trackResultsViewed('car', carStore.total)
+  });
+  trackResultsViewed("car", carStore.total);
 }
 
 if (import.meta.client) {
   onMounted(async () => {
     if (hasSearchParams.value && addressStore.pickupCities.length === 0) {
-      await addressStore.fetchAllAddresses()
+      await addressStore.fetchAllAddresses();
     }
     if (hasSearchParams.value) {
-      const q = query.value
-      if (q.startDate) selectedDates.value.start = new Date(q.startDate)
-      if (q.endDate) selectedDates.value.end = new Date(q.endDate)
-      if (q.startTime) selectedTimes.value.start = q.startTime
-      if (q.endTime) selectedTimes.value.end = q.endTime
-      const pickup = q.pickup || q.location
-      if (pickup) selectedLocation.value = resolveLocationSlug(pickup, addressStore.pickupCities)
-      const ret = q.return || q.dropoffLocation
+      const q = query.value;
+      if (q.startDate) selectedDates.value.start = new Date(q.startDate);
+      if (q.endDate) selectedDates.value.end = new Date(q.endDate);
+      if (q.startTime) selectedTimes.value.start = q.startTime;
+      if (q.endTime) selectedTimes.value.end = q.endTime;
+      const pickup = q.pickup || q.location;
+      if (pickup)
+        selectedLocation.value = resolveLocationSlug(
+          pickup,
+          addressStore.pickupCities,
+        );
+      const ret = q.return || q.dropoffLocation;
       if (ret && ret !== pickup) {
-        dropOffLocation.value = resolveLocationSlug(ret, addressStore.pickupCities)
-        showDropOff.value = true
+        dropOffLocation.value = resolveLocationSlug(
+          ret,
+          addressStore.pickupCities,
+        );
+        showDropOff.value = true;
       }
-      const pageNum = q.page ? Number(q.page) : 1
-      if (!Number.isNaN(pageNum) && pageNum >= 1) carStore.page = pageNum
-      const urlFilters = getFiltersFromUrl()
+      const pageNum = q.page ? Number(q.page) : 1;
+      if (!Number.isNaN(pageNum) && pageNum >= 1) carStore.page = pageNum;
+      const urlFilters = getFiltersFromUrl();
       const batched: Partial<CarFilters> = {
-        priceRange: [urlFilters.minPrice ?? carStore.minPrice, urlFilters.maxPrice ?? carStore.maxPrice],
+        priceRange: [
+          urlFilters.minPrice ?? carStore.minPrice,
+          urlFilters.maxPrice ?? carStore.maxPrice,
+        ],
         transmission: urlFilters.transmission ?? [],
         fuel: urlFilters.fuel ?? [],
         seats: urlFilters.seats ?? [],
         category: urlFilters.category ?? [],
         color: urlFilters.color ?? [],
-        sortBy: urlFilters.sortBy ?? 'price-asc',
-      }
-      await carStore.setFilters(batched, true)
-      await searchCars()
-      searchCompletedForParams.value = true
+        sortBy: urlFilters.sortBy ?? "price-asc",
+      };
+      await carStore.setFilters(batched, true);
+      await searchCars();
+      searchCompletedForParams.value = true;
     }
-  })
+  });
 }
 
 watch(
-  () => [query.value.startDate, query.value.endDate, query.value.startTime, query.value.endTime, query.value.pickup, query.value.return, query.value.page, query.value.sortBy, query.value.minPrice, query.value.maxPrice, query.value.transmission, query.value.fuel, query.value.seats],
+  () => [
+    query.value.startDate,
+    query.value.endDate,
+    query.value.startTime,
+    query.value.endTime,
+    query.value.pickup,
+    query.value.return,
+    query.value.page,
+    query.value.sortBy,
+    query.value.minPrice,
+    query.value.maxPrice,
+    query.value.transmission,
+    query.value.fuel,
+    query.value.seats,
+  ],
   async () => {
-    if (!hasSearchParams.value) return
-    searchCompletedForParams.value = false
-    const q = query.value
-    if (q.startDate) selectedDates.value.start = new Date(q.startDate)
-    if (q.endDate) selectedDates.value.end = new Date(q.endDate)
-    if (q.startTime) selectedTimes.value.start = q.startTime
-    if (q.endTime) selectedTimes.value.end = q.endTime
-    const pickup = q.pickup || q.location
-    if (pickup) selectedLocation.value = resolveLocationSlug(pickup, addressStore.pickupCities)
-    const ret = q.return || q.dropoffLocation
+    if (!hasSearchParams.value) return;
+    searchCompletedForParams.value = false;
+    const q = query.value;
+    if (q.startDate) selectedDates.value.start = new Date(q.startDate);
+    if (q.endDate) selectedDates.value.end = new Date(q.endDate);
+    if (q.startTime) selectedTimes.value.start = q.startTime;
+    if (q.endTime) selectedTimes.value.end = q.endTime;
+    const pickup = q.pickup || q.location;
+    if (pickup)
+      selectedLocation.value = resolveLocationSlug(
+        pickup,
+        addressStore.pickupCities,
+      );
+    const ret = q.return || q.dropoffLocation;
     if (ret && ret !== pickup) {
-      dropOffLocation.value = resolveLocationSlug(ret, addressStore.pickupCities)
-      showDropOff.value = true
+      dropOffLocation.value = resolveLocationSlug(
+        ret,
+        addressStore.pickupCities,
+      );
+      showDropOff.value = true;
     } else {
-      showDropOff.value = false
-      dropOffLocation.value = ''
+      showDropOff.value = false;
+      dropOffLocation.value = "";
     }
-    const pageNum = q.page ? Number(q.page) : 1
-    if (!Number.isNaN(pageNum) && pageNum >= 1) carStore.page = pageNum
-    const urlFilters = getFiltersFromUrl()
+    const pageNum = q.page ? Number(q.page) : 1;
+    if (!Number.isNaN(pageNum) && pageNum >= 1) carStore.page = pageNum;
+    const urlFilters = getFiltersFromUrl();
     const batched: Partial<CarFilters> = {
-      priceRange: [urlFilters.minPrice ?? carStore.minPrice, urlFilters.maxPrice ?? carStore.maxPrice],
+      priceRange: [
+        urlFilters.minPrice ?? carStore.minPrice,
+        urlFilters.maxPrice ?? carStore.maxPrice,
+      ],
       transmission: urlFilters.transmission ?? [],
       fuel: urlFilters.fuel ?? [],
       seats: urlFilters.seats ?? [],
       category: urlFilters.category ?? [],
       color: urlFilters.color ?? [],
-      sortBy: urlFilters.sortBy ?? 'price-asc',
-    }
-    await carStore.setFilters(batched, true)
-    await searchCars()
-    searchCompletedForParams.value = true
+      sortBy: urlFilters.sortBy ?? "price-asc",
+    };
+    await carStore.setFilters(batched, true);
+    await searchCars();
+    searchCompletedForParams.value = true;
   },
-)
+);
 
 const page = computed({
   get: () => carStore.page,
   set: (v: number) => carStore.setPage(v),
-})
-const limit = computed(() => carStore.limit)
+});
+const limit = computed(() => carStore.limit);
 const response = computed(() => ({
   cars: carStore.cars,
   total: carStore.total,
   page: carStore.page,
   limit: carStore.limit,
-}))
-const loading = computed(() => carStore.loading)
+}));
+const loading = computed(() => carStore.loading);
 /** True while search is in progress (API call or waiting for first result). Used for sidebar total spinner. */
 const isSearchLoading = computed(
-  () => loading.value || (hasSearchParams.value && !searchCompletedForParams.value),
-)
+  () =>
+    loading.value || (hasSearchParams.value && !searchCompletedForParams.value),
+);
 const viewMode = computed({
   get: () => carStore.viewMode,
-  set: (v: 'grid' | 'list') => carStore.setViewMode(v),
-})
+  set: (v: "grid" | "list") => carStore.setViewMode(v),
+});
 
-const isDesktop = ref(false)
+const isDesktop = ref(false);
 // Set viewMode from viewport before first paint (refresh/hydration), so list is selected on desktop
 if (import.meta.client) {
   onBeforeMount(() => {
-    const w = typeof window !== 'undefined' ? window.innerWidth : 0
-    carStore.setViewMode(w >= 1024 ? 'list' : 'grid')
-  })
+    const w = typeof window !== "undefined" ? window.innerWidth : 0;
+    carStore.setViewMode(w >= 1024 ? "list" : "grid");
+  });
   onMounted(() => {
     const handleResize = () => {
-      const w = typeof window !== 'undefined' ? window.innerWidth : 0
-      isDesktop.value = w >= 1024
-      if (w >= 1024 && carStore.viewMode !== 'list') carStore.setViewMode('list')
-      else if (w < 1024 && carStore.viewMode !== 'grid') carStore.setViewMode('grid')
-    }
-    window.addEventListener('resize', handleResize)
-    handleResize()
-    return () => window.removeEventListener('resize', handleResize)
-  })
+      const w = typeof window !== "undefined" ? window.innerWidth : 0;
+      isDesktop.value = w >= 1024;
+      if (w >= 1024 && carStore.viewMode !== "list")
+        carStore.setViewMode("list");
+      else if (w < 1024 && carStore.viewMode !== "grid")
+        carStore.setViewMode("grid");
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  });
 }
 
-const isFilterSidebarOpen = ref(false)
+const isFilterSidebarOpen = ref(false);
 function openFilterSidebar() {
-  if (!isDesktop.value) isFilterSidebarOpen.value = true
+  if (!isDesktop.value) isFilterSidebarOpen.value = true;
 }
 
-function getSortByFromUrl(): 'price-asc' | 'price-desc' | 'year-desc' | 'name-asc' {
-  const q = query.value
-  if (q.sortBy && ['price-asc', 'price-desc', 'year-desc', 'name-asc'].includes(q.sortBy))
-    return q.sortBy as 'price-asc' | 'price-desc' | 'year-desc' | 'name-asc'
-  return 'price-asc'
+function getSortByFromUrl():
+  | "price-asc"
+  | "price-desc"
+  | "year-desc"
+  | "name-asc" {
+  const q = query.value;
+  if (
+    q.sortBy &&
+    ["price-asc", "price-desc", "year-desc", "name-asc"].includes(q.sortBy)
+  )
+    return q.sortBy as "price-asc" | "price-desc" | "year-desc" | "name-asc";
+  return "price-asc";
 }
 
 const sortBy = computed({
   get: () => getSortByFromUrl(),
-  set: (value: 'price-asc' | 'price-desc' | 'year-desc' | 'name-asc') => {
-    if (value === 'price-asc') {
-      const q = { ...query.value }
-      delete q.sortBy
-      pushSearchQuery(q)
+  set: (value: "price-asc" | "price-desc" | "year-desc" | "name-asc") => {
+    if (value === "price-asc") {
+      const q = { ...query.value };
+      delete q.sortBy;
+      pushSearchQuery(q);
     } else {
-      pushSearchQuery({ sortBy: value })
+      pushSearchQuery({ sortBy: value });
     }
   },
-})
+});
 
 const sortOptions = computed(() => [
-  { label: t('cars.sortOptions.priceLowToHigh'), value: 'price-asc' },
-  { label: t('cars.sortOptions.priceHighToLow'), value: 'price-desc' },
-  { label: t('cars.sortOptions.yearNewestFirst'), value: 'year-desc' },
-  { label: t('cars.sortOptions.nameAToZ'), value: 'name-asc' },
-])
+  { label: t("cars.sortOptions.priceLowToHigh"), value: "price-asc" },
+  { label: t("cars.sortOptions.priceHighToLow"), value: "price-desc" },
+  { label: t("cars.sortOptions.yearNewestFirst"), value: "year-desc" },
+  { label: t("cars.sortOptions.nameAToZ"), value: "name-asc" },
+]);
 
 function handleEdit() {
-  isEditing.value = true
+  isEditing.value = true;
 }
 function handleCancelEdit() {
-  isEditing.value = false
+  isEditing.value = false;
 }
 function toggleDropOff() {
-  showDropOff.value = !showDropOff.value
-  if (!showDropOff.value) dropOffLocation.value = ''
+  showDropOff.value = !showDropOff.value;
+  if (!showDropOff.value) dropOffLocation.value = "";
 }
 function handleSearch() {
-  if (!selectedDates.value.start || !selectedDates.value.end) return
+  if (!selectedDates.value.start || !selectedDates.value.end) return;
   const q: Record<string, string> = {
     pickup: slugify(selectedLocation.value),
     return: slugify(dropOffLocation.value || selectedLocation.value),
-    startDate: formatDate(selectedDates.value.start, 'YYYY-MM-DD'),
-    endDate: formatDate(selectedDates.value.end, 'YYYY-MM-DD'),
-    startTime: selectedTimes.value.start ?? '10:00',
-    endTime: selectedTimes.value.end ?? '10:00',
-  }
-  const urlFilters = getFiltersFromUrl()
-  const min = carStore.minPrice
-  const max = carStore.maxPrice
+    startDate: formatDate(selectedDates.value.start, "YYYY-MM-DD"),
+    endDate: formatDate(selectedDates.value.end, "YYYY-MM-DD"),
+    startTime: selectedTimes.value.start ?? "10:00",
+    endTime: selectedTimes.value.end ?? "10:00",
+  };
+  const urlFilters = getFiltersFromUrl();
+  const min = carStore.minPrice;
+  const max = carStore.maxPrice;
   if (urlFilters.minPrice !== undefined || urlFilters.maxPrice !== undefined) {
-    q.minPrice = String(urlFilters.minPrice ?? min)
-    q.maxPrice = String(urlFilters.maxPrice ?? max)
+    q.minPrice = String(urlFilters.minPrice ?? min);
+    q.maxPrice = String(urlFilters.maxPrice ?? max);
   }
-  if (urlFilters.transmission?.length) q.transmission = urlFilters.transmission.join(',')
-  if (urlFilters.fuel?.length) q.fuel = urlFilters.fuel.join(',')
-  if (urlFilters.seats?.length) q.seats = urlFilters.seats.join(',')
-  if (urlFilters.category?.length) q.category = urlFilters.category.join(',')
-  if (urlFilters.color?.length) q.color = urlFilters.color.join(',')
-  if (urlFilters.sortBy && urlFilters.sortBy !== 'price-asc') q.sortBy = urlFilters.sortBy
-  isEditing.value = false
-  void router.push({ path: route.path, query: q })
+  if (urlFilters.transmission?.length)
+    q.transmission = urlFilters.transmission.join(",");
+  if (urlFilters.fuel?.length) q.fuel = urlFilters.fuel.join(",");
+  if (urlFilters.seats?.length) q.seats = urlFilters.seats.join(",");
+  if (urlFilters.category?.length) q.category = urlFilters.category.join(",");
+  if (urlFilters.color?.length) q.color = urlFilters.color.join(",");
+  if (urlFilters.sortBy && urlFilters.sortBy !== "price-asc")
+    q.sortBy = urlFilters.sortBy;
+  isEditing.value = false;
+  void router.push({ path: route.path, query: q });
 }
 
 watch(page, (newPage) => {
-  pushSearchQuery({ page: String(newPage) })
-  if (import.meta.client && typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' })
-})
+  pushSearchQuery({ page: String(newPage) });
+  if (import.meta.client && typeof window !== "undefined")
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
 useSeoPage({
   title: () =>
     hasSearchParams.value && resolvedLocation.value
-      ? `${t('cars.title')} ${resolvedLocation.value} | Krahaso.co`
-      : `${t('cars.title')} | Krahaso.co`,
-  description: () => t('cars.description'),
-  canonical: () => localePath('makina-search'),
-  ogImage: () => `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}/logoRed.png`,
-})
-
+      ? `${t("cars.title")} ${resolvedLocation.value} | Krahaso.co`
+      : `${t("cars.title")} | Krahaso.co`,
+  description: () => t("cars.description"),
+  canonical: () => localePath("makina-search"),
+  noindex: true,
+  ogImage: () =>
+    `${(config.public as { siteUrl?: string }).siteUrl ?? "https://krahaso.co"}/logoRed.png`,
+});
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 -mb-8 px-4 pb-8 sm:px-6 lg:px-8">
+  <div
+    class="min-h-screen bg-gray-50 dark:bg-gray-900 -mb-8 px-4 pb-8 sm:px-6 lg:px-8"
+  >
     <div class="max-w-7xl mx-auto py-6">
       <UBreadcrumb
         :items="[
@@ -399,7 +586,7 @@ useSeoPage({
 
       <div class="mb-6">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          {{ t('cars.title') }}
+          {{ t("cars.title") }}
         </h1>
 
         <!-- Summary bar (only when we have params and user is not editing) -->
@@ -411,25 +598,42 @@ useSeoPage({
             <div v-if="hasLocation" class="flex items-center gap-2">
               <UIcon name="i-lucide-map-pin" class="w-4 h-4 text-primary" />
               <span class="text-muted">
-                {{ t('cars.pickup') }}: <strong>{{ resolvedLocation }}</strong>
+                {{ t("cars.pickup") }}: <strong>{{ resolvedLocation }}</strong>
               </span>
             </div>
             <div v-if="hasDropoffLocation" class="flex items-center gap-2">
               <UIcon name="i-lucide-map-pin" class="w-4 h-4 text-primary" />
               <span class="text-muted">
-                {{ t('cars.dropoff') }}: <strong>{{ resolvedDropoff }}</strong>
+                {{ t("cars.dropoff") }}: <strong>{{ resolvedDropoff }}</strong>
               </span>
             </div>
-            <div v-if="searchParams.startDate && searchParams.endDate" class="flex items-center gap-2">
-              <UIcon name="i-lucide-calendar-days" class="w-4 h-4 text-primary" />
+            <div
+              v-if="searchParams.startDate && searchParams.endDate"
+              class="flex items-center gap-2"
+            >
+              <UIcon
+                name="i-lucide-calendar-days"
+                class="w-4 h-4 text-primary"
+              />
               <span class="text-muted">
-                {{ t('cars.dates') }}: <strong>{{ searchParams.startDate }} – {{ searchParams.endDate }}</strong>
+                {{ t("cars.dates") }}:
+                <strong
+                  >{{ searchParams.startDate }} –
+                  {{ searchParams.endDate }}</strong
+                >
               </span>
             </div>
-            <div v-if="searchParams.startTime && searchParams.endTime" class="flex items-center gap-2">
+            <div
+              v-if="searchParams.startTime && searchParams.endTime"
+              class="flex items-center gap-2"
+            >
               <UIcon name="i-lucide-clock" class="w-4 h-4 text-primary" />
               <span class="text-muted">
-                {{ t('cars.time') }}: <strong>{{ searchParams.startTime }} – {{ searchParams.endTime }}</strong>
+                {{ t("cars.time") }}:
+                <strong
+                  >{{ searchParams.startTime }} –
+                  {{ searchParams.endTime }}</strong
+                >
               </span>
             </div>
             <div class="ml-auto">
@@ -440,7 +644,7 @@ useSeoPage({
                 size="sm"
                 @click="handleEdit"
               >
-                {{ t('cars.editSearch') }}
+                {{ t("cars.editSearch") }}
               </UButton>
             </div>
           </div>
@@ -457,7 +661,12 @@ useSeoPage({
               showDropOff ? 'max-w-7xl' : 'max-w-5xl',
             ]"
           >
-            <div :class="['flex gap-2 items-center', showDropOff ? 'flex-[1_1_0]' : 'flex-1']">
+            <div
+              :class="[
+                'flex gap-2 items-center',
+                showDropOff ? 'flex-[1_1_0]' : 'flex-1',
+              ]"
+            >
               <USelectMenu
                 v-model="selectedLocation"
                 :items="addressItems"
@@ -494,7 +703,11 @@ useSeoPage({
               value-key="value"
               label-key="label"
             />
-            <UPopover :portal="true" :popper="{ strategy: 'fixed', zIndex: 9999 }" class="flex-1">
+            <UPopover
+              :portal="true"
+              :popper="{ strategy: 'fixed', zIndex: 9999 }"
+              class="flex-1"
+            >
               <UButton
                 icon="i-lucide-calendar-days"
                 :label="
@@ -515,27 +728,116 @@ useSeoPage({
                 />
               </template>
             </UPopover>
-            <USelect
-              :model-value="selectedTimes.start ?? undefined"
-              :items="timeOptions"
-              :placeholder="t('cars.pickupTime')"
-              leading-icon="i-lucide-clock"
-              size="md"
-              class="flex-[0.3]"
-              @update:model-value="selectedTimes.start = $event ?? null"
-            />
-            <USelect
-              :model-value="selectedTimes.end ?? undefined"
-              :items="timeOptions"
-              :placeholder="t('cars.returnTime')"
-              leading-icon="i-lucide-clock"
-              size="md"
-              class="flex-[0.3]"
-              @update:model-value="selectedTimes.end = $event ?? null"
-            />
+            <div class="flex-[0.3]">
+              <UPopover v-model:open="pickupTimeOpen">
+                <UButton
+                  color="neutral"
+                  variant="outline"
+                  size="md"
+                  block
+                  class="justify-start rounded-md"
+                  icon="i-lucide-clock"
+                >
+                  <span
+                    :class="
+                      selectedTimes.start
+                        ? 'text-neutral-900 dark:text-neutral-100'
+                        : 'text-neutral-400'
+                    "
+                  >
+                    {{
+                      selectedTimes.start
+                        ? timeLabel(selectedTimes.start)
+                        : t("carSearch.selectTime")
+                    }}
+                  </span>
+                </UButton>
+                <template #content>
+                  <div
+                    ref="pickupTimeGrid"
+                    class="grid w-56 max-h-64 grid-cols-2 gap-1.5 overflow-y-auto px-3 py-5"
+                  >
+                    <button
+                      v-for="time in timeOptions"
+                      :key="time"
+                      type="button"
+                      :data-time="time"
+                      :class="[
+                        'cursor-pointer rounded-lg px-2 py-2.5 text-center text-sm transition-colors',
+                        selectedTimes.start === time
+                          ? 'bg-primary-600 font-medium text-white'
+                          : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200',
+                      ]"
+                      @click="
+                        selectedTimes.start = time;
+                        pickupTimeOpen = false;
+                      "
+                    >
+                      {{ timeLabel(time) }}
+                    </button>
+                  </div>
+                </template>
+              </UPopover>
+            </div>
+            <div class="flex-[0.3]">
+              <UPopover v-model:open="returnTimeOpen">
+                <UButton
+                  color="neutral"
+                  variant="outline"
+                  size="md"
+                  block
+                  class="justify-start rounded-md"
+                  icon="i-lucide-clock"
+                >
+                  <span
+                    :class="
+                      selectedTimes.end
+                        ? 'text-neutral-900 dark:text-neutral-100'
+                        : 'text-neutral-400'
+                    "
+                  >
+                    {{
+                      selectedTimes.end
+                        ? timeLabel(selectedTimes.end)
+                        : t('carSearch.selectTime')
+                    }}
+                  </span>
+                </UButton>
+                <template #content>
+                  <div
+                    ref="returnTimeGrid"
+                    class="grid w-56 max-h-64 grid-cols-2 gap-1.5 overflow-y-auto px-3 py-5"
+                  >
+                    <button
+                      v-for="time in timeOptions"
+                      :key="time"
+                      type="button"
+                      :data-time="time"
+                      :class="[
+                        'cursor-pointer rounded-lg px-2 py-2.5 text-center text-sm transition-colors',
+                        selectedTimes.end === time
+                          ? 'bg-primary-600 font-medium text-white'
+                          : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200',
+                      ]"
+                      @click="
+                        selectedTimes.end = time;
+                        returnTimeOpen = false;
+                      "
+                    >
+                      {{ timeLabel(time) }}
+                    </button>
+                  </div>
+                </template>
+              </UPopover>
+            </div>
             <div class="flex gap-2">
-              <UButton color="neutral" variant="outline" size="md" @click="handleCancelEdit">
-                {{ t('cars.cancel') }}
+              <UButton
+                color="neutral"
+                variant="outline"
+                size="md"
+                @click="handleCancelEdit"
+              >
+                {{ t("cars.cancel") }}
               </UButton>
               <UButton
                 color="primary"
@@ -544,7 +846,7 @@ useSeoPage({
                 icon="i-lucide-search"
                 @click="handleSearch"
               >
-                {{ t('cars.search') }}
+                {{ t("cars.search") }}
               </UButton>
             </div>
           </div>
@@ -553,14 +855,20 @@ useSeoPage({
 
       <div class="flex gap-6">
         <aside class="hidden lg:block w-80 shrink-0">
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 sticky top-6">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 sticky top-6"
+          >
             <CarFiltersSidebar search-page :search-loading="isSearchLoading" />
           </div>
         </aside>
 
         <div class="flex-1 min-w-0">
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6"
+          >
+            <div
+              class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4"
+            >
               <div class="flex items-center gap-4 flex-1">
                 <UButton
                   color="neutral"
@@ -568,7 +876,7 @@ useSeoPage({
                   icon="i-lucide-filter"
                   @click="openFilterSidebar"
                 >
-                  {{ t('cars.filterLabel') }}
+                  {{ t("cars.filterLabel") }}
                   <UBadge
                     v-if="activeFiltersCount > 0"
                     :label="String(activeFiltersCount)"
@@ -583,8 +891,19 @@ useSeoPage({
                     class="h-4 w-4 shrink-0 animate-spin text-primary"
                     aria-hidden="true"
                   />
-                  <span v-else class="font-medium text-gray-900 dark:text-white">{{ carStore.total }}</span>
-                  {{ isSearchLoading ? t('cars.cars') : (carStore.total === 1 ? t('cars.car') : t('cars.cars')) }} {{ t('cars.available') }}
+                  <span
+                    v-else
+                    class="font-medium text-gray-900 dark:text-white"
+                    >{{ carStore.total }}</span
+                  >
+                  {{
+                    isSearchLoading
+                      ? t("cars.cars")
+                      : carStore.total === 1
+                        ? t("cars.car")
+                        : t("cars.cars")
+                  }}
+                  {{ t("cars.available") }}
                 </p>
               </div>
               <div class="flex items-center gap-4 w-full sm:w-auto">
@@ -594,7 +913,9 @@ useSeoPage({
                   :placeholder="t('cars.sortBy')"
                   class="flex-1 sm:flex-initial sm:w-48"
                 />
-                <div class="hidden md:flex items-center gap-1 bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                <div
+                  class="hidden md:flex items-center gap-1 bg-gray-100 dark:bg-gray-700 rounded-lg p-1"
+                >
                   <UButton
                     :color="viewMode === 'grid' ? 'primary' : 'neutral'"
                     :variant="viewMode === 'grid' ? 'solid' : 'ghost'"
@@ -615,20 +936,32 @@ useSeoPage({
           </div>
 
           <ClientOnly>
-            <div v-if="loading || (hasSearchParams && !searchCompletedForParams)" class="space-y-6">
+            <div
+              v-if="loading || (hasSearchParams && !searchCompletedForParams)"
+              class="space-y-6"
+            >
               <!-- Modern searching indicator -->
-              <div class="rounded-lg border border-primary-200 dark:border-primary-800 bg-primary-50/50 dark:bg-primary-950/30 px-4 py-3">
+              <div
+                class="rounded-lg border border-primary-200 dark:border-primary-800 bg-primary-50/50 dark:bg-primary-950/30 px-4 py-3"
+              >
                 <div class="flex items-center gap-3">
                   <UIcon
                     name="i-lucide-loader-2"
                     class="h-5 w-5 shrink-0 text-primary animate-spin"
                     aria-hidden="true"
                   />
-                  <span class="text-sm font-medium text-primary-700 dark:text-primary-300">
-                    {{ t('cars.searching') }}
+                  <span
+                    class="text-sm font-medium text-primary-700 dark:text-primary-300"
+                  >
+                    {{ t("cars.searching") }}
                   </span>
                 </div>
-                <UProgress class="mt-2" color="primary" size="xs" animation="swing" />
+                <UProgress
+                  class="mt-2"
+                  color="primary"
+                  size="xs"
+                  animation="swing"
+                />
               </div>
               <!-- Layout via CSS only (lg = 1024px): grid below lg, list from lg = no flash -->
               <div
@@ -669,28 +1002,50 @@ useSeoPage({
             </div>
 
             <EmptyState
-              v-else-if="hasSearchParams && searchCompletedForParams && !loading && response?.cars?.length === 0"
+              v-else-if="
+                hasSearchParams &&
+                searchCompletedForParams &&
+                !loading &&
+                response?.cars?.length === 0
+              "
             />
 
             <template #fallback>
               <div class="space-y-6">
-                <div class="rounded-lg border border-primary-200 dark:border-primary-800 bg-primary-50/50 dark:bg-primary-950/30 px-4 py-3">
+                <div
+                  class="rounded-lg border border-primary-200 dark:border-primary-800 bg-primary-50/50 dark:bg-primary-950/30 px-4 py-3"
+                >
                   <div class="flex items-center gap-3">
                     <UIcon
                       name="i-lucide-loader-2"
                       class="h-5 w-5 shrink-0 text-primary animate-spin"
                       aria-hidden="true"
                     />
-                    <span class="text-sm font-medium text-primary-700 dark:text-primary-300">
-                      {{ t('cars.searching') }}
+                    <span
+                      class="text-sm font-medium text-primary-700 dark:text-primary-300"
+                    >
+                      {{ t("cars.searching") }}
                     </span>
                   </div>
-                  <UProgress class="mt-2" color="primary" size="xs" animation="swing" />
+                  <UProgress
+                    class="mt-2"
+                    color="primary"
+                    size="xs"
+                    animation="swing"
+                  />
                 </div>
                 <!-- Same responsive layout as loading block (list on lg) so no grid→list flash -->
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1 lg:space-y-6">
-                  <div v-for="i in 6" :key="i" class="flex flex-col lg:flex-row lg:gap-6">
-                    <USkeleton class="h-80 w-full rounded-xl lg:h-48 lg:w-80 lg:shrink-0" />
+                <div
+                  class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1 lg:space-y-6"
+                >
+                  <div
+                    v-for="i in 6"
+                    :key="i"
+                    class="flex flex-col lg:flex-row lg:gap-6"
+                  >
+                    <USkeleton
+                      class="h-80 w-full rounded-xl lg:h-48 lg:w-80 lg:shrink-0"
+                    />
                     <div class="hidden lg:flex flex-1 flex-col space-y-4">
                       <USkeleton class="h-6 w-3/4" />
                       <USkeleton class="h-4 w-1/2" />
@@ -734,7 +1089,7 @@ useSeoPage({
               class="flex-1"
               @click="isFilterSidebarOpen = false"
             >
-              {{ t('cars.clearAll') }}
+              {{ t("cars.clearAll") }}
             </UButton>
             <UButton
               color="primary"
@@ -744,7 +1099,7 @@ useSeoPage({
               trailing
               @click="isFilterSidebarOpen = false"
             >
-              {{ t('cars.viewResults') }}
+              {{ t("cars.viewResults") }}
             </UButton>
           </div>
         </template>

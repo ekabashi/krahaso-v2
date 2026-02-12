@@ -156,6 +156,11 @@ const relatedLocations = computed(() => {
     }))
 })
 
+const relatedLocationsLoop = computed(() => {
+  const items = relatedLocations.value
+  return items.length > 0 ? [...items, ...items] : []
+})
+
 useHead(() =>
   locationData.value
     ? {
@@ -256,7 +261,7 @@ useHead(() =>
             {{ t('cars.searchNow') }}
           </UButton>
           <UButton
-            :to="localePath('/')"
+            :to="localePath('/fluturime')"
             color="neutral"
             variant="outline"
             size="lg"
@@ -317,15 +322,58 @@ useHead(() =>
         </div>
       </UPageSection>
 
-      <UPageSection
-        :title="t('cars.conditions.title')"
-        :description="t('cars.conditions.description')"
-        class="mb-12"
-      >
-        <div class="max-w-6xl mx-auto">
-          <LandingFeatureGrid :features="conditions" />
+      <section class="relative overflow-hidden py-12 sm:py-14">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div class="lg:col-span-4">
+              <div class="sticky top-24">
+                <h2 class="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                  {{ t('cars.conditions.title') }}
+                </h2>
+                <p class="mt-4 text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+                  {{ t('cars.conditions.description') }}
+                </p>
+              </div>
+            </div>
+
+            <div class="lg:col-span-8">
+              <div class="relative pl-0 sm:pl-3">
+                <div class="space-y-1">
+                  <div
+                    v-for="(condition, index) in conditions"
+                    :key="condition.title"
+                    class="group flex items-start gap-4 sm:gap-5 rounded-xl px-3 py-5 sm:px-4 sm:py-6 transition-colors duration-200 hover:bg-white/70 dark:hover:bg-neutral-900/60"
+                  >
+                    <div class="relative shrink-0">
+                      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white shadow-sm">
+                        <UIcon :name="condition.icon" class="h-4 w-4" />
+                      </div>
+                      <span class="absolute -right-2 -top-2 rounded-full border border-primary/20 bg-white px-1.5 py-0.5 text-[10px] font-semibold leading-none text-primary dark:bg-neutral-900">
+                        {{ index + 1 }}
+                      </span>
+                      <div
+                        v-if="index < conditions.length - 1"
+                        class="hidden sm:flex absolute left-1/2 top-[calc(100%+4px)] -translate-x-1/2 flex-col items-center text-primary/80"
+                      >
+                        <div class="h-5 w-px bg-primary/40" />
+                        <UIcon name="i-lucide-arrow-down" class="h-4 w-4 -mt-0.5" />
+                      </div>
+                    </div>
+                    <div class="min-w-0 border-b border-neutral-200/70 dark:border-neutral-800 pb-5 sm:pb-6 flex-1">
+                      <h3 class="text-base sm:text-lg font-semibold text-neutral-900 dark:text-white">
+                        {{ condition.title }}
+                      </h3>
+                      <p class="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+                        {{ condition.description }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </UPageSection>
+      </section>
     </UContainer>
 
     <!-- SEO content block -->
@@ -446,12 +494,13 @@ useHead(() =>
         :description="t('locations.relatedDescription')"
         class="mb-12"
       >
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="relative overflow-hidden rounded-2xl related-slider-mask">
+          <div class="related-slider-track">
           <NuxtLink
-            v-for="related in relatedLocations"
-            :key="related.key"
+            v-for="(related, idx) in relatedLocationsLoop"
+            :key="`${related.key}-${idx}`"
             :to="localePath({ name: 'makina-location', params: { location: related.slug } })"
-            class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 block"
+            class="group relative h-80 w-[280px] shrink-0 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 block"
           >
             <img
               :src="related.image"
@@ -467,38 +516,70 @@ useHead(() =>
               </div>
             </div>
           </NuxtLink>
+          </div>
         </div>
       </UPageSection>
-
-      <!-- CTA – minimal, i pastër, një veprim i qartë -->
-      <section class="max-w-7xl mx-4 sm:mx-auto rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50 px-6 py-20 sm:px-8 sm:py-20">
-        <div class="text-center">
-          <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+      
+    </div>
+      <!-- CTA -->
+      <UPageSection class="bg-linear-to-br from-primary-600 to-primary-700 text-white">
+        <div class="max-w-2xl mx-auto text-center px-4 sm:px-4">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
             {{ t('seo.location.cta') }}
           </h2>
-          <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
+          <p class="text-base sm:text-lg mb-6 sm:mb-8 text-primary-100">
             {{ t('seo.location.ctaDescription') }}
           </p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
             <UButton
               size="lg"
-              color="primary"
-              icon="i-lucide-search"
-              trailing-icon="i-lucide-arrow-right"
+              color="neutral"
+              variant="solid"
+              trailing-icon="i-lucide-arrow-up"
+              class="w-full sm:w-auto bg-white text-primary-700 hover:bg-primary-50"
               @click="scrollToSearchForm"
             >
               {{ t('cars.searchNow') }}
             </UButton>
-            <NuxtLink
-              :to="localePath('/')"
-              class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline inline-flex items-center gap-1"
+            <UButton
+              :to="localePath('/fluturime')"
+              size="lg"
+              color="neutral"
+              variant="solid"
+              trailing-icon="i-lucide-arrow-right"
+              class="w-full sm:w-auto bg-white/15 text-white hover:bg-white/25"
             >
               {{ t('seo.location.searchFlights') }}
-              <UIcon name="i-lucide-arrow-right" class="w-4 h-4" />
-            </NuxtLink>
+            </UButton>
           </div>
         </div>
-      </section>
-    </div>
+      </UPageSection>
   </div>
 </template>
+
+<style scoped>
+.related-slider-mask {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.related-slider-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: related-locations-marquee 50s linear infinite;
+}
+
+.related-slider-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes related-locations-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.75rem));
+  }
+}
+</style>

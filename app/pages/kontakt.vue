@@ -1,11 +1,12 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const localePath = useLocalePath()
 const config = useRuntimeConfig()
 
 useSeoPage({
   title: () => `${t('contact.title')} - Krahaso.co`,
   description: () => t('contact.description'),
-  canonical: '/kontakt',
+  canonical: () => localePath('kontakt'),
   ogImage: () => `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}/logoRed.png`,
 })
 
@@ -43,7 +44,7 @@ useHead({
         'contactPoint': {
           '@type': 'ContactPoint',
           'email': 'kontakt@krahaso.co',
-          'telephone': '+383 44 123 456',
+          'telephone': '+383 49 999 408',
           'contactType': 'customer service',
           'availableLanguage': ['sq', 'de', 'en']
         }

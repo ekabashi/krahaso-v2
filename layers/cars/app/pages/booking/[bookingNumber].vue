@@ -8,6 +8,12 @@ const localePath = useLocalePath()
 
 const bookingNumber = computed(() => route.params.bookingNumber as string)
 
+useSeoPage({
+  title: () => `${t('booking.bookingNumber')}: ${bookingNumber.value} | Krahaso.co`,
+  description: () => t('booking.details'),
+  noindex: true,
+})
+
 type BookingDetail = {
   id: number
   booking_number: string

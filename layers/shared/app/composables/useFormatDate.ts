@@ -4,6 +4,7 @@ import localizedFormat from 'dayjs/plugin/localizedFormat.js'
 import 'dayjs/locale/sq.js'
 import 'dayjs/locale/de.js'
 import 'dayjs/locale/en.js'
+import { useI18n } from 'vue-i18n'
 
 dayjs.extend(customParseFormat)
 dayjs.extend(localizedFormat)

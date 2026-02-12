@@ -6,7 +6,7 @@ const config = useRuntimeConfig()
 useSeoPage({
   title: () => `${t('about.title')} - Krahaso.co`,
   description: () => t('about.description'),
-  canonical: '/rreth-nesh',
+  canonical: () => localePath('rreth-nesh'),
   ogImage: () => `${(config.public as { siteUrl?: string }).siteUrl ?? 'https://krahaso.co'}/logoRed.png`,
 })
 

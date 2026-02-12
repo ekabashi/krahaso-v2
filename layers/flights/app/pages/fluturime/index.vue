@@ -234,6 +234,88 @@ function onSearch() {
       </UContainer>
     </section>
 
+    <!-- WhatsApp CTA -->
+    <section class="py-16 sm:py-20 bg-linear-to-br from-green-600 to-green-700 text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="relative overflow-hidden rounded-2xl px-6 py-10 sm:px-10 sm:py-14">
+          <!-- Decorative glow -->
+          <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#25d366]/10 blur-[80px] pointer-events-none" />
+          <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-[#25d366]/5 blur-[60px] pointer-events-none" />
+          <div class="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+            <!-- Text -->
+            <div class="flex-1 text-center lg:text-left">
+              <div class="flex items-center justify-center lg:justify-start gap-2 mb-3">
+                <UIcon name="i-simple-icons-whatsapp" class="text-2xl text-white" />
+                <span class="text-xs font-semibold uppercase tracking-wider text-white">WhatsApp</span>
+              </div>
+              <h2 class="text-xl sm:text-2xl font-bold mb-2">
+                {{ t('landing.whatsapp.title') }}
+              </h2>
+              <p class="text-sm text-white/80 mb-6 max-w-md">
+                {{ t('landing.whatsapp.description') }}
+              </p>
+              <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-6 text-sm">
+                <span class="flex items-center gap-1.5">
+                  <UIcon name="i-lucide-zap" /> {{ t('landing.whatsapp.features.fast') }}
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <UIcon name="i-lucide-smartphone" /> {{ t('landing.whatsapp.features.easy') }}
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <UIcon name="i-lucide-heart" /> {{ t('landing.whatsapp.features.free') }}
+                </span>
+              </div>
+              <UButton
+                :to="whatsappLink"
+                color="neutral"
+                variant="outline"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 sm:gap-2 rounded-full bg-white px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-sm font-semibold text-green-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl w-full sm:w-auto justify-center"
+              >
+                <UIcon
+                  name="i-simple-icons-whatsapp"
+                  class="h-5 w-5 sm:h-5 sm:w-5 shrink-0"
+                />
+                <span class="wrap-break-word">{{ t('landing.whatsapp.cta') }}</span>
+              </UButton>
+            </div>
+
+            <!-- Chat Mockup -->
+            <div class="w-full max-w-[280px] shrink-0">
+              <div class="rounded-xl bg-[#ece5dd] p-3 shadow-lg text-xs space-y-2">
+                <!-- User message -->
+                <div class="flex justify-end">
+                  <div class="rounded-lg rounded-tr-none bg-[#dcf8c6] px-3 py-1.5 max-w-[85%] text-neutral-800">
+                    {{ t('landing.whatsapp.chat.userMessage1') }}
+                  </div>
+                </div>
+                <!-- Bot greeting (truncated) -->
+                <div class="flex justify-start">
+                  <div class="rounded-lg rounded-tl-none bg-white px-3 py-1.5 max-w-[85%] text-neutral-800 whitespace-pre-line leading-relaxed">
+                    {{ t('landing.whatsapp.chat.botGreeting').slice(0, 80) }}...
+                  </div>
+                </div>
+                <!-- User search -->
+                <div class="flex justify-end">
+                  <div class="rounded-lg rounded-tr-none bg-[#dcf8c6] px-3 py-1.5 max-w-[85%] text-neutral-800 font-medium">
+                    {{ t('landing.whatsapp.chat.userFlightSearch') }}
+                  </div>
+                </div>
+                <!-- Bot results (truncated) -->
+                <div class="flex justify-start">
+                  <div class="rounded-lg rounded-tl-none bg-white px-3 py-1.5 max-w-[85%] text-neutral-800 whitespace-pre-line leading-relaxed">
+                    {{ t('landing.whatsapp.chat.botFlightResults').slice(0, 120) }}...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
     <!-- Tips – timeline vertikal, pa karta -->
     <section class="py-16 sm:py-20">
       <UContainer>
@@ -291,32 +373,31 @@ function onSearch() {
       </UContainer>
     </section>
 
-    <!-- CTA – minimal, i njëjtë si makina [location] -->
-    <section class="py-16 sm:py-20">
-      <UContainer>
-        <div class="max-w-7xl mx-4 sm:mx-auto rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50 px-6 py-20 sm:px-8 sm:py-20">
-          <div class="text-center">
-            <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
-              {{ t('flights.cta.title') }}
-            </h2>
-            <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
-              {{ t('flights.cta.description') }}
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-              <UButton
-                :to="localePath({ name: 'makina-location', params: { location: 'aeroporti-prishtines' } })"
-                size="lg"
-                color="primary"
-                icon="i-lucide-car"
-                trailing-icon="i-lucide-arrow-right"
-                class="w-full sm:w-auto"
-              >
-                {{ t('flights.cta.rentCar') }}
-              </UButton>
-            </div>
-          </div>
+    <!-- CTA -->
+    <UPageSection
+      class="bg-linear-to-br from-primary-600 to-primary-700 text-white"
+    >
+      <div class="max-w-2xl mx-auto text-center px-4 sm:px-4">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
+          {{ t('flights.cta.title') }}
+        </h2>
+        <p class="text-base sm:text-lg mb-6 sm:mb-8 text-primary-100">
+          {{ t('flights.cta.description') }}
+        </p>
+        <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
+          <UButton
+            :to="localePath({ name: 'makina-location', params: { location: 'aeroporti-prishtines' } })"
+            size="lg"
+            color="neutral"
+            variant="solid"
+            icon="i-lucide-car"
+            trailing-icon="i-lucide-arrow-right"
+            class="w-full sm:w-auto bg-white text-primary-700 hover:bg-primary-50"
+          >
+            {{ t('flights.cta.rentCar') }}
+          </UButton>
         </div>
-      </UContainer>
-    </section>
+      </div>
+    </UPageSection>
   </div>
 </template>

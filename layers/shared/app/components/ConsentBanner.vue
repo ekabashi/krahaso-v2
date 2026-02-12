@@ -107,14 +107,14 @@ function switchLanguage(code: 'sq' | 'en' | 'de') {
                   </template>
                 </div>
               </div>
-              <div class="flex shrink-0 flex-wrap items-center gap-2">
-                <UButton color="neutral" variant="ghost" size="sm" class="text-muted" @click="toggleCustomize">
+              <div class="flex shrink-0 flex-wrap items-center gap-2 pointer-events-auto">
+                <UButton type="button" color="neutral" variant="ghost" size="sm" class="text-muted pointer-events-auto" @click="toggleCustomize">
                   {{ t('consent.customize') }}
                 </UButton>
-                <UButton color="neutral" variant="ghost" size="sm" class="text-muted" @click="rejectAll">
+                <UButton type="button" color="neutral" variant="ghost" size="sm" class="text-muted pointer-events-auto" @click="rejectAll">
                   {{ t('consent.rejectAll') }}
                 </UButton>
-                <UButton color="primary" variant="solid" size="sm" @click="acceptAll">
+                <UButton type="button" color="primary" variant="solid" size="sm" class="pointer-events-auto" @click="acceptAll">
                   {{ t('consent.acceptAll') }}
                 </UButton>
               </div>
@@ -150,7 +150,7 @@ function switchLanguage(code: 'sq' | 'en' | 'de') {
                   </template>
                 </div>
               </div>
-              <UButton variant="ghost" color="neutral" icon="i-lucide-x" size="xs" class="shrink-0" @click="toggleCustomize" />
+              <UButton type="button" variant="ghost" color="neutral" icon="i-lucide-x" size="xs" class="shrink-0 pointer-events-auto" @click="toggleCustomize" />
             </div>
 
             <div class="mb-4 space-y-2">
@@ -188,11 +188,11 @@ function switchLanguage(code: 'sq' | 'en' | 'de') {
               </div>
             </div>
 
-            <div class="flex gap-2">
-              <UButton color="neutral" variant="ghost" size="sm" @click="toggleCustomize">
+            <div class="flex gap-2 pointer-events-auto">
+              <UButton type="button" color="neutral" variant="ghost" size="sm" class="pointer-events-auto" @click="toggleCustomize">
                 {{ t('consent.cancel') }}
               </UButton>
-              <UButton color="primary" variant="solid" size="sm" @click="saveCustom">
+              <UButton type="button" color="primary" variant="solid" size="sm" class="pointer-events-auto" @click="saveCustom">
                 {{ t('consent.savePreferences') }}
               </UButton>
             </div>

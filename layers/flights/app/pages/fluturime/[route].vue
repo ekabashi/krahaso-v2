@@ -652,7 +652,7 @@ useHead(() => {
               >
             </div>
 
-            <h1
+            <h2
               class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
             >
               {{
@@ -661,7 +661,7 @@ useHead(() => {
                   destination: routeData?.destination || "",
                 })
               }}
-            </h1>
+            </h2>
 
             <p class="text-lg text-slate-300 mb-8 leading-relaxed">
               {{
@@ -994,38 +994,39 @@ useHead(() => {
           </NuxtLink>
         </div>
       </UPageSection>
-
-      <!-- CTA – minimal, i njëjtë si makina [location] -->
-      <div class="max-w-7xl mx-4 sm:mx-auto rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50 px-6 py-20 sm:px-8 sm:py-20">
-        <div class="text-center">
-          <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+    </UContainer>
+      <!-- CTA -->
+      <UPageSection class="bg-linear-to-br from-primary-600 to-primary-700 text-white">
+        <div class="max-w-2xl mx-auto text-center px-4 sm:px-4">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
             {{ t('seo.content.route.cta') }}
           </h2>
-          <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
+          <p class="text-base sm:text-lg mb-6 sm:mb-8 text-primary-100">
             {{ t('seo.content.route.ctaDescription') }}
           </p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
             <UButton
               :to="localePath({ name: 'makina-location', params: { location: 'aeroporti-prishtines' } })"
               size="lg"
-              color="primary"
-              icon="i-lucide-car"
-              trailing-icon="i-lucide-arrow-right"
-              class="w-full sm:w-auto"
+              color="neutral"
+              variant="solid"
+              trailing-icon="i-lucide-arrow-up"
+              class="w-full sm:w-auto bg-white text-primary-700 hover:bg-primary-50"
             >
               {{ t('seo.content.route.rentCar') }}
             </UButton>
-            <button
-              type="button"
-              class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline inline-flex items-center gap-1"
+            <UButton
+              size="lg"
+              color="neutral"
+              variant="solid"
+              trailing-icon="i-lucide-arrow-right"
+              class="w-full sm:w-auto bg-white/15 text-white hover:bg-white/25"
               @click="scrollToSearchForm"
             >
               {{ t('flights.searchNow') }}
-              <UIcon name="i-lucide-arrow-right" class="w-4 h-4" />
-            </button>
+            </UButton>
           </div>
         </div>
-      </div>
-    </UContainer>
+      </UPageSection>
   </div>
 </template>

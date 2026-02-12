@@ -13,9 +13,10 @@ let client: ReturnType<typeof createClient> | null = null
 let dbInstance: ReturnType<typeof drizzle> | null = null
 
 /**
- * Check if we're in a prerender/build context without database access
+ * Check if we're in a prerender/build context without database access.
+ * Exported for unit tests.
  */
-function isBuildPhase(): boolean {
+export function isBuildPhase(): boolean {
   // During Vercel build, env vars may not be available for prerendering
   return !process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN
 }

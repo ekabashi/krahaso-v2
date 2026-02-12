@@ -7,7 +7,7 @@ const config = useRuntimeConfig()
 useSeoPage({
   title: t('landing.seo.title'),
   description: t('landing.seo.description'),
-  canonical: '/',
+  canonical: () => localePath('/'),
   ogImage: () => `${config.public.siteUrl}/logoRed.png`,
 })
 
@@ -123,31 +123,31 @@ useHead(() => ({
 
     <!-- How It Works -->
     <section class="py-16 sm:py-20 bg-white dark:bg-neutral-900 border-y border-neutral-100 dark:border-neutral-800">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white text-center mb-2">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white text-center mb-4">
           {{ t('landing.howItWorks.title') }}
         </h2>
-        <p class="text-sm text-neutral-500 text-center mb-12">
+        <p class="text-neutral-500 text-center mb-12 mx-auto">
           {{ t('landing.howItWorks.description') }}
         </p>
-
+ 
         <div class="relative">
           <!-- Connecting line (desktop) -->
           <div class="hidden md:block absolute top-6 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px border-t-2 border-dashed border-neutral-200 dark:border-neutral-700" />
-
+ 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
             <div
               v-for="(step, i) in howItWorksSteps"
               :key="step.key"
               class="relative text-center"
             >
-              <div class="relative z-10 flex h-12 w-12 mx-auto items-center justify-center rounded-full bg-primary-600 text-white shadow-md shadow-primary-200 mb-4">
-                <UIcon :name="step.icon" class="text-lg" />
+              <div class="relative z-10 flex w-16 h-16 mx-auto items-center justify-center rounded-full bg-primary-600 text-white shadow-md shadow-primary-200 mb-4 ">
+                <UIcon :name="step.icon" class=" text-2xl shadow-lg" />
               </div>
-              <h3 class="text-base font-semibold text-neutral-900 dark:text-white mb-1">
+              <h3 class="text-lg font-bold text-neutral-900 dark:text-white mb-3">
                 {{ t(`landing.howItWorks.steps.${step.key}.title`) }}
               </h3>
-              <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-[240px] mx-auto">
+              <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-[260px] mx-auto">
                 {{ t(`landing.howItWorks.steps.${step.key}.description`) }}
               </p>
             </div>
@@ -155,7 +155,6 @@ useHead(() => ({
         </div>
       </div>
     </section>
-
 
     <!-- Popular Destinations -->
     <section class="py-16 sm:py-20">
@@ -223,7 +222,7 @@ useHead(() => ({
       </div>
     </section>
 
-        <!-- Why Choose Us -->
+    <!-- Why Choose Us -->
     <section class="py-20 bg-white sm:py-24 relative overflow-hidden">
       <!-- Background Wave SVG (Decorative) -->
       <div
@@ -293,10 +292,10 @@ useHead(() => ({
     <!-- FAQ -->
     <section class="py-16 sm:py-20 bg-white dark:bg-neutral-900 border-neutral-100 dark:border-neutral-800">
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white text-center mb-2">
+        <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white text-center mb-4">
           {{ t('landing.faq.title') }}
         </h2>
-        <p class="text-sm text-neutral-500 dark:text-neutral-400 text-center mb-10">
+        <p class="mx-auto text-neutral-500 dark:text-neutral-400 text-center mb-10">
           {{ t('landing.faq.description') }}
         </p>
 
@@ -312,14 +311,12 @@ useHead(() => ({
     </section>
 
     <!-- WhatsApp CTA -->
-    <section class="py-16 sm:py-20">
+    <!-- <section class="py-16 sm:py-20 bg-linear-to-br from-green-600 to-green-700 text-white">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="relative overflow-hidden rounded-2xl bg-linear-to-br from-green-600 to-green-700  px-6 py-10 sm:px-10 sm:py-14 text-white">
-          <!-- Decorative glow -->
+        <div class="relative overflow-hidden rounded-2xl px-6 py-10 sm:px-10 sm:py-14">
           <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#25d366]/10 blur-[80px] pointer-events-none" />
           <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-[#25d366]/5 blur-[60px] pointer-events-none" />
           <div class="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-            <!-- Text -->
             <div class="flex-1 text-center lg:text-left">
               <div class="flex items-center justify-center lg:justify-start gap-2 mb-3">
                 <UIcon name="i-simple-icons-whatsapp" class="text-2xl text-white" />
@@ -358,34 +355,91 @@ useHead(() => ({
               </UButton>
             </div>
 
-            <!-- Chat Mockup -->
             <div class="w-full max-w-[280px] shrink-0">
               <div class="rounded-xl bg-[#ece5dd] p-3 shadow-lg text-xs space-y-2">
-                <!-- User message -->
                 <div class="flex justify-end">
                   <div class="rounded-lg rounded-tr-none bg-[#dcf8c6] px-3 py-1.5 max-w-[85%] text-neutral-800">
                     {{ t('landing.whatsapp.chat.userMessage1') }}
                   </div>
                 </div>
-                <!-- Bot greeting (truncated) -->
                 <div class="flex justify-start">
                   <div class="rounded-lg rounded-tl-none bg-white px-3 py-1.5 max-w-[85%] text-neutral-800 whitespace-pre-line leading-relaxed">
                     {{ t('landing.whatsapp.chat.botGreeting').slice(0, 80) }}...
                   </div>
                 </div>
-                <!-- User search -->
                 <div class="flex justify-end">
                   <div class="rounded-lg rounded-tr-none bg-[#dcf8c6] px-3 py-1.5 max-w-[85%] text-neutral-800 font-medium">
                     {{ t('landing.whatsapp.chat.userFlightSearch') }}
                   </div>
                 </div>
-                <!-- Bot results (truncated) -->
                 <div class="flex justify-start">
                   <div class="rounded-lg rounded-tl-none bg-white px-3 py-1.5 max-w-[85%] text-neutral-800 whitespace-pre-line leading-relaxed">
                     {{ t('landing.whatsapp.chat.botFlightResults').slice(0, 120) }}...
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    
+    <!-- CTA -->
+    <section class="py-14 sm:py-24 bg-linear-to-br from-primary-600 to-primary-700 text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+          <div class="lg:col-span-3 order-1 lg:order-1">
+            <div class="overflow-hidden rounded-2xl mx-auto lg:mx-0">
+              <img
+                src="/flights.png"
+                alt="Fluturime"
+                class="h-52 lg:h-full w-full object-cover"
+                loading="lazy"
+              >
+            </div>
+          </div>
+ 
+          <div class="lg:col-span-6 order-2 lg:order-2 text-center">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
+              {{ t('landing.cta.title') }}
+            </h2>
+            <p class="text-base sm:text-lg mb-6 sm:mb-8 text-primary-100 max-w-2xl mx-auto">
+              {{ t('landing.cta.description') }}
+            </p>
+            <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
+              <UButton
+                :to="localePath('fluturime')"
+                size="lg"
+                color="neutral"
+                variant="solid"
+                icon="i-lucide-plane"
+                trailing-icon="i-lucide-arrow-right"
+                class="w-full sm:w-auto bg-white/15 text-white hover:bg-white/25"
+              >
+                {{ t('landing.cta.flights') }}
+              </UButton>
+              <UButton
+                :to="localePath('vetura')"
+                size="lg"
+                color="neutral"
+                variant="solid"
+                icon="i-lucide-car"
+                trailing-icon="i-lucide-arrow-right"
+                class="w-full sm:w-auto bg-white/15 text-white hover:bg-white/25"
+              >
+                {{ t('landing.cta.cars') }}
+              </UButton>
+            </div>
+          </div>
+ 
+          <div class="lg:col-span-3 order-3 lg:self-end">
+            <div class="overflow-visible rounded-2xl w-full mx-auto">
+              <img
+                src="/cars1.png"
+                alt="Makina me qira"
+                class="h-full w-auto object-contain object-right lg:translate-y-35"
+                loading="eager"
+              >
             </div>
           </div>
         </div>

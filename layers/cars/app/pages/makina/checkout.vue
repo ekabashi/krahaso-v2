@@ -37,6 +37,12 @@ const vehicleId = computed(() => {
 const isLoadingVehicle = ref(false)
 const { t } = useI18n()
 
+useSeoPage({
+  title: () => `${t('checkout.title')} | Krahaso.co`,
+  description: () => t('checkout.completeBooking', { count: 5 }),
+  noindex: true,
+})
+
 const steps = computed(() => [
   { number: 1, title: t('checkout.steps.shortTitles.vehicleReview'), icon: 'i-lucide-truck' },
   { number: 2, title: t('checkout.steps.shortTitles.driverInfo'), icon: 'i-lucide-user' },

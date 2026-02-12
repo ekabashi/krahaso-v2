@@ -16,6 +16,25 @@ const popularLocations = computed(() => [
   { label: t('locations.popular.peje'), location: 'peje' }
 ])
 
+const popularRoutes = computed(() => [
+  {
+    label: `${t('flights.routes.popular.prishtine')} -> ${t('flights.routes.popular.dusseldorf')}`,
+    slug: 'prishtine-dusseldorf'
+  },
+  {
+    label: `${t('flights.routes.popular.prishtine')} -> ${t('flights.routes.popular.zurich')}`,
+    slug: 'prishtine-zurich'
+  },
+  {
+    label: `${t('flights.routes.popular.prishtine')} -> ${t('flights.routes.popular.vienna')}`,
+    slug: 'prishtine-vienna'
+  },
+  {
+    label: `${t('flights.routes.popular.prishtine')} -> ${t('flights.routes.popular.frankfurt')}`,
+    slug: 'prishtine-frankfurt'
+  }
+])
+
 const contactInfo = computed(() => [
   {
     icon: 'i-lucide-mail',
@@ -51,7 +70,7 @@ const socialLinks = computed(() => [
 <template>
   <UFooter class="bg-transparent border-t border-neutral-200 dark:border-neutral-800">
     <div class="container mx-auto px-4 pt-12 lg:pt-16 pb-8 lg:pb-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
         <div class="space-y-4">
           <div class="flex items-center gap-2">
             <img
@@ -120,6 +139,26 @@ const socialLinks = computed(() => [
                 class="text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
               >
                 {{ loc.label }}
+              </ULink>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Popular Routes Column -->
+        <div class="space-y-4">
+          <h3 class="font-semibold text-lg text-neutral-800 dark:text-neutral-100">
+            {{ t('flights.routes.title') }}
+          </h3>
+          <ul class="space-y-2">
+            <li
+              v-for="routeItem in popularRoutes"
+              :key="routeItem.slug"
+            >
+              <ULink
+                :to="localePath({ name: 'fluturime-route', params: { route: routeItem.slug } })"
+                class="text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+              >
+                {{ routeItem.label }}
               </ULink>
             </li>
           </ul>

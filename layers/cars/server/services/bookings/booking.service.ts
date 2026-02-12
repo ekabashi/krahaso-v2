@@ -248,6 +248,7 @@ export class BookingService {
         `
         id,
         booking_number,
+        tenant_id,
         status,
         total_price,
         startDateTime,

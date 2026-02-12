@@ -3,11 +3,15 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build & pid=$!; sleep 120; kill $pid 2>/dev/null; exit 0",
+    "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "vitest run tests/integration",
+    "test:e2e": "playwright test tests/e2e/smoke"
   },
   "dependencies": {
     "@internationalized/date": "^3.11.0",
@@ -34,6 +38,12 @@
     "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/lucide": "^1.2.89",
     "@iconify-json/simple-icons": "^1.2.69",
-    "@types/tough-cookie": "^4.0.5"
+    "@nuxt/test-utils": "^4.0.0",
+    "@types/tough-cookie": "^4.0.5",
+    "@vue/test-utils": "^2.4.6",
+    "happy-dom": "^20.6.0",
+    "@playwright/test": "^1.58.2",
+    "playwright-core": "^1.58.2",
+    "vitest": "^4.0.18"
   }
 }

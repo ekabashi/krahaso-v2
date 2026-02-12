@@ -1,3 +1,4 @@
+import { createError } from 'h3'
 import type { ZodSchema } from 'zod'
 
 export function validateQuery<T>(schema: ZodSchema<T>, raw: unknown): T {

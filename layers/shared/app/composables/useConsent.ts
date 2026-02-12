@@ -9,6 +9,9 @@
  * - useAnalytics checks this before sending dataLayer events
  */
 
+import { computed, readonly } from 'vue'
+import { useCookie, useState } from 'nuxt/app'
+
 export interface ConsentState {
   analytics: boolean
   marketing: boolean

@@ -67,6 +67,11 @@ const popularLocations = computed(() => {
   }))
 })
 
+const popularLocationsLoop = computed(() => {
+  const items = popularLocations.value
+  return items.length > 0 ? [...items, ...items] : []
+})
+
 const conditions = computed(() => [
   {
     icon: 'i-lucide-file-text',
@@ -169,59 +174,101 @@ useHead(() => ({
           :title="t('locations.popular.title')"
           :description="t('locations.popular.description')"
         >
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-            <NuxtLink
-              v-for="location in popularLocations"
-              :key="location.slug"
-              :to="localePath({ name: 'makina-location', params: { location: location.slug } })"
-              class="group relative block h-64 sm:h-80 lg:h-96 cursor-pointer overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl"
-            >
-              <img
-                :src="location.image"
-                :alt="location.name"
-                class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          <div class="relative overflow-hidden rounded-2xl popular-slider-mask">
+            <div class="popular-slider-track">
+              <NuxtLink
+                v-for="(location, idx) in popularLocationsLoop"
+                :key="`${location.slug}-${idx}`"
+                :to="localePath({ name: 'makina-location', params: { location: location.slug } })"
+                class="group relative block h-64 sm:h-72 w-70 shrink-0 cursor-pointer overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl"
               >
-              <div
-                class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"
-              />
-              <div
-                class="absolute bottom-0 left-0 w-full translate-y-2 p-6 transition-transform duration-300 group-hover:translate-y-0"
-              >
-                <h3 class="mb-2 text-2xl font-bold text-white">
-                  {{ location.name }}
-                </h3>
-                <div
-                  class="flex items-center text-sm text-white/80 transition-colors group-hover:text-white"
+                <img
+                  :src="location.image"
+                  :alt="location.name"
+                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 >
-                  <span>{{ t('locations.compare') }}</span>
-                  <UIcon
-                    name="i-lucide-arrow-right"
-                    class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
-                  />
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"
+                />
+                <div
+                  class="absolute bottom-0 left-0 w-full translate-y-2 p-6 transition-transform duration-300 group-hover:translate-y-0"
+                >
+                  <h3 class="mb-2 text-2xl font-bold text-white">
+                    {{ location.name }}
+                  </h3>
+                  <div
+                    class="flex items-center text-sm text-white/80 transition-colors group-hover:text-white"
+                  >
+                    <span>{{ t('locations.compare') }}</span>
+                    <UIcon
+                      name="i-lucide-arrow-right"
+                      class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                    />
+                  </div>
                 </div>
-              </div>
-            </NuxtLink>
+              </NuxtLink>
+            </div>
           </div>
         </UPageSection>
       </UContainer>
     </section>
 
     <!-- Conditions -->
-    <section class="py-16 sm:py-20 bg-neutral-50 dark:bg-neutral-900">
+    <section class="relative overflow-hidden py-16 sm:py-20 bg-neutral-20 dark:bg-neutral-900">
       <UContainer>
-        <UPageSection
-          :title="t('cars.conditions.title')"
-          :description="t('cars.conditions.description')"
-        >
-          <div class="max-w-6xl mx-auto">
-            <LandingFeatureGrid :features="conditions" />
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div class="lg:col-span-4">
+            <div class="sticky top-24">
+              <h2 class="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                {{ t('cars.conditions.title') }}
+              </h2>
+              <p class="mt-4 text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+                {{ t('cars.conditions.description') }}
+              </p>
+            </div>
           </div>
-        </UPageSection>
+
+          <div class="lg:col-span-8">
+            <div class="relative pl-0 sm:pl-3">
+              <div class="space-y-1">
+                <div
+                  v-for="(condition, index) in conditions"
+                  :key="condition.title"
+                  class="group flex items-start gap-4 sm:gap-5 rounded-xl px-3 py-5 sm:px-4 sm:py-6 transition-colors duration-200 hover:bg-white/70 dark:hover:bg-neutral-900/60"
+                >
+                  <div class="relative shrink-0">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white shadow-sm">
+                      <UIcon :name="condition.icon" class="h-4 w-4" />
+                    </div>
+                    <span class="absolute -right-2 -top-2 rounded-full border border-primary/20 bg-white px-1.5 py-0.5 text-[10px] font-semibold leading-none text-primary dark:bg-neutral-900">
+                      {{ index + 1 }}
+                    </span>
+                    <div
+                      v-if="index < conditions.length - 1"
+                      class="hidden sm:flex absolute left-1/2 top-[calc(100%+4px)] -translate-x-1/2 flex-col items-center text-primary/80"
+                    >
+                      <div class="h-8 w-px bg-primary/40" />
+                      <UIcon name="i-lucide-arrow-down" class="h-4 w-4 -mt-0.5" />
+                    </div>
+                  </div>
+                  <div class="min-w-0 border-b border-neutral-200/70 dark:border-neutral-800 pb-5 sm:pb-6 flex-1">
+                    <h3 class="text-base sm:text-lg font-semibold text-neutral-900 dark:text-white">
+                      {{ condition.title }}
+                    </h3>
+                    <p class="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+                      {{ condition.description }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </UContainer>
     </section>
 
     <!-- FAQ -->
-    <section class="py-16 sm:py-20 bg-neutral-50 dark:bg-neutral-900">
+    <section class="py-16 sm:py-20">
       <UContainer>
         <LandingFAQSection
           :items="faqs"
@@ -231,39 +278,80 @@ useHead(() => ({
       </UContainer>
     </section>
 
-    <!-- CTA – minimal, i njëjtë si [location] -->
-    <section class="py-16 sm:py-20">
-      <UContainer>
-        <div class="max-w-7xl mx-4 sm:mx-auto rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50 px-6 py-20 sm:px-8 sm:py-20">
-          <div class="text-center">
-            <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+    <!-- CTA -->
+    <section class="bg-linear-to-br from-primary-600 to-primary-700 text-white py-4 sm:py-4">
+      <div class="max-w-6xl mx-auto px-4 sm:px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-5 text-center lg:text-left">
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
               {{ t('cars.cta.title') }}
             </h2>
-            <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
+            <p class="text-base sm:text-lg text-primary-100 mb-7 max-w-xl mx-auto lg:mx-0">
               {{ t('cars.cta.description') }}
             </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <div class="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
               <UButton
                 :to="localePath('makina')"
                 size="lg"
-                color="primary"
-                icon="i-lucide-search"
-                trailing-icon="i-lucide-arrow-right"
-                class="w-full sm:w-auto"
+                color="neutral"
+                variant="solid"
+                trailing-icon="i-lucide-arrow-up"
+                class="w-full sm:w-auto bg-white text-primary-700 hover:bg-primary-50"
               >
                 {{ t('cars.cta.searchCars') }}
               </UButton>
-              <NuxtLink
-                :to="localePath('fluturime')"
-                class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline inline-flex items-center gap-1"
+              <UButton
+                :to="localePath('/fluturime')"
+                size="lg"
+                color="neutral"
+                variant="solid"
+                trailing-icon="i-lucide-arrow-right"
+                class="w-full sm:w-auto bg-white/15 text-white hover:bg-white/25"
               >
                 {{ t('cars.cta.searchFlights') }}
-                <UIcon name="i-lucide-arrow-right" class="w-4 h-4" />
-              </NuxtLink>
+              </UButton>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="relative mx-auto lg:ml-auto lg:mr-0 lg:translate-x-12 w-full max-w-3xl min-h-82.5 sm:min-h-97.5">
+              <img
+                src="/cars.png"
+                alt="Car rental"
+                class="relative z-10 w-full h-82.5 sm:h-97.5 object-contain object-right drop-shadow-[0_24px_24px_rgba(0,0,0,0.30)]"
+                loading="lazy"
+              >
             </div>
           </div>
         </div>
-      </UContainer>
+      </div>
     </section>
   </div>
 </template>
+
+<style scoped>
+.popular-slider-mask {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.popular-slider-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: popular-locations-marquee 50s linear infinite;
+}
+
+.popular-slider-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes popular-locations-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.75rem));
+  }
+}
+</style>
