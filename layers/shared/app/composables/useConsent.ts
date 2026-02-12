@@ -47,6 +47,7 @@ export function useConsent() {
     consentCookie.value = consent
 
     if (import.meta.client) {
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(consent))
       updateGtmConsent(consent)
     }
   }
@@ -64,6 +65,7 @@ export function useConsent() {
     consentCookie.value = null
 
     if (import.meta.client) {
+      localStorage.removeItem(CONSENT_KEY)
       const w = globalThis as unknown as { gtag?: (...args: unknown[]) => void }
       if (w.gtag) {
         w.gtag('consent', 'update', {
