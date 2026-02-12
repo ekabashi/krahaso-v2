@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     superadminCreatedBy: process.env.SUPERADMIN_CREATED_BY || 'autopika',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://krahaso.co',
-      gtmId: process.env.NUXT_PUBLIC_GTM_ID || '',
+      gtmId: process.env.NUXT_PUBLIC_GTM_ID || 'GTM-W6LJMGVC',
     },
   },
   // CSS loaded from app.vue with relative imports to avoid ~ resolution in virtual:nuxt/css.mjs
@@ -69,8 +69,9 @@ export default defineNuxtConfig({
             'default-src \'self\'',
             'script-src \'self\' \'unsafe-inline\' \'unsafe-eval\' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net',
             'img-src \'self\' data: https: http:',
-            'style-src \'self\' \'unsafe-inline\'',
-            'font-src \'self\' data:',
+            'style-src \'self\' \'unsafe-inline\' https://www.googletagmanager.com https://fonts.googleapis.com',
+            'style-src-elem \'self\' \'unsafe-inline\' https://www.googletagmanager.com https://fonts.googleapis.com',
+            'font-src \'self\' data: https://fonts.gstatic.com',
             'connect-src \'self\' https://*.supabase.co https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://www.facebook.com',
             'frame-src \'self\' https://www.googletagmanager.com https://www.google.com https://www.facebook.com',
           ].join('; '),
