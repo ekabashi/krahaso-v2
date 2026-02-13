@@ -1,4 +1,23 @@
 import { defineStore } from 'pinia'
+import { createAuthClient } from 'better-auth/vue'
+
+const FLIGHTS_AUTH_BASE_PATH = '/api/flights-auth'
+let flightsAuthClient: ReturnType<typeof createAuthClient> | null = null
+
+function getFlightsAuthClient() {
+  if (import.meta.server) {
+    return null
+  }
+
+  if (!flightsAuthClient) {
+    flightsAuthClient = createAuthClient({
+      baseURL: window.location.origin,
+      basePath: FLIGHTS_AUTH_BASE_PATH,
+    })
+  }
+
+  return flightsAuthClient
+}
 
 type AuthUser = {
   id: string
@@ -28,11 +47,34 @@ export const useAuthStore = defineStore('authStore', {
   },
 
   actions: {
+    async clearFlightsAdminSession(): Promise<void> {
+      try {
+        const client = getFlightsAuthClient()
+
+        if (!client) {
+          return
+        }
+
+        const result = await client.signOut()
+        if (result?.error) {
+          await $fetch('/api/flights-auth/sign-out', {
+            method: 'POST',
+            credentials: 'include',
+          })
+        }
+      } catch (error) {
+        console.warn('Flights admin sign out before superadmin login failed:', error)
+      }
+    },
+
     async login(email: string, password: string): Promise<void> {
       this.loading = true
       this.error = null
 
       try {
+        // Ensure flights admin session is cleared before cars superadmin login.
+        await this.clearFlightsAdminSession()
+
         const supabase = useSupabaseClient()
         const { data, error } = await supabase.auth.signInWithPassword({
           email,

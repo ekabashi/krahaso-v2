@@ -1,0 +1,15 @@
+services:
+  aviopika-bot:
+    build:
+      context: ..
+      dockerfile: bot/Dockerfile
+    env_file:
+      - .env
+    restart: unless-stopped
+    volumes:
+      - ./.wwebjs_auth:/app/.wwebjs_auth
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

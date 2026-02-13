@@ -25,3 +25,11 @@ logs
 .env
 .env.*
 !.env.example
+
+# Flights/Bot local state
+data/*.db
+data/*.db-wal
+data/*.db-shm
+.wwebjs_auth
+.wwebjs_cache
+.env*.local

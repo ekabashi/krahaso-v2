@@ -1,13 +1,15 @@
 /**
  * GET /api/go/:provider
  *
- * Redirect for provider contact links
- * Redirects to the actual destination (website or phone)
+ * Tracking redirect for provider contact links
+ * Tracks the click and redirects to the actual destination
  *
  * Query params:
  *   t: type ('web' | 'phone')
+ *   s: session hash (for user correlation)
  */
 
+import { analytics } from '../../services/analytics'
 import { checkRateLimit, getClientIP } from '../../utils/rate-limit'
 
 // Provider contact destinations
@@ -47,6 +49,7 @@ export default defineEventHandler(async (event) => {
   const providerId = getRouterParam(event, 'provider')?.toLowerCase()
   const query = getQuery(event)
   const contactType = (query.t as string) || 'web'
+  const sessionHash = query.s as string | undefined
 
   if (!providerId) {
     throw createError({
@@ -72,6 +75,16 @@ export default defineEventHandler(async (event) => {
   } else {
     redirectUrl = provider.website
   }
+
+  // Track click async, do not block redirect
+  void analytics.trackProviderContactClicked(
+    sessionHash || 'anonymous',
+    {
+      providerId,
+      contactType: contactType as 'web' | 'phone',
+      destination: redirectUrl
+    }
+  )
 
   // Redirect to actual destination
   return sendRedirect(event, redirectUrl, 302)

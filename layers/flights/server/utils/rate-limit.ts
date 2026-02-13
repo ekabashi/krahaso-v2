@@ -79,6 +79,11 @@ export function isAllowedOrigin(event: Parameters<typeof getHeader>[0]): boolean
   }
 
   const allowedOrigins = [
+    'https://krahaso.co',
+    'https://www.krahaso.co',
+    'https://krahaso-v2.vercel.app',
+    'https://autopika.al',
+    'https://www.autopika.al',
     'https://aviopika.al',
     'https://www.aviopika.al',
     'https://aviopika.vercel.app',

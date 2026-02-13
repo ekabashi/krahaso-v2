@@ -157,7 +157,7 @@ useHead(() => ({
     </section>
 
     <!-- Popular Destinations -->
-    <section class="py-16 sm:py-20">
+    <section class="py-16 sm:py-20 bg-neutral-50 dark:bg-neutral-950">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <!-- Flights -->
         <div class="mb-16 text-center">
@@ -223,7 +223,7 @@ useHead(() => ({
     </section>
 
     <!-- Why Choose Us -->
-    <section class="py-20 bg-white sm:py-24 relative overflow-hidden">
+    <section class="py-20 bg-white dark:bg-neutral-900 sm:py-24 relative overflow-hidden">
       <!-- Background Wave SVG (Decorative) -->
       <div
         class="absolute top-1/2 left-0 w-full -translate-y-1/2 hidden lg:block  text-neutral-200 dark:text-neutral-800 pointer-events-none"

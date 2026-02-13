@@ -1,22 +1,24 @@
 <script setup lang="ts">
 import { useAvailableLocations } from '../../composables/useAvailableLocations'
+import { useAddressStore } from '../../stores/addressStore'
 import type { LocationDef } from '../../utils/locations'
-
+ 
 const route = useRoute()
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
+const addressStore = useAddressStore()
 const { availableLocations, getLocationImage, getLocationBySlug } = useAvailableLocations()
-
+ 
 const currentLocale = computed(() => locale.value as 'sq' | 'en' | 'de')
 const locationSlug = computed(() => String(route.params.location || ''))
-
+ 
 const locationDef = computed<LocationDef | null>(() => {
   const slug = locationSlug.value
   if (!slug) return null
   return getLocationBySlug(slug) ?? null
 })
-
+ 
 watchEffect(() => {
   if (locationSlug.value && !locationDef.value) {
     throw createError({
@@ -25,7 +27,7 @@ watchEffect(() => {
     })
   }
 })
-
+ 
 const locationData = computed(() => {
   if (!locationDef.value) return null
   const def = locationDef.value
@@ -39,23 +41,23 @@ const locationData = computed(() => {
     avgPrice: def.avgPrice,
   }
 })
-
+ 
 const locationBackgroundImage = computed(() =>
   locationDef.value ? getLocationImage(locationDef.value) : null,
 )
-
+ 
 const pageTitle = computed(() =>
   locationData.value
     ? `${t('cars.title')} ${locationData.value.name} | Krahaso.co`
     : t('cars.title'),
 )
-
+ 
 const pageDescription = computed(() =>
   locationData.value
     ? `${t('cars.title')} ${locationData.value.name}. ${locationData.value.description} ${t('cars.comparePrices')}`
     : t('cars.description'),
 )
-
+ 
 const canonical = computed(() => {
   if (!locationDef.value) {
     return `${config.public.siteUrl}${localePath('makina')}`
@@ -63,27 +65,35 @@ const canonical = computed(() => {
   const slug = locationDef.value.slugs[currentLocale.value]
   return `${config.public.siteUrl}${localePath({ name: 'makina-location', params: { location: slug } })}`
 })
-
+ 
 const ogImage = computed(() => {
   if (!locationDef.value) return `${config.public.siteUrl}/og/default.jpg`
   const path = getLocationImage(locationDef.value)
   return `${config.public.siteUrl}${path}`
 })
-
+ 
 useSeoPage({
   title: () => pageTitle.value,
   description: () => pageDescription.value,
   canonical: () => canonical.value,
   ogImage: () => ogImage.value,
 })
-
+ 
+if (import.meta.client) {
+  onMounted(async () => {
+    if (addressStore.pickupCities.length === 0) {
+      await addressStore.fetchAllAddresses()
+    }
+  })
+}
+ 
 function scrollToSearchForm() {
   if (import.meta.client) {
     const el = document.getElementById('search-form')
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 }
-
+ 
 const conditions = computed(() => [
   {
     icon: 'i-lucide-file-text',
@@ -106,7 +116,7 @@ const conditions = computed(() => [
     description: t('cars.conditions.cancellation.description'),
   },
 ])
-
+ 
 const highlights = computed(() => [
   {
     icon: 'i-lucide-map-pin',
@@ -132,7 +142,7 @@ const highlights = computed(() => [
         : '',
   },
 ])
-
+ 
 const faqs = computed(() => [
   { label: t('cars.faq.question1'), content: t('cars.faq.answer1') },
   { label: t('cars.faq.question2'), content: t('cars.faq.answer2') },
@@ -141,26 +151,58 @@ const faqs = computed(() => [
   { label: t('cars.faq.question5'), content: t('cars.faq.answer5') },
   { label: t('cars.faq.question6'), content: t('cars.faq.answer6') },
 ])
-
+ 
+function normalizeName(s: string): string {
+  return s
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .trim()
+    .toLowerCase()
+}
+ 
+/** Only locations that exist in API (pickupCities) – like index.vue */
 const relatedLocations = computed(() => {
   const current = locationDef.value
   if (!current) return []
-  return availableLocations.value
+ 
+  const cities = addressStore.pickupCities
+  if (cities.length === 0) return []
+ 
+  const availableSet = new Set<string>()
+  for (const c of cities) {
+    if (c.label) availableSet.add(normalizeName(c.label))
+    if (c.value) availableSet.add(normalizeName(c.value))
+    if (c.city) availableSet.add(normalizeName(c.city))
+  }
+ 
+  const filtered = availableLocations.value
     .filter((loc: LocationDef) => loc.key !== current.key)
-    .slice(0, 8)
-    .map((loc: LocationDef) => ({
-      key: loc.key,
-      name: loc.names[currentLocale.value],
-      slug: loc.slugs[currentLocale.value],
-      image: getLocationImage(loc),
-    }))
+    .filter((loc: LocationDef) => {
+      const names = [loc.names.sq, loc.names.en, loc.names.de].filter(Boolean) as string[]
+      return names.some((name) => {
+        const base = normalizeName(name)
+        if (availableSet.has(base)) return true
+        const airportVariant = base.replace(/\baeroporti\b/, 'airporti')
+        return airportVariant !== base && availableSet.has(airportVariant)
+      })
+    })
+ 
+  // Kufizo në maksimum 8 items
+  const limited = filtered.length > 8 ? filtered.slice(0, 8) : filtered
+ 
+  return limited.map((loc: LocationDef) => ({
+    key: loc.key,
+    name: loc.names[currentLocale.value],
+    slug: loc.slugs[currentLocale.value],
+    image: getLocationImage(loc),
+  }))
 })
-
+ 
 const relatedLocationsLoop = computed(() => {
   const items = relatedLocations.value
   return items.length > 0 ? [...items, ...items] : []
 })
-
+ 
 useHead(() =>
   locationData.value
     ? {
@@ -261,7 +303,7 @@ useHead(() =>
             {{ t('cars.searchNow') }}
           </UButton>
           <UButton
-            :to="localePath('/fluturime')"
+            :to="localePath('fluturime')"
             color="neutral"
             variant="outline"
             size="lg"
@@ -542,7 +584,7 @@ useHead(() =>
               {{ t('cars.searchNow') }}
             </UButton>
             <UButton
-              :to="localePath('/fluturime')"
+              :to="localePath('fluturime')"
               size="lg"
               color="neutral"
               variant="solid"

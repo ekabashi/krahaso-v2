@@ -1,5 +1,6 @@
 import { useProviderRegistry } from '../../providers/registry'
 import { searchFlightsInCache, logSearch } from '../../database/queries'
+import { analytics } from '../../services/analytics'
 import type { Flight, FlightSearchParams, SortBy, SortOrder } from '../../types/provider'
 
 interface SearchRequestBody {
@@ -169,6 +170,7 @@ export default defineEventHandler(async (event) => {
 
   const sortBy = body.sortBy || 'price'
   const sortOrder = body.sortOrder || 'asc'
+  const searchId = crypto.randomUUID()
 
   // Search outbound flights (origin → destination)
   const outboundParams: FlightSearchParams = {
@@ -248,6 +250,26 @@ export default defineEventHandler(async (event) => {
     )
   } catch (error) {
     console.error('[search] logSearch failed:', error)
+  }
+
+  const hasCacheHit = allProviderResults.some(r => r.fromCache)
+  try {
+    await analytics.trackSearchResults(
+      searchId,
+      allProviderResults.map(r => ({
+        providerId: r.providerId,
+        flights: r.flights,
+        loadTime: r.loadTime,
+        error: r.error
+      })),
+      {
+        sessionId: 'server-search',
+        channel: 'web',
+        cacheHit: hasCacheHit
+      }
+    )
+  } catch (error) {
+    console.error('[search] trackSearchResults failed:', error)
   }
 
   return {

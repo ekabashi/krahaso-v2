@@ -1,5 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // Nuxt 4 + Nuxt UI 4 compatible; layers: https://nuxt.com/docs/4.x/getting-started/layers
+const isDev = process.env.NODE_ENV !== 'production'
+const cspConnectSrc = [
+  '\'self\'',
+  'https://*.supabase.co',
+  'wss://*.supabase.co',
+  'https://www.google-analytics.com',
+  'https://analytics.google.com',
+  'https://www.googletagmanager.com',
+  'https://region1.google-analytics.com',
+  'https://www.facebook.com',
+]
+
+if (isDev) {
+  cspConnectSrc.push('ws://localhost:*', 'ws://127.0.0.1:*', 'wss://localhost:*', 'wss://127.0.0.1:*')
+}
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -9,7 +25,7 @@ export default defineNuxtConfig({
     superadminCreatedBy: process.env.SUPERADMIN_CREATED_BY || 'autopika',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://krahaso.co',
-      gtmId: process.env.NUXT_PUBLIC_GTM_ID || 'GTM-W6LJMGVC',
+      gtmId: process.env.NUXT_PUBLIC_GTM_ID || '',
     },
   },
   // CSS loaded from app.vue with relative imports to avoid ~ resolution in virtual:nuxt/css.mjs
@@ -36,6 +52,12 @@ export default defineNuxtConfig({
       '/superadmin',
       '/**/superadmin/**',
       '/**/superadmin',
+      '/admin/**',
+      '/admin',
+      '/**/admin/**',
+      '/**/admin',
+      '/login',
+      '/**/login',
       '/**/search',
       '/**/search/**',
       '/**/checkout',
@@ -72,7 +94,7 @@ export default defineNuxtConfig({
             'style-src \'self\' \'unsafe-inline\' https://www.googletagmanager.com https://fonts.googleapis.com',
             'style-src-elem \'self\' \'unsafe-inline\' https://www.googletagmanager.com https://fonts.googleapis.com',
             'font-src \'self\' data: https://fonts.gstatic.com',
-            'connect-src \'self\' https://*.supabase.co https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://region1.google-analytics.com https://www.facebook.com',
+            `connect-src ${cspConnectSrc.join(' ')}`,
             'frame-src \'self\' https://www.googletagmanager.com https://www.google.com https://www.facebook.com',
           ].join('; '),
         },

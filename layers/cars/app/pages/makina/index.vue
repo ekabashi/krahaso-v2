@@ -74,6 +74,11 @@ const popularLocationsLoop = computed(() => {
 
 const conditions = computed(() => [
   {
+    icon: 'i-lucide-shield-check',
+    title: t('cars.conditions.insurance.title'),
+    description: t('cars.conditions.insurance.description'),
+  },
+  {
     icon: 'i-lucide-file-text',
     title: t('cars.conditions.documents.title'),
     description: t('cars.conditions.documents.description'),
@@ -82,11 +87,6 @@ const conditions = computed(() => [
     icon: 'i-lucide-credit-card',
     title: t('cars.conditions.deposit.title'),
     description: t('cars.conditions.deposit.description'),
-  },
-  {
-    icon: 'i-lucide-shield-check',
-    title: t('cars.conditions.insurance.title'),
-    description: t('cars.conditions.insurance.description'),
   },
   {
     icon: 'i-lucide-calendar-x',
@@ -301,7 +301,7 @@ useHead(() => ({
                 {{ t('cars.cta.searchCars') }}
               </UButton>
               <UButton
-                :to="localePath('/fluturime')"
+                :to="localePath('fluturime')"
                 size="lg"
                 color="neutral"
                 variant="solid"

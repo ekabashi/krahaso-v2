@@ -19,6 +19,7 @@ export const POPULAR_LOCATION_KEYS = [
   'ferizaj',
   'mitrovica',
   'gjilan',
+  'rahovec',
   'malisheva',
   'suhareka',
 ] as const
