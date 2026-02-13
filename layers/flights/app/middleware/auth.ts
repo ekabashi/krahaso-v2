@@ -17,7 +17,11 @@ export default defineNuxtRouteMiddleware(async () => {
       }
 
       return
-    } catch {
+    } catch (error) {
+      const statusCode = typeof error === 'object' && error && 'statusCode' in error
+        ? (error as { statusCode?: number }).statusCode
+        : undefined
+      console.error('[flights-auth-middleware] SSR session check failed', { statusCode })
       return navigateTo(localePath('/login'))
     }
   }

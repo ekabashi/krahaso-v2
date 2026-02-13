@@ -9,7 +9,7 @@ export default defineNuxtRouteMiddleware(async () => {
     const sessionEndpoint: string = '/api/flights-auth/get-session'
     const headers = useRequestHeaders(['cookie'])
 
-    try {a
+    try {
       const sessionResponse = await $fetch<{
         user?: { role?: string } | null
         session?: Record<string, unknown> | null
@@ -24,7 +24,11 @@ export default defineNuxtRouteMiddleware(async () => {
       }
 
       return
-    } catch {
+    } catch (error) {
+      const statusCode = typeof error === 'object' && error && 'statusCode' in error
+        ? (error as { statusCode?: number }).statusCode
+        : undefined
+      console.error('[flights-admin-middleware] SSR session check failed', { statusCode })
       return navigateTo(localePath('/login'))
     }
   }

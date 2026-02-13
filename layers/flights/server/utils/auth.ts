@@ -100,10 +100,17 @@ export function getAuth() {
       rateLimit: {
         enabled: isProduction,
         window: 60,
-        max: 10,
+        max: 60,
         customRules: {
-          // Session polling/focus revalidation can trigger frequent calls in admin tabs.
-          '/get-session': false
+          // Session checks are frequent in admin views and SSR middleware.
+          '*/get-session': false,
+          // Sign-out can be called from cross-auth cleanup flows.
+          '*/sign-out': false,
+          // Keep sign-in attempts tight to reduce brute force risk.
+          '*/sign-in/*': {
+            window: 60,
+            max: 5
+          }
         }
       },
       advanced: {
