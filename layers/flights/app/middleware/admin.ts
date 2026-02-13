@@ -2,6 +2,33 @@
 
 export default defineNuxtRouteMiddleware(async () => {
   const localePath = useLocalePath()
+
+  // Use request cookies on SSR so hard refresh/direct admin links don't
+  // randomly redirect due to client-side session atom not being hydrated yet.
+  if (import.meta.server) {
+    const sessionEndpoint: string = '/api/flights-auth/get-session'
+    const headers = useRequestHeaders(['cookie'])
+
+    try {a
+      const sessionResponse = await $fetch<{
+        user?: { role?: string } | null
+        session?: Record<string, unknown> | null
+      }>(sessionEndpoint, { headers })
+
+      if (!sessionResponse?.session) {
+        return navigateTo(localePath('/login'))
+      }
+
+      if (sessionResponse.user?.role !== 'admin') {
+        return navigateTo(localePath('/'))
+      }
+
+      return
+    } catch {
+      return navigateTo(localePath('/login'))
+    }
+  }
+
   const { isAuthenticated, isAdmin, isLoading } = useAuth()
 
   if (isLoading.value) {

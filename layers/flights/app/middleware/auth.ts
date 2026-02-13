@@ -2,6 +2,26 @@
 
 export default defineNuxtRouteMiddleware(async () => {
   const localePath = useLocalePath()
+
+  if (import.meta.server) {
+    const sessionEndpoint: string = '/api/flights-auth/get-session'
+    const headers = useRequestHeaders(['cookie'])
+
+    try {
+      const sessionResponse = await $fetch<{
+        session?: Record<string, unknown> | null
+      }>(sessionEndpoint, { headers })
+
+      if (!sessionResponse?.session) {
+        return navigateTo(localePath('/login'))
+      }
+
+      return
+    } catch {
+      return navigateTo(localePath('/login'))
+    }
+  }
+
   const { isAuthenticated, isLoading } = useAuth()
 
   if (isLoading.value) {
