@@ -179,7 +179,14 @@ export function useFlightSearch() {
       results.value = data
 
       const count = data?.flights?.length ?? 0
-      trackResultsViewed('flight', count)
+      trackResultsViewed('flight', count, {
+        route_path: route.path,
+        from: searchState.value.origin.code,
+        to: searchState.value.destination.code,
+        departureDate: formatCalendarDate(searchState.value.departureDate),
+        hasReturnDate: !!searchState.value.returnDate,
+        hasResults: count > 0,
+      })
 
       // Sync flexible matrix with actual search results
       syncFlexibleWithResults(data)

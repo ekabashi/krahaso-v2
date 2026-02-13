@@ -317,7 +317,16 @@ async function searchCars() {
     location: resolvedLocation.value,
     dropoffLocation: resolvedDropoff.value,
   });
-  trackResultsViewed("car", carStore.total);
+  trackResultsViewed("car", carStore.total, {
+    route_path: route.path,
+    pickup: searchParams.value.location ?? null,
+    dropoff: searchParams.value.dropoffLocation ?? null,
+    startDate: searchParams.value.startDate,
+    endDate: searchParams.value.endDate,
+    sortBy: getSortByFromUrl(),
+    activeFiltersCount: activeFiltersCount.value,
+    hasResults: carStore.total > 0,
+  });
 }
 
 if (import.meta.client) {

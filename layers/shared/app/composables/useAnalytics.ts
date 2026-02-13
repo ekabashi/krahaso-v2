@@ -122,7 +122,7 @@ export function useAnalytics() {
     trackLeadSubmitted: (offerId: string, offerType: OfferType, params: AnalyticsProps = {}) =>
       pushEvent('lead_submitted', { offerId, offerType, ...params }, `lead_submitted:${offerId}`, 2500),
 
-    trackResultsViewed: (type: OfferType, resultsCount: number) =>
-      pushEvent('results_viewed', { type, resultsCount }, `results_viewed:${type}`, 1200),
+    trackResultsViewed: (type: OfferType, resultsCount: number, params: AnalyticsProps = {}) =>
+      pushEvent('results_viewed', { type, resultsCount, ...params }, `results_viewed:${type}`, 1200),
   }
 }
