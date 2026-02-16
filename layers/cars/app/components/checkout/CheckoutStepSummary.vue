@@ -29,9 +29,18 @@ async function handleSubmit() {
   try {
     const bookingData = submitBooking()
     if (!bookingData) return
+    const cryptoObj = globalThis.crypto as { randomUUID?: () => string } | undefined
+    const eventId = cryptoObj?.randomUUID?.() || `${Date.now()}-${Math.random()}`
+    const bookingPayload = {
+      ...bookingData,
+      analytics: {
+        eventId,
+        sourceUrl: window.location.href,
+      },
+    }
 
     const formData = new FormData()
-    formData.append('payload', JSON.stringify(bookingData))
+    formData.append('payload', JSON.stringify(bookingPayload))
     if (state.value.customerForm.frontIdFile)
       formData.append('frontIdFile', state.value.customerForm.frontIdFile)
     if (state.value.customerForm.backIdFile)
@@ -57,6 +66,7 @@ async function handleSubmit() {
       dropoff: state.value.returnPoint,
       checkoutStep: 5,
       bookingNumber: response.booking_number,
+      event_id: eventId,
     })
 
     toast.add({

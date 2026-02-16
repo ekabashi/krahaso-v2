@@ -42,7 +42,7 @@ const filteredRoutes = computed(() => {
   let routes = data.value.routes.map((route, index) => ({
     ...route,
     rank: index + 1,
-    route: `${route.origin} â†’ ${route.destination}`
+    route: `${route.origin} → ${route.destination}`
   }))
 
   if (search.value) {
@@ -154,7 +154,7 @@ const avgConversion = computed(() =>
             {{ avgConversion }}%
           </div>
           <div class="text-sm text-muted">
-            Ã˜ Conversion
+            Ø Conversion
           </div>
         </div>
       </UCard>

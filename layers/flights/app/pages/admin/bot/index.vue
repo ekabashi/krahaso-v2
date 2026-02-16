@@ -390,7 +390,7 @@ function getDirectionColor(direction: string): string {
                   :key="item.hash"
                   class="font-mono text-xs"
                 >
-                  {{ item.format }} â†’ {{ item.hash }}
+                  {{ item.format }} → {{ item.hash }}
                 </li>
               </ul>
             </div>

@@ -23,6 +23,9 @@ export default defineNuxtConfig({
     brevoApiKey: process.env.BREVO_API_KEY || '',
     supabaseStorageBucket: process.env.SUPABASE_STORAGE_BUCKET || 'customerid',
     superadminCreatedBy: process.env.SUPERADMIN_CREATED_BY || 'autopika',
+    metaPixelId: process.env.META_PIXEL_ID || '',
+    metaCapiToken: process.env.META_CAPI_TOKEN || '',
+    metaTestEventCode: process.env.META_TEST_EVENT_CODE || '',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://krahaso.co',
       gtmId: process.env.NUXT_PUBLIC_GTM_ID || '',

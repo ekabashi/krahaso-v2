@@ -5,6 +5,11 @@ const { buildFlightQueryFromState } = useFlightSearch()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
 
+const whatsappNumber = useRuntimeConfig().public.whatsappNumber || ''
+const whatsappLink = computed(() =>
+  whatsappNumber ? `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(t('landing.whatsapp.chat.userMessage1'))}` : '#'
+)
+
 useSeoPage({
   title: () => `${t('flights.title')} | Krahaso.co`,
   description: () => t('flights.description'),

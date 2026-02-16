@@ -30,6 +30,11 @@ const customerSchema = z.object({
   patentShoferFile: z.union([z.string(), z.null()]).optional(),
 })
 
+const bookingAnalyticsSchema = z.object({
+  eventId: z.string().min(1).max(120).optional(),
+  sourceUrl: z.string().url('Invalid source URL').max(1000).optional(),
+})
+
 export const createBookingSchema = z.object({
   vehicle_id: z.number().int().positive('Vehicle ID is required'),
   tenant_id: tenantIdSchema,
@@ -40,6 +45,7 @@ export const createBookingSchema = z.object({
   options: bookingOptionsSchema,
   customer: customerSchema,
   description: z.string().optional(),
+  analytics: bookingAnalyticsSchema.optional(),
 })
 
 export type CreateBookingInput = z.infer<typeof createBookingSchema>

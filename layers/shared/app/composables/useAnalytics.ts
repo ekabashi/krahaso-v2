@@ -96,8 +96,14 @@ function pushEvent(
   w.dataLayer = w.dataLayer || []
 
   const safeProps = stripPII({ ...props })
+  const externalEventId = typeof safeProps.event_id === 'string' && safeProps.event_id.length > 0
+    ? safeProps.event_id
+    : null
+  if (externalEventId) {
+    delete safeProps.event_id
+  }
   const cryptoObj = crypto as { randomUUID?: () => string }
-  const eventId = cryptoObj?.randomUUID?.() || `${Date.now()}-${Math.random()}`
+  const eventId = externalEventId || cryptoObj?.randomUUID?.() || `${Date.now()}-${Math.random()}`
 
   w.dataLayer.push({
     event,
@@ -120,7 +126,7 @@ export function useAnalytics() {
       pushEvent('lead_started', { offerId, offerType, ...params }, `lead_started:${offerId}`, 1500),
 
     trackLeadSubmitted: (offerId: string, offerType: OfferType, params: AnalyticsProps = {}) =>
-      pushEvent('lead_submitted', { offerId, offerType, ...params }, `lead_submitted:${offerId}`, 2500),
+      pushEvent('lead_submitted', { offerId, offerType, ...params }, `lead_submitted:${offerId}`, 2500, 'marketing'),
 
     trackResultsViewed: (type: OfferType, resultsCount: number, params: AnalyticsProps = {}) =>
       pushEvent('results_viewed', { type, resultsCount, ...params }, `results_viewed:${type}`, 1200),

@@ -105,6 +105,10 @@ export interface BookingFormData {
     patentShoferFile?: string | null
   }
   description?: string
+  analytics?: {
+    eventId?: string
+    sourceUrl?: string
+  }
 }
 
 export interface BookingResponse {

@@ -1,10 +1,11 @@
 import { serverSupabaseClient } from '#supabase/server'
-import { readMultipartFormData } from 'h3'
+import { getCookie, getRequestHeader, readMultipartFormData } from 'h3'
 import type { H3Event } from 'h3'
 import type { BookingFormData } from '../../types'
 import { BookingService } from '../../services/bookings/booking.service'
 import { StorageService } from '../../services/storage/storage.service'
 import { EmailService } from '../../services/email/email.service'
+import { MetaCapiService } from '../../services/analytics/meta-capi.service'
 import { normalizeBucketName } from '../../utils/string.utils'
 import { getLogger } from '../../utils/logger'
 import { validateBody } from '../../utils/validate'
@@ -19,10 +20,30 @@ type MultipartFile = {
   data: Buffer
 }
 
+function hasMarketingConsent(rawConsent: string | undefined): boolean {
+  if (!rawConsent) return false
+
+  const tryParse = (value: string): boolean => {
+    const normalized = value.startsWith('j:') ? value.slice(2) : value
+    const parsed = JSON.parse(normalized) as { marketing?: unknown }
+    return parsed?.marketing === true
+  }
+
+  try {
+    return tryParse(rawConsent)
+  } catch {
+    try {
+      return tryParse(decodeURIComponent(rawConsent))
+    } catch {
+      return false
+    }
+  }
+}
+
 export default defineEventHandler(async (event: H3Event) => {
   const log = getLogger(event)
   const client = await serverSupabaseClient(event)
-  const runtimeConfig = useRuntimeConfig()
+  const runtimeConfig = useRuntimeConfig(event)
   const storageBucket = normalizeBucketName(
     (runtimeConfig as Record<string, unknown>).supabaseStorageBucket as
       | string
@@ -34,6 +55,12 @@ export default defineEventHandler(async (event: H3Event) => {
       | undefined || 'https://krahaso.co'
   const brevoApiKey =
     ((runtimeConfig as Record<string, unknown>).brevoApiKey as string) || ''
+  const metaPixelId =
+    ((runtimeConfig as Record<string, unknown>).metaPixelId as string) || ''
+  const metaCapiToken =
+    ((runtimeConfig as Record<string, unknown>).metaCapiToken as string) || ''
+  const metaTestEventCode =
+    ((runtimeConfig as Record<string, unknown>).metaTestEventCode as string) || ''
 
   log.info('Creating new booking')
 
@@ -126,6 +153,58 @@ export default defineEventHandler(async (event: H3Event) => {
     vehicleId: body.vehicle_id,
     bookingNumber: booking.booking_number,
   })
+  const rawConsentCookie = getCookie(event, 'krahaso_consent')
+  const marketingConsentGranted = hasMarketingConsent(rawConsentCookie)
+  const eventId = body.analytics?.eventId?.trim() || `lead-${booking.booking_number}`
+  const sourceUrl = body.analytics?.sourceUrl
+  const fbp = getCookie(event, '_fbp')
+  const fbc = getCookie(event, '_fbc')
+
+  if (!marketingConsentGranted) {
+    log.info('Meta CAPI skipped: marketing consent not granted', {
+      bookingId: booking.id,
+      tenantId: body.tenant_id,
+    })
+  } else if (!metaPixelId || !metaCapiToken) {
+    log.warn('Meta CAPI skipped: missing configuration', {
+      bookingId: booking.id,
+      hasPixelId: Boolean(metaPixelId),
+      hasCapiToken: Boolean(metaCapiToken),
+    })
+  } else {
+    const forwardedFor = getRequestHeader(event, 'x-forwarded-for')
+    const clientIpAddress = forwardedFor?.split(',')[0]?.trim() || getRequestHeader(event, 'x-real-ip') || undefined
+    const clientUserAgent = getRequestHeader(event, 'user-agent') || undefined
+    const metaCapiService = new MetaCapiService({
+      pixelId: metaPixelId,
+      accessToken: metaCapiToken,
+      testEventCode: metaTestEventCode || undefined,
+    })
+
+    try {
+      await metaCapiService.sendLeadEvent({
+        eventId,
+        eventSourceUrl: sourceUrl,
+        clientIpAddress,
+        clientUserAgent,
+        fbp: fbp || undefined,
+        fbc: fbc || undefined,
+      })
+
+      log.info('Meta CAPI lead sent', {
+        bookingId: booking.id,
+        eventId,
+        hasFbp: Boolean(fbp),
+        hasFbc: Boolean(fbc),
+        testMode: Boolean(metaTestEventCode),
+      })
+    } catch (metaCapiError) {
+      log.error('Meta CAPI lead failed', metaCapiError as Error, {
+        bookingId: booking.id,
+        eventId,
+      })
+    }
+  }
 
   if (!brevoApiKey?.trim()) {
     log.warn(
